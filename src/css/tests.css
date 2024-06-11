@@ -1,0 +1,285 @@
+/**
+ * -----------------------------
+ * Web Platform Feature Testing
+ * -----------------------------
+ * https://www.w3.org/Style/CSS/Test/
+ * https://wpt.fyi/interop-2024; https://wpt.live/css/
+ * https://github.com/CSS-Next/css-next/discussions/92
+ * https://github.com/web-platform-dx/web-features
+ * https://github.com/mdn/browser-compat-data
+ * https://github.com/5t3ph/SupportsCSS
+ *
+ * Layering ✅ Baseline 2022
+ * → https://drafts.csswg.org/css-cascade-5/#layering
+ * → https://developer.chrome.com/blog/cascade-layers
+ *
+ * Scoping
+ * → https://drafts.csswg.org/css-scoping/
+ * → https://developer.chrome.com/docs/css-ui/at-scope
+ * → https://css.oddbird.net/scope/explainer/
+ *
+ * Nesting
+ * → https://drafts.csswg.org/css-nesting/
+ * → https://wpt.fyi/results/css/css-nesting
+ * → https://developer.chrome.com/docs/css-ui/css-nesting
+ *
+ * Houdini APIs: Painting & Property At-Rule
+ * → https://drafts.css-houdini.org/css-properties-values-api-1/#at-property-rule
+ * → https://web.dev/articles/at-property
+ *
+ * Anchor Positioning
+ * → https://drafts.csswg.org/css-anchor-position-1/
+ * → https://developer.chrome.com/blog/anchor-positioning-api
+ * → https://github.com/oddbird/css-anchor-positioning
+ *
+ * Color Spaces and Functions
+ * → https://drafts.csswg.org/css-color-5/
+ * → https://web.dev/color-spaces-and-functions
+ */
+
+:where(:root) {
+  /* Container queries ✅ Baseline 2023
+     → https://web.dev/blog/cq-stable
+     → https://github.com/sturobson/Awesome-Container-Queries */
+  --supports-at-container: ;
+  --not-supports-at-container: initial;
+
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/@scope */
+  --supports-scoping: ;
+  --not-supports-scoping: initial;
+
+  /* https://drafts.csswg.org/selectors/#relational */
+  --supports-has: ;
+  --not-supports-has: initial;
+
+  /* https://web.dev/blog/state-of-css-2022#no_media_query_variables */
+  --display-p3: color(display-p3 1 1 1);
+  --anchor-pos: anchor(--a bottom);
+}
+
+@layer { /* anon test-only layer */
+  /* https://www.oddbird.net/2022/06/21/cascade-layers-polyfill/ */
+  :where(:root) {
+    --supports-layering: initial;
+    --not-supports-layering: ;
+  }
+}
+
+@scope (html) { /* test-only at-rule */
+  :scope {
+    --supports-scoping: initial;
+    --not-supports-scoping: ;
+  }
+}
+@supports (selector(:scope)) { /* 🦊 */ }
+
+@supports (container: test / inline-size) and (contain: size) {
+  :where(:root) {
+    --supports-at-container: initial;
+    --not-supports-at-container: ;
+    --props: true;
+  }
+  /* if no container is specified
+     CSS finds the nearest */
+  @container (inline-size >= 0) { /* container not defined */ }
+  /* https://caniuse.com/css-container-queries-style
+     https://drafts.csswg.org/css-contain-3/#style-container
+     https://supportscss.dev/#atcontainerstyleproperties-test */
+  @container style(--props: true) {
+    [data-test=at-container] span::after {
+      content: " and Style Features";
+      /* font-style: italic; */
+    }
+  }
+  /* TODO https://drafts.csswg.org/css-contain-3/#container-lengths */
+}
+
+@supports (selector(&)) {
+  /* nesting parsing available */
+  :where(:root) {
+    --supports-nesting: initial;
+    --not-supports-nesting: ;
+  }
+}
+@supports (not selector(&)) {
+  /* nesting parsing not available */
+  :where(:root) {
+    --supports-nesting: ;
+    --not-supports-nesting: initial;
+  }
+}
+
+@supports (selector(:has(works))) {
+  /* safe to use :has() */
+  :where(:root) {
+    --supports-has: initial;
+    --not-supports-has: ;
+  }
+}
+
+@supports (anchor-name: --a) and (top: var(--anchor-pos)) {
+  :where(:root) {
+    --supports-anchoring: initial;
+    --not-supports-anchoring: ;
+  }
+}
+@supports not (anchor-name: --a) {
+  :where(:root) {
+    --supports-anchoring: ;
+    --not-supports-anchoring: initial;
+  }
+}
+
+/* https://w3c.github.io/csswg-drafts/css-env-1/ */
+@supports (padding: env(safe-area-inset-top)) {
+  :where(:root) {
+    --supports-env: initial;
+    --not-supports-env: ;
+  }
+  /* :where(body) {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    padding-left: max(12px, env(safe-area-inset-left));
+  } */
+}
+@supports not (padding: env(safe-area-inset-top)) {
+  :where(:root) {
+    --supports-env: ;
+    --not-supports-env: initial;
+  }
+}
+
+/* Check for Houdini support & register property */
+/* https://ishoudinireadyyet.com/ */
+@supports (background: paint(something)) {
+  @property --supports-at-property {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: color(display-p3 0 1 0);
+  }
+  :where(:root) {
+    --supports-at-property: initial;
+    --not-supports-at-property: ;
+  }
+}
+@supports not (background: paint(something)) {
+  :where(:root) {
+    --supports-at-property: ;
+    --not-supports-at-property: initial;
+  }
+}
+
+@supports (background: var(--display-p3)) {
+  :where(:root) {
+    --supports-d-p3: initial;
+    --not-supports-d-p3: ;
+    --alert-ok: color(display-p3 0 1 0);
+    --alert-no: color(display-p3 1 0 1);
+  }
+}
+@supports not (background: var(--display-p3)) {
+  :where(:root) {
+    --supports-d-p3: ;
+    --not-supports-d-p3: initial;
+  }
+}
+
+/* https://caniuse.com/mdn-css_at-rules_media_dynamic-range
+   https://www.w3.org/TR/mediaqueries-5/#dynamic-range */
+@media (dynamic-range: high) or (color-gamut: p3) {
+  /* --HD-color: true; */
+}
+/* TODO: @custom-media --* (…);
+   https://drafts.csswg.org/mediaqueries-5/#custom-mq
+   https://github.com/argyleink/open-props/blob/main/src/props.media.css */
+
+/* Results output */
+:where(output) {
+  display: inline-block;
+  inline-size: 1em;
+  block-size: auto;
+  aspect-ratio: var(--ratio-square);
+  background-color: var(--toggle);
+  border-radius: 1e5px; /* round */
+}
+/* :where([data-test]) {
+  --result: var(--supports, "✅") var(--not-supports, "❌");
+  --supports: ;
+  --not-supports: initial;
+
+  display: list-item;
+  list-style: var(--result) inside none;
+
+  &::marker { content: var(--result) " "; }
+} */
+
+/* https://caniuse.com/css-variables
+   https://drafts.csswg.org/css-variables/
+   https://drafts.csswg.org/css-variables/#long-variables */
+:where([data-test=props]) {
+  --toggle: var(--supports-variables, var(--alert-ok));
+}
+
+/* https://caniuse.com/css-container-queries-style */
+:where([data-test=at-container]) {
+  --toggle:
+    var(--supports-at-container, var(--alert-ok))
+    var(--not-supports-at-container, var(--alert-no));
+}
+
+/* https://caniuse.com/css-cascade-layers */
+:where([data-test=at-layer]) {
+  --toggle:
+    var(--supports-layering, var(--alert-ok))
+    var(--not-supports-layering, var(--alert-no));
+}
+
+/* https://caniuse.com/mdn-css_at-rules_property */
+:where([data-test=at-property]) {
+  --toggle:
+    var(--supports-at-property)
+    var(--not-supports-at-property, var(--alert-no));
+}
+
+/* https://caniuse.com/css-cascade-scope */
+:where([data-test=at-scope]) {
+  --toggle:
+    var(--supports-scoping, var(--alert-ok))
+    var(--not-supports-scoping, var(--alert-no));
+}
+
+/* https://caniuse.com/css-nesting */
+:where([data-test=nesting]) {
+  --toggle:
+    var(--supports-nesting, var(--alert-ok))
+    var(--not-supports-nesting, var(--alert-no));
+}
+
+/* https://caniuse.com/css-anchor-positioning */
+:where([data-test=anchoring]) {
+  --toggle:
+    var(--supports-anchoring, var(--alert-ok))
+    var(--not-supports-anchoring, var(--alert-no));
+}
+
+/* https://caniuse.com/css-env-function */
+:where([data-test=env]) {
+  --toggle:
+    var(--supports-env, var(--alert-ok))
+    var(--not-supports-env, var(--alert-no));
+}
+
+/* https://caniuse.com/css-color-function */
+:where([data-test=d-p3]) {
+  --toggle:
+    var(--supports-d-p3, var(--alert-ok))
+    var(--not-supports-d-p3, var(--alert-no));
+}
+
+/* https://caniuse.com/css-has */
+:where([data-test=has]) {
+  --toggle:
+    var(--supports-has, var(--alert-ok))
+    var(--not-supports-has, var(--alert-no));
+}

@@ -1,0 +1,190 @@
+/* REFS:
+   https://codepen.io/miriamsuzanne/pen/rNbeXPe
+   1. https://www.smashingmagazine.com/2024/03/setting-persisting-color-scheme-preferences-css-javascript/
+   2. https://www.smashingmagazine.com/2022/05/accessible-design-system-themes-css-color-contrast/
+   3. https://www.smashingmagazine.com/2023/01/creating-high-contrast-design-system-css-custom-properties/ */
+
+/* TODO: Add support for theme switching
+          that does not rely on scripting.
+          Go → props/media.css */
+/* –OR–
+    Simplify the code with the light-dark() function.
+    → https://web.dev/articles/light-dark
+*/
+@supports (color-scheme: light dark) and
+          (color: light-dark(#222, #fff))
+{ :root {
+    color-scheme: light dark;
+    --foreground: light-dark(#333, #fafafa);
+    --background: light-dark(#e4e4e4, #121212);
+    --accent: light-dark(hotpink, lime);
+  }
+}
+/* :root:has(input[name="color-scheme"][value="light dark"]:checked) {
+  color-scheme: light dark;
+} */
+
+:root {
+  &:has(input[part="toggleCheckbox"]:checked) {
+    color-scheme: light;
+  }
+  &:has(input[part="toggleCheckbox"]:not(:checked)) {
+    color-scheme: dark;
+  }
+}
+
+:host{contain:content;display:block}
+theme-switch > noscript {
+  form{margin:0;padding:0;background:transparent;color:inherit}fieldset{border:0;margin:0;padding:0}legend{font:var(--theme-switch-legend-font,inherit);padding:0;margin-block-end:0.5rem}input,label{cursor:pointer}
+}
+noscript { display: contents }
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  pointer-events: none;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+}
+
+input:focus:not(:focus-visible) + label { outline: 0; }
+
+input:focus-visible + label {
+  --theme-switch-border-color: var(--accent);
+}
+
+label {
+  display: inline-block;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-switch-border-color, transparent);
+  border-radius: 50%;
+  padding: .1ch;
+  /*
+  font-size: var(--theme-switch-font-size, 14px);
+  line-height: 1; */
+  /*
+  vertical-align: top;
+  transition-delay: 0s;
+  transition-duration: 300ms;
+  transition-property: border-color, filter;
+  transition-timing-function: ease-in-out; */
+}
+
+/*
+label::after {
+  content: '';
+  display: inline-block;
+  background-size: var(--theme-switch-icon-size, 1rem);
+  background-repeat: no-repeat;
+  width: var(--theme-switch-icon-size, 1rem);
+  height: var(--theme-switch-icon-size, 1rem);
+  filter: var(--theme-switch-icon-filter, none);
+  vertical-align: middle;
+  transition: filter 200ms ease-in-out;
+}
+[part="darkLabel"]::after {
+  background-image: var(--theme-switch-dark-icon, var(--icon-outlined);
+}
+[part="lightLabel"]::after {
+  background-image: var(--theme-switch-light-icon, var(--icon-filled));
+}
+[part="toggleLabel"]::after {
+  background-image: var(--theme-switch-icon, var(--icon));
+} */
+
+@media (hover: hover) {
+  label:hover { filter: brightness(120%); }
+  /* label:hover::after { filter: brightness(120%); } */
+}
+
+[part="toggleLabel"] > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke-linecap: round;
+}
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center center;
+}
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--theme-switch-icon-fill);
+}
+[part="toggleLabel"]:is(:hover, :focus-visible) .sun {
+  fill: var(--theme-switch-icon-fill-hover);
+}
+[part="toggleLabel"] .sun-beams {
+  stroke: var(--theme-switch-icon-fill);
+  stroke-width: 2px;
+}
+[part="toggleLabel"]:is(:hover, :focus-visible) .sun-beams {
+  stroke: var(--theme-switch-icon-fill-hover);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sun-and-moon > .sun {
+    transition:
+      transform
+        var(--sun-duration, .5s)
+        var(--sun-easing, cubic-bezier(.5, 1.25, .75, 1.25));
+    transform: scale(var(--sun-sx, 1));
+  }
+  .sun-and-moon > .sun-beams {
+    opacity: var(--beams-a, 1);
+    transform: rotateZ(var(--beams-r, 0));
+    transition:
+      transform
+        var(--beams-duration, .5s)
+        cubic-bezier(.5, 1.5, .75, 1.25),
+      opacity
+        var(--beams-duration, .5s)
+        cubic-bezier(.25, 0, .3, 1);
+  }
+  .sun-and-moon > .moon > circle {
+    transform: translateX(var(--moon-tx, 0));
+    transition: transform var(--moon-duration, .25s) cubic-bezier(0,0,0,1);
+    transition-delay: var(--moon-delay, 0s);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [part="lightLabel"],
+  [part="darkLabel"] {
+    /* … */
+  }
+  [part="toggleLabel"] {
+    --moon-duration: .5s;
+    --moon-delay: .25s;
+    --beams-duration: .15s;
+    --sun-easing: cubic-bezier(.25, 0, .3, 1);
+    --sun-duration: .25s;
+    --sun-sx: 1.75;
+    --moon-tx: -7px;
+    --beams-a: 0;
+    --beams-r: -25deg;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  [part="toggleLabel"] {
+    --moon-duration: .25s;
+    --moon-delay: 0s;
+    --beams-duration: .5s;
+    --sun-easing: cubic-bezier(.5, 1.25, .75, 1.25);
+    --sun-duration: .5s;
+    --sun-sx: 1;
+    --moon-tx: 0;
+    --beams-a: 1;
+    --beams-r: 0deg;
+  }
+}

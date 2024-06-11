@@ -1,0 +1,61 @@
+/* TODO @layer components { @layer intent, states; } */
+
+/* UA defaults
+:link, :visited { text-decoration: underline }
+:focus          { outline: thin dotted invert } */
+
+/* :where(a[href]) {
+  color: var(--link);
+  &:visited { color: var(--link-visited); }
+} */
+/* :focus-visible { outline-color: var(--link); } */
+
+/* :where(:link, :any-link) { transition: all 150ms 0s ease; } */
+
+:where(a, [class=*link]) {
+  display: inline-block;
+
+  text-shadow: .1em .1em .125em var(--shadow);
+  transition: all 150ms 0s ease;
+}
+
+a:where(:hover, :focus) {
+  --text-decor-color: #00fe9b00;
+  color: var(--accent);
+}
+
+a:where([aria-current=page]) {
+  text-decoration-skip-ink: auto;
+  /* text-decoration: underline overline wavy #00fe9b; */
+  text-decoration-line: underline overline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--text-decor-color, #00fe9b);
+
+  /* https://drafts.csswg.org/css-text-decor-4/#line-decoration */
+  /* text-decoration-thickness: from-font; */
+  text-decoration-thickness: 2px;
+
+  /* https://drafts.csswg.org/css-fonts-4/#first-available-font */
+  /* text-underline-position: from-font; */
+  text-underline-offset: .5ex;
+
+  &::before {
+    content: 'Reload';
+    position: absolute;
+    translate: 0 -100%;
+    font-size: .75rem;
+    color: canvastext;
+    opacity: 0;
+    transition: inherit;
+    font-family: inherit;
+    font-variation-settings: "opsz" 24, "wght" 200, "ital" 1;
+  }
+  &:hover::before {
+    opacity: 1;
+    font-variation-settings: "opsz" 12, "wght" 500, "ital" 0;
+  }
+}
+
+/* a:where[href^="http"]::after {
+  content: " (" var(--external-link) ")"
+} */

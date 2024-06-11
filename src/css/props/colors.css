@@ -1,0 +1,425 @@
+@layer color { @layer swatches, palettes, gradients, roles, ui-tokens, ui-adjust; }
+
+/* Color Specs:
+   → https://www.w3.org/TR/css-color-5/
+   → https://drafts.csswg.org/css-color-5/#relative-colors
+   → https://drafts.csswg.org/css-color-5/#color-mix
+   → https://drafts.csswg.org/css-color-4/#predefined
+   → https://drafts.csswg.org/css-color/#color-conversion-code
+   → https://drafts.csswg.org/css2/#system-colors */
+
+@layer color.swatches { /* Pre-defined color props */
+  /* Sub-layers order */
+  @layer neon, families;
+
+  /* Refs:
+     → https://www.sherwin-williams.com/en-us/color/color-collections
+     → https://www.benjaminmoore.com/en-us/paint-colors/color-families
+     → https://www.benjaminmoore.com/en-us/paint-colors/color-collections
+     → https://www.oddbird.net/cascading-colors/ */
+
+  @layer families { /* Set of swatches ordered by color families */
+    :where(html) {
+      /* Red */
+      --sw-abalone-shell: 20deg 29% 80%;
+      --sw-coral-clay: 8deg 39% 59%;
+      --sw-hushed-auburn: 14deg 21% 57%;
+      --sw-redend-point: 20deg 23% 59%;
+
+      /* Orange */
+      --sw-malted-milk: 24deg 33% 81%;
+      --sw-cool-beige: 27deg 21% 72%;    /* C6B5A7 SW9086 Cool Beige */
+
+      /* Yellow */
+      --sw-nugget: 42deg 67% 57%;
+      --sw-paper-lantern: 37deg 64% 86%;
+      --sw-vintage-gold: 33deg 45% 63%;
+      --sw-natural-tan: 36deg 26% 81%;   /* DCD2C3 SW7567 Natural Tan */
+
+      /* Green */
+      --sw-honeydew: 64deg 32% 80%;      /* DBDDBD SW6428 Honeydew */
+      --sw-pearl-gray: 80deg 8% 79%;     /* CBCEC5 SW0052 Pearl Gray */
+      --sw-sea-salt: 97deg 8% 81%;       /* CDD2CA SW6204 Sea Salt */
+      --sw-acacia-haze: 96deg 5% 59%;    /* 969C92 SW9132 Acacia Haze */
+      --sw-retreat: 96deg 4% 48%;        /* 7A8076 SW6207 Retreat */
+      --sw-pewter-green: 87deg 5% 37%;   /* 5E6259 SW6208 Pewter Green */
+      --sw-rock-bottom: 135deg 3% 29%;   /* 484C49 SW7062 Rock Bottom */
+      --sw-palm-leaf: 47deg 29% 30%;     /* 635936 SW7735 Palm Leaf */
+      --sw-night-watch: 180deg 6% 20%;   /* 303636 SW9680 Night Watch */
+
+      /* Blue */
+      --sw-drizzle: 175deg 17% 62%;
+      --sw-in-the-navy: 211deg 29% 22%;  /* SW9178 In the Navy */
+      --sw-naval: 211deg 24% 24%;
+      --sw-upward: 205deg 15% 78%;       /* BFC9D0 SW6239 Upward */
+      --sw-gale-force: 202deg 19% 26%;   /* 35454E SW7605 Gale Force */
+      --sw-stardew: 192deg 9% 68%;       /* A6B2B5 SW9138 Stardew */
+      --sw-georgian-bay: 197deg 58% 32%; /* 22657F SW6509 Georgian Bay */
+
+      /* Purple */
+      --sw-fashionable-gray: 0deg 4% 73%;
+      --sw-mystical-shade: 348deg 3% 67%;
+      --sw-carnelian: 0deg 17% 29%;
+      --sw-perle-noir: 270deg 3% 31%;
+
+      /* Neutral */
+      --sw-westchester-gray: 60deg 0% 47%;
+      --sw-chelsea-gray: 69deg 5% 70%;
+      --sw-tricorn-black: 240deg 1% 19%;
+      --sw-black-magic: 300deg 1% 19%;
+      --sw-urbane-bronze: 36deg 6% 31%;
+      --sw-silver-strand: 86deg 6% 78%;
+      --sw-drift-of-mist: 40deg 15% 84%; /* DCD8D0 SW9166 Drift of Mist */
+      --sw-shiitake: 35deg 21% 73%;      /* C8BCAB SW9173 Shiitake */
+      --sw-loggia: 35deg 21% 71%;
+      --sw-foothills: 30deg 12% 45%;
+
+      /* White & Pastel */
+      --sw-pure-white: 51deg 16% 92%;   /* EDECE6 SW7005 Pure White */
+      --sw-extra-white: 72deg 14% 93%;  /* EEEFEA SW7006 Extra White */
+      --sw-alabaster: 46deg 27% 90%;    /* EDEAE0 SW7008 Alabaster */
+      --sw-shoji-white: 38deg 28% 86%;  /* E6DFD3 SW7042 Shoji White */
+      --sw-worldly-gray: 35deg 16% 77%; /* CEC6BB SW7043 Worldly Gray */
+      --sw-paperwhite: 41deg 61% 92%;   /* F7EFDE SW7105 Paperwhite */
+      --sw-greek-villa: 43deg 32% 91%;  /* F0ECE2 SW7551 Greek Villa */
+      --sw-westhighland: 41deg 40% 92%; /* F3EEE3 SW7566 Westhighland White */
+    }
+  }
+
+  @layer neon { /* Set of fluorescent colors */
+    :where(html) {
+      --neon-pink: color(display-p3 1 0 1);
+      --neon-purple: color(display-p3 .5 0 1);
+      --neon-lime: color(display-p3 0.25 1 0);
+      --neon-cyan: color(display-p3 0 1 1);
+
+      /* PANTONE® Neon Colors */
+      --c-blue: 195deg, 100%, 40%;   /* #009bcd 801 C */
+      --c-green: 112deg, 67%, 51%;   /* #44d62c 802 C */
+      --c-yellow: 55deg, 100%, 50%;  /* #ffe900 803 C */
+      --c-orange: 31deg, 100%, 65%;  /* #ffaa4e 804 C */
+      --c-red: 358deg, 100%, 72%;    /* #ff7277 805 C */
+      --c-pink: 323deg, 100%, 62%;   /* #ff3fb6 806 C */
+      --c-magenta: 313deg, 83%, 54%; /* #eb27c2 807 C */
+      --c-teal: 170deg, 100%, 36%;   /* #00b797 808 C */
+
+      /* PANTONE® Nylon Lights */
+      --tn-atomic-blue: 195deg 100% 36%;  /* 0089B8 TN Atomic Blue */
+      --tn-lemon-tonic: 59deg 97% 65%;    /* FCFA50 TN Lemon Tonic */
+      --tn-safety-yellow: 64deg 100% 50%; /* EDFF01 TN Safety Yellow */
+      --tn-shock-orange: 19deg 98% 58%;   /* FD6E2A TN Shocking Orange */
+      --tn-clown-fish: 22deg 100% 56%;    /* FF6F1E TN Orange Clown Fish */
+      --tn-diva-pink: 343deg 100% 54%;    /* FF1658 TN Diva Pink */
+      --tn-pink: 343deg 100% 54%;         /* FE3EA5 TN Knockout Pink */
+      --tn-pink-glo: 327deg 100% 49%;     /* FA008A TN Pink Glo */
+
+      /* DayGlo® Safety colors */
+      --aurora-pink: 330deg 99% 52%;   /* #FE0A83 */
+      --blaze-orange: 21deg 95% 56%;   /* #F96F27 */
+      --saturn-yellow: 51deg 100% 59%; /* #FFE02E */
+      --signal-green: 101deg 70% 56%;  /* #72DD42 */
+    }
+  }
+
+  /* Set of favorite color swatches. Does it have any functionality? */
+  /* @layer favs {…} */
+  /* @layer riso {…} */
+}
+
+/* For example */
+
+@layer color.swatches {
+  /* 1. define new color hues */
+
+  :where(html) {
+    /* No. 2 Reds & Purples 2024 */
+    --sw-ravishing-coral: 12deg 68% 70%; /* E79580 SW6612 Ravishing Coral */
+    --sw-veri-berri: 295deg 14% 52%;     /* 937496 SW9069 Veri Berri */
+  }
+}
+
+@layer color.palettes {
+  /* 2. specify the roles of the new hues in the color palette */
+
+  /**
+    Arts on newly introduced CSS color funcs and syntax:
+    → https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/
+    → https://developer.chrome.com/docs/css-ui/css-color-mix
+    → https://www.smashingmagazine.com/2022/06/simplify-color-palette-css-color-mix/
+    → https://css-irl.info/shades-of-grey-with-color-mix/
+    → https://developer.chrome.com/docs/css-ui/css-color-mix
+    → https://developer.chrome.com/blog/css-relative-color-syntax/ */
+
+  :where(html) {
+    --coral: var(--sw-ravishing-coral);
+    --purple: var(--sw-veri-berri);
+  }
+}
+
+/* Distributing primary, neutral and accent roles among hues. */
+@layer color.roles {
+  :where(html) {
+    /**
+     * Primary (or lead)
+     */
+
+    /* Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate. */
+    --red-1: hsl(var(--sw-abalone-shell));
+    /* .. */
+    --red-9: hsl(var(--sw-redend-point));
+    --lead-1: var(--red-1);
+    /* TODO: Add tokens, e.g. `--lead-*` or `--primary-*` */
+
+    /**
+     * Neutral (black, white, gray and beige)
+     */
+
+    /* Cool Whites (undertones of blue, green or violet) */
+    --cool-white-1: var(--sw-extra-white);
+    --cool-white-2: var(--sw-fleur-de-sel);
+
+    /* Warm Whites (undertones of yellow and red) */
+    --warm-white-1: var(--sw-pure-white);
+    --warm-white-2: var(--sw-shoji-white);
+    --warm-white-3: var(--sw-paperwhite);
+
+    /* Cool (lush) Neutrals (undertones of blue, violet or silver) */
+    --cool-gray-1: var(--sw-fashionable-gray);
+    --cool-gray-2: var(--sw-mystical-shade);
+    --cool-gray-3: var(--sw-perle-noir);
+
+    /* Warm Neutrals */
+    --warm-gray-1: var(--sw-westchester-gray);
+    --warm-gray-2: var(--sw-chelsea-gray);
+
+    /* Black (dark shades) */
+    --black-1: var(--sw-tricorn-black);
+    --black-2: var(--sw-black-magic);
+
+    /* Beige */
+    --beige-1: var(--sw-cool-beige);
+    --paper-1: var(--warm-white-3);
+
+    /* Defining the darkest and lightest hues */
+    --black: var(--black-1);
+    --white: var(--warm-white-1);
+    --gray: var(--cool-gray-3);
+
+    /* Contrasting highlight */
+    --orange: var(--tn-clown-fish);
+    --yellow: var(--tn-safety-yellow);
+  }
+}
+
+/* TODO: Pairing color swatches to specific ui-tokens */
+@layer color.ui-tokens {
+  /* https://drafts.csswg.org/css-color-4/#css-system-colors
+     https://www.w3.org/TR/SVG11/types.html#ColorKeywords
+     https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
+     https://developer.apple.com/design/human-interface-guidelines/color */
+
+  :where(html) {
+    /**
+      https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+      https://chromestatus.com/feature/5678291530809344
+      https://css-tricks.com/system-things/
+      https://web.dev/articles/color-scheme
+      https://web.dev/articles/light-dark
+    */
+    --safari-black: #1e1e1e;
+    --chrome-black: #121212;
+    --system-fg: canvastext;
+    --system-bg: canvas;
+
+    --link: var(--accent);
+    --link-visited: var(--accent-shade);
+    --text: var(--foreground);
+
+    /* States */
+    --active: var(--accent);
+
+    /* Alert system */
+    --alert-ok: hsl(var(--signal-green, darkgreen));
+    --alert-no: hsl(var(--aurora-pink, darkred));
+
+    /* Fine-tune GUI patterns */
+    --avatar-bg-dark: var(--accent-shade);
+    --avatar-bg-light: var(--accent-shade);
+    --star-bg: hsl(var(--c-yellow));
+  }
+}
+
+/* Common color scheme preferences */
+@layer color.ui-adjust {
+  :where(html) {
+    --trn: hsl(0 0% 0% / 0%); /* #0000 */
+    /* 4th digit in the HEX code specifies
+       the color's alpha transparency */
+
+    /* HSL color scheme helpers */
+    --hue: 0;
+    --sat: 0%;
+    --lum: 93%; /* #ededed */
+
+    /* enums-like */
+    --_l5: 98%; /* #fafafa */
+    --_l4: 96%; /* #f4f4f4 */
+    --_l3: 95%; /* #f2f2f2 (clear medium) */
+    --_l2: 12%; /* #1e1e1e */
+    --_l1: 7%;  /* #121212 */
+
+    /* FIXME */
+    --hsl: var(--hue) var(--sat) var(--lum);
+
+    /* https://drafts.csswg.org/css-color-adjust-1/#preferred
+       https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme
+       https://web.dev/prefers-color-scheme/ */
+    color-scheme: dark light;
+
+    /* https://drafts.csswg.org/css-ui/#widget-accent */
+    accent-color: var(--accent);
+
+    /**
+     * Set up variables (prop mapping)
+     */
+
+    &:where([data-theme-style],
+      :not( [data-theme-style] ) /* i.e. JS is disabled */
+    ) {
+      /**
+       * Complete the color palette by specifying alpha values.
+       * Property names needs to be consistent with the UI tokens
+       * and correspond to a specified <alpha-value>
+       * in the range 0%–100% (equivalent to 0.0–1.0).
+       * https://drafts.csswg.org/css-color-4/#alpha-syntax
+       * https://drafts.csswg.org/css-color/#the-hsl-notation
+       */
+      --background-a15: hsl(var(--bg-hsl) / .15);
+      --background-a25: hsl(var(--bg-hsl) / .25);
+      --background-a50: hsl(var(--bg-hsl) / .50);
+      --background-a60: hsl(var(--bg-hsl) / .60);
+      --background-a75: hsl(var(--bg-hsl) / .75);
+      --background-a80: hsl(var(--bg-hsl) / .80);
+      --background-a95: hsl(var(--bg-hsl) / .95);
+      --background: hsl(var(--bg-hsl));
+      --foreground-a15: hsl(var(--fg-hsl) / .15);
+      --foreground-a25: hsl(var(--fg-hsl) / .25);
+      --foreground-a50: hsl(var(--fg-hsl) / .50);
+      --foreground-a60: hsl(var(--fg-hsl) / .60);
+      --foreground-a75: hsl(var(--fg-hsl) / .75);
+      --foreground-a80: hsl(var(--fg-hsl) / .80);
+      --foreground-a95: hsl(var(--fg-hsl) / .95);
+      --foreground: hsl(var(--fg-hsl));
+      --accent-a25: hsl(var(--accent-hsl) / .25);
+      --accent-a50: hsl(var(--accent-hsl) / .50);
+      --accent-a75: hsl(var(--accent-hsl) / .75);
+      --accent-a80: hsl(var(--accent-hsl) / .80);
+      --accent: hsl(var(--accent-hsl));
+      --accent-shade:
+        color-mix(
+          in oklab, var(--accent), var(--background) 50%
+        );
+      --selection-foreground: var(--foreground);
+      --selection-background: var(--accent-shade);
+    }
+
+    /* @scope ([data-theme-style=light]) {…} */
+    &:where([data-theme-style=light]) {
+      color-scheme: light only;
+
+      --accent-hsl: var(--orange);
+      --bg-hsl: var(--white);
+      --fg-hsl: var(--black);
+      --shadow: hsl(var(--fg-hsl) / .15);
+    }
+
+    /* @scope ([data-theme-style=dark]) {…} */
+    &:where([data-theme-style=dark],
+      :not( [data-theme-style] ) /* "Dark Mode" by default */
+    ) {
+      color-scheme: dark only;
+
+      --accent-hsl: var(--yellow);
+      --bg-hsl: var(--black);
+      --fg-hsl: var(--white);
+      --shadow: hsl(var(--bg-hsl) / .25);
+    }
+  }
+}
+
+/* ---------------------------------- */
+/*            Gradients ∇             */
+/* ---------------------------------- */
+
+@layer color.gradients {
+  :where(html) {
+    --lin-coral-purple: linear-gradient(
+      to right,
+      hsl(var(--sw-ravishing-coral)),
+      hsl(var(--sw-veri-berri))
+    );
+
+    /* TODO: Define gradient guides */
+    --gradient-1: linear-gradient(
+      to bottom right,
+      hsl(var(--sw-quaint-peche)) 0%,
+      hsl(var(--sw-redend-point)) 100%
+    );
+    --gradient-2: var(--lin-coral-purple);
+
+    /* Generators:
+       → https://www.joshwcomeau.com/gradient-generator/
+       → https://larsenwork.com/easing-gradients/
+       → https://gradient.style
+       → https://www.conic.style/ */
+
+    /* ROYGBIV (rainbow gradient) */
+    /* go → https://nerdy.dev/easy-hsl-rainbow */
+    --lin-gradient-roygbiv: linear-gradient(
+      to right
+      in hsl          /* vibrant gradient HSL colorspace */
+      longer hue,     /* hue-interpolation set to longer */
+      red, red    /* now red to red goes all the way around */
+    );
+    --lin-gradient-voygb: linear-gradient(
+      45deg,
+      hsl(270deg 100% 75%) 0%,
+      hsl(270deg 100% 75%) 8%,
+      hsl(281deg 100% 77%) 15%,
+      hsl(292deg 100% 78%) 23%,
+      hsl(324deg 100% 78%) 31%,
+      hsl(360deg 100% 81%) 38%,
+      hsl(27deg 100% 76%) 46%,
+      hsl(44deg 81% 73%) 54%,
+      hsl(75deg 65% 72%) 62%,
+      hsl(128deg 83% 78%) 69%,
+      hsl(164deg 98% 67%) 77%,
+      hsl(176deg 91% 63%) 85%,
+      hsl(186deg 96% 68%) 92%,
+      hsl(194deg 100% 75%) 100%
+    );
+
+    /* The sequence of 2 hues w/ hinting */
+    --lin-gradient-halfs-hint: linear-gradient(
+      135deg,
+      var(--lin-grad-color-1, var(--accent)),
+      33.333%,
+      var(--lin-grad-color-2, var(--accent))
+    );
+    --lin-gradient-convex: linear-gradient(
+      -45deg,
+      hsl(0deg 0% 0% / 22%),
+      33.333%,
+      hsl(0deg 0% 100% / 25%)
+    );
+
+    /* Stripes pattern */
+    --gradient-pattern-stripes: repeating-linear-gradient(
+      -24deg,
+      var(--trn),
+      var(--trn) 4px,
+      var(--accent) 0,
+      var(--accent) 5px
+    )
+  }
+}

@@ -1,0 +1,38 @@
+/* https://caniuse.com/mdn-css_at-rules_media_dynamic-range
+   https://www.w3.org/TR/mediaqueries-5/#dynamic-range */
+@media (dynamic-range: high) or (color-gamut: p3) {
+  /* --HD-color: true; */
+}
+
+/* https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme */
+/*
+@media (prefers-color-scheme: no-preference) {…}
+@media (prefers-color-scheme: light) {…}
+@media (prefers-color-scheme: dark) {…} */
+
+/* TODO: Create and use custom MQs `@custom-media --* (…);`
+   https://drafts.csswg.org/mediaqueries-5/#custom-mq
+   https://github.com/argyleink/open-props
+   https://github.com/propjockey/css-media-vars */
+
+/* https://www.stefanjudis.com/notes/can-we-have-custom-media-queries-please/ */
+
+@custom-media --portrait  (orientation: portrait);
+@custom-media --landscape (orientation: landscape);
+
+@custom-media --retina (min-resolution: 192dpi) and (min-resolution: 2dppx);
+
+@media screen and (min-resolution: 192dpi),
+       screen and (min-resolution: 2dppx),
+       screen and (-webkit-min-device-pixel-ratio: 2) {
+   /* ... */
+}
+
+@custom-media --mobile (width >= 320px);
+@custom-media --tablet (width >= 768px);
+@custom-media --laptop (width >= 1280px);
+
+@custom-media --touch   (hover: none) and (pointer: coarse);
+@custom-media --stylus  (hover: none) and (pointer: fine);
+@custom-media --pointer (hover) and (pointer: coarse);
+@custom-media --mouse   (hover) and (pointer: fine);

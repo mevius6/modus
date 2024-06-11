@@ -1,0 +1,27 @@
+{
+  "html": {
+    "snippets": {
+      "meta:dka": "meta:desc+meta:kw+meta[name=author content]",
+      "meta:ogsite": "meta[property='og:type' content='website']+meta[property='og:title' content='${1:Document}']+meta[property='og:description' content='${2:A summary of page content.}']+meta[property='og:url' content='https://${3:site.com}']+meta[property='og:site_name' content='${4:Brand Name}'",
+      "meta:ogimage": "meta[property='og:image' content='${1:images/ogp_common.png}']+meta[property='og:image:secure_url' content='${2:images/ogp_common.png}']+meta[property='og:image:width' content='1200']+meta[property='og:image:height' content='628']+meta[property='og:image:type' content='image/png']+c>{meta[property='og:image:alt' content]}",
+      "meta:robots": "meta[name='robots' content='follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large'",
+      "script:jsonld": "script[type='application/ld+json']",
+      "jsonld:ctx": "script:jsonld>{\\{'@context': 'https://schema.org'\\}}",
+      "jsonld:site": "script:jsonld>{\\{'@context': 'https://schema.org', '@type': 'WebSite', 'author': \\{'@type': 'Person', 'name': '${0:🫵🏻}'\\}, 'description': '${1:A summary of page content.}', 'headline': 'Home', 'name': '${2:Document}', 'url': '${3:https://www.w3.org/}'\\}}",
+      "nojs": "dlg#alert.flow[open]>h2{Scripting is disabled}+form[method=dialog]>btn[onclick='window.dialog.close();']>.sr-only{OK}+code{Oh, no JavaScript… ¯\\\\_(ツ)_/¯}",
+      "nav": "nav[aria-label='${1:Main}']>ul>(li>a[aria-current='page']{${1:Current Page}})+(li*3>a{${0:Another Page}})",
+      "btn:nav": "btn:b.nav-button[title='${1:Главное меню}' aria-label='Show Menu' aria-controls='Nav' aria-expanded=false aria-pressed=false]>svg:trigram",
+      "svg:trigram": "svg[aria-hidden=true focusable=false width='100%' height='100%' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg']>path.line[d='M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058']+path.line[d='M 20,50 H 80']+path.line[d='M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942']",
+      "a:home": "a:link.d-flex[href='/' aria-label='Home Page']>[data-hidden]{Главная страница сайта}+svg.m-auto[xmlns='http://www.w3.org/2000/svg' width=32 height=32 viewBox='0 0 24 24']^c>{https://api.iconify.design/line-md:home-md}",
+      "mn": "main#mainContent[itemprop=mainEntity itemid='${1:https://}']",
+      "sect:hero": "sect#hero.container.relpos.items-center.init-reveal>hgroup.grid__content.self-center>h1.title{for main content area}+p.h5[role='doc-subtitle']",
+      "sect:aria": "sect[aria-labelledby='${1:region1}']>h2[id='${1:region1}'].sr-only{title for region area 1}",
+      "form:aria": "form[aria-labelledby=contact]>fieldset>leg#contact{Add Contact}",
+      "sect:g": "sect.grid>(#cell$.container)*N",
+      "img:l": "img[width height loading='lazy']",
+      "preload": "link[rel=preload href as]",
+      "slide:fig": "(li#slide$[aria-label='$ / 3']>fig[role=group]>img[alt=$ src='./images/$.jpg' loading=lazy decoding=asyc]+figc)*3",
+      "slide:artpic": "(li#slide$[aria-label='$ / 3']>art+pic>src:t+img[alt=$ src='./images/$.jpg' width=1440 height=960 loading=lazy decoding=async])*3"
+    }
+  }
+}

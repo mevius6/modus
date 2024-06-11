@@ -1,0 +1,125 @@
+/* Contains color swatches and theme configuration */
+@import url(props/colors.css) layer(theme);
+
+/* Contains typography rules; scale and typeset */
+@import url(props/fonts.css) layer(theme);
+
+/* Contains layout, utilities and helper tokens */
+@import url(props/defaults.css) layer(theme);
+
+/* Contains custom MQs */
+/* @import url(props/media.css) layer(theme); */
+
+@layer theme { /* config; setup theme defaults */
+  @layer color, props, support;
+
+  /* https://drafts.csswg.org/selectors-3/#x */
+  @layer support.any { /* universal, pseudos */
+    * {
+      box-sizing: inherit;
+      background-origin: border-box;
+      background-repeat: no-repeat;
+    }
+
+    *::before,
+    *::after { box-sizing: inherit; }
+
+    *::selection {
+      color: var(--selection-foreground, inherit);
+      text-shadow: none;
+      background: var(--selection-background, inherit);
+
+      /* autoprefixer: ignore next */
+      -webkit-tap-highlight-color: var(--trn);
+    }
+
+    /* https://drafts.csswg.org/mediaqueries-5/#mf-interaction */
+    @media (hover: hover) {
+      * {
+        outline-offset: 3px;
+        outline-color: var(--trn);
+      }
+
+      *:focus-visible {
+        outline: 1px dotted var(--accent);
+      }
+    }
+  }
+
+  /* Sections & Grouping */
+  @layer support.page { /* layout, regions */
+    body {
+      min-inline-size: 100%;
+      min-inline-size: -webkit-fill-available;
+      min-block-size: 100%;
+      min-block-size: -webkit-fill-available;
+
+      /* scroll-padding-top: var(--header-height, 60px); */
+      overflow-x: hidden;
+      color: var(--foreground);
+      background: var(--background);
+      transition:
+        color var(--duration) var(--easing),
+        background-color var(--duration) var(--easing);
+    }
+
+    /* Sectioning content */
+    /* https://matcha.mizu.sh/#sectioning */
+    :where(main, section) { position: relative; }
+    :where(main) {
+      min-inline-size: 100%;
+      block-size: 100%;
+      contain: size layout;
+    }
+  }
+
+  /* https://api.iconify.design/line-md:sun-rising-filled-loop.svg
+     https://api.iconify.design/line-md:moon-rising-alt-loop.svg */
+  theme-switch {
+    --theme-switch-border-color: var(--trn);
+    --theme-switch-icon-size: 1.75em;
+    --theme-switch-icon-filter: drop-shadow(0 3px 6px var(--accent-a50));
+    --theme-switch-icon-fill: var(--accent);
+    --theme-switch-icon-fill-hover: var(--accent);
+
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: 44px;
+    block-size: 44px;
+
+    color: var(--foreground);
+    border-radius: 50%;
+    background-color: var(--background);
+    box-shadow: 0 8px 24px var(--shadow);
+
+    &::part(fieldset), [part=fieldset] {
+      display: flex;
+    }
+    &::part(toggleLabel), [part=toggleLabel] {
+      display: inline-flex;
+    }
+  }
+
+  /* work w/o shadow root */
+  theme-switch > noscript {
+    :where([part=form], [part=fieldset]) {
+      max-block-size: 100%;
+    }
+  }
+}
+
+@layer theme.support.any {
+  @supports (scrollbar-width: thin) {
+    /* https://drafts.csswg.org/css-scrollbars/ */
+    * {
+      scrollbar-width: none;
+      scrollbar-color: inherit;
+
+      /* TODO Define the default colors of scrollbars */
+      /* scrollbar-color: var(--ui-scrollbar-color, inherit); */
+    }
+  }
+}

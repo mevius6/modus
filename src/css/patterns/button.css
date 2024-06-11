@@ -1,0 +1,99 @@
+/* TODO @layer components { @layer intent, states; } */
+
+/* https://codepen.io/collection/AaLmWp */
+
+/* https://open-props.style/ */
+:where(.btn,
+        button,
+        input:is([type='button'], [type='submit'], [type='reset'])),
+:where(input[type='file'])::-webkit-file-upload-button,
+:where(input[type='file'])::file-selector-button {
+  --_accent: initial;
+  --_text: initial;
+  --_size: initial;
+
+  --_bg-light: #fff;
+  --_bg-dark: var(--background);
+  --_bg: var(--_bg-light); /* ButtonFace */
+  --_border: var(--border-color); /* ButtonBorder */
+
+  --_icon-size: 1em;
+  --_icon-color: var(--_accent, var(--link));
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-2x);
+
+  font-size: var(--_size);
+  font-weight: var(--font-weight-7);
+  --wght: 500;
+
+  color: var(--_text);
+  background: var(--_bg);
+  border: var(--border-width) solid var(--_border);
+  border-radius: var(--border-radius-2);
+  /* box-shadow:
+    var(--shadow-2),
+    0 1px var(--background),
+    0 0 0 var(--_highlight-size) var(--_highlight); */
+
+  padding-block: 0.75ch;
+  padding-inline: 2ex;
+  text-align: center;
+  /* text-shadow: var(--_ink-shadow); */
+  transition: border-color 0.5s var(--ease-3);
+  user-select: none;
+}
+
+:where(button) {
+  will-change: transform;
+  transform: translateX(var(--tx, 0)) scale(var(--scale, 1));
+  /* transition: background-color 0.25s, transform 0.25s; */
+
+  background-color: hsl(210 60% var(--lightness, 30%));
+  color: var(--btn-text, var(--foreground));
+}
+
+:where(button):hover {
+  --scale: 1.1;
+  --lightness: 40%;
+}
+
+:where(button):active {
+  --scale: 0.9;
+  --lightness: 20%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(
+      .btn,
+      button,
+      input:is([type='button'], [type='submit'], [type='reset'])
+    ),
+  :where(input[type='file'])::-webkit-file-upload-button,
+  :where(input[type='file'])::file-selector-button {
+    transition:
+      background-color 0.25s, transform 0.25s,
+      border-color 0.5s var(--ease-3),
+      box-shadow 145ms var(--ease-4),
+      outline-offset 145ms var(--ease-4);
+  }
+}
+
+:where(.btn, button, input:is([type='button'], [type='submit'], [type='reset']))
+  > :where(svg) {
+  block-size: var(--_icon-size);
+  /* filter: drop-shadow(var(--*)); */
+  flex-shrink: 0;
+  inline-size: var(--_icon-size);
+}
+:where(.btn, button, input:is([type='button'], [type='submit'], [type='reset']))
+  > :where(svg > *) {
+  stroke: var(--_icon-color);
+  stroke-width: var(--border-width);
+}

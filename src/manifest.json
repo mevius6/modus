@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "permissions": [
+    "tabs",
+    "bookmarks"
+  ],
+  "optional_permissions": [
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://www.starter.com/"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ]
+}

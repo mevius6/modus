@@ -1,0 +1,81 @@
+/* Sidenav component
+   → https://web.dev/articles/building/a-sidenav-component */
+
+/* https://drafts.csswg.org/css-ui/#nav-dir */
+#sidenav-open {
+  --easeOutExpo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: .6s;
+
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1010;
+
+  display: grid;
+  grid-template-columns: [nav] 2fr [escape] 1fr;
+
+  /* @media (max-width: 540px) {…} */
+  max-block-size: 100vh;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+
+  visibility: hidden; /* not keyboard accessible when closed */
+  transform: translateX(-100vw);
+  will-change: transform;
+  transition:
+    transform var(--duration) var(--easeOutExpo),
+    visibility 0s linear var(--duration);
+
+  &:target {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform var(--duration) var(--easeOutExpo);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & { --duration: 1ms; }
+  }
+}
+
+nav {
+  display: grid;
+  place-content: center;
+  min-block-size: 100svh;
+
+  background-color: var(--background-a15);
+  backdrop-filter: blur(10px);
+}
+
+.nav__items {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacer-2x);
+}
+/* nav ul {
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  max-inline-size: unset;
+} */
+
+/* https://codepen.io/thebabydino/pen/yLZYLja */
+
+svg:where(.hamburger, .\🍔) {
+  --_hue: 320;
+  /* --🍔-line-color: hsl(var(--_hue) 20% 80%); */
+
+  max-inline-size: 28px; /* Max value (28px) starts at 540 px. */
+  min-inline-size: 24px; /* Min value (24px) ends at 360 px. */
+  inline-size: clamp(1.5rem, 2.222vw + 1rem, 1.75rem);
+  /* aspect-ratio: var(--ratio-square); */
+
+  :has(&):is(:hover, :focus) > & > line {
+    /* --🍔-line-color: hsl(var(--_hue) 100% 60%); */
+    --🍔-line-color: var(--accent-shade);
+  }
+
+  & > line {
+    stroke: var(--🍔-line-color, var(--accent));
+    stroke-width: 5px;
+    stroke-linecap: round;
+  }
+}

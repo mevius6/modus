@@ -1,0 +1,103 @@
+@layer scroll {
+  /* Scroll control utilities
+     https://oh-snap.netlify.app */
+
+  .scroller  { overflow: auto; }
+  .no-scroll { overflow: hidden; }
+
+  [data-scroll^=x],
+  .scroller-x {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow: auto hidden;
+    overflow-inline: auto;
+  }
+
+  [data-scroll^=y],
+  .scroller-y {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow: hidden auto;
+    overflow-block: auto;
+  }
+
+  [data-scroll*=smooth] {
+    scroll-behavior: smooth;
+  }
+
+  /* Trapping
+    https://drafts.csswg.org/css-overscroll-1/ */
+
+  .trap-scroll-x {
+    overscroll-behavior-x: contain;
+    overscroll-behavior: contain auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  /* defaults */
+  .overscroll-auto      { overscroll-behavior: auto; }
+  .overscroll-x-auto    { overscroll-behavior-x: auto; }
+  .overscroll-y-auto    { overscroll-behavior-y: auto; }
+
+  .overscroll-contain   { overscroll-behavior: contain; }
+  .overscroll-x-contain { overscroll-behavior-x: contain; }
+  .overscroll-y-contain { overscroll-behavior-y: contain; }
+
+  /* Snapping
+    https://drafts.csswg.org/css-scroll-snap-1/ */
+
+  :where([data-scrollport], .scrollport) { /* mixin */
+    --_axis: none;
+    --_strictness: none;
+
+    scroll-snap-type: var(--snap-type, var(--_axis) var(--_strictness));
+
+    &:is(.snap-x) { --_axis: x; }
+    &:is(.snap-y) { --_axis: y; }
+
+    &:is(.snap-inline) { --_axis: inline; }
+    &:is(.snap-block)  { --_axis: block; }
+    &:is(.snap-both)   { --_axis: both; }
+
+    /* optional */
+    &:is(.--proximity) { --_strictness: proximity; }
+    &:is(.--mandatory) { --_strictness: mandatory; }
+
+    &:is(.snap-both-axis) { --snap-type: both mandatory; }
+
+    &:is(.snap-start)  { --snap-align: start; }
+    &:is(.snap-end)    { --snap-align: end; }
+    &:is(.snap-center) { --snap-align: center; }
+
+    &:is(.--snap-stop) { --snap-stop: always; }
+
+    &:is(.--padding) {
+      --padding: 1rem;
+
+      padding: var(--padding);
+      scroll-padding: var(--padding);
+    }
+
+    &:is(.scroll-margin) {
+      scroll-margin: var(--scroll-item-margin, 1rem);
+    }
+
+    /* for scroll items */
+    & > * {
+      scroll-snap-align: var(--snap-align, start);
+      scroll-snap-stop: var(--snap-stop, normal);
+    }
+
+    & > *:is(:active, :focus) { /* Tap to Snap */
+      --snap-align: center;
+    }
+
+    & > :where(:first-child) {
+      --snap-align: start;
+    }
+
+    & > :where(:last-child) {
+      --snap-align: end;
+    }
+  }
+}

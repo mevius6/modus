@@ -1,0 +1,44 @@
+.page__header {
+  --_zi: 1010;
+  --_cross-size: 100lvw;
+  --_block-size: min-content;
+
+  z-index: var(--_zi);
+  inline-size: var(--_cross-size, 100%);
+  block-size: var(--_block-size);
+  padding-block: 1ch;
+
+  & {
+    pointer-events: none;
+    & > * {
+      pointer-events: all;
+    }
+    /* & :is([aria-control], form, button, a) { pointer-events: all; } */
+  }
+
+  & > :first-child {
+    margin-inline-start: var(--spacer-2x);
+  }
+  & > :last-child {
+    margin-inline-end: var(--spacer-2x);
+  }
+
+  & > a:has(picture, img, svg) {
+    /* display: flex; */
+
+    min-inline-size: var(--min-touch-target-size);
+    aspect-ratio: var(--ratio-1);
+
+    background-color: var(--background);
+    border-radius: var(--radius-x);
+    box-shadow: 0 8px 24px var(--shadow);
+
+    & > :where(picture, img, svg) {
+      /* margin: auto; */
+    }
+  }
+
+  @media (min-width: 48em) {
+    & { --_cross-size: unset; }
+  }
+}

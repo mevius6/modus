@@ -1,0 +1,199 @@
+body:where([data-id=homepage]) {
+  /* --var-serif: Roslindale; */
+
+  :where([aria-labelledby=contact]) {
+    --_bg: light-dark(hsl(var(--blue-light)), hsl(var(--blue)));
+
+    padding: var(--spacer-2x);
+    background-color: var(--_bg);
+  }
+
+  :where([class*=tag]) { font-size: .75rem }
+
+  :where([class*=keyline]) {
+    letter-spacing: calc(var(--letter-spacing-4)*-1);
+
+    &::before,
+    &::after {
+      border-color: var(--border-color);
+      border-style: solid;
+      border-width: var(--border-width);
+      border-image-source: var(--border-imgsrc, linear-gradient(
+        -90deg,
+        var(--c1),
+        33.333%,
+        var(--c2)
+      ));
+      border-image-slice: 1;
+      border-image-width: 1;
+    }
+
+    :where([data-theme-style=light]) & {
+      /* --c1: color-mix(in oklab, var(--accent), var(--trn) 96%); */
+      --c1: color-mix(in oklab, var(--accent), var(--_bg) 80%);
+      --c2: var(--accent);
+
+      &::after {
+        --border-imgsrc: linear-gradient(90deg, var(--c1), 33.333%,var(--c2));
+      }
+    }
+
+    :where([data-theme-style=dark]) & {
+      --c1: color-mix(in oklab, var(--accent), var(--_bg) 80%);
+      --c2: var(--accent);
+
+      &::before {
+        --border-imgsrc: linear-gradient(90deg, var(--c1), 33.333%,var(--c2));
+      }
+    }
+  }
+}
+
+@layer layouts.nav {
+  .nav {
+    container-name: nav;
+    container-type: inline-size;
+  }
+  .nav__items {
+    display: flex;
+    flex-direction: column;
+  }
+  /* @container nav (width > 540px) { */
+  @container (orientation: landscape) {
+    .nav__items {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+
+  .nav__link {
+    font-size: clamp(1.5rem, 2.5vw + 1rem, 3rem);
+    line-height: normal;
+    min-block-size: var(--min-touch-target);
+  }
+}
+
+@layer theme.support.page {
+  body:has(> aside > nav) {
+    display: grid;
+    grid: [stack] 1fr / min-content [stack] 1fr;
+    & > * { grid-area: stack; }
+    & main { contain: layout; }
+  }
+
+  h1 {
+    max-inline-size: min(40ch, 80vw);
+    line-height: 1cap;
+  }
+
+  article {
+    padding-inline: var(--gutter);
+  }
+}
+
+@layer utilities.grid {
+  .cols-triptych {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    column-gap: 1cqi;
+    align-items: center;
+    padding-inline: var(--gutter);
+
+    & img {
+      /* object-fit: contain; */
+      object-fit: cover !important;
+      min-block-size: 100%;
+    }
+
+    & > * {
+      grid-column: var(--line);
+      grid-row: 1;
+    }
+    /* & > :first-child { --line: 1; } */
+    /* & > :last-child  { --line: 5; } */
+
+    & > :is(:first-child, :last-child) {
+      & :is(img, svg) {
+        aspect-ratio: 3 / 5 !important;
+      }
+    }
+
+    & > :not(:first-child, :last-child) {
+      --line: 2 / 5;
+      & :is(img, svg) {
+        aspect-ratio: 7 / 5 !important;
+        /* aspect-ratio: 3 / 2; */
+      }
+    }
+  }
+
+  ul :where(figure, picture:not(+picture)) {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+
+    & > img {
+      inline-size: 100%;
+      block-size: 100%;
+      /* object-fit: contain; */
+      margin: auto;
+    }
+  }
+
+  ul :where(figure:has(figcaption)) {
+    display: grid;
+    margin: 0;
+    grid-template-rows: 1fr auto;
+    font: inherit;
+
+    & > img {
+      grid-row: 1 / -1;
+      grid-column: 1;
+    }
+
+    & > figcaption {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+  }
+}
+
+/* TODO: Плавные переходы с помощью View Transition API */
+/* https://developer.chrome.com/docs/web-platform/view-transitions
+   https://developer.chrome.com/blog/view-transitions-update-io24 */
+
+@layer theme {
+  body { --var-serif: Roslindale; }
+}
+
+@layer theme.color.ui-adjust {
+  :where(html[data-theme-style=light]) {
+    --bg-hsl: var(--warm-white-3); /* same as var(--paper-1) */
+  }
+
+  :where(html[data-theme-style=dark]) {
+    --accent-hsl: var(--coral);
+    --bg-hsl: var(--green-dark);
+  }
+}
+
+@layer theme.color.palettes {
+  /* [see]
+   → https://www.sherwin-williams.com/en-us/color/color-collections/colormix-forecast/2024 */
+
+  :where(html) {
+    --green-dark: var(--sw-night-watch);
+    --blue-light: var(--sw-upward); /* SW COTY 2024 */
+    --blue: var(--sw-georgian-bay);
+    --purple-dark: var(--sw-carnelian);
+  }
+}
+
+@layer theme.color.swatches {
+  :where(html) {
+    /* TODO: Add RISO inks palette */
+    --riso-black: hsl(30deg 3% 13%); /* #21201F */
+  }
+}
+
+@layer reset {
+  picture:has(> img) { display: contents }
+}

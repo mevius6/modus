@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- content="width=device-width,initial-scale=1,viewport-fit=cover" -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!-- meta[name="theme-color" content="Canvas"] -->
+
+    <!-- <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'has-js');
+
+      function downloadJSAtOnload() {
+        var element = document.createElement("script");
+        element.src = "/js/main.js";
+        document.body.appendChild(element);
+      }
+
+      window.addEventListener("load", downloadJSAtOnload, false);
+    </script> -->
+    <!--
+      https://drafts.csswg.org/css-fonts-4/#font-format-definitions
+      https://www.w3.org/TR/WOFF2/#IMT
+    -->
+    <link
+      rel="preload"
+      href="fonts/RoslindaleCyrillicVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style>
+      /* https://drafts.csswg.org/css-fonts-4/#font-face-src-parsing */
+      @font-face {
+        font-display: swap;
+        font-family: Roslindale;
+        font-stretch: 100%;
+        font-style: normal;
+        /* font-style: oblique 0deg 1deg; */
+        /* font-synthesis: none; */
+        font-weight: 200 900;
+        src: url(fonts/RoslindaleCyrillicVariable.woff2) format(woff2)
+            tech(variations),
+          url(fonts/RoslindaleCyrillicVariable.woff) format(woff)
+            tech(variations);
+        /* local(RoslindaleCyrillicVariable-DisplayCondensedRegular) */
+        unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00A9, U+00AB,
+          U+00AD-00B0, U+00B4, U+00B6-00B8, U+00BB, U+00BF-0137, U+0139-0148,
+          U+014A-017E, U+01A0-01A1, U+01AF-01B0, U+0218-021B, U+0237, U+0259,
+          U+02BB-02BC, U+02C6-02C7, U+02C9, U+02D8-02DD, U+0300-0304,
+          U+0306-030C, U+0312, U+031B, U+0323, U+0326-0328, U+032E, U+0331,
+          U+0400-045F, U+0462-0463, U+0472-0475, U+0490-0493, U+0496-0497,
+          U+049A-049B, U+04A2-04A3, U+04AE-04B3, U+04B6-04B7, U+04BA-04BB,
+          U+04C0-04C2, U+04CF-04DF, U+04E2-04F5, U+04F8-04F9, U+1E0C-1E0F,
+          U+1E20-1E21, U+1E24-1E25, U+1E2A-1E2B, U+1E36-1E3B, U+1E42-1E49,
+          U+1E5A-1E63, U+1E6C-1E6F, U+1E80-1E85, U+1E8E-1E8F, U+1E92-1E93,
+          U+1EA0-1EF9, U+2010-2011, U+2013-2015, U+2018-201A, U+201C-201E,
+          U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203A, U+2044, U+20AC,
+          U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
+      }
+    </style>
+
+    <title>Document</title>
+    <!-- meta[name=author content] -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- link:touch[sizes="180x180"] -->
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- link:mf -->
+    <meta name="color-scheme" content="dark light" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#72fa78"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#333"
+    />
+
+    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
+    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
+
+    <!-- SEO [S] -->
+    <meta name="description" content="A summary of page content." />
+    <meta name="robots" content="follow, index, max-image-preview:large" />
+    <!-- link[rel="canonical" href="https://"]+link[rel="next"] -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Document" />
+    <meta property="og:description" content="A summary of page content." />
+    <!-- meta[property="og:url" content="https://"] -->
+    <meta property="og:site_name" content="Starter" />
+    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- jsonld:site -->
+    <!-- SEO [E] -->
+
+    <!-- TODO: Resource loading strategy -->
+    <!--
+      <link rel="preload" href="css/tests.css" as="style"
+            onload="this.onload=null;this.rel='stylesheet';var dlg=debug;dlg.showModal();" />
+      <noscript><link rel="stylesheet" href="css/tests.css" /></noscript>
+    -->
+    <!-- The main stylesheet -->
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+    <!--
+      Intent: JS-free website
+      https://html.spec.whatwg.org/multipage/scripting.html
+    -->
+    <noscript>
+      <link rel="stylesheet" href="css/theme-switch.css" />
+    </noscript>
+    <!-- noscript>link:css[href="/css/fall-back-to.css"] -->
+    <script defer type="module" src="js/modules.js"></script>
+  </head>
+
+  <body
+    class="page page--loading"
+    itemscope
+    itemtype="https://schema.org/WebPage"
+    data-id="homepage"
+  >
+    <noscript>
+      <dialog id="alert" class="flow" open>
+        <h3 class="text-gradient">Scripting is disabled</h3>
+        <form method="dialog">
+          <button onclick="window.dialog.close();">
+            <span class="sr-only">OK</span>
+            <code>Oh, no JavaScript… ¯\_(ツ)_/¯</code>
+          </button>
+        </form>
+      </dialog>
+    </noscript>
+
+    <dialog id="debug" class="flow results">
+      <h2>Results output</h2>
+      <ol>
+        <li data-test="at-container">
+          <span>Container Queries</span>
+          <output></output>
+        </li>
+        <li data-test="at-layer">
+          <span>Layering</span>
+          <output></output>
+        </li>
+        <li data-test="at-property">
+          <span>Houdini Painting API & At-Property Rule</span>
+          <output></output>
+        </li>
+        <li data-test="props">
+          <span>Custom Properties</span>
+          <output></output>
+        </li>
+        <li data-test="at-scope">
+          <span>Scoping</span>
+          <output></output>
+        </li>
+        <li data-test="nesting">
+          <span>Nesting</span>
+          <output></output>
+        </li>
+        <li data-test="anchoring">
+          <span>Anchor Positioning</span>
+          <output></output>
+        </li>
+        <li data-test="env">
+          <span>Environment Variables</span>
+          <output></output>
+        </li>
+        <li data-test="d-p3">
+          <span>Display colors in the P3 color space</span>
+          <output></output>
+        </li>
+        <li data-test="has">
+          <span>The relational pseudo-class: ‘:has()’</span>
+          <output></output>
+        </li>
+        <!-- ... etc., with many more <li> elements ... -->
+      </ol>
+      <form method="dialog">
+        <button onclick="window.dialog.close();">
+          <span>OK</span>
+        </button>
+      </form>
+    </dialog>
+
+    <!-- Global Site Navigation (sidebar) -->
+    <aside id="sidenav-open">
+      <!-- https://webaim.org/techniques/skipnav/ -->
+      <!-- a[href=#main].skip-link{Skip to main content} -->
+      <nav id="Nav" class="nav" aria-label="Primary Navigation">
+        <ul
+          class="nav__items"
+          itemscope
+          itemtype="https://schema.org/SiteNavigationElement"
+          aria-label="Main Menu"
+        >
+          <li id="1" class="nav__item">
+            <a
+              href="/"
+              class="nav__link"
+              itemprop="url"
+              aria-label="Home Page"
+              aria-current="page"
+            >
+              <span class="nav__link-text" itemprop="name">Home</span>
+            </a>
+          </li>
+          <li id="2" class="nav__item">
+            <a href="#about" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">About</span>
+            </a>
+          </li>
+          <li id="3" class="nav__item">
+            <a href="#slides" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">Slide Show</span>
+            </a>
+          </li>
+          <li id="4" class="nav__item">
+            <a href="#contact" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <a
+        href="#"
+        id="sidenav-close"
+        title="Close Menu"
+        aria-label="Close Menu"
+        onchange="history.go(-1)"
+      ></a>
+      <!-- FIXME: Restoring the scroll position
+        https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-history-interface
+        https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-restoration-mode
+      -->
+    </aside>
+
+    <!-- Global Site Header (site-wide banner) -->
+    <header
+      id="banner"
+      class="page__header fixpos inset-start mx-auto d-flex items-center justify-between"
+      itemscope
+      itemtype="https://schema.org/WPHeader"
+    >
+      <!-- Nav Disclosure -->
+      <!-- https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/ -->
+      <!-- https://icon-sets.iconify.design/line-md/menu -->
+      <a
+        class="d-flex"
+        href="#sidenav-open"
+        id="sidenav-button"
+        title="Open Menu"
+        aria-label="Open Menu"
+      >
+        <svg
+          class="🍔 mx-auto"
+          viewBox="0 0 50 40"
+          height="100%"
+          role="presentation"
+          focusable="false"
+          aria-label="trigram for heaven symbol"
+        >
+          <line x1="5%" x2="95%" y1="20%" y2="20%" />
+          <line x1="5%" x2="95%" y1="50%" y2="50%" />
+          <line x1="5%" x2="95%" y1="80%" y2="80%" />
+        </svg>
+      </a>
+
+      <!-- Custom Element 🝰 -->
+      <theme-switch>
+        <noscript>
+          <form part="form">
+            <fieldset part="fieldset">
+              <!-- <legend part="legend">Поменять оформление</legend>
+              <input part="lightRadio" id="r1" type="radio" name="mode" value="${LIGHT}">
+              <label part="lightLabel" for="r1" title="Светлое оформление"></label>
+              <input part="darkRadio" id="r2" type="radio" name="mode" value="${DARK}">
+              <label part="darkLabel" for="r2" title="Тёмное оформление"></label> -->
+
+              <input part="toggleCheckbox" id="cb" type="checkbox" />
+              <label part="toggleLabel" for="cb" title="Поменять оформление">
+                <svg
+                  class="sun-and-moon"
+                  aria-hidden="true"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <mask class="moon" id="moon-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                    <circle cx="24" cy="10" r="6" fill="black" />
+                  </mask>
+                  <circle
+                    class="sun"
+                    cx="12"
+                    cy="12"
+                    r="6"
+                    mask="url(#moon-mask)"
+                    fill="currentColor"
+                  />
+                  <g class="sun-beams" stroke="currentColor">
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  </g>
+                </svg>
+              </label>
+            </fieldset>
+          </form>
+        </noscript>
+      </theme-switch>
+
+      <!-- <label aria-hidden="true">
+        <input
+          name="debug-mode"
+          type="checkbox"
+          onchange="document.documentElement.classList.toggle('debug');"
+        />
+        Debug
+      </label> -->
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" itemprop="mainEntity" itemid="https://">
+      <!-- sect[aria-labelledby="region1"] -->
+      <section class="grid bg-noise graph-paper">
+        <!-- h2#region1.sr-only{title for region area 1} -->
+
+        <!-- Hero (generic / local banner) -->
+        <div id="hero" class="container relpos items-center init-reveal">
+          <hgroup class="grid__content self-center">
+            <!--
+              Is the title refers to the main content area
+              or to region area 1?
+            -->
+            <h1>Page Title</h1>
+            <!-- p.h5[role="doc-subtitle"] -->
+          </hgroup>
+
+          <div class="grid__full overlay">
+            <!-- pic[role="doc-cover"]>src:t+img[primaryImageOfPage] -->
+          </div>
+        </div>
+
+        <!-- About -->
+        <div id="about" class="container">
+          <article class="grid__content mx-auto flow">
+            <h2>Second-level head</h2>
+            <!-- p*2>lorem -->
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit
+              quia quibusdam inventore? Sint suscipit molestiae repellat quam
+              ipsum distinctio adipisci accusamus, quaerat nisi vel corrupti
+              repudiandae. Magni quos explicabo iusto!
+            </p>
+            <p>
+              Aperiam blanditiis molestiae aspernatur minus eos, amet facilis!
+              Aliquam, nam? Repellendus dolorem dolores ex! Quas officia ut
+              alias quaerat dolore nisi id, perferendis iste, perspiciatis
+              cumque, culpa ipsam hic saepe.
+            </p>
+          </article>
+        </div>
+
+        <!-- Slide Show -->
+        <div id="slides" class="container">
+          <h2 id="carouselTitle" class="sr-only">Showcase</h2>
+          <ul
+            data-scroll="x smooth"
+            class="grid__content cols-repeat overscroll-x-contain scrollport snap-inline --mandatory --padding --snap-stop side-fade"
+            style="--col-count: 3; --col-width: 100%"
+            role="group"
+            aria-labelledby="carouselTitle"
+          >
+            <!--
+              Slide (one-column): li>figure>img+figcaption
+              slide:fig
+            --><!--
+              Slide (two-column): li>article+picture
+              slide:artpic
+            -->
+
+            <!-- Skeleton -->
+            <li
+              id="slide1"
+              aria-label="1 / 3"
+              class="placeholder"
+              data-dummy="1920×1080"
+              style="--i: 1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+            </li>
+            <li
+              id="slide2"
+              aria-label="2 / 3"
+              class="placeholder"
+              data-dummy="1080×1080"
+              style="--i: 2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+            </li>
+            <li
+              id="slide3"
+              aria-label="3 / 3"
+              class="placeholder"
+              data-dummy="1080×1920"
+              style="--i: 3"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
+                <rect width="100%" height="100%"></rect>
+              </svg>
+            </li>
+
+            <!-- Nested gallery -->
+            <!-- li>fig.cols-repeat[role=group]>img*N -->
+          </ul>
+        </div>
+
+        <div class="container">
+          <blockquote
+            class="grid__center h2 text-center"
+            style="--opsz: 48; --wght: 300; line-height: 1.35cap"
+          >
+            Hardcore will&nbsp;never&nbsp;die but&nbsp;you&nbsp;will.
+          </blockquote>
+        </div>
+
+        <!-- [for instance] -->
+        <div class="grid__full">
+          <figure class="d-grid cols-triptych">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
+              <rect width="100%" height="100%"></rect>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1200">
+              <rect width="100%" height="100%"></rect>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
+              <rect width="100%" height="100%"></rect>
+            </svg>
+          </figure>
+        </div>
+
+        <!-- Contact -->
+        <form
+          class="grid__center border-gradient --voygb"
+          aria-labelledby="contact"
+        >
+          <mark class="abspos tag text-uppercase">todo</mark>
+          <fieldset class="flex-centered flow">
+            <legend
+              id="contact"
+              class="h3 keyline"
+              style="--opsz: 24; --wght: 250"
+            >
+              Think different.
+            </legend>
+            <button type="submit">(Re)think</button>
+          </fieldset>
+        </form>
+
+        <!-- [CCS 2D-drawing and SVG] -->
+        <div class="grid__full relpos flex-centered">
+          <div class="sketch abspos">
+            <div class="ground abspos">
+              <div class="ground-shadow"></div>
+            </div>
+            <div class="ball relpos flex-centered">
+              <div class="isolate">
+                <div class="ball-shadow"></div>
+                <div class="ball-light overlay"></div>
+              </div>
+            </div>
+          </div>
+          <svg
+            style="aspect-ratio: 21/9; z-index: 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1920 823"
+          >
+            <!-- dy=font-size*.35 -->
+            <text
+              fill="currentColor"
+              dy="4.2rem"
+              x="50%"
+              y="50%"
+              text-anchor="middle"
+              text-rendering="geometricPrecision"
+            >
+              FIN
+            </text>
+            <style>
+              <![CDATA[
+                text { font: small-caps bold 12rem/1cap monospace; }
+              ]]>
+            </style>
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <!-- Content Info -->
+    <footer
+      id="info"
+      class="fixpos inset-end flex-centered"
+      itemscope
+      itemtype="https://schema.org/WPFooter"
+    >
+      <!-- adr>a:mail+br^a:tel[itemprop=telephone] -->
+      <small>
+        <!-- © ООО «Имя Бренда», 2023 -->
+        <time datetime="2024" itemprop="copyrightYear">Y2K</time>
+        &COPY;&nbsp;<span itemprop="name">Brandname</span>
+      </small>
+    </footer>
+
+    <svg width="0" height="0" data-hidden>
+      <defs>
+        <marker
+          id="m1"
+          viewBox="0 0 10 10"
+          refX="5"
+          refY="5"
+          markerWidth="8"
+          markerHeight="8"
+        >
+          <circle cx="5" cy="5" r="5" fill="greenyellow" />
+        </marker>
+        <!-- SVG Filters
+             https://svgwg.org/svg2-draft/
+             https://drafts.fxtf.org/filter-effects/#FilterElement -->
+      </defs>
+    </svg>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

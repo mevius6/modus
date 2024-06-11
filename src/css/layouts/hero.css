@@ -1,0 +1,40 @@
+@scope (#hero) {
+  :scope {
+    max-block-size: 100svh; /* or 100dvh */
+  }
+}
+
+:where(#hero):has(picture, img) {
+  /* text on image */
+  :is(h1, p) { color: hsl(var(--white)) !important; }
+}
+
+:where(#hero) {
+  min-block-size: 100svh;
+
+  & > * { grid-row: 1; }
+
+  :is(.overlay) {
+    z-index: -1;
+    pointer-events: none;
+    /* overflow: hidden; */
+
+    & picture {
+      inline-size: 100%;
+      block-size: 100%;
+      overflow: hidden;
+
+      & img {
+        min-inline-size: 100%;
+        min-block-size: 100%;
+      }
+    }
+  }
+
+  :is(.bg-image) {
+    /* background-image: url(…); */
+    background-position: center;
+    background-size: contain;
+    background-attachment: fixed;
+  }
+}

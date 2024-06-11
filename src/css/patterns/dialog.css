@@ -1,0 +1,74 @@
+/**
+ * GUI Patters: Dialog
+ * https://web.dev/articles/building/a-dialog-component
+ * https://developer.chrome.com/blog/introducing-popover-api
+ * https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/:popover-open
+ * https://css-irl.info/anchor-positioning-and-the-popover-api/
+ * https://open-ui.org/components/popover.research.explainer/
+ * https://css-tricks.com/creating-a-custom-element-from-scratch/
+ * https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element
+ */
+
+/* Entry/Exit <dialog> 2024 → https://codepen.io/jh3y/pen/LYoZWmJ */
+
+dialog:where(#alert, #debug) {
+  position: fixed;
+  inset: 0; /* override UA */
+  z-index: var(--big-int);
+  max-inline-size: 65ch;
+  font-family: var(--ui-mono);
+  box-shadow:
+    0 -1px 2px 0 hsl(var(--shadow-color)/calc(var(--shadow-strength) + 2%)),
+    0 3px 2px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)),
+    0 7px 5px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)),
+    0 12px 10px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 4%)),
+    0 22px 18px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%)),
+    0 41px 33px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 6%)),
+    0 100px 80px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 7%));
+  overflow: hidden;
+
+  & > :where(ol, li, span) { font-family: inherit }
+
+  &:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+/* dialog[open] {…} */
+
+/* dialog::-webkit-backdrop, */
+:where(dialog)::backdrop {
+  /* background: hsl(0 0% 10% / 0.5); */
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(0 0% 0% / 0.2),
+    hsl(0 0% 0% / 0.2) 1px,
+    hsl(0 0% 0% / 0.3) 1px,
+    hsl(0 0% 0% / 0.3) 20px
+  );
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+}
+
+dialog:where(#alert) { /* TODO basic noscript alert */ }
+
+dialog:where(#debug) { /* CSS feature test results output */
+  border: 2px solid hsl(var(--gray));
+  border-radius: 5px;
+  /* background-color: var(--background); */
+}
+
+dialog > :where(ol, ul) { /* intent */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(28ch, 1fr));
+  gap: 1ch;
+  align-items: center;
+
+  & > li {
+    display: contents;
+
+    & > * + * { grid-column: 2 }
+  }
+}

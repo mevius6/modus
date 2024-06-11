@@ -1,0 +1,271 @@
+/* https://drafts.csswg.org/css2/#font-size-props */
+/* https://modern-fluid-typography.vercel.app/ */
+
+/* https://mikemai.net/blog/2024/03/25/the-case-for-defining-base-font-size.html
+   https://adrianroselli.com/2024/03/the-ultimate-ideal-bestest-base-font-size-that-everyone-is-keeping-a-secret-especially-chet.html */
+
+:root {
+  min-height: 0; /* Safari fix */
+  /* RFS → https://css-tricks.com/accessible-font-sizing-explained/ */
+  font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.8772)), 1.5rem);
+
+  /* font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif, system-ui; */
+}
+
+/* FIXME
+html { font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
+       & > body { --var-serif: Roslindale; }} */
+
+body {
+  /* Value conversion helpers */
+  --px2rem: calc((var(--px-size) / 16) * 1rem);
+  /* e.g.
+     20px ~ 1.25rem
+     19px ~ 1.1875rem
+     18px ~ 1.125rem
+     17px ~ 1.0625rem
+     16px ~ 1rem
+     15px ~ .9375rem
+     14px ~ .875rem */
+  --rem2px: calc(var(--px, 14) * 1rem / 16);
+
+  /* TODO: Faces props, `--font-*`
+  `--font-headliner` or `-display` (i.e. for heads and titles)
+  `--font-body-copy` or `-primary` (i.e. for body copy, etc.)
+  */
+
+  font-size: var(--px2rem);
+  font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
+  font-weight: 400;
+  line-height: 1.5; /* .5 extra leading */
+  text-rendering: optimizeLegibility; /* or optimizeSpeed */
+
+  /* font-feature-settings:
+    "kern" var(--kern, 1),
+    "liga" var(--liga, 1),
+    "tnum" var(--tnum, 0),
+    "zero" var(--zero, 0),
+    "case" var(--case, 0); */
+  /* https://wakamaifondue.com/beta/ */
+  font-feature-settings:
+    "aalt" var(--aalt, 0),
+    "c2sc" var(--c2sc, 0),
+    "calt" var(--calt, 1),
+    "case" var(--case, 0),
+    "ccmp" var(--ccmp, 0),
+    "dlig" var(--dlig, 1),
+    "liga" var(--liga, 1),
+    "lnum" var(--lnum, 0),
+    "locl" var(--locl, 0),
+    "onum" var(--onum, 0),
+    "ordn" var(--ordn, 0),
+    "rvrn" var(--rvrn, 1),
+    "salt" var(--salt, 0),
+    "smcp" var(--smcp, 0),
+    "ss01" var(--ss01, 0),
+    "ss02" var(--ss02, 0),
+    "ss03" var(--ss03, 0),
+    "ss05" var(--ss05, 0),
+    "ss06" var(--ss06, 0),
+    "ss07" var(--ss07, 0),
+    "ss08" var(--ss08, 0),
+    "ss09" var(--ss09, 0),
+    "ss10" var(--ss10, 0),
+    "ss11" var(--ss11, 0),
+    "kern" var(--kern, 1),
+    "mark" var(--mark, 0),
+    "mkmk" var(--mkmk, 0);
+  font-variation-settings:
+    "opsz" var(--opsz, 11),
+    "wght" var(--wght, 400),
+    "ital" var(--ital, 0);
+}
+
+@supports (font-display: swap) {
+  /* https://drafts.csswg.org/css-fonts-4/#font-rendering-controls */
+  /* body { font-display: fallback; } */
+}
+
+@media screen and (min-resolution: 192dpi),
+       screen and (min-resolution: 2dppx),
+       screen and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    /* autoprefixer: off */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* autoprefixer: on */
+}
+
+:where(p, li) {
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+p { hyphens: auto; }
+
+/* Define max line lengths for article and inner elements. */
+article {
+  max-inline-size: var(--max-line-length, 39ch);
+
+  & :where(h1, h2, h3, h4) {
+    max-inline-size: 30ch; /* 30–40 chars */
+  }
+
+  & :where(p, li) {
+    max-inline-size: 40ch;
+  }
+}
+
+@media (min-width: 48em) {
+  article {
+    --max-line-length: 66ch; /* 60–75 chars */
+
+    & :where(h2, h3, h4) {
+      max-inline-size: 33ch; /* 30–40 chars */
+      text-wrap: pretty;
+    }
+  }
+}
+
+@supports ( font-size-adjust: 1.0 ) {
+  article { font-size-adjust: 0.5 }
+}
+
+/* TODO: Fluid Typography with CSS pow()
+   https://www.modularscale.com/
+   https://drafts.csswg.org/css-values/#exponent-funcs
+   https://codepen.io/jh3y/pen/KKLNLxW */
+
+/* Type Scale: 16, 18, 20, 22, 24, 26, 32, 40, 48, 56, 64, 72, 96
+ */
+:where(
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6
+) {
+  --px2rem: calc((var(--px-size) / 16) * 1rem);
+
+  font-family: inherit;
+  line-height: calc(1ex / .42);
+  font-size: var(--px2rem);
+  font-variation-settings:
+    "opsz" var(--opsz, 16),
+    "wght" var(--wght, 600),
+    "ital" var(--ital, 0);
+}
+
+/* mobile */
+:where(h1, .h1) { --px-size: 64 }
+:where(h2, .h2) { --px-size: 48 }
+:where(h3, .h3) { --px-size: 32 }
+:where(h4, .h4) { --px-size: 24 }
+:where(h5, .h5) { --px-size: 20 }
+:where(h6, .h6) { --px-size: 16 }
+:where(body) { --px-size: 14 }
+
+@media (min-width: 48em) {
+  /* laptop */
+  :where(h1, .h1) { --px-size: 72 } /* 96 */
+  :where(h2, .h2) { --px-size: 56 }
+  :where(h3, .h3) { --px-size: 40 }
+  :where(h4, .h4) { --px-size: 26 }
+  :where(h5, .h5) { --px-size: 22 }
+  :where(h6, .h6) { --px-size: 18 }
+  :where(body) { --px-size: 16 }
+}
+
+h1, h2, h3 {
+  --opsz: 48;
+  --wght: 800;
+
+  line-height: var(--lh-precise);
+
+  @supports (text-wrap: balance) {
+    /* www.w3.org/TR/css-text-4/#text-wrap */
+    text-wrap: balance;
+  }
+}
+
+h2 {
+  --wght: 500;
+  --ital: 1;
+}
+
+/* ---------------------------------- ⟡ ⟡ ⟡ --------------------------------- */
+/* Stars and asterisks: https://www.unicode.org/charts/PDF/U2700.pdf */
+.dinkus {
+  /* Em-Space-Separated '✧' White Four Pointed Star(s) */
+  --seq-star-emsp: '\2727\2003\2727\2003\2727';
+  /* Em-Space-Separated '∞' Infinity Symbol(s) */
+  --seq-infin-emsp: '\221E\2003\221E\2003\221E';
+  /* '❧' Rotated Floral Heart Bullet = hedera, ivy leaf */
+  --sym-hedera: '\2767';
+  /* '⁂' Asterism */
+  --sym-asterism: '\2042';
+
+  display: inline-block;
+  inline-size: 100%;
+  text-align: center;
+  color: var(--dinkus-color, inherit);
+  /* opacity: 0.8; */
+
+  &::after {
+    content: var(--dinkus, var(--seq-infin-emsp));
+    filter: drop-shadow(0 3px 6px var(--shadow-color));
+  }
+
+  [data-theme-style=light] & {
+    --dinkus-color: var(--accent-a80);
+  }
+  [data-theme-style=dark] & {
+    --dinkus-color: var(--accent);
+  }
+}
+
+/* https://hell.meiert.org/core/css/css-2.2.css */
+/* body         { margin: 8px } */
+b,
+strong          { font-weight: 700 }
+q,
+blockquote      { /* … */ }
+i, cite, em,
+var, address    { font-style: italic; --ital: 1 }
+/*
+big             { font-size: 1.17em }
+small, sub, sup { font-size: .83em } */
+sub             { vertical-align: sub }
+sup             { vertical-align: super }
+s, strike, del  { text-decoration: line-through }
+
+/* https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element */
+u { text-decoration: var(--underline-color, var(--accent)) wavy underline; }
+
+mark {
+  background: var(--accent);
+  font-variation-settings: "opsz" 11, "wght" 700, "ital" 0;
+}
+
+.callout,
+.pullquote,
+.quote {
+  padding-inline-start: 1.77rem;
+  border-inline-start: 5px solid;
+}
+
+/* address {…} */
+
+time {
+  --flow-space: var(--spacer);
+  display: inline-block;
+  color: var(--foreground-a80);
+  font-feature-settings: 'tnum' 1;
+}
+
+.price { font-variant-numeric: tabular-nums; }
+
+.amount { font-variant-numeric: oldstyle-nums diagonal-fractions; }
