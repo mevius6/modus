@@ -6,83 +6,125 @@
    → https://drafts.csswg.org/css-color-5/#color-mix
    → https://drafts.csswg.org/css-color-4/#predefined
    → https://drafts.csswg.org/css-color/#color-conversion-code
-   → https://drafts.csswg.org/css2/#system-colors */
+   → https://drafts.csswg.org/css2/#system-colors
+*/
 
 @layer color.swatches { /* Pre-defined color props */
   /* Sub-layers order */
   @layer neon, families;
 
-  /* Refs:
-     → https://www.sherwin-williams.com/en-us/color/color-collections
-     → https://www.benjaminmoore.com/en-us/paint-colors/color-families
+  /* Color collections:
+     → https://www.sherwin-williams.com/architects-specifiers-designers/color
      → https://www.benjaminmoore.com/en-us/paint-colors/color-collections
-     → https://www.oddbird.net/cascading-colors/ */
+     → https://www.oddbird.net/cascading-colors/
+     → https://github.com/color-js/palettes
+  */
 
   @layer families { /* Set of swatches ordered by color families */
-    :where(html) {
-      /* Red */
-      --sw-abalone-shell: 20deg 29% 80%;
-      --sw-coral-clay: 8deg 39% 59%;
-      --sw-hushed-auburn: 14deg 21% 57%;
-      --sw-redend-point: 20deg 23% 59%;
+    @layer red, orange, yellow, green, blue, purple, neutral, pastel;
 
-      /* Orange */
-      --sw-malted-milk: 24deg 33% 81%;
-      --sw-cool-beige: 27deg 21% 72%;    /* C6B5A7 SW9086 Cool Beige */
+    /* Go → https://samples.sherwin-williams.com/
+            + [searchQuery]
+              ?sampleModal=[colorId]
+       e.g. SW6428
+       https://samples.sherwin-williams.com/?sampleModal=SW6428
+    */
 
-      /* Yellow */
-      --sw-nugget: 42deg 67% 57%;
-      --sw-paper-lantern: 37deg 64% 86%;
-      --sw-vintage-gold: 33deg 45% 63%;
-      --sw-natural-tan: 36deg 26% 81%;   /* DCD2C3 SW7567 Natural Tan */
+    @layer red {
+      :where(html) {
+        --sw-abalone-shell: 20deg 29% 80%;
+        --sw-coral-clay: 8deg 39% 59%;
+        --sw-hushed-auburn: 14deg 21% 57%;
+        --sw-redend-point: 20deg 23% 59%;
+        /* … */
+      }
+    }
 
-      /* Green */
-      --sw-honeydew: 64deg 32% 80%;      /* DBDDBD SW6428 Honeydew */
-      --sw-pearl-gray: 80deg 8% 79%;     /* CBCEC5 SW0052 Pearl Gray */
-      --sw-sea-salt: 97deg 8% 81%;       /* CDD2CA SW6204 Sea Salt */
-      --sw-acacia-haze: 96deg 5% 59%;    /* 969C92 SW9132 Acacia Haze */
-      --sw-retreat: 96deg 4% 48%;        /* 7A8076 SW6207 Retreat */
-      --sw-pewter-green: 87deg 5% 37%;   /* 5E6259 SW6208 Pewter Green */
-      --sw-rock-bottom: 135deg 3% 29%;   /* 484C49 SW7062 Rock Bottom */
-      --sw-palm-leaf: 47deg 29% 30%;     /* 635936 SW7735 Palm Leaf */
-      --sw-night-watch: 180deg 6% 20%;   /* 303636 SW9680 Night Watch */
+    @layer orange {
+      :where(html) {
+        --sw-malted-milk: 24deg 33% 81%;
+        --sw-cool-beige: 27deg 21% 72%;    /* C6B5A7 SW9086 Cool Beige */
+        /* … */
+      }
+    }
 
-      /* Blue */
-      --sw-drizzle: 175deg 17% 62%;
-      --sw-in-the-navy: 211deg 29% 22%;  /* SW9178 In the Navy */
-      --sw-naval: 211deg 24% 24%;
-      --sw-upward: 205deg 15% 78%;       /* BFC9D0 SW6239 Upward */
-      --sw-gale-force: 202deg 19% 26%;   /* 35454E SW7605 Gale Force */
-      --sw-stardew: 192deg 9% 68%;       /* A6B2B5 SW9138 Stardew */
-      --sw-georgian-bay: 197deg 58% 32%; /* 22657F SW6509 Georgian Bay */
+    @layer yellow {
+      :where(html) {
+        --sw-nugget: 42deg 67% 57%;
+        --sw-paper-lantern: 37deg 64% 86%;
+        --sw-vintage-gold: 33deg 45% 63%;
+        --sw-natural-tan: 36deg 26% 81%;   /* DCD2C3 SW7567 Natural Tan */
+        /* … */
+      }
+    }
 
-      /* Purple */
-      --sw-fashionable-gray: 0deg 4% 73%;
-      --sw-mystical-shade: 348deg 3% 67%;
-      --sw-carnelian: 0deg 17% 29%;
-      --sw-perle-noir: 270deg 3% 31%;
+    @layer green {
+      :where(html) {
+        --sw-honeydew: 64deg 32% 80%;      /* DBDDBD SW6428 Honeydew */
+        --sw-pearl-gray: 80deg 8% 79%;     /* CBCEC5 SW0052 Pearl Gray */
+        --sw-sea-salt: 97deg 8% 81%;       /* CDD2CA SW6204 Sea Salt */
+        --sw-acacia-haze: 96deg 5% 59%;    /* 969C92 SW9132 Acacia Haze */
+        --sw-retreat: 96deg 4% 48%;        /* 7A8076 SW6207 Retreat */
+        --sw-pewter-green: 87deg 5% 37%;   /* 5E6259 SW6208 Pewter Green */
+        --sw-rock-bottom: 135deg 3% 29%;   /* 484C49 SW7062 Rock Bottom */
+        --sw-palm-leaf: 47deg 29% 30%;     /* 635936 SW7735 Palm Leaf */
+        --sw-night-watch: 180deg 6% 20%;   /* 303636 SW9680 Night Watch */
+        /* … */
+      }
+    }
 
-      /* Neutral */
-      --sw-westchester-gray: 60deg 0% 47%;
-      --sw-chelsea-gray: 69deg 5% 70%;
-      --sw-tricorn-black: 240deg 1% 19%;
-      --sw-black-magic: 300deg 1% 19%;
-      --sw-urbane-bronze: 36deg 6% 31%;
-      --sw-silver-strand: 86deg 6% 78%;
-      --sw-drift-of-mist: 40deg 15% 84%; /* DCD8D0 SW9166 Drift of Mist */
-      --sw-shiitake: 35deg 21% 73%;      /* C8BCAB SW9173 Shiitake */
-      --sw-loggia: 35deg 21% 71%;
-      --sw-foothills: 30deg 12% 45%;
+    @layer blue {
+      :where(html) {
+        --sw-drizzle: 175deg 17% 62%;
+        --sw-in-the-navy: 211deg 29% 22%;  /* SW9178 In the Navy */
+        --sw-naval: 211deg 24% 24%;
+        --sw-upward: 205deg 15% 78%;       /* BFC9D0 SW6239 Upward */
+        --sw-gale-force: 202deg 19% 26%;   /* 35454E SW7605 Gale Force */
+        --sw-stardew: 192deg 9% 68%;       /* A6B2B5 SW9138 Stardew */
+        --sw-georgian-bay: 197deg 58% 32%; /* 22657F SW6509 Georgian Bay */
+        /* … */
+      }
+    }
 
-      /* White & Pastel */
-      --sw-pure-white: 51deg 16% 92%;   /* EDECE6 SW7005 Pure White */
-      --sw-extra-white: 72deg 14% 93%;  /* EEEFEA SW7006 Extra White */
-      --sw-alabaster: 46deg 27% 90%;    /* EDEAE0 SW7008 Alabaster */
-      --sw-shoji-white: 38deg 28% 86%;  /* E6DFD3 SW7042 Shoji White */
-      --sw-worldly-gray: 35deg 16% 77%; /* CEC6BB SW7043 Worldly Gray */
-      --sw-paperwhite: 41deg 61% 92%;   /* F7EFDE SW7105 Paperwhite */
-      --sw-greek-villa: 43deg 32% 91%;  /* F0ECE2 SW7551 Greek Villa */
-      --sw-westhighland: 41deg 40% 92%; /* F3EEE3 SW7566 Westhighland White */
+    @layer purple {
+      :where(html) {
+        --sw-fashionable-gray: 0deg 4% 73%;
+        --sw-mystical-shade: 348deg 3% 67%;
+        --sw-carnelian: 0deg 17% 29%;
+        --sw-perle-noir: 270deg 3% 31%;
+        /* … */
+      }
+    }
+
+    @layer neutral {
+      :where(html) {
+        --sw-westchester-gray: 60deg 0% 47%;
+        --sw-chelsea-gray: 69deg 5% 70%;
+        --sw-tricorn-black: 240deg 1% 19%;
+        --sw-black-magic: 300deg 1% 19%;
+        --sw-urbane-bronze: 36deg 6% 31%;
+        --sw-silver-strand: 86deg 6% 78%;
+        --sw-drift-of-mist: 40deg 15% 84%; /* DCD8D0 SW9166 Drift of Mist */
+        --sw-shiitake: 35deg 21% 73%;      /* C8BCAB SW9173 Shiitake */
+        --sw-loggia: 35deg 21% 71%;
+        --sw-foothills: 30deg 12% 45%;
+        /* … */
+      }
+    }
+
+    @layer pastel {
+      :where(html) {
+        /* White & Pastel */
+        --sw-pure-white: 51deg 16% 92%;   /* EDECE6 SW7005 Pure White */
+        --sw-extra-white: 72deg 14% 93%;  /* EEEFEA SW7006 Extra White */
+        --sw-alabaster: 46deg 27% 90%;    /* EDEAE0 SW7008 Alabaster */
+        --sw-shoji-white: 38deg 28% 86%;  /* E6DFD3 SW7042 Shoji White */
+        --sw-worldly-gray: 35deg 16% 77%; /* CEC6BB SW7043 Worldly Gray */
+        --sw-paperwhite: 41deg 61% 92%;   /* F7EFDE SW7105 Paperwhite */
+        --sw-greek-villa: 43deg 32% 91%;  /* F0ECE2 SW7551 Greek Villa */
+        --sw-westhighland: 41deg 40% 92%; /* F3EEE3 SW7566 Westhighland White */
+        /* … */
+      }
     }
   }
 
@@ -121,12 +163,14 @@
     }
   }
 
-  /* Set of favorite color swatches. Does it have any functionality? */
+  /* Set of favorite color swatches.
+     Does it have any functionality?
+  */
   /* @layer favs {…} */
   /* @layer riso {…} */
 }
 
-/* For example */
+/* For example: */
 
 @layer color.swatches {
   /* 1. define new color hues */
@@ -165,7 +209,6 @@
 
     /* Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate. */
     --red-1: hsl(var(--sw-abalone-shell));
-    /* .. */
     --red-9: hsl(var(--sw-redend-point));
     --lead-1: var(--red-1);
     /* TODO: Add tokens, e.g. `--lead-*` or `--primary-*` */
@@ -228,12 +271,15 @@
     */
     --safari-black: #1e1e1e;
     --chrome-black: #121212;
+    /* https://infra.spec.whatwg.org/#ascii-case-insensitive */
+    /* https://www.w3.org/TR/css-color-4/#system-color-pairs */
     --system-fg: canvastext;
     --system-bg: canvas;
 
-    --link: var(--accent);
-    --link-visited: var(--accent-shade);
-    --text: var(--foreground);
+    --link: var(--accent, blue);
+    /* www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple */
+    --link-visited: var(--accent-shade, rebeccapurple);
+    --text: var(--foreground); /* CanvasText */
 
     /* States */
     --active: var(--accent);
@@ -252,11 +298,13 @@
 /* Common color scheme preferences */
 @layer color.ui-adjust {
   :where(html) {
+    /* drafts.csswg.org/css-color/#hex-notation */
     --trn: hsl(0 0% 0% / 0%); /* #0000 */
     /* 4th digit in the HEX code specifies
        the color's alpha transparency */
 
     /* HSL color scheme helpers */
+    /* drafts.csswg.org/css-color/#hex-notation */
     --hue: 0;
     --sat: 0%;
     --lum: 93%; /* #ededed */
@@ -281,6 +329,7 @@
 
     /**
      * Set up variables (prop mapping)
+     * https://drafts.csswg.org/css-color-adjust-1/#forced
      */
 
     &:where([data-theme-style],
@@ -377,9 +426,8 @@
     /* go → https://nerdy.dev/easy-hsl-rainbow */
     --lin-gradient-roygbiv: linear-gradient(
       to right
-      in hsl          /* vibrant gradient HSL colorspace */
-      longer hue,     /* hue-interpolation set to longer */
-      red, red    /* now red to red goes all the way around */
+      in hsl
+      longer hue, red, red
     );
     --lin-gradient-voygb: linear-gradient(
       45deg,
@@ -420,6 +468,6 @@
       var(--trn) 4px,
       var(--accent) 0,
       var(--accent) 5px
-    )
+    );
   }
 }
