@@ -40,42 +40,48 @@ body {
   font-weight: 400;
   line-height: 1.5; /* .5 extra leading */
   text-rendering: optimizeLegibility; /* or optimizeSpeed */
-
   /* font-feature-settings:
     "kern" var(--kern, 1),
     "liga" var(--liga, 1),
+    "clig" var(--clig, 1),
     "tnum" var(--tnum, 0),
     "zero" var(--zero, 0),
-    "case" var(--case, 0); */
-  /* https://wakamaifondue.com/beta/ */
-  font-feature-settings:
-    "aalt" var(--aalt, 0),
-    "c2sc" var(--c2sc, 0),
-    "calt" var(--calt, 1),
     "case" var(--case, 0),
-    "ccmp" var(--ccmp, 0),
-    "dlig" var(--dlig, 1),
-    "liga" var(--liga, 1),
-    "lnum" var(--lnum, 0),
-    "locl" var(--locl, 0),
-    "onum" var(--onum, 0),
-    "ordn" var(--ordn, 0),
-    "rvrn" var(--rvrn, 1),
-    "salt" var(--salt, 0),
-    "smcp" var(--smcp, 0),
-    "ss01" var(--ss01, 0),
-    "ss02" var(--ss02, 0),
-    "ss03" var(--ss03, 0),
-    "ss05" var(--ss05, 0),
-    "ss06" var(--ss06, 0),
-    "ss07" var(--ss07, 0),
-    "ss08" var(--ss08, 0),
-    "ss09" var(--ss09, 0),
-    "ss10" var(--ss10, 0),
-    "ss11" var(--ss11, 0),
-    "kern" var(--kern, 1),
-    "mark" var(--mark, 0),
-    "mkmk" var(--mkmk, 0);
+    "cpsp" var(--cpsp, 0); */
+  /*
+    https://learn.microsoft.com/en-us/typography/opentype/spec/
+    https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist
+    https://wakamaifondue.com/beta/
+  */
+  font-feature-settings:
+    "aalt" var(--aalt, 0), /* Access All Alternates */
+    "c2sc" var(--c2sc, 0), /* Small Capitals From Capitals */
+    "calt" var(--calt, 1), /* Contextual Alternates */
+    "case" var(--case, 0), /* Case-sensitive Forms */
+    "ccmp" var(--ccmp, 1), /* Glyph Composition / Decomposition */
+    "clig" var(--dlig, 1), /* Contextual Ligatures */
+    "dlig" var(--dlig, 1), /* Discretionary Ligatures */
+    "liga" var(--liga, 1), /* Standard Ligatures */
+    "lnum" var(--lnum, 0), /* Lining Figures */
+    "locl" var(--locl, 0), /* Localized Forms */
+    "onum" var(--onum, 0), /* Oldstyle Figures */
+    "ordn" var(--ordn, 0), /* Ordinals */
+    "rvrn" var(--rvrn, 1), /* Required Variation Alternates */
+    "salt" var(--salt, 0), /* Stylistic Alternates */
+    "smcp" var(--smcp, 0), /* Small Capitals */
+    "ss01" var(--ss01, 0), /* … */
+    "ss02" var(--ss02, 0), /* … */
+    "ss03" var(--ss03, 0), /* … */
+    "ss05" var(--ss05, 0), /* … */
+    "ss06" var(--ss06, 0), /* … */
+    "ss07" var(--ss07, 0), /* … */
+    "ss08" var(--ss08, 0), /* … */
+    "ss09" var(--ss09, 0), /* … */
+    "ss10" var(--ss10, 0), /* … */
+    "ss11" var(--ss11, 0), /* … */
+    "kern" var(--kern, 1), /* Kerning */
+    "mark" var(--mark, 1), /* Mark Positioning */
+    "mkmk" var(--mkmk, 1); /* Mark to Mark Positioning */
   font-variation-settings:
     "opsz" var(--opsz, 11),
     "wght" var(--wght, 400),
@@ -136,7 +142,8 @@ article {
 /* TODO: Fluid Typography with CSS pow()
    https://www.modularscale.com/
    https://drafts.csswg.org/css-values/#exponent-funcs
-   https://codepen.io/jh3y/pen/KKLNLxW */
+   https://codepen.io/jh3y/pen/KKLNLxW
+   https://codepen.io/2kool2/pen/dyPgebN?editors=0100 */
 
 /* Type Scale: 16, 18, 20, 22, 24, 26, 32, 40, 48, 56, 64, 72, 96
  */
@@ -260,9 +267,7 @@ mark {
 /* address {…} */
 
 time {
-  --flow-space: var(--spacer);
   display: inline-block;
-  color: var(--foreground-a80);
   font-feature-settings: 'tnum' 1;
 }
 
