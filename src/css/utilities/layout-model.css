@@ -13,13 +13,6 @@
 .flex-row-reverse { flex-direction: row-reverse; }
 .flex-col-reverse	{ flex-direction: column-reverse; }
 
-.flex-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .items-center { align-items: center; }
 .items-start  { align-items: flex-start; }
 .items-end    { align-items: flex-end; }
@@ -47,6 +40,29 @@
 .self-start  { --place: start }
 .self-end    { --place: end }
 .self-center { --place: center }
+
+.flex-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1ch;
+}
+
+/* See → https://web.dev/articles/centering-in-css */
+
+/* The widest child (max-content) sets the width for all the rest.
+   Great for macro layouts containing paragraphs and headlines, prototypes, or generally things that need legible centering.
+*/
+.content-center {
+  display: grid;
+  place-content: center;
+  gap: 1ch;
+}
+
+/* Note: place-content is not exclusive to display: grid.
+   display: flex can also benefit from place-content and place-item shorthands.
+*/
 
 .grid-cols-subgrid { grid-template-columns: subgrid; }
 .cols-subgrid {
