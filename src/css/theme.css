@@ -95,18 +95,30 @@
     background-color: var(--background);
     box-shadow: 0 8px 24px var(--shadow);
 
+    &::part(form),
+    &::part(fieldset) {
+      inline-size: 100%;
+      block-size: 100%;
+    }
+
+    /* centering */
     &::part(fieldset), [part=fieldset] {
       display: flex;
     }
     &::part(toggleLabel), [part=toggleLabel] {
-      display: inline-flex;
+      padding: 1ch; /* ~ 8.5 px */
+      aspect-ratio: 1;
     }
   }
 
   /* work w/o shadow root */
   theme-switch > noscript {
-    :where([part=form], [part=fieldset]) {
-      max-block-size: 100%;
+    & :where(
+      [part=form],
+      [part=fieldset]
+    ) {
+      inline-size: 100%;
+      block-size: 100%;
     }
   }
 }
