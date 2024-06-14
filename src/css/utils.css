@@ -1,19 +1,13 @@
 @import url(./utilities/layout-model.css);
 @import url(./utilities/scroll-control.css);
 
-/* https://drafts.fxtf.org/
-   https://drafts.fxtf.org/compositing-2/ */
-.bg-blur-10 {
-  backdrop-filter: var(--blur-os);
-}
-
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
 /* https://drafts.csswg.org/css-cascade/#all-shorthand
    initial | inherit | unset | revert | revert-layer */
 .all-initial { all: initial; }
 .all-unset   { all: unset; }
-.all-revert  { all: revert-layer; }
+.all-revert  { all: revert; }
 
 /* Stack level
    https://drafts.csswg.org/css2/#stacking-context */
@@ -92,6 +86,24 @@
 .m-auto  { margin: auto; }
 .mx-auto { margin-inline: auto; }
 .my-auto { margin-block: auto; }
+
+[class*=content-wrap] { /* .content-wrapper */
+  /* i.e. min(max-content, max(min-content, stretch)) */
+  max-width: fit-content;
+  max-height: fit-content;
+
+  /* centered */
+  margin-inline: auto;
+}
+
+/* A wrapper for content of unknown size */
+[class*=overlay-wrap] { /* .overlay-wrapper */
+  position: fixed;
+  inset: 0;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+}
 
 /* TODO: padding class names -> (p | px-* | py-* | pt-[10] | etc. ) */
 
@@ -221,7 +233,26 @@
   background-size: 100% 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
 
+.strips {
+  background:
+    linear-gradient(90deg,
+      #5461c8 12.5%,
+      #c724b1 0 25%,
+      #e4002b 0 37.5%,
+      #ff6900 0 50%,
+      #f6be00 0 62.5%,
+      #97d700 0 75%,
+      #00ab84 0 87.5%,
+      #00a3e0 0)
+}
+
+.hashes {
+  background:
+    repeating-linear-gradient(-45deg,
+      #ccc 0 2px,
+      transparent 0 9px)
 }
 
 /* Isolation creates a new stacking context for mix-blend-mode.
@@ -234,57 +265,6 @@
   block-size: 100%;
 }
 
-/* CSS Noise Gradient (shadow)
-   → https://codepen.io/cjimmy/pen/XWRQPep */
-@layer {
-  :has(>.sketch) {
-    background: var(--riso-black);
-  }
-  .sketch {
-    --_noise: url(https://grainy-gradients.vercel.app/noise.svg);
-    inline-size: 250px;
-  }
-  .ball {
-    z-index: 1;
-    inline-size: 250px;
-    aspect-ratio: var(--ratio-1);
-    border-radius: calc(var(--big-int)*1px);
-    overflow: hidden;
-
-    & [class*=light] {
-      inline-size: 100%;
-      block-size: 100%;
-      background: radial-gradient(circle at 67% 30%, lightsalmon, crimson);
-      mix-blend-mode: multiply;
-    }
-    & [class*=shadow] {
-      block-size: 100%;
-      background-image:
-        radial-gradient(circle at 65% 35%, var(--trn), mediumblue),
-        var(--_noise);
-      filter: contrast(120%) brightness(900%);
-    }
-  }
-  .ground {
-    inline-size: 150%;
-    block-size: 140px;
-    inset-block-end: -10px;
-    inset-inline-start: -65%;
-    transform: rotateZ(7deg);
-    mix-blend-mode: multiply;
-
-    & [class*=shadow] {
-      inline-size: 95%;
-      block-size: 140px;
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse at 70%, navy, var(--trn)),
-        var(--_noise);
-      filter: contrast(150%) brightness(700%);
-    }
-  }
-}
-
 /* TODO */
 /* https://grainy-gradients.vercel.app/ */
 .grainy-gradient {
@@ -294,14 +274,14 @@
     ellipse at 70%,
     var(--accent),
     var(--trn)
-  ), url(https://grainy-gradients.vercel.app/noise.svg); /* 500x500 px */
+  ), url(https://grainy-gradients.vercel.app/noise.svg); /* 500px */
   filter: contrast(150%) brightness(700%);
 }
-/* & :has(> .grainy-gradient) {} */
 
 .border-gradient {
-  --num: 2;
-  --hint: calc(100% - 100% / (var(--num) + 1) * var(--num));
+  --n: 2;
+  --hint: calc(100% - 100% / (var(--n) + 1) * var(--n));
+
   border-color: var(--border-color, var(--background));
   border-style: solid;
   border-width: var(--_size, .125cqi);
@@ -323,6 +303,7 @@
 }
 
 .text-gradient {
+  /* color: transparent; */
   background: linear-gradient(
     to right,
     hsl(98 100% 62%),
@@ -330,6 +311,7 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--trn, transparent);
+  /* box-decoration-break: clone; */
 }
 
 .text-center { text-align: center; }
@@ -362,13 +344,37 @@
   -webkit-box-orient: vertical;
 }
 
+/* https://drafts.csswg.org/css-inline/#sizing-drop-initials */
 .has-dropcap {
-  /* @include config.drop-cap(6rem, 0.65); */
+  /* https://adrianroselli.com/2019/10/accessible-drop-caps.html#Ideal
+     https://css-tricks.com/snippets/css/drop-caps/ */
+
+  &::first-letter {
+    initial-letter: 3 drop;
+    initial-letter-align: leading;
+    margin-inline-end: 1ex;
+    /* box-shadow: 0 0 0 .1cqi lime; */
+  }
+
+  @supports not (initial-letter: 2 drop) {
+    &::first-letter {
+      float: left;
+      margin-block: .35ex;
+      margin-inline-end: .25ch;
+      font-family: inherit;
+      font-size: calc(var(--cap-size, 5) * 1rem);
+      line-height: var(--cap-lh, 1cap);
+    }
+  }
+  @supports not (line-height: 1cap) {
+    &::first-letter { --cap-lh: .6 }
+  }
 }
 
+/* https://drafts.csswg.org/css-writing-modes-4/ */
 .sideways {
   @media (min-width: 48em) {
-    /* … */
+    /* TODO */
   }
 }
 
@@ -391,6 +397,47 @@
     content: '';
     border-top: 0.5px solid var(--border-color);
   }
+}
+
+/* https://drafts.csswg.org/css-fonts-3/#propdef-font-variant-numeric */
+.format-nums,
+.fmt-n {
+  /* Enables the display of variants: */
+  --lnum-on: lining-nums;
+  --onum-on: oldstyle-nums;
+  --pnum-on: proportional-nums;
+  --tnum-on: tabular-nums;
+  --frac-on: diagonal-fractions;
+  --afrc-on: stacked-fractions;
+  --ordn-on: ordinal;
+  --zero-on: slashed-zero;
+  --normal: normal; /* <-- turns off all the variants listed above */
+  --variants:
+    var(--figure)     /* = [ lining-nums | oldstyle-nums ] */
+    var(--spacing)    /* = [ proportional-nums | tabular-nums ] */
+    var(--fraction);  /* = [ diagonal-fractions | stacked-fractions ] */
+
+  /* OpenType features: */
+  --common-set:
+    'lnum' var(--lnum, 1),
+    'onum' var(--onum, 0),
+    'pnum' var(--pnum, 1),
+    'tnum' var(--tnum, 0),
+    'frac' var(--frac, 0),
+    'afrc' var(--afrc, 0),
+    'ordn' var(--ordn, 0),
+    'zero' var(--zero, 0);
+
+  /* Presets: */
+  --oldstyle: 'onum' 1;
+  --tabular: 'tnum' 1;
+  --frac: 'frac' 1;
+  --old-td: var(--oldstyle), var(--tabular); /* <-- for tabular data */
+  --old-fr: var(--oldstyle), var(--frac);
+  --math: 'lnum' 1, 'afrc' 1, 'zero' 1;
+
+  font-variant-numeric: var(--variants, var(--normal));
+  font-feature-settings: var(--features, var(--common-set));
 }
 
 /* ----------------------------------- NEW ---------------------------------- */
@@ -444,14 +491,13 @@
     }
   }
 
-  /* https://en.wikipedia.org/wiki/Graph_paper
-     https://css-pattern.com/graph-paper/
-   */
   .graph-paper {
+    /* https://en.wikipedia.org/wiki/Graph_paper
+       https://css-pattern.com/graph-paper/ */
+
     --sqr-10: calc(1cm / 10); /* millimeter */
     --sqr-05: calc(1in / 5); /* engineering */
     --sqr-04: calc(1in / 4); /* quad */
-
 
     /* https://en.wikipedia.org/wiki/Prussian_blue */
     --blueprint-pb: hsl(205 100% 16%); /* #003153 */
