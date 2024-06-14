@@ -38,7 +38,7 @@ const doc = document, { documentElement: root } = doc;
     // const carousel = await import('./modules/carousel');
     // const map = await import('./modules/map');
 
-    console.clear();
+    // console.clear();
   }
 
   // https://www.webcomponents.org/specs

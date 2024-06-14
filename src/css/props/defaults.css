@@ -205,7 +205,7 @@
     /* Line Thickness */
     --border-width: var(--line-hair);
 
-    /* Add a few aliases, for instance: */
+    /* set the props aliases, for instance: */
     --line-hair: 0.5px; /* ~ */ --hairline: var(--line-hair);
     --line-thin: 1px;
     --line-medium: 3px; /* ~ */ --line-md: var(--line-medium);

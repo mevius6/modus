@@ -1,4 +1,8 @@
-@import url(link.css);
-@import url(button.css);
-@import url(dialog.css);
-@import url(popover.css);
+/* https://drafts.csswg.org/css-values-4/#example-ae720903
+ * https://infra.spec.whatwg.org/#strings
+ * https://url.spec.whatwg.org/#urls
+ */
+@import "link.css";
+@import "button.css";
+@import "dialog.css";
+@import "popover.css";

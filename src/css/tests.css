@@ -190,9 +190,6 @@
 @media (dynamic-range: high) or (color-gamut: p3) {
   /* --HD-color: true; */
 }
-/* TODO: @custom-media --* (…);
-   https://drafts.csswg.org/mediaqueries-5/#custom-mq
-   https://github.com/argyleink/open-props/blob/main/src/props.media.css */
 
 /* Results output */
 :where(output) {
@@ -215,7 +212,7 @@
 } */
 
 /* https://caniuse.com/css-variables
-   https://drafts.csswg.org/css-variables/
+   https://drafts.csswg.org/css-variables-2/
    https://drafts.csswg.org/css-variables/#long-variables */
 :where([data-test=props]) {
   --toggle: var(--supports-variables, var(--alert-ok));

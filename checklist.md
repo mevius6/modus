@@ -64,6 +64,7 @@
        └╴https://www.w3.org/TR/WCAG20-TECHS/
 
      https://developer.mozilla.org/en-US/docs/Web/Accessibility
+     https://appraisd-a11y.netlify.app/
 
      1. Structure (semantic "markup")
         https://www.a11yproject.com/resources/#html-and-aria

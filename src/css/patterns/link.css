@@ -56,13 +56,14 @@ a:where([aria-current=page]) {
         "opsz" var(--_opsz, 24),
         "wght" var(--_wght, 200),
         "ital" var(--_ital, 1);
-      font-feature-settings: "smcp" 1;
+      font-feature-settings: "smcp" 1, "c2sc" 1;
+      letter-spacing: .1618em;
       text-align: left;
       transition: inherit;
     }
     &:hover::before {
       --_a: 1;
-      --_opsz: 16;
+      --_opsz: 12;
       --_wght: 500;
       --_ital: 0;
     }
