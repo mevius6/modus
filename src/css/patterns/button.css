@@ -11,12 +11,11 @@
   --_accent: initial;
   --_text: initial;
   --_size: initial;
-
-  --_bg-light: #fff;
-  --_bg-dark: var(--background);
-  --_bg: var(--_bg-light); /* ButtonFace */
-  --_border: var(--border-color); /* ButtonBorder */
-
+  /*
+  --_bg: var(--btn-bg, buttonface);
+  --_text: var(--btn-text, buttontext);
+  --_border: var(--btn-border, buttonborder);
+  */
   --_icon-size: 1em;
   --_icon-color: var(--_accent, var(--link));
 
@@ -29,45 +28,83 @@
   justify-content: center;
   gap: var(--spacer-2x);
 
+  font-family: inherit;
   font-size: var(--_size);
   font-weight: var(--font-weight-7);
-  --wght: 500;
 
   color: var(--_text);
   background: var(--_bg);
-  border: var(--border-width) solid var(--_border);
+  border: var(--line-thin, thin) solid var(--_border, color-mix(
+    in oklab, var(--accent), var(--trn) 60%)
+  );
   border-radius: var(--border-radius-2);
-  /* box-shadow:
+  box-shadow:
     var(--shadow-2),
-    0 1px var(--background),
-    0 0 0 var(--_highlight-size) var(--_highlight); */
+    0 1px var(--_bg),
+    0 0 0 var(--_highlight-size) var(--_highlight);
 
-  padding-block: 0.75ch;
+  padding-block: .75ch;
   padding-inline: 2ex;
   text-align: center;
-  /* text-shadow: var(--_ink-shadow); */
+  /* text-shadow: ; */
   transition: border-color 0.5s var(--ease-3);
   user-select: none;
 }
 
 :where(button) {
   will-change: transform;
-  transform: translateX(var(--tx, 0)) scale(var(--scale, 1));
-  /* transition: background-color 0.25s, transform 0.25s; */
+  transform: translatey(var(--ty, 0)) scale(var(--scale, 1));
+  /* transition: transform 0.25s; */
 
-  background-color: hsl(210 60% var(--lightness, 30%));
-  color: var(--btn-text, var(--foreground));
+  &:hover  { --scale: 1.1; }
+  &:active { --scale: 0.9; --ty: .125ex; }
+
+  &:is(:hover, :focus) {
+    --_border:
+      color-mix(in oklab, var(--accent), hsl(var(--white)) 50%)
+  }
+
+  &.--muted { filter: grayscale(1) }
+  &.--ghost { /* … */ }
 }
 
-:where(button):hover {
-  --scale: 1.1;
-  --lightness: 40%;
-}
+@supports (color: hsl(from white h s l)) {
+  /*
+    https://caniuse.com/css-relative-colors
+    https://www.w3.org/TR/css-color-5/#relative-HSL
+  */
+  :where(button) {
+    --_bg-light: hsl(210deg 60% 70%);
+    --_bg-dark: hsl(210deg 60% 30%);
+    background-color: var(--_upd, var(--_bg));
 
-:where(button):active {
-  --scale: 0.9;
-  --lightness: 20%;
+    &:hover  { --_upd: hsl(from var(--_bg) h s calc(l + 10)) }
+    &:active { --_upd: hsl(from var(--_bg) h s calc(l - 10)) }
+
+    :where([data-theme-style=light]) & {
+      --_bg: var(--_bg-light);
+    }
+    :where([data-theme-style=dark]) & {
+      --_bg: var(--_bg-dark);
+    }
+  }
 }
+@supports not (color: hsl(from white h s l)) {
+  :where(button) {
+    background-color: hsl(210 60% var(--_upd, var(--lightness)));
+
+    &:hover  { --_upd: calc(var(--lightness) + 10%) }
+    &:active { --_upd: calc(var(--lightness) - 10%) }
+
+    :where([data-theme-style=light] &) {
+      --lightness: 70%;
+    }
+    :where([data-theme-style=dark] &) {
+      --lightness: 30%;
+    }
+  }
+}
+/* @supports (color: light-dark(black, snow)) {…} */
 
 @media (prefers-reduced-motion: no-preference) {
   :where(
