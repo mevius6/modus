@@ -13,7 +13,7 @@
 }
 
 /**
-  Defaults?..
+  Defaults?.. (meanings)
   * https://www.w3.org/TR/css-cascade/#cascading-origins
   * https://meiert.com/en/blog/user-agent-style-sheets/
   * https://drafts.csswg.org/css-scoping/#default-element-styles
@@ -195,31 +195,44 @@
 
 @layer props.borders {
   /* ----------------------------------
-   * Decorations
+   * Box Decorations
    * ---------------------------------- */
 
+  /* https://drafts.csswg.org/css-backgrounds/#borders
+     https://drafts.csswg.org/css-backgrounds/#corners */
+
   :where(html) {
-    --border-width: 1px;
-    --border-style: solid;
+    /* Line Thickness */
+    --border-width: var(--line-hair);
+
+    /* Add a few aliases, for instance: */
+    --line-hair: 0.5px; /* ~ */ --hairline: var(--line-hair);
+    --line-thin: 1px;
+    --line-medium: 3px; /* ~ */ --line-md: var(--line-medium);
+    --line-thick: 5px;
+
+    /* Line Patterns */
+    --border-style: var(--line-style, solid);
     --border-color: hsl(var(--gray));
     --border: var(--border-width) var(--border-style) var(--border-color);
 
-    /* Shaping → https://moderncss.dev/pure-css-shapes-3-ways/ */
+    /* Corner Shaping → https://moderncss.dev/pure-css-shapes-3-ways/ */
     --caret-size: 10px;
     --caret-up: 0 7px var(--caret-size) 7px;
     --caret-right: 7px 0 7px var(--caret-size);
 
-    /* Rounded corners */
+    /* Rounded Corners */
+    --border-radius: var(--border-radius-2);
 
     /* Fixed */
     --border-radius-1: 4px;
     --border-radius-2: 6px;
     --border-radius-3: 8px;
-    --border-radius: var(--border-radius-2);
 
     /* Responsive */
     --radius-1: 0.5rem;
     --radius-2: 1rem;
+    --radius-x: 1000rem; /* <-- max radii, e.g. for a pill/stadium shaped button */
     --radius-x: 1000rem; /* <-- max radii, e.g. for a pill/stadium shaped button */
   }
 }
@@ -466,13 +479,14 @@
     /* Misc helpers to fine control/tune GUI */
     --big-int: 9999;
 
-    /* what → https://w3c.github.io/wcag/understanding/target-size.html
-     * spec → https://w3c.github.io/wcag/21/guidelines/#target-size
-     * refs → https://w3c.github.io/wcag/understanding/target-size.html#resources
-     */
-     /* UPD
-        https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/#258-target-size-minimum-aa
-        https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html */
+    /*
+      Specs:
+        → https://w3c.github.io/wcag/21/guidelines/#target-size
+          upd; https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/#258-target-size-minimum-aa
+      Refs:
+        → https://w3c.github.io/wcag/understanding/target-size.html
+          upd; https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    */
     --min-touch-target-size: 44px; /* or 48px by Apple guidelines */
     --rem-tap-size: 2.75rem;
     --btn-min-size: var(--min-touch-target-size);
