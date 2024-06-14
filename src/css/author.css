@@ -1,55 +1,163 @@
 body:where([data-id=homepage]) {
-  /* --var-serif: Roslindale; */
+  --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
 
   :where([aria-labelledby=contact]) {
     --_bg: light-dark(hsl(var(--blue-light)), hsl(var(--blue)));
 
-    padding: var(--spacer-2x);
+    container-type: inline-size;
+    padding: var(--gutter);
+    margin-inline: var(--gutter);
     background-color: var(--_bg);
+    border-radius: var(--border-radius-2);
+
+    .keyline {
+      min-inline-size: calc(100cqi + var(--gutter)*2);
+      margin-inline: calc(var(--gutter)*-1);
+      gap: .5ch;
+    }
+  }
+  @container (20rem <= width < 32.5rem) {
+    .keyline {
+      --opsz: 20;
+      &::after,
+      &::before {
+        --border-imgsrc: repeating-linear-gradient(
+          -45deg,
+          var(--neon-lime) 0 2px,
+          var(--neon-purple) 0 4px,
+          var(--neon-pink) 0 6px,
+          color-mix(in oklab, var(--accent), var(--_bg) 50%) 0 12px
+        );
+      }
+    }
   }
 
-  :where([class*=tag]) { font-size: .75rem }
+  :where([class*=tag]) {
+    font-size: .75rem;
+    font-feature-settings: "c2sc" 1;
+    letter-spacing: -0.008em; /* 45×18 ~ 5:2 ~ 100×40 */
+    transform: translate(
+      calc(2/5 * 40 * -1%),
+      calc(2/5 * 100 * -1%)
+    );
+    /* overrides */
+    inset-inline-end: unset;
+    inset-block-end: unset;
+  }
 
   :where([class*=keyline]) {
-    letter-spacing: calc(var(--letter-spacing-4)*-1);
+    letter-spacing: calc(var(--letter-spacing-3)*-1);
 
     &::before,
     &::after {
-      border-color: var(--border-color);
       border-style: solid;
-      border-width: var(--border-width);
-      border-image-source: var(--border-imgsrc, linear-gradient(
-        -90deg,
-        var(--c1),
-        33.333%,
-        var(--c2)
-      ));
+      border-width: var(--line-md) 0 0;
+      border-image-source: var(--border-imgsrc, var(--to-left));
+      --to-left: linear-gradient(-90deg, var(--c1), 33.333%, var(--c2));
+      --to-right: linear-gradient(90deg, var(--c1), 33.333%, var(--c2));
       border-image-slice: 1;
       border-image-width: 1;
-    }
-
-    :where([data-theme-style=light]) & {
-      /* --c1: color-mix(in oklab, var(--accent), var(--trn) 96%); */
       --c1: color-mix(in oklab, var(--accent), var(--_bg) 80%);
       --c2: var(--accent);
-
-      &::after {
-        --border-imgsrc: linear-gradient(90deg, var(--c1), 33.333%,var(--c2));
-      }
     }
 
-    :where([data-theme-style=dark]) & {
-      --c1: color-mix(in oklab, var(--accent), var(--_bg) 80%);
-      --c2: var(--accent);
-
-      &::before {
-        --border-imgsrc: linear-gradient(90deg, var(--c1), 33.333%,var(--c2));
-      }
+    :where([data-theme-style=light] &) {
+      &::after { --border-imgsrc: var(--to-right); }
+    }
+    :where([data-theme-style=dark] &) {
+      &::before { --border-imgsrc: var(--to-right); }
     }
   }
 }
 
+/* CSS Noise Gradient (shadow)
+   → https://codepen.io/cjimmy/pen/XWRQPep */
+@layer {
+  :has(>.sketch) {
+    background: var(--sketch-bg, canvas);
+  }
+  svg > text {
+    --_size: 12.5rem;
+    --_dy: calc(var(--size) * .35);
+    --_variations:
+      "opsz" 48,
+      "wght" 500,
+      "ital" 1;
+    --_features:
+      "kern" on,
+      "rvrn" off,
+      "liga" on,
+      "dlig" on,
+      "smcp" on;
+  }
+  .sketch {
+    --_noise: url(https://grainy-gradients.vercel.app/noise.svg);
+    inline-size: 250px;
+  }
+  .ball {
+    z-index: 1;
+    inline-size: 250px;
+    aspect-ratio: var(--ratio-1);
+    border-radius: calc(var(--big-int)*1px);
+    overflow: hidden;
+
+    & [class*=light] {
+      inline-size: 100%;
+      block-size: 100%;
+      background: radial-gradient(circle at 67% 30%, lightsalmon, crimson);
+      mix-blend-mode: multiply;
+    }
+    & [class*=shadow] {
+      block-size: 100%;
+      background-image:
+        radial-gradient(circle at 65% 35%, var(--trn), mediumblue),
+        var(--_noise);
+      filter: contrast(120%) brightness(900%);
+    }
+  }
+  .ground {
+    inline-size: 150%;
+    block-size: 140px;
+    inset-block-end: -10px;
+    inset-inline-start: -65%;
+    transform: rotateZ(7deg);
+    mix-blend-mode: multiply;
+
+    & [class*=shadow] {
+      inline-size: 95%;
+      block-size: 140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 70%, navy, var(--trn)),
+        var(--_noise);
+      filter: contrast(150%) brightness(700%);
+    }
+  }
+}
+
+@layer layouts.header {
+  .page__header {
+    background:
+      linear-gradient(to bottom,
+        hsl(var(--honeydew) / .15),
+        33.333%,
+        hsl(var(--honeydew) / 0) 75%
+      );
+    backdrop-filter: brightness(80%);
+  }
+}
+
 @layer layouts.nav {
+  [data-theme-style=dark] aside > nav {
+    background-image: linear-gradient(127deg,
+      hsl(var(--honeydew) / .50),
+      25%,
+      color-mix(hsl, hsl(var(--honeydew) / .25), var(--background) 50),
+      75%,
+      hsl(var(--honeydew) / .125) 100%
+    );
+  }
+
   .nav {
     container-name: nav;
     container-type: inline-size;
@@ -58,7 +166,7 @@ body:where([data-id=homepage]) {
     display: flex;
     flex-direction: column;
   }
-  /* @container nav (width > 540px) { */
+  /* TODO */
   @container (orientation: landscape) {
     .nav__items {
       flex-direction: row;
@@ -166,11 +274,11 @@ body:where([data-id=homepage]) {
 
 @layer theme.color.ui-adjust {
   :where(html[data-theme-style=light]) {
-    --bg-hsl: var(--warm-white-3); /* same as var(--paper-1) */
+    --bg-hsl: var(--warm-white-3);
   }
 
   :where(html[data-theme-style=dark]) {
-    --accent-hsl: var(--coral);
+    /* --accent-hsl: var(--coral); */
     --bg-hsl: var(--green-dark);
   }
 }
@@ -181,9 +289,10 @@ body:where([data-id=homepage]) {
 
   :where(html) {
     --green-dark: var(--sw-night-watch);
-    --blue-light: var(--sw-upward); /* SW COTY 2024 */
+    --blue-light: var(--sw-upward, powderblue); /* SW COTY 2024 */
     --blue: var(--sw-georgian-bay);
-    --purple-dark: var(--sw-carnelian);
+    --honeydew: var(--sw-honeydew, honeydew); /* SW COTM June */
+    --maroon: var(--sw-carnelian, maroon);
   }
 }
 
@@ -191,9 +300,11 @@ body:where([data-id=homepage]) {
   :where(html) {
     /* TODO: Add RISO inks palette */
     --riso-black: hsl(30deg 3% 13%); /* #21201F */
+    --clear-medium: var(--off-white-5);
   }
+  /* @layer riso {} */
 }
 
 @layer reset {
-  picture:has(> img) { display: contents }
+  /* picture:has(> img) { display: contents } */
 }
