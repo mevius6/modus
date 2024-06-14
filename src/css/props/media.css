@@ -10,6 +10,11 @@
 @media (prefers-color-scheme: light) {…}
 @media (prefers-color-scheme: dark) {…} */
 
+/* https://www.w3.org/TR/mediaqueries-5/#scripting */
+@media (scripting: none) {
+   /* … */
+}
+
 /* TODO: Create and use custom MQs `@custom-media --* (…);`
    https://drafts.csswg.org/mediaqueries-5/#custom-mq
    https://github.com/argyleink/open-props
