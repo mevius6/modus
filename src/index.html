@@ -2,9 +2,17 @@
 <html class="no-js" dir="ltr" lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <!-- content="width=device-width,initial-scale=1,viewport-fit=cover" -->
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <!-- meta[name="theme-color" content="Canvas"] -->
 
     <!-- <script>
@@ -18,6 +26,67 @@
 
       window.addEventListener("load", downloadJSAtOnload, false);
     </script> -->
+
+    <title>Document</title>
+    <!-- meta[name=author content] -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- link:touch[sizes="180x180"] -->
+    <!-- TODO https://maskable.app/ -->
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- link:mf -->
+    <!-- meta:msapp -->
+    <meta name="color-scheme" content="dark light" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#72fa78"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#333"
+    />
+
+    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
+    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
+
+    <!-- SEO [S] -->
+    <meta name="description" content="A summary of page content." />
+    <meta name="robots" content="follow,index,max-image-preview:standard" />
+    <!-- TODO link[rel="canonical" href="https://"]+link[rel="next"] -->
+    <meta property="og:locale" content="ru" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Document" />
+    <meta property="og:description" content="A summary of page content." />
+    <!-- TODO meta[property="og:url" content=canonicalURL] -->
+    <meta property="og:site_name" content="Starter" />
+    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <!-- TODO https://vercel.com/docs/functions/og-image-generation -->
+    <!-- [max-size] (1.9:1) -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!-- [min-size] (2:1)
+    <meta property="og:image" content="/images/ogp_common.jpg" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="400" /> -->
+    <!-- TODO
+      meta:twcard
+      jsonld:site
+    -->
+    <!-- SEO [E] -->
+
+    <!--
+      https://web.dev/referrer-best-practices/
+      https://w3c.github.io/webappsec-referrer-policy/
+    -->
+    <!-- meta[name="referrer" content="strict-origin-when-cross-origin"] -->
+
+    <!-- TODO: Resource loading strategy -->
     <!--
       https://drafts.csswg.org/css-fonts-4/#font-format-definitions
       https://www.w3.org/TR/WOFF2/#IMT
@@ -58,55 +127,15 @@
           U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203A, U+2044, U+20AC,
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
+      /* https://www.unicode.org/versions/Unicode15.1.0/ */
     </style>
-
-    <title>Document</title>
-    <!-- meta[name=author content] -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- link:touch[sizes="180x180"] -->
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <!-- link:mf -->
-    <meta name="color-scheme" content="dark light" />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="#72fa78"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#333"
-    />
-
-    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
-    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
-
-    <!-- SEO [S] -->
-    <meta name="description" content="A summary of page content." />
-    <meta name="robots" content="follow, index, max-image-preview:large" />
-    <!-- link[rel="canonical" href="https://"]+link[rel="next"] -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Document" />
-    <meta property="og:description" content="A summary of page content." />
-    <!-- meta[property="og:url" content="https://"] -->
-    <meta property="og:site_name" content="Starter" />
-    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
-    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <!-- jsonld:site -->
-    <!-- SEO [E] -->
-
-    <!-- TODO: Resource loading strategy -->
     <!--
       <link rel="preload" href="css/tests.css" as="style"
             onload="this.onload=null;this.rel='stylesheet';var dlg=debug;dlg.showModal();" />
       <noscript><link rel="stylesheet" href="css/tests.css" /></noscript>
     -->
+    <!-- link[as="image" rel="preload" href="logo-or-doc-cover.jpg" fetchpriority="high"] -->
+
     <!-- The main stylesheet -->
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
     <!--
@@ -245,7 +274,7 @@
     <!-- Global Site Header (site-wide banner) -->
     <header
       id="banner"
-      class="page__header fixpos inset-start mx-auto d-flex items-center justify-between"
+      class="page__header fixpos inset-start mx-auto d-flex items-center justify-between border-gradient --voygb bg-canvas"
       itemscope
       itemtype="https://schema.org/WPHeader"
     >
@@ -358,8 +387,7 @@
         <div id="about" class="container">
           <article class="grid__content mx-auto flow">
             <h2>Second-level head</h2>
-            <!-- p*2>lorem -->
-            <p>
+            <p class="has-dropcap">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit
               quia quibusdam inventore? Sint suscipit molestiae repellat quam
               ipsum distinctio adipisci accusamus, quaerat nisi vel corrupti
@@ -376,11 +404,12 @@
 
         <!-- Slide Show -->
         <div id="slides" class="container">
+          <!-- slides:x -->
           <h2 id="carouselTitle" class="sr-only">Showcase</h2>
           <ul
             data-scroll="x smooth"
-            class="grid__content cols-repeat overscroll-x-contain scrollport snap-inline --mandatory --padding --snap-stop side-fade"
-            style="--col-count: 3; --col-width: 100%"
+            class="grid__content cols-repeat scrollport spaced snap-mandy snap-stop side-fade"
+            style="--col-count: 3; --col-width: 100%; --padding: var(--gutter)"
             role="group"
             aria-labelledby="carouselTitle"
           >
@@ -391,7 +420,6 @@
               Slide (two-column): li>article+picture
               slide:artpic
             -->
-
             <!-- Skeleton -->
             <li
               id="slide1"
@@ -435,9 +463,6 @@
                 <rect width="100%" height="100%"></rect>
               </svg>
             </li>
-
-            <!-- Nested gallery -->
-            <!-- li>fig.cols-repeat[role=group]>img*N -->
           </ul>
         </div>
 
@@ -446,36 +471,36 @@
             class="grid__center h2 text-center"
             style="--opsz: 48; --wght: 300; line-height: 1.35cap"
           >
-            Hardcore will&nbsp;never&nbsp;die but&nbsp;you&nbsp;will.
+            Hardcore<br />
+            will&nbsp;never&nbsp;die<br />
+            but&nbsp;you&nbsp;will.
           </blockquote>
         </div>
 
-        <!-- [for instance] -->
+        <!-- Gallery view -->
         <div class="grid__full">
-          <figure class="d-grid cols-triptych">
+          <!-- [triptych, for instance] -->
+          <figure class="d-grid cols-triptych" role="group">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
-              <rect width="100%" height="100%"></rect>
+              <rect x="0" y="0" width="100%" height="100%"></rect>
             </svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1200">
-              <rect width="100%" height="100%"></rect>
+              <rect x="0" y="0" width="100%" height="100%"></rect>
             </svg>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
-              <rect width="100%" height="100%"></rect>
+              <rect x="0" y="0" width="100%" height="100%"></rect>
             </svg>
           </figure>
         </div>
 
         <!-- Contact -->
-        <form
-          class="grid__center border-gradient --voygb"
-          aria-labelledby="contact"
-        >
-          <mark class="abspos tag text-uppercase">todo</mark>
+        <form class="grid__content relpos" aria-labelledby="contact">
+          <mark class="abspos inset-end tag uppercase">todo</mark>
           <fieldset class="flex-centered flow">
             <legend
               id="contact"
               class="h3 keyline"
-              style="--opsz: 24; --wght: 250"
+              style="--opsz: 24; --wght: 275"
             >
               Think different.
             </legend>
@@ -484,7 +509,7 @@
         </form>
 
         <!-- [CCS 2D-drawing and SVG] -->
-        <div class="grid__full relpos flex-centered">
+        <div class="grid__full relpos flex-centered no-scroll">
           <div class="sketch abspos">
             <div class="ground abspos">
               <div class="ground-shadow"></div>
@@ -501,7 +526,6 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1920 823"
           >
-            <!-- dy=font-size*.35 -->
             <text
               fill="currentColor"
               dy="4.2rem"
@@ -510,11 +534,19 @@
               text-anchor="middle"
               text-rendering="geometricPrecision"
             >
-              FIN
+              fin
             </text>
             <style>
               <![CDATA[
-                text { font: small-caps bold 12rem/1cap monospace; }
+                text {
+                  text-transform: capitalize;
+                  font-family: revert;
+                  font-size: var(--_size);
+                  font-variation-settings:var(--_variations);
+                  font-feature-settings: var(--_features);
+                  color: var(--foreground);
+                  filter: drop-shadow(-8px .016em .016em #0005);
+                }
               ]]>
             </style>
           </svg>
@@ -549,9 +581,39 @@
         >
           <circle cx="5" cy="5" r="5" fill="greenyellow" />
         </marker>
-        <!-- SVG Filters
-             https://svgwg.org/svg2-draft/
-             https://drafts.fxtf.org/filter-effects/#FilterElement -->
+        <!--
+          SVG Filters
+          → https://svgwg.org/svg2-draft/
+          → https://drafts.fxtf.org/filter-effects/#FilterElement
+        -->
+        <!-- Chromatic aberration filter -->
+        <filter id="ca" color-interpoation-filters="sRGB">
+          <feColorMatrix
+            in="SourceGraphic"
+            values="1 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 1 0"
+          ></feColorMatrix>
+          <feOffset dx="2" result="cr"></feOffset>
+          <feColorMatrix
+            in="SourceGraphic"
+            values="0 0 0 0 0
+                    0 1 0 0 0
+                    0 0 0 0 0
+                    0 0 0 1 0"
+          ></feColorMatrix>
+          <feOffset dy="2" result="cg"></feOffset>
+          <feColorMatrix
+            in="SourceGraphic"
+            values="0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 1 0 0
+                    0 0 0 1 0"
+          ></feColorMatrix>
+          <feBlend in="cr" mode="screen"></feBlend>
+          <feBlend in="cg" mode="screen"></feBlend>
+        </filter>
       </defs>
     </svg>
 
