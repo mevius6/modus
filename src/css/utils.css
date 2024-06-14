@@ -1,5 +1,5 @@
-@import url(./utilities/layout-model.css);
-@import url(./utilities/scroll-control.css);
+@import "utilities/layout-model.css";
+@import "utilities/scroll-control.css";
 
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
@@ -353,13 +353,13 @@
     initial-letter: 3 drop;
     initial-letter-align: leading;
     margin-inline-end: 1ex;
-    /* box-shadow: 0 0 0 .1cqi lime; */
+    /* border: 1px crimson dashed; */
   }
 
-  @supports not (initial-letter: 2 drop) {
+  @supports not (initial-letter: 2 drop) { /* 🦊 🧭 */
     &::first-letter {
       float: left;
-      margin-block: .35ex;
+      margin-block-start: .125ch;
       margin-inline-end: .25ch;
       font-family: inherit;
       font-size: calc(var(--cap-size, 5) * 1rem);

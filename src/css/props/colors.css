@@ -24,10 +24,12 @@
     @layer red, orange, yellow, green, blue, purple, neutral, pastel;
 
     /* Go → https://samples.sherwin-williams.com/
-            + [searchQuery]
+            └╴[searchQuery]
               ?sampleModal=[colorId]
        e.g. SW6428
        https://samples.sherwin-williams.com/?sampleModal=SW6428
+       —or—
+       Go → https://www.sherwin-williams.com/en-us/color/color-family
     */
 
     @layer red {
