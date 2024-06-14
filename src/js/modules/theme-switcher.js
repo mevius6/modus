@@ -47,16 +47,15 @@ template.innerHTML = `
     }
 
     label {
-      display: inline-flex;
       position: relative;
+      /*
       border-width: 1px;
       border-style: solid;
-      border-color: var(--${NAME}-border-color, transparent);
+      border-color: var(--${NAME}-border-color, transparent); */
       border-radius: 50%;
-      padding: .1ch;
-      /*
+      font-family: ui-monospace, monospace;
       font-size: var(--${NAME}-font-size, 14px);
-      line-height: 1; */
+      line-height: 1cap;
     }
 
     @media (hover: hover) {
