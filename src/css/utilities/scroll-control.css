@@ -52,6 +52,9 @@
 
     scroll-snap-type: var(--snap-type, var(--_axis) var(--_strictness));
 
+    padding: var(--padding, initial);
+    scroll-padding: var(--padding, auto);
+
     &:is(.snap-x) { --_axis: x; }
     &:is(.snap-y) { --_axis: y; }
 
@@ -69,17 +72,20 @@
     &:is(.snap-end)    { --snap-align: end; }
     &:is(.snap-center) { --snap-align: center; }
 
-    &:is(.--snap-stop) { --snap-stop: always; }
+    &:is(.snap-stop) { --snap-stop: always; }
 
-    &:is(.--padding) {
-      --padding: 1rem;
-
-      padding: var(--padding);
-      scroll-padding: var(--padding);
-    }
+    &:is(.spaced) { --padding: 1rem; }
 
     &:is(.scroll-margin) {
       scroll-margin: var(--scroll-item-margin, 1rem);
+    }
+
+    /* TODO presets */
+    &:where([data-scroll~=x]:is(.snap-mandy)), /* alias */
+    &:where([data-scroll~=x]:is(.--mandatory)) {
+      overscroll-behavior-x: contain;
+      --_axis: inline; /* x */
+      --_strictness: mandatory;
     }
 
     /* for scroll items */
