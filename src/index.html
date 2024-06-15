@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" dir="ltr" lang="ru">
+<html class="no-js" dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -56,8 +56,9 @@
     <!-- SEO [S] -->
     <meta name="description" content="A summary of page content." />
     <meta name="robots" content="follow,index,max-image-preview:standard" />
-    <!-- TODO link[rel="canonical" href="https://"]+link[rel="next"] -->
-    <meta property="og:locale" content="ru" />
+    <link rel="canonical" href="https://modus-nine.vercel.app" />
+    <!-- <link rel="next" href="https://"> -->
+    <meta property="og:locale" content="en" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Document" />
     <meta property="og:description" content="A summary of page content." />
@@ -167,58 +168,6 @@
       </dialog>
     </noscript>
 
-    <dialog id="debug" class="flow results">
-      <h2>Results output</h2>
-      <ol>
-        <li data-test="at-container">
-          <span>Container Queries</span>
-          <output></output>
-        </li>
-        <li data-test="at-layer">
-          <span>Layering</span>
-          <output></output>
-        </li>
-        <li data-test="at-property">
-          <span>Houdini Painting API & At-Property Rule</span>
-          <output></output>
-        </li>
-        <li data-test="props">
-          <span>Custom Properties</span>
-          <output></output>
-        </li>
-        <li data-test="at-scope">
-          <span>Scoping</span>
-          <output></output>
-        </li>
-        <li data-test="nesting">
-          <span>Nesting</span>
-          <output></output>
-        </li>
-        <li data-test="anchoring">
-          <span>Anchor Positioning</span>
-          <output></output>
-        </li>
-        <li data-test="env">
-          <span>Environment Variables</span>
-          <output></output>
-        </li>
-        <li data-test="d-p3">
-          <span>Display colors in the P3 color space</span>
-          <output></output>
-        </li>
-        <li data-test="has">
-          <span>The relational pseudo-class: ‘:has()’</span>
-          <output></output>
-        </li>
-        <!-- ... etc., with many more <li> elements ... -->
-      </ol>
-      <form method="dialog">
-        <button onclick="window.dialog.close();">
-          <span>OK</span>
-        </button>
-      </form>
-    </dialog>
-
     <!-- Global Site Navigation (sidebar) -->
     <aside id="sidenav-open">
       <!-- https://webaim.org/techniques/skipnav/ -->
@@ -254,6 +203,11 @@
           <li id="4" class="nav__item">
             <a href="#contact" class="nav__link" title="" itemprop="url">
               <span class="nav__link-text" itemprop="name">Contact</span>
+            </a>
+          </li>
+          <li id="5" class="nav__item">
+            <a href="/test.html" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">Test</span>
             </a>
           </li>
         </ul>
@@ -351,18 +305,22 @@
         </noscript>
       </theme-switch>
 
-      <!-- <label aria-hidden="true">
+      <label aria-hidden="true">
         <input
           name="debug-mode"
           type="checkbox"
           onchange="document.documentElement.classList.toggle('debug');"
         />
         Debug
-      </label> -->
+      </label>
     </header>
 
     <!-- Main Content -->
-    <main id="main" itemprop="mainEntity" itemid="https://">
+    <main
+      id="main"
+      itemprop="mainEntity"
+      itemid="https://modus-nine.vercel.app"
+    >
       <!-- sect[aria-labelledby="region1"] -->
       <section class="grid bg-noise graph-paper">
         <!-- h2#region1.sr-only{title for region area 1} -->
@@ -429,7 +387,7 @@
               style="--i: 1"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
             </li>
             <li
@@ -440,10 +398,10 @@
               style="--i: 2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
             </li>
             <li
@@ -454,13 +412,13 @@
               style="--i: 3"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
-                <rect width="100%" height="100%"></rect>
+                <rect x="0" y="0" width="100%" height="100%"></rect>
               </svg>
             </li>
           </ul>
@@ -479,17 +437,36 @@
 
         <!-- Gallery view -->
         <div class="grid__full">
-          <!-- [triptych, for instance] -->
-          <figure class="d-grid cols-triptych" role="group">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
-              <rect x="0" y="0" width="100%" height="100%"></rect>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1200">
-              <rect x="0" y="0" width="100%" height="100%"></rect>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1200">
-              <rect x="0" y="0" width="100%" height="100%"></rect>
-            </svg>
+          <!-- [triptych] -->
+          <figure
+            class="d-grid cols-triptych"
+            role="group"
+            style="padding: 4cqi 1cqi; background: var(--riso-black)"
+          >
+            <div
+              class="bg-canvas"
+              style="
+                aspect-ratio: 7 / 12; /* 700×1200 */
+                clip-path: inset(0);
+                filter: url(#tex1);
+              "
+            ></div>
+            <div
+              class="bg-canvas"
+              style="
+                aspect-ratio: 7 / 5; /* 1680×1200 */
+                clip-path: inset(0);
+                filter: url(#tex2);
+              "
+            ></div>
+            <div
+              class="bg-canvas"
+              style="
+                aspect-ratio: 7 / 12; /* 700×1200 */
+                clip-path: inset(0);
+                filter: url(#tex3);
+              "
+            ></div>
           </figure>
         </div>
 
@@ -561,8 +538,7 @@
       itemscope
       itemtype="https://schema.org/WPFooter"
     >
-      <!-- adr>a:mail+br^a:tel[itemprop=telephone] -->
-      <small>
+      <small class="rounded-border-gradient">
         <!-- © ООО «Имя Бренда», 2023 -->
         <time datetime="2024" itemprop="copyrightYear">Y2K</time>
         &COPY;&nbsp;<span itemprop="name">Brandname</span>
@@ -571,21 +547,12 @@
 
     <svg width="0" height="0" data-hidden>
       <defs>
-        <marker
-          id="m1"
-          viewBox="0 0 10 10"
-          refX="5"
-          refY="5"
-          markerWidth="8"
-          markerHeight="8"
-        >
-          <circle cx="5" cy="5" r="5" fill="greenyellow" />
-        </marker>
         <!--
           SVG Filters
           → https://svgwg.org/svg2-draft/
           → https://drafts.fxtf.org/filter-effects/#FilterElement
         -->
+
         <!-- Chromatic aberration filter -->
         <filter id="ca" color-interpoation-filters="sRGB">
           <feColorMatrix
@@ -614,6 +581,45 @@
           <feBlend in="cr" mode="screen"></feBlend>
           <feBlend in="cg" mode="screen"></feBlend>
         </filter>
+
+        <!-- SVG textures variations -->
+        <g style="color: var(--lighting-color)">
+          <filter id="tex1" color-interpolation-filters="sRGB">
+            <feTurbulence
+              baseFrequency=".0371 .0713"
+              numOctaves="4"
+            ></feTurbulence>
+            <feDiffuseLighting>
+              <feDistantLight azimuth="90" elevation="5"></feDistantLight>
+            </feDiffuseLighting>
+            <feColorMatrix type="luminanceToAlpha"></feColorMatrix>
+            <feSpecularLighting lighting-color="currentColor">
+              <feDistantLight azimuth="90" elevation="50"></feDistantLight>
+            </feSpecularLighting>
+          </filter>
+          <filter id="tex2" color-interpolation-filters="sRGB">
+            <feTurbulence
+              baseFrequency=".0371 .0713"
+              numOctaves="4"
+            ></feTurbulence>
+            <feSpecularLighting lighting-color="currentColor">
+              <feDistantLight azimuth="90" elevation="50"></feDistantLight>
+            </feSpecularLighting>
+          </filter>
+          <filter id="tex3" color-interpolation-filters="sRGB">
+            <feTurbulence
+              baseFrequency=".0371 .0713"
+              numOctaves="4"
+            ></feTurbulence>
+            <feDiffuseLighting>
+              <feDistantLight azimuth="90" elevation="5"></feDistantLight>
+            </feDiffuseLighting>
+            <feColorMatrix type="luminanceToAlpha"></feColorMatrix>
+            <feSpecularLighting lighting-color="currentColor">
+              <feDistantLight azimuth="90" elevation="50"></feDistantLight>
+            </feSpecularLighting>
+          </filter>
+        </g>
       </defs>
     </svg>
 

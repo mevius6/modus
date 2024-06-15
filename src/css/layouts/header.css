@@ -1,4 +1,7 @@
-/* TODO: Top-sticky banner; show/hide on scroll */
+/* TODO: Top-sticky banner; show/hide on scroll
+  https://ryanmulligan.dev/blog/sticky-header-scroll-shadow/
+  https://github.com/hexagoncircle/scrollspy-nav
+*/
 
 .page__header {
   --_zi: 1010;

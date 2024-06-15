@@ -6,7 +6,8 @@
 .d-flex { display: flex; }
 
 /* Flex utility classes */
-/* https://tailwindcss.com/docs/justify-content */
+/* https://tailwindcss.com/docs/justify-content
+   https://github.com/primer/css/blob/main/src/utilities/flexbox.scss#L1 */
 
 .flex-row { flex-direction: row; }
 .flex-col { flex-direction: column; }

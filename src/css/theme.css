@@ -121,6 +121,17 @@
       block-size: 100%;
     }
   }
+
+  svg:is([width=0],[data-hidden]) {
+    [data-theme-style=light] & {
+      /* --lighting-color: hsl(var(--blaze-orange)); */
+      --lighting-color: hsl(var(--aurora-pink));
+    }
+    [data-theme-style=dark] & {
+      /* --lighting-color: hsl(var(--signal-green)); */
+      --lighting-color: hsl(var(--saturn-yellow));
+    }
+  }
 }
 
 @layer theme.support.any {

@@ -34,7 +34,7 @@
 }
 
 :host{contain:content;display:block}
-theme-switch > noscript {
+theme-switch {
   form{margin:0;padding:0;background:transparent;color:inherit}fieldset{border:0;margin:0;padding:0}legend{font:var(--theme-switch-legend-font,inherit);padding:0;margin-block-end:0.5rem}input,label{cursor:pointer}
 }
 noscript { display: contents }

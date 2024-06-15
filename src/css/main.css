@@ -25,9 +25,7 @@
  */
 @import url(./layouts/index.css);
 @import url(./layouts/grid.css) layer(utilities.grid);
+@import url(./layouts/skeleton.css) layer(utilities);
 
 /* Case-, context- or page-specific ruleset */
 @import url(author.css);
-
-/* → https://github.com/css-modules/css-modules
-   → https://glenmaddern.com/articles/css-modules */

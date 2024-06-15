@@ -3,6 +3,7 @@
 <!-- TODO List
      https://alistapart.com/article/daily-ethical-design/
      https://alistapart.com/article/mobile-first-css-is-it-time-for-a-rethink/
+     https://www.joshwcomeau.com/snippets/html/html-skeleton/
 
   1. Microdata
      https://whatwg.org/
@@ -144,6 +145,7 @@
      https://www.axis-praxis.org
      https://play.typedetail.com/
      http://www.very-able-fonts.com/
+     https://fonts.withgoogle.com/tilt
 
      Open source variable fonts with Cyrillic support:
      * https://v-fonts.com/fonts/amstelvar

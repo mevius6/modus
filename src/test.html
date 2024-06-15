@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--
+  https://www.w3.org/wiki/TPAC
+  https://w3c.github.io/test-results/
+
+  https://webstatus.dev/
+  https://github.com/mdn/browser-compat-data/
+  https://github.com/web-platform-dx/web-features
+  https://github.com/web-platform-tests/wpt
+  https://wpt.fyi/
+  https://web-platform-tests.org/
+
+  https://www.oddbird.net/2023/05/01/web-platform-tests-polyfills/
+  https://www.devdoc.net/web/developer.mozilla.org/en-US/docs/web-platform-tests.html
+  https://firefox-source-docs.mozilla.org/web-platform/index.html
+-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <!-- <meta name="theme-color" content="Canvas" /> -->
+
+    <!-- <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'has-js');
+
+      function downloadJSAtOnload() {
+        var element = document.createElement("script");
+        element.src = "/js/tests.js";
+        document.body.appendChild(element);
+      }
+
+      window.addEventListener("load", downloadJSAtOnload, false);
+    </script> -->
+
+    <title>CSS Feature Detection</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- SEO [S] -->
+    <meta name="description" content="Testing Web Platform Features." />
+    <!--
+      https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives
+      https://yandex.ru/support/webmaster/controlling-robot/meta-robots.html
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="yandex" content="noindex, nofollow" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    <!-- SEO [E] -->
+
+    <!--
+      https://web.dev/referrer-best-practices/
+      https://w3c.github.io/webappsec-referrer-policy/
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link
+      rel="preload"
+      href="css/tests.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet';var dlg=debug;dlg.showModal();"
+    />
+    <noscript><link rel="stylesheet" href="css/tests.css" /></noscript>
+    <link
+      rel="stylesheet"
+      href="css/layouts/test-page.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+
+  <body class="page graph-paper" data-id="test">
+    <dialog id="debug" class="flow results">
+      <h2>Results output</h2>
+      <ol class="">
+        <li data-test="at-container">
+          <span>Container Queries</span>
+          <output></output>
+        </li>
+        <li data-test="at-layer">
+          <span>Layering</span>
+          <output></output>
+        </li>
+        <li data-test="at-property">
+          <span>Houdini Painting API & At-Property Rule</span>
+          <output></output>
+        </li>
+        <li data-test="props">
+          <span>Custom Properties</span>
+          <output></output>
+        </li>
+        <li data-test="at-scope">
+          <span>Scoping</span>
+          <output></output>
+        </li>
+        <li data-test="nesting">
+          <span>Nesting</span>
+          <output></output>
+        </li>
+        <li data-test="anchoring">
+          <span>Anchor Positioning</span>
+          <output></output>
+        </li>
+        <li data-test="env">
+          <span>Environment Variables</span>
+          <output></output>
+        </li>
+        <li data-test="d-p3">
+          <span>Display colors in the P3 color space</span>
+          <output></output>
+        </li>
+        <li data-test="has">
+          <span>The relational pseudo-class: ‘:has()’</span>
+          <output></output>
+        </li>
+        <!-- ... etc., with many more <li> elements ... -->
+      </ol>
+      <form method="dialog">
+        <button onclick="window.dialog.close();">
+          <span>OK</span>
+        </button>
+      </form>
+    </dialog>
+
+    <!-- Global Site Navigation (sidebar) -->
+    <aside id="sidenav-open">
+      <!-- https://webaim.org/techniques/skipnav/ -->
+      <!-- a[href=#main].skip-link{Skip to main content} -->
+      <nav id="Nav" class="nav" aria-label="Primary Navigation">
+        <ul
+          class="nav__items"
+          itemscope
+          itemtype="https://schema.org/SiteNavigationElement"
+          aria-label="Main Menu"
+        >
+          <li id="1" class="nav__item">
+            <a href="/" class="nav__link" itemprop="url" aria-label="Home Page">
+              <span class="nav__link-text" itemprop="name">Home</span>
+            </a>
+          </li>
+          <li id="2" class="nav__item">
+            <a href="/#about" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">About</span>
+            </a>
+          </li>
+          <li id="3" class="nav__item">
+            <a href="/#slides" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">Slide Show</span>
+            </a>
+          </li>
+          <li id="4" class="nav__item">
+            <a href="/#contact" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name">Contact</span>
+            </a>
+          </li>
+          <li id="5" class="nav__item">
+            <a
+              href="/wpt.html"
+              class="nav__link"
+              title=""
+              itemprop="url"
+              aria-current="page"
+            >
+              <span class="nav__link-text" itemprop="name">Tests</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <a
+        href="#"
+        id="sidenav-close"
+        title="Close Menu"
+        aria-label="Close Menu"
+        onchange="history.go(-1)"
+      ></a>
+    </aside>
+
+    <!-- Global Site Header (site-wide banner) -->
+    <header
+      id="banner"
+      class="page__header fixpos inset-start mx-auto d-flex items-center justify-between border-gradient --voygb bg-canvas"
+      itemscope
+      itemtype="https://schema.org/WPHeader"
+    >
+      <!-- Nav Disclosure -->
+      <!-- https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/ -->
+      <a
+        class="d-flex"
+        href="#sidenav-open"
+        id="sidenav-button"
+        title="Open Menu"
+        aria-label="Open Menu"
+      >
+        <svg
+          class="🍔 mx-auto"
+          viewBox="0 0 50 40"
+          height="100%"
+          role="presentation"
+          focusable="false"
+          aria-label="trigram for heaven symbol"
+        >
+          <line x1="5%" x2="95%" y1="20%" y2="20%" />
+          <line x1="5%" x2="95%" y1="50%" y2="50%" />
+          <line x1="5%" x2="95%" y1="80%" y2="80%" />
+        </svg>
+      </a>
+
+      <theme-switch>
+        <form part="form">
+          <fieldset part="fieldset">
+            <!-- <legend part="legend">Поменять оформление</legend>
+                <input part="lightRadio" id="r1" type="radio" name="mode" value="${LIGHT}">
+                <label part="lightLabel" for="r1" title="Светлое оформление"></label>
+                <input part="darkRadio" id="r2" type="radio" name="mode" value="${DARK}">
+                <label part="darkLabel" for="r2" title="Тёмное оформление"></label> -->
+
+            <input part="toggleCheckbox" id="cb" type="checkbox" />
+            <label part="toggleLabel" for="cb" title="Поменять оформление">
+              <svg
+                class="sun-and-moon"
+                aria-hidden="true"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <mask class="moon" id="moon-mask">
+                  <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                  <circle cx="24" cy="10" r="6" fill="black" />
+                </mask>
+                <circle
+                  class="sun"
+                  cx="12"
+                  cy="12"
+                  r="6"
+                  mask="url(#moon-mask)"
+                  fill="currentColor"
+                />
+                <g class="sun-beams" stroke="currentColor">
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </g>
+              </svg>
+            </label>
+          </fieldset>
+        </form>
+      </theme-switch>
+
+      <label aria-hidden="true">
+        <input
+          name="debug-mode"
+          type="checkbox"
+          onchange="document.documentElement.classList.toggle('debug');"
+        />
+        Debug
+      </label>
+    </header>
+  </body>
+</html>

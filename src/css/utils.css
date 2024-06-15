@@ -1,6 +1,7 @@
 @import "utilities/layout-model.css";
 @import "utilities/scroll-control.css";
 
+/* https://css-tip.com/ */
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
 /* https://drafts.csswg.org/css-cascade/#all-shorthand
@@ -143,6 +144,10 @@
 .force-tap-size {
   min-inline-size: var(--min-touch-target-size);
   min-block-size: var(--min-touch-target-size);
+}
+
+.fake-shadow-pass {
+  box-shadow: 0 0 25cqmax 15cqmin var(--background) inset;
 }
 
 .side-fade {
@@ -300,6 +305,20 @@
   &:where(.--voygb) {
     border-image-source: var(--lin-gradient-voygb);
   }
+}
+
+.rounded-border-gradient {
+  --surface: var(--background);
+  --gradient: linear-gradient(to bottom right,#1f005c,#5b0060,#870160,#ac255e,#ca485c,#e16b5c,#f39060,#ffb56b);
+
+  /* inline-size: var(--size-content-1, 20ch);
+  aspect-ratio: var(--ratio-widescreen, 16/9); */
+  border: solid var(--size-2, .5rem) transparent;
+  border-radius: var(--radius-4, 2rem);
+  padding: 2ex 1ch;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    var(--gradient) border-box;
 }
 
 .text-gradient {
@@ -482,126 +501,4 @@
     0 6px 6px -3px var(--shade),
     0 12px 12px -6px var(--base),
     0 24px 24px -12px var(--base);
-}
-
-@layer skeleton {
-  :where(:root) {
-    &:has(input[name="debug-mode"]:checked) {
-      color-scheme: dark only;
-    }
-  }
-
-  .graph-paper {
-    /* https://en.wikipedia.org/wiki/Graph_paper
-       https://css-pattern.com/graph-paper/ */
-
-    --sqr-10: calc(1cm / 10); /* millimeter */
-    --sqr-05: calc(1in / 5); /* engineering */
-    --sqr-04: calc(1in / 4); /* quad */
-
-    /* https://en.wikipedia.org/wiki/Prussian_blue */
-    --blueprint-pb: hsl(205 100% 16%); /* #003153 */
-
-    color: color-mix(in lch, canvasText, transparent 15%);
-
-    :where([class*=debug]) & {
-      --sqr: var(--sqr-05);
-      background: var(--blueprint-pb);
-    }
-
-    &::before {
-      --_size: var(--sqr, 8px);
-      --_line: color-mix(in lch, canvasText, transparent 85%);
-
-      position: absolute;
-      inset-block-start: 0;
-      content: '';
-      z-index: -1;
-      block-size: 100svh;
-      inline-size: 100vw;
-      background:
-        linear-gradient(
-          90deg,
-          var(--_line) 1px,
-          transparent 1px var(--_size)
-        ) 50% 50% / var(--_size) var(--_size),
-        linear-gradient(
-          var(--_line) 1px,
-          transparent 1px var(--_size)
-        ) 50% 50% / var(--_size) var(--_size);
-      mask: linear-gradient(-25deg, transparent 30%, white);
-      transform-style: flat;
-      pointer-events: none;
-    }
-  }
-
-  [class~=placeholder] {
-    /* --i: 1; */
-    --_ratio: 9/8; /* 4/3; 3/2; 16/9; etc. */
-    --_hue: 90deg;
-    --_sat: 100%;
-    --_lum: 50%;
-    --_hsl:
-      calc(var(--_hue) * (var(--i) * var(--_ratio)))
-      calc(var(--_sat) * (var(--i) * .618033))
-      var(--_lum);
-
-    color: hsl(var(--_hsl)); /* SVG */
-    position: relative;
-    overflow: hidden;
-
-    display: inline-flex;
-    max-block-size: 100svb;
-
-    /* JS-free version of https://github.com/cloudfour/simple-svg-placeholder */
-    &::after {
-      z-index: 1;
-      content: attr(data-dummy);
-      text-align: center;
-      position: absolute;
-      inset-inline-start: 50%;
-      inset-block-start: 50%;
-      transform: translate(-50%,-50%);
-      /* transform: translate(-50%,-50%) rotatez(-.125turn); */
-      font: var(--font-weight-7) clamp(1.5rem, 2vw + 1rem, 2.25rem) var(--ui-mono);
-      color: #fff5;
-      color: color-mix(
-        in var(--colorspace, oklab),
-        hsl(var(--_hsl)),
-        hsl(var(--fg-hsl))
-        var(--c2-amount, 50%)
-      );
-      background: linear-gradient(
-        to right
-        in var(--colorspace, oklab),
-        hsl(var(--_hsl)),
-        hsl(var(--bg-hsl))
-      );
-      inline-size: 100%;
-      /* block-size: 100%;
-      display: grid;
-      place-content: center; */
-    }
-    /*
-    &:nth-of-type(1) { color: #1115; }
-    &:nth-of-type(2) { color: #2225; }
-    &:nth-of-type(3) { color: #3335; } */
-
-    & > svg {
-      inline-size: 100%;
-      margin-block: auto;
-      & + & { margin-inline-start: 2dvi;}
-    }
-    &:nth-of-type(1) > svg {
-      aspect-ratio: var(--ratio-3);
-    }
-    &:nth-of-type(2) > svg {
-      aspect-ratio: var(--ratio-square);
-      /* max-inline-size: calc(100% / 2); */
-    }
-    &:nth-of-type(3) > svg {
-      aspect-ratio: 9 / 16;
-      max-inline-size: calc(100% / 3);
-    }
-  }
 }

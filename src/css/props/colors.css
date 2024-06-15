@@ -17,6 +17,7 @@
      → https://www.sherwin-williams.com/architects-specifiers-designers/color
      → https://www.benjaminmoore.com/en-us/paint-colors/color-collections
      → https://www.oddbird.net/cascading-colors/
+     → https://www.oddcontrast.com
      → https://github.com/color-js/palettes
   */
 
@@ -215,7 +216,7 @@
 
     /* Cool Whites (undertones of blue, green or violet) */
     --cool-white-1: var(--sw-extra-white);
-    --cool-white-2: var(--sw-fleur-de-sel);
+    --cool-white-2: ;
 
     /* Warm Whites (undertones of yellow and red) */
     --warm-white-1: var(--sw-pure-white);
@@ -406,11 +407,11 @@
   }
 }
 
-/* ---------------------------------- */
-/*            Gradients ∇             */
-/* ---------------------------------- */
-
 @layer color.gradients {
+  /* ---------------------------------- */
+  /*            Gradients ∇             */
+  /* ---------------------------------- */
+
   :where(html) {
     --lin-coral-purple: linear-gradient(
       to right,
@@ -469,6 +470,10 @@
       33.333%,
       hsl(0deg 0% 100% / 25%)
     );
+    /* TODO
+       https://codepen.io/argyleink/pen/rNxrPMq
+       https://codepen.io/argyleink/details/GRZoQLB
+    */
 
     /* Stripes pattern */
     --gradient-pattern-stripes: repeating-linear-gradient(

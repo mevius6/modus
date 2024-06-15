@@ -1,0 +1,257 @@
+main[data-id=catalogue] {
+  :root {
+    --color-primary: hsl(350deg 100% 90%);
+    --surface-1: hsl(0deg 4% 99%);
+    --surface-2: hsl(0deg 4% 96%);
+    --surface-3: hsl(0deg 4% 90%);
+    --surface-shadow: hsl(0deg 0% 0% / 0.025);
+    --text: hsl(0deg 4% 12%);
+    --text-accent: hsl(0deg 2% 22%);
+  }
+
+  body:has([id="theme"]:checked) {
+    --color-primary: hsl(286deg 46% 47%);
+    --surface-1: hsl(0deg 5% 10%);
+    --surface-2: hsl(0deg 5% 12%);
+    --surface-3: hsl(0deg 4% 18%);
+    --surface-shadow: hsl(0deg 0% 0% / 0.075);
+    --text: hsl(0deg 2% 98%);
+    --text-accent: hsl(0deg 2% 90%);
+  }
+
+  body {
+    margin-block: 4rem;
+    padding-inline: 2rem;
+    font-family: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: var(--text);
+    background-color: var(--surface-1);
+  }
+
+  fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin-block-start: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--surface-2);
+    border: 1px solid var(--surface-3);
+    border-radius: 0.125rem;
+  }
+
+  fieldset legend {
+    margin-block-end: 0.25rem;
+  }
+
+  fieldset div {
+    display: flex;
+    align-items: baseline;
+    gap: 0.125rem;
+  }
+
+  .header {
+    margin-block-end: 2rem;
+  }
+
+  .content {
+    max-inline-size: 1000px;
+    margin-inline: auto;
+  }
+
+  .grid {
+    container-type: inline-size;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  }
+
+  /* Utils */
+  .u-icon-group {
+    display: inline-flex;
+    gap: 0.25rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  .u-icon-group svg {
+    --size: 1.2em;
+    position: relative;
+    top: 0.1em;
+    flex-shrink: 0;
+    inline-size: var(--size);
+    block-size: var(--size);
+    color: var(--text-accent);
+  }
+
+  .u-chip {
+    display: inline-flex;
+    padding: 0.25rem 0.5rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: unset;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    border-radius: 0.15rem;
+  }
+
+  .u-chip--outline {
+    background-color: unset;
+  }
+
+  /* Card */
+  .card {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 2px var(--surface-shadow), 0 2px 4px var(--surface-shadow),
+      0 4px 8px var(--surface-shadow), 0 8px 16px var(--surface-shadow),
+      0 16px 32px var(--surface-shadow), 0 32px 64px var(--surface-shadow);
+  }
+
+  .card .image {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    vertical-align: bottom;
+  }
+
+  .card .content {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: clamp(0.5rem, 5cqw, 0.75rem);
+    padding: clamp(1rem, 5cqw, 1.5rem);
+  }
+
+  .card .title {
+    flex-basis: 100%;
+    font-weight: bold;
+    font-size: clamp(1.5rem, 9cqw, 2rem);
+    line-height: 1.2;
+  }
+
+  .card .description {
+    flex-basis: 100%;
+    font-size: clamp(0.8rem, 5cqw, 1rem);
+  }
+
+  .card .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem 1rem;
+  }
+
+  .card .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: clamp(1rem, 5cqw, 1.5rem);
+  }
+
+  .card .category {
+    margin-inline-end: auto;
+  }
+
+  @container (min-width: 350px) {
+    .card .contact {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  body:has([id="layout"]:checked) .grid {
+    grid-template-columns: initial;
+  }
+
+  @container (min-width: 600px) {
+    body:has([id="layout"]:checked) .card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "image content"
+        "image content";
+    }
+
+    body:has([id="layout"]:checked) .card .image {
+      grid-area: image;
+      max-inline-size: 300px;
+      height: 100%;
+    }
+  }
+
+  body:has([name="filter"][value="bakery"]:checked)
+    .card:not([data-category="bakery"]) {
+    display: none;
+  }
+
+  body:has([name="filter"][value="diner"]:checked)
+    .card:not([data-category="diner"]) {
+    display: none;
+  }
+
+  body:has([name="filter"][value="café"]:checked)
+    .card:not([data-category="café"]) {
+    display: none;
+  }
+
+  body:has([name="filter"][value="taquería"]:checked)
+    .card:not([data-category="taquería"]) {
+    display: none;
+  }
+
+  /* Check browser support */
+  .warning {
+    display: none;
+  }
+
+  @supports not (selector(:has(+ *))) {
+    code {
+      position: relative;
+      top: -0.04em;
+      font-size: 1.1em;
+      font-family: "Courier", monospace;
+    }
+
+    .warning {
+      display: block;
+      margin-block-end: 0.5rem;
+      flex: 1 0 100%;
+      font-size: 0.8em;
+      line-height: 1.2;
+      background-color: papayawhip;
+      padding: 1rem;
+      border-radius: 0.25rem;
+    }
+  }
+}
+
+/* Check browser support */
+.warning {
+  display: none;
+}
+
+@supports not (selector(:has(+ *))) {
+  code {
+    position: relative;
+    top: -0.04em;
+    font-size: 1.1em;
+    font-family: "Courier", monospace;
+  }
+
+  .warning {
+    display: block;
+    margin-block-end: 0.5rem;
+    flex: 1 0 100%;
+    font-size: 0.8em;
+    line-height: 1.2;
+    background-color: papayawhip;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+}

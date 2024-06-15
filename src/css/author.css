@@ -1,4 +1,4 @@
-body:where([data-id=homepage]) {
+body:where([data-id=homepage]) { /* visual tweaks */
   --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
 
   :where([aria-labelledby=contact]) {
@@ -17,6 +17,7 @@ body:where([data-id=homepage]) {
     }
   }
   @container (20rem <= width < 32.5rem) {
+    /* https://codepen.io/hexagoncircle/pen/YjXowe */
     .keyline {
       --opsz: 20;
       &::after,
@@ -148,30 +149,42 @@ body:where([data-id=homepage]) {
 }
 
 @layer layouts.nav {
-  [data-theme-style=dark] aside > nav {
-    background-image: linear-gradient(127deg,
-      hsl(var(--honeydew) / .50),
-      25%,
-      color-mix(hsl, hsl(var(--honeydew) / .25), var(--background) 50),
-      75%,
-      hsl(var(--honeydew) / .125) 100%
-    );
+  aside > nav {
+    backdrop-filter: blur(var(--blur-os));
+    /* :where([data-theme-style=light]) & {…} */
+    /* :where([data-theme-style=dark]) & {…} */
   }
 
   .nav {
     container-name: nav;
     container-type: inline-size;
   }
+
   .nav__items {
     display: flex;
     flex-direction: column;
   }
-  /* TODO */
-  @container (orientation: landscape) {
-    .nav__items {
+
+  @container (orientation: landscape) { /* TODO */
+    /* .nav__items {
       flex-direction: row;
       gap: 1.5rem;
-    }
+    } */
+  }
+
+  .nav__item {
+    --delay: calc(var(--i, 1) * 150ms);
+    animation: fadeIn 1000ms var(--delay) forwards;
+    opacity: 0;
+
+    &:nth-child(2) { --i: 2; }
+    &:nth-child(3) { --i: 3; }
+    &:nth-child(4) { --i: 4; }
+    &:nth-child(5) { --i: 5; }
+  }
+
+  @keyframes fadeIn {
+    100% { opacity: 1; }
   }
 
   .nav__link {
@@ -284,7 +297,7 @@ body:where([data-id=homepage]) {
 }
 
 @layer theme.color.palettes {
-  /* [see]
+  /*
    → https://www.sherwin-williams.com/en-us/color/color-collections/colormix-forecast/2024 */
 
   :where(html) {

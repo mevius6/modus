@@ -40,9 +40,7 @@ nav {
   display: grid;
   place-content: center;
   min-block-size: 100svh;
-
   background-color: var(--background-a15);
-  backdrop-filter: blur(10px);
 }
 
 .nav__items {

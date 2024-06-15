@@ -8,6 +8,7 @@ Notes on CSS features
 -> https://piccalil.li/
 -> https://una.im/blog/
 -> https://io.google/2024/explore/
+[etc… webring]
 
 https://wpt.fyi/interop-2024
 https://github.com/CSS-Next/css-next/discussions/92
