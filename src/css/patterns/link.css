@@ -57,7 +57,8 @@ a:where([aria-current=page]) {
         "wght" var(--_wght, 200),
         "ital" var(--_ital, 1);
       font-feature-settings: "smcp" 1, "c2sc" 1;
-      letter-spacing: .1618em;
+      /* letter-spacing: .075em; */
+      letter-spacing: .150em;
       text-align: left;
       transition: inherit;
     }

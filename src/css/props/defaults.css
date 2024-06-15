@@ -139,6 +139,11 @@
      * Landscape := 2:1 | 3:2 | 4:3 | 16:9
      */
     --ratio-square: 1;
+    --ratio-landscape: 4/3;
+    --ratio-portrait: 3/4;
+    --ratio-widescreen: 16/9;
+    --ratio-ultrawide: 18/5;
+    --ratio-golden: 1.6180/1;
     --ratio-1: 1;
     --ratio-2: 4 / 3;  /* 1.333 (SD) */
     --ratio-3: 16 / 9; /* 1.788 (HD) */

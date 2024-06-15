@@ -206,9 +206,11 @@
 
     /* Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate. */
     --red-1: hsl(var(--sw-abalone-shell));
+    /* TODO: Add hue props `--red-{1–12}` */
     --red-9: hsl(var(--sw-redend-point));
-    --lead-1: var(--red-1);
+
     /* TODO: Add tokens, e.g. `--lead-*` or `--primary-*` */
+    --lead-1: var(--red-1);
 
     /**
      * Neutral (black, white, gray and beige)
@@ -466,10 +468,6 @@
       33.333%,
       hsl(0deg 0% 100% / 25%)
     );
-    /* TODO
-       https://codepen.io/argyleink/pen/rNxrPMq
-       https://codepen.io/argyleink/details/GRZoQLB
-    */
 
     /* Stripes pattern */
     --gradient-pattern-stripes: repeating-linear-gradient(

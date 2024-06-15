@@ -2,7 +2,9 @@
 
 /* https://codepen.io/collection/AaLmWp */
 
-/* https://open-props.style/ */
+/* https://open-props.style/
+   https://github.com/argyleink/gui-challenges/tree/main/buttons
+*/
 :where(.btn,
         button,
         input:is([type='button'], [type='submit'], [type='reset'])),
