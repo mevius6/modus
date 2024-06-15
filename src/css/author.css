@@ -1,6 +1,33 @@
 body:where([data-id=homepage]) { /* visual tweaks */
   --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
 
+  & footer {
+    --surface: var(--background);
+    --gradient: var(--lin-gradient-voygb);
+
+    margin: 1px;
+    padding: 2ex 1ch;
+    border: .125cqi transparent solid;
+    border-radius: 2px;
+    background:
+      linear-gradient(
+        var(--surface),
+        var(--surface)) padding-box,
+        var(--gradient) border-box;
+  }
+  & footer [itemprop=name] {
+    max-inline-size: 12ch;
+    font-variation-settings: "wght" 200, "ital" 1;
+    padding-inline: .5ch;
+    border-image:
+      linear-gradient(
+        transparent,
+        var(--accent),
+        transparent
+      )
+      1 / 1px;
+  }
+
   :where([aria-labelledby=contact]) {
     --_bg: light-dark(hsl(var(--blue-light)), hsl(var(--blue)));
 
@@ -17,7 +44,6 @@ body:where([data-id=homepage]) { /* visual tweaks */
     }
   }
   @container (20rem <= width < 32.5rem) {
-    /* https://codepen.io/hexagoncircle/pen/YjXowe */
     .keyline {
       --opsz: 20;
       &::after,
@@ -46,7 +72,7 @@ body:where([data-id=homepage]) { /* visual tweaks */
     inset-block-end: unset;
   }
 
-  :where([class*=keyline]) {
+  :where([class*=keyline]) { /* https://codepen.io/hexagoncircle/pen/YjXowe */
     letter-spacing: calc(var(--letter-spacing-3)*-1);
 
     &::before,
@@ -149,15 +175,10 @@ body:where([data-id=homepage]) { /* visual tweaks */
 }
 
 @layer layouts.nav {
-  aside > nav {
-    backdrop-filter: blur(var(--blur-os));
-    /* :where([data-theme-style=light]) & {…} */
-    /* :where([data-theme-style=dark]) & {…} */
-  }
-
   .nav {
     container-name: nav;
     container-type: inline-size;
+    backdrop-filter: blur(var(--blur-os));
   }
 
   .nav__items {
@@ -170,21 +191,6 @@ body:where([data-id=homepage]) { /* visual tweaks */
       flex-direction: row;
       gap: 1.5rem;
     } */
-  }
-
-  .nav__item {
-    --delay: calc(var(--i, 1) * 150ms);
-    animation: fadeIn 1000ms var(--delay) forwards;
-    opacity: 0;
-
-    &:nth-child(2) { --i: 2; }
-    &:nth-child(3) { --i: 3; }
-    &:nth-child(4) { --i: 4; }
-    &:nth-child(5) { --i: 5; }
-  }
-
-  @keyframes fadeIn {
-    100% { opacity: 1; }
   }
 
   .nav__link {

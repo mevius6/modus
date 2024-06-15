@@ -216,7 +216,6 @@
 
     /* Cool Whites (undertones of blue, green or violet) */
     --cool-white-1: var(--sw-extra-white);
-    --cool-white-2: ;
 
     /* Warm Whites (undertones of yellow and red) */
     --warm-white-1: var(--sw-pure-white);
@@ -309,25 +308,26 @@
     --sat: 0%;
     --lum: 100%; /* white */
     --hsl: var(--hue) var(--sat) var(--lum);
-
+    /**
+     * Grayscale: shades of gray
+     *
+     * --_lum:  98%; ~ #fafafa
+     * --_lum9: 96%; ~ #f4f4f4
+     * --_lum8: 95%; ~ #f2f2f2 (clear medium)
+     * --_lum7: 93%; ~ #ededed or #eee
+     * --_lum6: 80%; ~ #ccc
+     * --_lum5: 77%; ~ #c4c4c4
+     * --_lum4: 20%; ~ #323232 or #333
+     * --_lum3: 13%; ~ #212121 or #222
+     * --_lum2: 12%; ~ #1e1e1e
+     * --_lum1: 7%;  ~ #121212 or #111
+     * --_lum0: 0%;  ~ #000
+     */
     /* UPD: https://www.w3.org/TR/css-color-5/#relative-HSL */
     --off-white-2: hsl(from white h s calc(l - 2));
     --off-white-4: hsl(from white h s calc(l - 4));
     --off-white-5: hsl(from white h s calc(l - 5));
     --off-white-7: hsl(from white h s calc(l - 7));
-
-    /* Grayscale: shades of gray */
-    /* --_lit:  98%; *//* #fafafa */
-    /* --_lit9: 96%; *//* #f4f4f4 */
-    /* --_lit8: 95%; *//* #f2f2f2 (clear medium) */
-    /* --_lit7: 93%; *//* #ededed or #eee */
-    /* --_lit6: 80%; *//* #ccc */
-    /* --_lit5: 77%; *//* #c4c4c4 */
-    /* --_lit4: 20%; *//* #323232 or #333 */
-    /* --_lit3: 13%; *//* #212121 or #222 */
-    /* --_lit2: 12%; *//* #1e1e1e */
-    /* --_lit1: 7%;  *//* #121212 or #111 */
-    /* --_lit0: 0%;  *//* #000 */
 
     /* https://drafts.csswg.org/css-color-adjust-1/#preferred
        https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme
@@ -407,11 +407,7 @@
   }
 }
 
-@layer color.gradients {
-  /* ---------------------------------- */
-  /*            Gradients ∇             */
-  /* ---------------------------------- */
-
+@layer color.gradients { /* ∇ */
   :where(html) {
     --lin-coral-purple: linear-gradient(
       to right,

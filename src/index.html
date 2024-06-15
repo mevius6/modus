@@ -538,10 +538,12 @@
       itemscope
       itemtype="https://schema.org/WPFooter"
     >
-      <small class="rounded-border-gradient">
+      <small>
         <!-- © ООО «Имя Бренда», 2023 -->
         <time datetime="2024" itemprop="copyrightYear">Y2K</time>
-        &COPY;&nbsp;<span itemprop="name">Brandname</span>
+        &COPY;&nbsp;
+        <!-- <span itemprop="name">Brandname</span> -->
+        <input type="text" placeholder="Brandname" itemprop="name"></input>
       </small>
     </footer>
 

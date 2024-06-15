@@ -4,6 +4,21 @@
 /* https://css-tip.com/ */
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
+.stagger-init { /* FIXME: it's more suitable for `dialog[open]` now */
+  --delay: calc(var(--i, 1) * 150ms);
+  animation: fadeIn 1000ms var(--delay) forwards;
+  opacity: 0;
+
+  &:nth-child(2) { --i: 2; }
+  &:nth-child(3) { --i: 3; }
+  &:nth-child(4) { --i: 4; }
+  &:nth-child(5) { --i: 5; }
+}
+
+@keyframes fadeIn {
+  100% { opacity: 1; }
+}
+
 /* https://drafts.csswg.org/css-cascade/#all-shorthand
    initial | inherit | unset | revert | revert-layer */
 .all-initial { all: initial; }
@@ -218,8 +233,8 @@
   );
 }
 
-.bg-noise {
-  --noise: url(../images/noise.png); /* TODO: Add noise variations */
+.bg-noise { /* TODO: Add noise variations */
+  --noise: url(../images/noise.png);
 
   background: repeat center/150px var(--noise);
   background-attachment: fixed;
@@ -311,14 +326,13 @@
   --surface: var(--background);
   --gradient: linear-gradient(to bottom right,#1f005c,#5b0060,#870160,#ac255e,#ca485c,#e16b5c,#f39060,#ffb56b);
 
-  /* inline-size: var(--size-content-1, 20ch);
-  aspect-ratio: var(--ratio-widescreen, 16/9); */
-  border: solid var(--size-2, .5rem) transparent;
-  border-radius: var(--radius-4, 2rem);
-  padding: 2ex 1ch;
+  border: solid var(--line-medium) transparent;
+  border-radius: var(--radius-2);
   background:
-    linear-gradient(var(--surface), var(--surface)) padding-box,
-    var(--gradient) border-box;
+    linear-gradient(
+      var(--surface),
+      var(--surface)) padding-box,
+      var(--gradient) border-box;
 }
 
 .text-gradient {
