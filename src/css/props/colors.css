@@ -163,6 +163,11 @@
       --blaze-orange: 21deg 95% 56%;   /* #F96F27 */
       --saturn-yellow: 51deg 100% 59%; /* #FFE02E */
       --signal-green: 101deg 70% 56%;  /* #72DD42 */
+
+      --dayglo-pink: var(--aurora-pink);
+      --dayglo-orange: var(--blaze-orange);
+      --dayglo-yellow: var(--saturn-yellow);
+      --dayglo-green: var(--signal-green);
     }
   }
 }
