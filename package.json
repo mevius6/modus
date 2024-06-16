@@ -2,13 +2,30 @@
   "name": "modus",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",
+  "config": {
+    "repo": "https://github.com/mevius6/${npm_package_name}",
+    "port": {
+      "http": 8080,
+      "https": 8443
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "vc:dev": "vercel dev --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
+    "clean": "rm -rf public && rm -rf .vercel/cache",
+    "copy": "cp -r src/static/* ./public",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "npx eslint \"./src/js/*.js\" --fix",
+    "lint:css": "npx stylelint \"./src/scss/**/*.{css,scss}\" --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@vercel/blob": "^0.23.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
+    "stylelint-order": "^6.0.4"
   }
 }
