@@ -9,6 +9,26 @@
    → https://drafts.csswg.org/css2/#system-colors
 */
 
+/* TODO: design system */
+/* @property --brand {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hotpink;
+}
+:root, * {
+  --brand-highlight: color-mix(in oklab, var(--brand), white);
+  --brand-shadow: color-mix(in oklab, var(--brand), black);
+  --brand-gradient: linear-gradient(in oklab,
+    var(--brand-highlight),
+    var(--brand)
+  );
+
+  @media (prefers-color-scheme: dark) {
+    --brand: lightstink;
+  }
+}
+*/
+
 @layer color.swatches { /* Pre-defined color props */
   /* Sub-layers order */
   @layer neon, families;

@@ -97,8 +97,6 @@
         & [role]:where(p)::after {
           inset-block-end: -100%;
           inset-inline-start: 0;
-
-          /* color: red; */
         }
       }
     }
