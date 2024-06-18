@@ -1,22 +1,37 @@
 @import "utilities/layout-model.css";
 @import "utilities/scroll-control.css";
 
-/* https://css-tip.com/ */
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
-.stagger-init { /* FIXME: it's more suitable for `dialog[open]` now */
+/* https://www.youtube.com/watch?v=6qpEOBkDr88 */
+.grid-stack {
+  /* display: grid; */
+  grid: [stack] / [stack];
+}
+
+.pile {
+  display: grid;
+
+  > * {
+    grid-area: 1/1;
+  }
+}
+
+.center             { place-self: center }
+.corner-start-start { place-self: start }
+.corner-start-end   { place-self: start end }
+.corner-end-start   { place-self: end start }
+.corner-end-end     { place-self: end end }
+
+.staggered-anim { /* FIXME: it's more suitable for `dialog[open]` now */
   --delay: calc(var(--i, 1) * 150ms);
-  animation: fadeIn 1000ms var(--delay) forwards;
   opacity: 0;
+  animation: fade-in 1000ms var(--delay) forwards;
 
   &:nth-child(2) { --i: 2; }
   &:nth-child(3) { --i: 3; }
   &:nth-child(4) { --i: 4; }
-  &:nth-child(5) { --i: 5; }
-}
-
-@keyframes fadeIn {
-  100% { opacity: 1; }
+  &:nth-child(5) { --i: 5; } /* ~ .75s */
 }
 
 /* https://drafts.csswg.org/css-cascade/#all-shorthand
@@ -30,11 +45,13 @@
 .zi    { z-index: var(--zi, 1) }
 .zi-10 { z-index: var(--zi, 10) }
 .zi-20 { z-index: var(--zi, 20) }
+
 /* etc. */
 
 /* https://web.dev/content-visibility/ */
 .content-vis {
   content-visibility: auto;
+
   /* when E is subject to size containment
      https://wicg.github.io/display-locking/sample-code/contain-intrinsic-size-examples.html */
   contain-intrinsic-size: auto var(--size-containment, 1000px);
@@ -70,8 +87,8 @@
 
 /* bottom-right */
 .inset-end {
-  inset-block-end: 0;
   inset-inline-end: 0;
+  inset-block-end: 0;
 }
 
 .sticky {
@@ -103,7 +120,7 @@
 .mx-auto { margin-inline: auto; }
 .my-auto { margin-block: auto; }
 
-[class*=content-wrap] { /* .content-wrapper */
+[class*=content-wrap] { /* content-wrap(per) */
   /* i.e. min(max-content, max(min-content, stretch)) */
   max-width: fit-content;
   max-height: fit-content;
@@ -113,7 +130,7 @@
 }
 
 /* A wrapper for content of unknown size */
-[class*=overlay-wrap] { /* .overlay-wrapper */
+[class*=overlay-wrap] { /* overlay-wrap(per) */
   position: fixed;
   inset: 0;
   width: fit-content;
@@ -121,16 +138,15 @@
   margin: auto;
 }
 
-/* TODO: padding class names -> (p | px-* | py-* | pt-[10] | etc. ) */
+/* TODO: padding utility classes -> (p | px-* | py-* | pt-[10] | etc. )
+   or `.spaced-{x|y}` mixin?..
+*/
 
 .flow > * + * {
   margin-block-start: var(--flow-space, var(--spacer-2x));
 }
 
-/* rounded-pill */
-[class*=cta] { border-radius: calc(var(--big-int) * 1px) !important; }
-
-/* :where(.is-anchor-link) {…} */
+.rounded-pill { border-radius: calc(var(--big-int) * 1px) !important; }
 
 .has-outline {
   outline: var(--accent) hidden 4px;
@@ -152,8 +168,8 @@
 }
 
 .space-unset {
-  padding-inline: unset;
   padding-block: unset;
+  padding-inline: unset;
 }
 
 .force-tap-size {
@@ -234,7 +250,7 @@
 }
 
 .bg-noise { /* TODO: Add noise variations */
-  --noise: url(../images/noise.png);
+  --noise: url("../images/noise.png");
 
   background: repeat center/150px var(--noise);
   background-attachment: fixed;
@@ -250,9 +266,9 @@
     );
 
   background-image: var(--gradient);
-  background-size: 100% 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: 100% 100vh;
 }
 
 .strips {
@@ -294,7 +310,7 @@
     ellipse at 70%,
     var(--accent),
     var(--trn)
-  ), url(https://grainy-gradients.vercel.app/noise.svg); /* 500px */
+  ), url("https://grainy-gradients.vercel.app/noise.svg"); /* 500px */
   filter: contrast(150%) brightness(700%);
 }
 
@@ -325,14 +341,14 @@
 .rounded-border-gradient {
   --surface: var(--background);
   --gradient: linear-gradient(to bottom right,#1f005c,#5b0060,#870160,#ac255e,#ca485c,#e16b5c,#f39060,#ffb56b);
-
-  border: solid var(--line-medium) transparent;
-  border-radius: var(--radius-2);
   background:
     linear-gradient(
       var(--surface),
       var(--surface)) padding-box,
       var(--gradient) border-box;
+
+  border: solid var(--line-medium) transparent;
+  border-radius: var(--radius-2);
 }
 
 .text-gradient {
@@ -344,6 +360,7 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--trn, transparent);
+
   /* box-decoration-break: clone; */
 }
 
@@ -353,6 +370,7 @@
 .caps,
 .uppercase,
 .text-uppercase { text-transform: uppercase; }
+
 .lowercase,
 .text-lowercase { text-transform: lowercase; }
 
@@ -370,10 +388,10 @@
 .font-smcp { font-variant-caps: small-caps; }
 
 .ellipse {
+  display: -webkit-box;
+  overflow: hidden;
   text-wrap: balance;
   -webkit-line-clamp: 3;
-  overflow: hidden;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
@@ -386,7 +404,6 @@
     initial-letter: 3 drop;
     initial-letter-align: leading;
     margin-inline-end: 1ex;
-    /* border: 1px crimson dashed; */
   }
 
   @supports not (initial-letter: 2 drop) { /* 🦊 🧭 */
@@ -412,10 +429,10 @@
 }
 
 :where([class~=tag]) {
-  line-height: 1.5;
   padding-inline: calc(.5lh / 2);
-  border-radius: calc(1cqi / 4);
+  line-height: 1.5;
   background: var(--neon-lime);
+  border-radius: calc(1cqi / 4);
 }
 
 :where([class*=keyline]) {
@@ -504,9 +521,6 @@
 
 .relative-shadow {
   --base: hsl(var(--tint, 214) 80% 27% / calc(var(--alpha, 4) * 1%));
-  /**
-   * Use relative syntax to get to: hsl(221 25% 22% / 40%)
-   */
   --shade: hsl(from var(--base) calc(h + 8) 25 calc(l - 5));
   --perfect-shadow:
     0 0 0 1px var(--base),

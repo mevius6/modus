@@ -75,17 +75,21 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
   /**
-    * font-size: inherit;
-    * font-family: inherit;
-    * font-style: inherit;
-    * font-weight: inherit;
-    */
+   * font-size: inherit;
+   * font-family: inherit;
+   * font-style: inherit;
+   * font-weight: inherit;
+   */
+  font: inherit;
 }
 
 /* https://github.com/necolas/normalize.css/blob/master/normalize.css */
 html {
+  /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
+  block-size: 100%;
+  block-size: -webkit-fill-available;
+
   /* autoprefixer: off */
   box-sizing: border-box;
   font-family: sans-serif, system-ui;
@@ -97,11 +101,8 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-
-  /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
-  block-size: 100%;
-  block-size: -webkit-fill-available;
 }
+
 /* autoprefixer: on */
 
 a {
@@ -154,8 +155,8 @@ svg {
   shape-rendering: geometricPrecision;
 
   &:not(:root) {
-    overflow: hidden;
     display: block;
+    overflow: hidden;
   }
 
   &:where(:not([fill])) {
@@ -197,7 +198,7 @@ button::-moz-focus-inner,
 [type=reset]::-moz-focus-inner,
 [type=submit]::-moz-focus-inner {
   padding: 0;
-  border-style: none;
+  border-style: hidden;
 }
 
 button:-moz-focusring,

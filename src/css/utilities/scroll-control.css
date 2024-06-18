@@ -7,17 +7,17 @@
 
   [data-scroll^=x],
   .scroller-x {
+    overflow: auto hidden;
     overflow-x: auto;
     overflow-y: hidden;
-    overflow: auto hidden;
     overflow-inline: auto;
   }
 
   [data-scroll^=y],
   .scroller-y {
+    overflow: hidden auto;
     overflow-x: hidden;
     overflow-y: scroll;
-    overflow: hidden auto;
     overflow-block: auto;
   }
 
@@ -83,9 +83,9 @@
     /* TODO presets */
     &:where([data-scroll~=x]:is(.snap-mandy)), /* alias */
     &:where([data-scroll~=x]:is(.--mandatory)) {
-      overscroll-behavior-x: contain;
       --_axis: inline; /* x */
       --_strictness: mandatory;
+      overscroll-behavior-x: contain;
     }
 
     /* for scroll items */

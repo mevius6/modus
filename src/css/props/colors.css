@@ -39,7 +39,6 @@
         --sw-coral-clay: 8deg 39% 59%;
         --sw-hushed-auburn: 14deg 21% 57%;
         --sw-redend-point: 20deg 23% 59%;
-        /* … */
       }
     }
 
@@ -47,7 +46,6 @@
       :where(html) {
         --sw-malted-milk: 24deg 33% 81%;
         --sw-cool-beige: 27deg 21% 72%;    /* C6B5A7 SW9086 Cool Beige */
-        /* … */
       }
     }
 
@@ -57,7 +55,6 @@
         --sw-paper-lantern: 37deg 64% 86%;
         --sw-vintage-gold: 33deg 45% 63%;
         --sw-natural-tan: 36deg 26% 81%;   /* DCD2C3 SW7567 Natural Tan */
-        /* … */
       }
     }
 
@@ -72,7 +69,6 @@
         --sw-rock-bottom: 135deg 3% 29%;   /* 484C49 SW7062 Rock Bottom */
         --sw-palm-leaf: 47deg 29% 30%;     /* 635936 SW7735 Palm Leaf */
         --sw-night-watch: 180deg 6% 20%;   /* 303636 SW9680 Night Watch */
-        /* … */
       }
     }
 
@@ -85,7 +81,6 @@
         --sw-gale-force: 202deg 19% 26%;   /* 35454E SW7605 Gale Force */
         --sw-stardew: 192deg 9% 68%;       /* A6B2B5 SW9138 Stardew */
         --sw-georgian-bay: 197deg 58% 32%; /* 22657F SW6509 Georgian Bay */
-        /* … */
       }
     }
 
@@ -95,7 +90,6 @@
         --sw-mystical-shade: 348deg 3% 67%;
         --sw-carnelian: 0deg 17% 29%;
         --sw-perle-noir: 270deg 3% 31%;
-        /* … */
       }
     }
 
@@ -111,7 +105,6 @@
         --sw-shiitake: 35deg 21% 73%;      /* C8BCAB SW9173 Shiitake */
         --sw-loggia: 35deg 21% 71%;
         --sw-foothills: 30deg 12% 45%;
-        /* … */
       }
     }
 
@@ -126,12 +119,11 @@
         --sw-paperwhite: 41deg 61% 92%;   /* F7EFDE SW7105 Paperwhite */
         --sw-greek-villa: 43deg 32% 91%;  /* F0ECE2 SW7551 Greek Villa */
         --sw-westhighland: 41deg 40% 92%; /* F3EEE3 SW7566 Westhighland White */
-        /* … */
       }
     }
   }
 
-  @layer neon { /* Set of fluorescent colors */
+  @layer neon { /* Set of fluo(rescent) colors */
     :where(html) {
       --neon-pink: color(display-p3 1 0 1);
       --neon-purple: color(display-p3 .5 0 1);
@@ -163,42 +155,11 @@
       --blaze-orange: 21deg 95% 56%;   /* #F96F27 */
       --saturn-yellow: 51deg 100% 59%; /* #FFE02E */
       --signal-green: 101deg 70% 56%;  /* #72DD42 */
-
       --dayglo-pink: var(--aurora-pink);
       --dayglo-orange: var(--blaze-orange);
       --dayglo-yellow: var(--saturn-yellow);
       --dayglo-green: var(--signal-green);
     }
-  }
-}
-
-/* For example: */
-
-@layer color.swatches {
-  /* 1. define new color hues */
-
-  :where(html) {
-    /* No. 2 Reds & Purples 2024 */
-    --sw-ravishing-coral: 12deg 68% 70%; /* E79580 SW6612 Ravishing Coral */
-    --sw-veri-berri: 295deg 14% 52%;     /* 937496 SW9069 Veri Berri */
-  }
-}
-
-@layer color.palettes {
-  /* 2. specify the roles of the new hues in the color palette */
-
-  /**
-    Arts on newly introduced CSS color funcs and syntax:
-    → https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/
-    → https://developer.chrome.com/docs/css-ui/css-color-mix
-    → https://www.smashingmagazine.com/2022/06/simplify-color-palette-css-color-mix/
-    → https://css-irl.info/shades-of-grey-with-color-mix/
-    → https://developer.chrome.com/docs/css-ui/css-color-mix
-    → https://developer.chrome.com/blog/css-relative-color-syntax/ */
-
-  :where(html) {
-    --coral: var(--sw-ravishing-coral);
-    --purple: var(--sw-veri-berri);
   }
 }
 
@@ -211,10 +172,11 @@
 
     /* Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate. */
     --red-1: hsl(var(--sw-abalone-shell));
+
     /* TODO: Add hue props `--red-{1–12}` */
     --red-9: hsl(var(--sw-redend-point));
 
-    /* TODO: Add tokens, e.g. `--lead-*` or `--primary-*` */
+    /* TODO: Add design tokens, e.g. `--lead-*` or `--primary-*` */
     --lead-1: var(--red-1);
 
     /**
@@ -274,12 +236,13 @@
     */
     --safari-black: #1e1e1e;
     --chrome-black: #121212;
+
     /* https://infra.spec.whatwg.org/#ascii-case-insensitive */
     /* https://www.w3.org/TR/css-color-4/#system-color-pairs */
     --system-fg: canvastext;
     --system-bg: canvas;
-
     --link: var(--accent, blue);
+
     /* www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple */
     --link-visited: var(--accent-shade, rebeccapurple);
     --text: var(--foreground); /* CanvasText */
@@ -307,6 +270,7 @@
   :where(html) {
     /* https://drafts.csswg.org/css-color/#hex-notation */
     --trn: hsl(0deg 0% 0% / 0%); /* #0000 */
+
     /* 4th digit in the HEX code specifies
        the color's alpha transparency */
 
@@ -315,6 +279,7 @@
     --sat: 0%;
     --lum: 100%; /* white */
     --hsl: var(--hue) var(--sat) var(--lum);
+
     /**
      * Grayscale: shades of gray
      *
@@ -392,27 +357,57 @@
 
     /* @scope ([data-theme-style=light]) {…} */
     &:where([data-theme-style=light]) {
-      color-scheme: light only;
-
       --accent-hsl: var(--orange);
       --bg-hsl: var(--white);
       --fg-hsl: var(--black);
       --shadow: hsl(var(--fg-hsl) / .15);
+      color-scheme: light only;
     }
 
     /* @scope ([data-theme-style=dark]) {…} */
     &:where([data-theme-style=dark],
       :not( [data-theme-style] ) /* "Dark Mode" by default */
     ) {
-      color-scheme: dark only;
-
       --accent-hsl: var(--yellow);
       --bg-hsl: var(--black);
       --fg-hsl: var(--white);
       --shadow: hsl(var(--bg-hsl) / .25);
+      color-scheme: dark only;
     }
   }
 }
+
+/* ------------------------------------ x ----------------------------------- */
+
+@layer color.swatches {
+  /* 1. define new color hues */
+
+  :where(html) {
+    /* No. 2 Reds & Purples 2024 */
+    --sw-ravishing-coral: 12deg 68% 70%; /* E79580 SW6612 Ravishing Coral */
+    --sw-veri-berri: 295deg 14% 52%;     /* 937496 SW9069 Veri Berri */
+  }
+}
+
+@layer color.palettes {
+  /* 2. specify the roles of the new hues in the color palette */
+
+  /**
+    Arts on newly introduced CSS color funcs and syntax:
+    → https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/
+    → https://developer.chrome.com/docs/css-ui/css-color-mix
+    → https://www.smashingmagazine.com/2022/06/simplify-color-palette-css-color-mix/
+    → https://css-irl.info/shades-of-grey-with-color-mix/
+    → https://developer.chrome.com/docs/css-ui/css-color-mix
+    → https://developer.chrome.com/blog/css-relative-color-syntax/ */
+
+  :where(html) {
+    --coral: var(--sw-ravishing-coral);
+    --purple: var(--sw-veri-berri);
+  }
+}
+
+/* ------------------------------------ x ----------------------------------- */
 
 @layer color.gradients { /* ∇ */
   :where(html) {
@@ -441,6 +436,7 @@
     --lin-gradient-roygbiv: linear-gradient(
       to right in hsl longer hue, red, red
     );
+
     /* https://github.com/daltonmenezes/aura-theme */
     --lin-gradient-voygb: linear-gradient(
       45deg,

@@ -13,10 +13,14 @@
 }
 
 /**
-  Defaults?.. (meanings)
-  * https://www.w3.org/TR/css-cascade/#cascading-origins
-  * https://meiert.com/en/blog/user-agent-style-sheets/
-  * https://drafts.csswg.org/css-scoping/#default-element-styles
+ * Defaults?.. (meanings)
+ * https://www.w3.org/TR/css-cascade/#cascading-origins
+ * https://meiert.com/en/blog/user-agent-style-sheets/
+ * https://drafts.csswg.org/css-scoping/#default-element-styles
+ * See
+   → https://nerdy.dev/BYO-CSS-tokens-to-tailwind-v4s-new-CSS-centric-config
+   → https://github.com/argyleink/twop/blob/main/app/tailwind.css
+   → https://github.com/tailwindlabs/tailwindcss/blob/next/packages/tailwindcss/theme.css
  */
 
 /* Custom properties on :root pseudo-class
@@ -63,6 +67,7 @@
     --lh-thinest: 1.15;
     --lh-eighty: 1.25; /* condensed */
     --lh-default: 1.5; /* default */
+    --leading: var(--lh-default);
 
     /* System defaults */
     --ui-serif: ui-serif, serif;
@@ -82,7 +87,6 @@
       "Segoe UI Emoji",
       "Segoe UI Symbol",
       "Noto Color Emoji";
-
     --font-weight-1: 100;
     --font-weight-2: 200;
     --font-weight-3: 300;
@@ -237,8 +241,15 @@
     /* Responsive */
     --radius-1: 0.5rem;
     --radius-2: 1rem;
-    --radius-x: 1000rem; /* <-- max radii, e.g. for a pill/stadium shaped button */
-    --radius-x: 1000rem; /* <-- max radii, e.g. for a pill/stadium shaped button */
+
+    /* Max Curve Radii, e.g. for a pill/stadium shaped button/c2a */
+    /* https://en.wikipedia.org/wiki/Pi_Day
+       https://en.wikipedia.org/wiki/Turn_(angle)#Tau_proposals
+       https://web.dev/articles/css-trig-functions
+    */
+    --radius-x: calc(var(--big-int) *1px);
+    --radius-xx: 1000rem;
+    --radius-xxx: 1e5px;
   }
 }
 
@@ -266,11 +277,11 @@
 
     --shadow-hsl: var(--black);
     --shadow-color: hsl(var(--shadow-hsl) / var(--shadow-a, .125));
-
     --shadow-strength: 1%;
     --shadow-1: 0 1px 2px -1px hsl(
       var(--shadow-color)/calc(var(--shadow-strength) + 9%)
     );
+
     /* TODO Define --shadow-(2, 3, etc.) */
 
     --shadow-elevation-low:
@@ -297,6 +308,7 @@
     --shadow-color: 220 3% 15%;
     --shadow-strength: 1%;
   }
+
   :where(html[data-theme-style=dark]) {
     --shadow-color: 220 40% 2%;
     --shadow-strength: 25%;

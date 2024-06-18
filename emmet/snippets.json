@@ -1,7 +1,9 @@
 {
   "html": {
     "snippets": {
-      "meta:msapp": "meta[name='msapplication-TileColor' content]+meta[name='msapplication-config' content='browserconfig.xml']",
+      "meta:vp": "meta[name=viewport content='width=device-width,initial-scale=1,viewport-fit=cover']",
+      "meta:apple": "meta[name='apple-mobile-web-app-capable' content='yes']+meta[name='apple-mobile-web-app-status-bar-style' content='black-translucent']",
+      "meta:msapp": "meta[name='msapplication-TileColor' content]+meta[name='msapplication-config' width=device-width,initial-scale=1,viewport-fit=covercontent='browserconfig.xml']",
       "meta:dka": "meta:desc+meta:kw+meta[name=author content]",
       "meta:ogsite": "meta[property='og:type' content='website']+meta[property='og:title' content='${1:Document}']+meta[property='og:description' content='${2:A summary of page content.}']+meta[property='og:url' content='https://${3:site.com}']+meta[property='og:site_name' content='${4:Brand Name}'",
       "meta:ogimage": "meta[property='og:image' content='${1:images/ogp_common.png}']+meta[property='og:image:secure_url' content='${2:images/ogp_common.png}']+meta[property='og:image:width' content='1200']+meta[property='og:image:height' content='628']+meta[property='og:image:type' content='image/png']+c>{meta[property='og:image:alt' content]}",

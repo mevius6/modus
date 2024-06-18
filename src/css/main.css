@@ -1,31 +1,33 @@
-/* TODO: re-think;
-   https://www.miriamsuzanne.com/2022/09/06/layers/
-   https://daverupert.com/2022/08/modern-alternatives-to-bem/
-   https://css-tricks.com/css-cascade-layers/#aa-managing-a-complex-css-architecture
-   https://alistapart.com/article/redefine-success-first/ */
+/**
+ * Arts on cascade layering:
+ * https://www.miriamsuzanne.com/2022/09/06/layers/
+ * https://daverupert.com/2022/08/modern-alternatives-to-bem/
+ * https://css-tricks.com/css-cascade-layers/#aa-managing-a-complex-css-architecture
+ * https://alistapart.com/article/redefine-success-first/
+ */
 
 /* 1. establish the layer order */
 @layer reset, theme, patterns, utilities, layouts;
 
 /* 2. import into pre-ordered layers */
-@import url(reset.css) layer(reset);
-@import url(theme.css); /* -> layer(utilities) */
-@import url(utils.css) layer(utilities);
+@import url("reset.css") layer(reset);
+@import url("theme.css"); /* -> layer(utilities) */
+@import url("utils.css") layer(utilities);
 
 /**
-  GUI Components
-  https://www.w3.org/WAI/ARIA/apg/patterns/
-  https://codepen.io/collection/bNWdoB
+ * GUI Components
+ * https://www.w3.org/WAI/ARIA/apg/patterns/
+ * https://codepen.io/collection/bNWdoB
  */
-@import url(./patterns/index.css) layer(patterns);
+@import url("patterns/index.css") layer(patterns);
 
 /**
-  Layouts
-  https://codepen.io/collection/nwzWVZ
+ * Layouts
+ * https://codepen.io/collection/nwzWVZ
  */
-@import url(./layouts/index.css);
-@import url(./layouts/grid.css) layer(utilities.grid);
-@import url(./layouts/skeleton.css) layer(utilities);
+@import url("layouts/index.css");
+@import url("layouts/grid.css") layer(utilities.grid);
+@import url("layouts/skeleton.css") layer(utilities);
 
 /* Case-, context- or page-specific ruleset */
-@import url(author.css);
+@import url("author.css");

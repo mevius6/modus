@@ -5,14 +5,20 @@
   "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",
   "config": {
     "repo": "https://github.com/mevius6/${npm_package_name}",
+    "cert": {
+      "add": "$(grep '^CERT_PATH' .env | cut -d '=' -f2)",
+      "key": "$(grep '^KEY_PATH' .env | cut -d '=' -f2)"
+    },
     "port": {
       "http": 8080,
       "https": 8443
     }
   },
   "scripts": {
-    "vc:dev": "vercel dev --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
-    "clean": "rm -rf public && rm -rf .vercel/cache",
+    "vc:dev": "vercel dev",
+    "start": "src/index.html",
+    "build": "npm run clean && build src/index.html && npm run copy",
+    "clean": "rm -rf public && rm -rf .parcel-cache && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "npx eslint \"./src/js/*.js\" --fix",

@@ -79,18 +79,20 @@
     --not-supports-at-container: ;
     --props: true;
   }
+
   /* if no container is specified
      CSS finds the nearest */
   @container (inline-size >= 0) { /* container not defined */ }
+
   /* https://caniuse.com/css-container-queries-style
      https://drafts.csswg.org/css-contain-3/#style-container
      https://supportscss.dev/#atcontainerstyleproperties-test */
   @container style(--props: true) {
     [data-test=at-container] span::after {
       content: " and Style Features";
-      /* font-style: italic; */
     }
   }
+
   /* TODO https://drafts.csswg.org/css-contain-3/#container-lengths */
 }
 
@@ -136,6 +138,7 @@
     --supports-env: initial;
     --not-supports-env: ;
   }
+
   /* :where(body) {
     padding-top: max(12px, env(safe-area-inset-top));
     padding-right: max(12px, env(safe-area-inset-right));
@@ -158,6 +161,7 @@
     inherits: false;
     initial-value: color(display-p3 0 1 0);
   }
+
   :where(:root) {
     --supports-at-property: initial;
     --not-supports-at-property: ;
@@ -200,6 +204,7 @@
   background-color: var(--toggle);
   border-radius: 1e5px; /* round */
 }
+
 /* :where([data-test]) {
   --result: var(--supports, "✅") var(--not-supports, "❌");
   --supports: ;

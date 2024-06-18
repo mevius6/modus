@@ -1,5 +1,7 @@
 /* TODO @layer components { @layer intent, states; } */
 
+/* https://html.spec.whatwg.org/dev/links.html */
+
 /* UA defaults
 :link, :visited { text-decoration: underline }
 :focus          { outline: thin dotted invert } */
@@ -12,7 +14,7 @@
 
 /* :where(:link, :any-link) { transition: all 150ms 0s ease; } */
 
-:where(a, [class=*link]) {
+:where(a, [*|class=link]) {
 
   display: inline-block;
 
@@ -29,6 +31,7 @@ a:where([aria-current=page]) {
   position: relative;
 
   text-decoration-skip-ink: auto;
+
   /* text-decoration: underline overline wavy #00fe9b; */
   text-decoration-line: underline overline;
   text-decoration-style: wavy;
@@ -45,23 +48,25 @@ a:where([aria-current=page]) {
   @media (hover) and (pointer: fine) {
     &::before {
       position: absolute;
+      font-family: inherit;
+      font-size: .75rem;
+      color: canvastext;
+      text-align: left;
+
+      /* letter-spacing: .075em; */
+      letter-spacing: .150em;
+      content: "Reload";
+      opacity: var(--_a, 0);
+      transition: inherit;
       inset-inline: 0;
       translate: 0 -100%;
-      opacity: var(--_a, 0);
-      content: "Reload";
-      color: canvastext;
-      font-size: .75rem;
-      font-family: inherit;
       font-variation-settings:
         "opsz" var(--_opsz, 24),
         "wght" var(--_wght, 200),
         "ital" var(--_ital, 1);
       font-feature-settings: "smcp" 1, "c2sc" 1;
-      /* letter-spacing: .075em; */
-      letter-spacing: .150em;
-      text-align: left;
-      transition: inherit;
     }
+
     &:hover::before {
       --_a: 1;
       --_opsz: 12;

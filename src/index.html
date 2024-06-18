@@ -8,36 +8,22 @@
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <!-- meta[name="theme-color" content="Canvas"] -->
-
-    <!-- <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'has-js');
-
-      function downloadJSAtOnload() {
-        var element = document.createElement("script");
-        element.src = "/js/main.js";
-        document.body.appendChild(element);
-      }
-
-      window.addEventListener("load", downloadJSAtOnload, false);
-    </script> -->
 
     <title>Document</title>
     <!-- meta[name=author content] -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <!-- link:touch[sizes="180x180"] -->
-    <!-- TODO https://maskable.app/ -->
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <!-- TODO
+      https://maskable.app/
+      https://www.w3.org/TR/appmanifest/#icon-masks
+      https://w3c.github.io/manifest/
+    -->
+    <link rel="manifest" href="./site.webmanifest" />
     <!-- link:mf -->
     <!-- meta:msapp -->
+    <!-- meta:apple -->
     <meta name="color-scheme" content="dark light" />
     <meta
       name="theme-color"
@@ -49,12 +35,8 @@
       media="(prefers-color-scheme: dark)"
       content="#333"
     />
-
-    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
-    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
-
     <!-- SEO [S] -->
-    <meta name="description" content="Demo playground" />
+    <meta name="description" content="…" />
     <!-- meta:kw[content='html,aria,ogp,schema,svg,css,js,json'] -->
     <meta name="robots" content="follow,index,max-image-preview:standard" />
     <link rel="canonical" href="https://native-things.vercel.app/" />
@@ -62,13 +44,18 @@
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Document" />
-    <meta property="og:description" content="Demo playground" />
-    <!-- TODO meta[property="og:url" content=canonicalURL] -->
-    <meta property="og:site_name" content="Starter" />
-    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
-    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:description" content="…" />
+    <meta property="og:url" content="https://native-things.vercel.app/" />
+    <meta property="og:site_name" content="Website Boilerplate" />
+    <meta property="og:image" content="./src/images/ogp_common@2x.jpg" />
+    <meta
+      property="og:image:secure_url"
+      content="./src/images/ogp_common@2x.jpg"
+    />
     <meta property="og:image:type" content="image/jpeg" />
-    <!-- TODO https://vercel.com/docs/functions/og-image-generation -->
+    <!-- TODO
+      https://vercel.com/docs/functions/og-image-generation
+    -->
     <!-- [max-size] (1.9:1) -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -80,14 +67,9 @@
       jsonld:site
     -->
     <!-- SEO [E] -->
-
-    <!--
-      https://web.dev/referrer-best-practices/
-      https://w3c.github.io/webappsec-referrer-policy/
-    -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-    <!-- TODO: Resource loading strategy -->
+    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
+    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
     <!--
       https://drafts.csswg.org/css-fonts-4/#font-format-definitions
       https://www.w3.org/TR/WOFF2/#IMT
@@ -129,24 +111,18 @@
       }
       /* https://www.unicode.org/versions/Unicode15.1.0/ */
     </style>
-
-    <!--
-      <link rel="preload" href="css/tests.css" as="style"
-            onload="this.onload=null;this.rel='stylesheet';var dlg=debug;dlg.showModal();" />
-      <noscript><link rel="stylesheet" href="css/tests.css" /></noscript>
-    -->
-    <!-- link[as="image" rel="preload" href="logo-or-doc-cover.jpg" fetchpriority="high"] -->
+    <!-- link[as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high"] -->
 
     <!-- The main stylesheet -->
-    <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" />
     <!--
       Intent: JS-free website
       https://html.spec.whatwg.org/multipage/scripting.html
     -->
     <noscript>
-      <link rel="stylesheet" href="css/theme-switch.css" />
+      <link rel="stylesheet" href="./css/theme-switch.css" />
     </noscript>
-    <script defer type="module" src="js/modules.js"></script>
+    <script defer type="module" src="./js/modules.js"></script>
   </head>
 
   <body
@@ -321,7 +297,7 @@
       itemid="https://native-things.vercel.app"
     >
       <!-- sect[aria-labelledby="region1"] -->
-      <section class="grid bg-noise graph-paper">
+      <section class="grid bg-noise graph-paper --show-landmarks">
         <!-- h2#region1.sr-only{title for region area 1} -->
 
         <!-- Hero (generic / local banner) -->
@@ -332,7 +308,7 @@
               or to region area 1?
             -->
             <h1>Page Title</h1>
-            <!-- p.h5[role="doc-subtitle"] -->
+            <p class="h5" role="doc-subtitle">Website Boilerplate</p>
           </hgroup>
 
           <div class="grid__full overlay">
@@ -434,49 +410,31 @@
           </blockquote>
         </div>
 
-        <!-- Gallery view -->
-        <div class="grid__full">
-          <!-- [triptych] -->
+        <!-- Gallery (pre)view -->
+        <div class="grid__full relpos">
           <figure
             class="d-grid cols-triptych"
             role="group"
-            style="padding: 4cqi 1cqi; background: var(--riso-black)"
+            style="background: var(--riso-black)"
           >
-            <div
-              class="bg-canvas"
-              style="
-                aspect-ratio: 7 / 12; /* 700×1200 */
-                clip-path: inset(0);
-                filter: url(#tex1);
-              "
-            ></div>
-            <div
-              class="bg-canvas"
-              style="
-                aspect-ratio: 7 / 5; /* 1680×1200 */
-                clip-path: inset(0);
-                filter: url(#tex2);
-              "
-            >
-              <figure
-                class="grid__center h5 text-center"
-                style="--opsz: 48; --wght: 300; line-height: 1.35cap"
+            <div class="bg-canvas" style="filter: url(#tex1)"></div>
+            <div class="bg-canvas" style="filter: url(#tex2)"></div>
+            <div class="bg-canvas" style="filter: url(#tex3)"></div>
+
+            <figcaption class="d-grid cols-subgrid">
+              <!-- TODO https://arc.net/l/quote/* -->
+              <q
+                class="vf"
+                style="--wght: 500"
+                cite="https://lievengevaertcentre.be/research/when-art-turned-day-glo-marking-impact-daylight-fluorescent-materials-new-york-art-60s-and"
               >
-                <q
-                  >Fluorescent colors are the extension of our visual world and
-                  the next step in color theory.</q
-                ><br />
-                <em>(Herbert Aach, 1923-1985)</em>
-              </figure>
-            </div>
-            <div
-              class="bg-canvas"
-              style="
-                aspect-ratio: 7 / 12; /* 700×1200 */
-                clip-path: inset(0);
-                filter: url(#tex3);
-              "
-            ></div>
+                Fluorescent colors are the extension of our visual world and the
+                next step in color theory.
+              </q>
+              <em class="vf" style="--ital: 1">
+                &mdash;&hairsp;Herb Aach<wbr /> (1923&ndash;1985)
+              </em>
+            </figcaption>
           </figure>
         </div>
 
@@ -490,8 +448,9 @@
               style="--opsz: 24; --wght: 275"
             >
               Think different.
+              <!-- ﬀ -->
             </legend>
-            <button type="submit">(Re)think</button>
+            <button type="submit">(Re)think again</button>
           </fieldset>
         </form>
 
@@ -529,10 +488,10 @@
                   text-transform: capitalize;
                   font-family: revert;
                   font-size: var(--_size);
-                  font-variation-settings:var(--_variations);
+                  font-variation-settings: var(--_variations);
                   font-feature-settings: var(--_features);
                   color: var(--foreground);
-                  filter: drop-shadow(-8px .016em .016em #0005);
+                  filter: drop-shadow(-8px 0.016em 0.016em #0005);
                 }
               ]]>
             </style>
@@ -549,11 +508,11 @@
       itemtype="https://schema.org/WPFooter"
     >
       <small>
-        <!-- © ООО «Имя Бренда», 2023 -->
+        <!-- © ООО «Имя Бренда», 2024 -->
         <time datetime="2024" itemprop="copyrightYear">Y2K</time>
         &COPY;&nbsp;
-        <!-- <span itemprop="name">Brandname</span> -->
-        <input type="text" placeholder="Brandname" itemprop="name" />
+        <span itemprop="name">Brandname</span>
+        <!-- <input type="text" placeholder="Brandname" itemprop="name" /> -->
       </small>
     </footer>
 

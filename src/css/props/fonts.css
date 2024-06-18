@@ -6,6 +6,7 @@
 
 :root {
   min-height: 0; /* Safari fix */
+
   /* RFS → https://css-tricks.com/accessible-font-sizing-explained/ */
   font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.8772)), 1.5rem);
 
@@ -19,7 +20,6 @@ html { font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
 
 body {
   /* Value conversion helpers */
-  --px2rem: calc((var(--px-size) / 16) * 1rem);
   /* e.g.
      20px ~ 1.25rem
      19px ~ 1.1875rem
@@ -27,8 +27,11 @@ body {
      17px ~ 1.0625rem
      16px ~ 1rem
      15px ~ .9375rem
-     14px ~ .875rem */
+     14px ~ .875rem
+  */
+  --px2rem: calc((var(--px-size) / 16) * 1rem);
   --rem2px: calc(var(--px, 14) * 1rem / 16);
+  font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
 
   /* TODO: Faces props, `--font-*`
   `--font-headliner` or `-display` (i.e. for heads and titles)
@@ -36,10 +39,10 @@ body {
   */
 
   font-size: var(--px2rem);
-  font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
   font-weight: 400;
   line-height: 1.5; /* .5 extra leading */
   text-rendering: optimizeLegibility; /* or optimizeSpeed */
+
   /* font-feature-settings:
     "kern" var(--kern, 1),
     "liga" var(--liga, 1),
@@ -101,6 +104,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
+
   /* autoprefixer: on */
 }
 
@@ -158,8 +162,8 @@ article {
   --px2rem: calc((var(--px-size) / 16) * 1rem);
 
   font-family: inherit;
-  line-height: calc(1ex / .42);
   font-size: var(--px2rem);
+  line-height: calc(1ex / .42);
   font-variation-settings:
     "opsz" var(--opsz, 16),
     "wght" var(--wght, 600),
@@ -208,17 +212,21 @@ h2 {
 .dinkus {
   /* Em-Space-Separated '✧' White Four Pointed Star(s) */
   --seq-star-emsp: '\2727\2003\2727\2003\2727';
+
   /* Em-Space-Separated '∞' Infinity Symbol(s) */
   --seq-infin-emsp: '\221E\2003\221E\2003\221E';
+
   /* '❧' Rotated Floral Heart Bullet = hedera, ivy leaf */
   --sym-hedera: '\2767';
+
   /* '⁂' Asterism */
   --sym-asterism: '\2042';
 
   display: inline-block;
   inline-size: 100%;
-  text-align: center;
   color: var(--dinkus-color, inherit);
+  text-align: center;
+
   /* opacity: 0.8; */
 
   &::after {
@@ -229,6 +237,7 @@ h2 {
   [data-theme-style=light] & {
     --dinkus-color: var(--accent-a80);
   }
+
   [data-theme-style=dark] & {
     --dinkus-color: var(--accent);
   }
@@ -238,10 +247,13 @@ h2 {
 /* body         { margin: 8px } */
 b,
 strong          { font-weight: 700 }
+
 q,
 blockquote      { /* … */ }
+
 i, cite, em,
-var, address    { font-style: italic; --ital: 1 }
+var, address    { font-style: italic; } /* --ital: 1; */
+
 /*
 big             { font-size: 1.17em }
 small, sub, sup { font-size: .83em } */
@@ -268,7 +280,7 @@ mark {
 
 time {
   display: inline-block;
-  font-feature-settings: 'tnum' 1;
+  font-feature-settings: "tnum" 1;
 }
 
 .price { font-variant-numeric: tabular-nums; }

@@ -1,8 +1,8 @@
 /* Sidenav component
-   → https://web.dev/articles/building/a-sidenav-component */
+   → https://web.dev/articles/building/a-sidenav-component
+   → https://drafts.csswg.org/css-ui/#nav-dir */
 
-/* https://drafts.csswg.org/css-ui/#nav-dir */
-#sidenav-open {
+:where(#sidenav-open) {
   --easeOutExpo: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: .6s;
 
@@ -16,19 +16,19 @@
   /* @media (max-width: 540px) {…} */
   max-block-size: 100vh;
   overflow: hidden auto;
-  overscroll-behavior: contain;
 
   visibility: hidden; /* not keyboard accessible when closed */
-  transform: translateX(-100vw);
   will-change: transform;
   transition:
     transform var(--duration) var(--easeOutExpo),
     visibility 0s linear var(--duration);
+  transform: translateX(-100vw);
+  overscroll-behavior: contain;
 
   &:target {
     visibility: visible;
-    transform: translateX(0);
     transition: transform var(--duration) var(--easeOutExpo);
+    transform: translateX(0);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -48,6 +48,7 @@ nav {
   flex-flow: column;
   gap: var(--spacer-2x);
 }
+
 /* nav ul {
   flex-flow: row wrap;
   align-items: flex-start;
@@ -59,11 +60,13 @@ nav {
 
 svg:where(.hamburger, .\🍔) {
   --_hue: 320;
+  inline-size: clamp(1.5rem, 2.222vw + 1rem, 1.75rem);
+  min-inline-size: 24px; /* Min value (24px) ends at 360 px. */
+
   /* --🍔-line-color: hsl(var(--_hue) 20% 80%); */
 
   max-inline-size: 28px; /* Max value (28px) starts at 540 px. */
-  min-inline-size: 24px; /* Min value (24px) ends at 360 px. */
-  inline-size: clamp(1.5rem, 2.222vw + 1rem, 1.75rem);
+
   /* aspect-ratio: var(--ratio-square); */
 
   :has(&):is(:hover, :focus) > & > line {

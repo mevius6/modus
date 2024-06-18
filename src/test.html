@@ -23,12 +23,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <!-- <meta name="theme-color" content="Canvas" /> -->
+    <meta name="theme-color" content="Canvas" />
 
     <!-- <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'has-js');
@@ -46,7 +41,6 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
     <meta name="color-scheme" content="dark light" />
 
     <!-- SEO [S] -->
@@ -70,7 +64,8 @@
       rel="preload"
       href="css/tests.css"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet';var dlg=debug;dlg.showModal();"
+      onload="this.onload=null;this.rel='stylesheet';
+              var dlg=modal;dlg.showModal();"
     />
     <noscript><link rel="stylesheet" href="css/tests.css" /></noscript>
     <link
@@ -82,9 +77,9 @@
   </head>
 
   <body class="page graph-paper" data-id="test">
-    <dialog id="debug" class="flow results">
+    <dialog id="modal" class="flow">
       <h2>Results output</h2>
-      <ol class="">
+      <ol class="results">
         <li data-test="at-container">
           <span>Container Queries</span>
           <output></output>
@@ -125,7 +120,6 @@
           <span>The relational pseudo-class: ‘:has()’</span>
           <output></output>
         </li>
-        <!-- ... etc., with many more <li> elements ... -->
       </ol>
       <form method="dialog">
         <button onclick="window.dialog.close();">
@@ -146,7 +140,7 @@
           aria-label="Main Menu"
         >
           <li id="1" class="nav__item">
-            <a href="/" class="nav__link" itemprop="url" aria-label="Home Page">
+            <a href="." class="nav__link" itemprop="url" aria-label="Home Page">
               <span class="nav__link-text" itemprop="name">Home</span>
             </a>
           </li>
@@ -167,7 +161,7 @@
           </li>
           <li id="5" class="nav__item">
             <a
-              href="/wpt.html"
+              href="./test.html"
               class="nav__link"
               title=""
               itemprop="url"
@@ -217,15 +211,20 @@
         </svg>
       </a>
 
-      <theme-switch>
+      <!-- <theme-switch>
         <form part="form">
           <fieldset part="fieldset">
-            <!-- <legend part="legend">Поменять оформление</legend>
-                <input part="lightRadio" id="r1" type="radio" name="mode" value="${LIGHT}">
-                <label part="lightLabel" for="r1" title="Светлое оформление"></label>
-                <input part="darkRadio" id="r2" type="radio" name="mode" value="${DARK}">
-                <label part="darkLabel" for="r2" title="Тёмное оформление"></label> -->
-
+            <legend part="legend">Поменять оформление</legend>
+            <input part="lightRadio" id="r1" type="radio" name="mode" value="light" />
+            <label part="lightLabel" for="r1" title="Светлое оформление"></label>
+            <input part="darkRadio" id="r2" type="radio" name="mode" value="dark" />
+            <label part="darkLabel" for="r2" title="Тёмное оформление"></label>
+          </fieldset>
+        </form>
+      </theme-switch> -->
+      <theme-switch inert>
+        <form part="form">
+          <fieldset part="fieldset">
             <input part="toggleCheckbox" id="cb" type="checkbox" />
             <label part="toggleLabel" for="cb" title="Поменять оформление">
               <svg
@@ -263,14 +262,14 @@
         </form>
       </theme-switch>
 
-      <label aria-hidden="true">
+      <!-- <label aria-hidden="true">
         <input
           name="debug-mode"
           type="checkbox"
           onchange="document.documentElement.classList.toggle('debug');"
         />
         Debug
-      </label>
+      </label> -->
     </header>
   </body>
 </html>

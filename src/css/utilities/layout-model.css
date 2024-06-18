@@ -1,7 +1,6 @@
-.debug * { outline: color(display-p3 0 0 1) solid .25cqw; }
-
 /* https://drafts.csswg.org/css-grid-2/ */
 .d-grid { display: grid; }
+
 /* https://drafts.csswg.org/css-flexbox-1/ */
 .d-flex { display: flex; }
 
@@ -66,6 +65,7 @@
 */
 
 .grid-cols-subgrid { grid-template-columns: subgrid; }
+
 .cols-subgrid {
   grid-template-columns: inherit;
   grid-template-columns: subgrid;
