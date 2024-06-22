@@ -6,13 +6,14 @@
 
 :root {
   min-height: 0; /* Safari fix */
-
-  /* RFS → https://css-tricks.com/accessible-font-sizing-explained/ */
   font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.8772)), 1.5rem);
 
   /* font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
     Helvetica, Arial, sans-serif, system-ui; */
 }
+
+/* RFS → https://css-tricks.com/accessible-font-sizing-explained/ */
+/* :is(*) { --font-size: calc((var(--pixel) / 16) * 1rem) } */
 
 /* FIXME
 html { font-family: var(--font-body, var(--var-serif, var(--ui-serif)));
@@ -134,7 +135,9 @@ article {
 
     & :where(h2, h3, h4) {
       max-inline-size: 33ch; /* 30–40 chars */
-      text-wrap: pretty;
+
+      @supports (text-wrap: pretty) {
+             & { text-wrap: pretty } }
     }
   }
 }
@@ -190,7 +193,7 @@ article {
   :where(body) { --px-size: 16 }
 }
 
-h1, h2, h3 {
+:where(h1, h2, h3) {
   --opsz: 48;
   --wght: 800;
 
@@ -198,7 +201,7 @@ h1, h2, h3 {
 
   @supports (text-wrap: balance) {
     /* www.w3.org/TR/css-text-4/#text-wrap */
-    text-wrap: balance;
+    & { text-wrap: balance }
   }
 }
 
@@ -245,7 +248,11 @@ h2 {
 
 /* https://hell.meiert.org/core/css/css-2.2.css */
 /* body         { margin: 8px } */
-b,
+/* p */
+
+/* b != strong, e.g. marking key words or (lead) phrases
+   https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element */
+
 strong          { font-weight: 700 }
 
 q,

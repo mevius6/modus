@@ -16,7 +16,6 @@ let _overview;
 
 const parsedUrl = new URL(window.location.href);
 const doc = document, { documentElement: root } = doc;
-const now = Date.now();
 
 /* eslint-disable no-unused-vars */
 
@@ -39,17 +38,18 @@ const now = Date.now();
     // const carousel = await import('./modules/carousel');
     // const map = await import('./modules/map');
 
-    const update = ({ x, y }) => {
+    const update = async ({ x, y }) => {
       root.style.setProperty('--x', x)
       root.style.setProperty('--y', y)
       // doc.body.dataset.mouseX = x
       // doc.body.dataset.mouseY = y
     }
 
-    doc.body.addEventListener('pointermove', update);
+    const onPointerEvent = update;
+
+    doc.body.addEventListener('pointermove', ev => onPointerEvent(ev), false);
   }
 
-  // https://dmitripavlutin.com/ecmascript-modules-dynamic-import/
   const sidenav = await import('./modules/sidenav.js');
   // const nav = await loadNav('.nav-button');
 })();

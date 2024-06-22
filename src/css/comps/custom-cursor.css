@@ -1,0 +1,136 @@
+@layer custom-cursor {
+  .custom-cursor {
+    scale: var(--_scale, 0);
+    translate: -50% -50%;
+    position: fixed;
+    top: calc(var(--y, -100) * 1px);
+    left: calc(var(--x, -100) * 1px);
+    z-index: 1010;
+    display: none;
+    inline-size: var(--_size, 0);
+    block-size: var(--_size, 0);
+    aspect-ratio: 1;
+    pointer-events: none;
+    cursor: none;
+  }
+
+  @media (hover) and (pointer: fine) and (scripting: enabled) {
+    .custom-cursor {
+      --_scale: 1;
+      --_size: 24px;
+      display: block;
+      background: white;
+      border-radius: 50%;
+
+      &::after {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        display: block;
+        font-size: xxx-large;
+        content: var(--icon);
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+nav { cursor: none; & a { cursor: inherit } }
+
+:root:has([href="."]:hover) .custom-cursor {
+  background: transparent;
+  animation: var(--animation-float);
+
+}
+
+:root:has([href*="404"]:hover) .custom-cursor {
+  --icon: "💀";
+  background: transparent;
+  animation: var(--animation-ping);
+}
+
+:root:has([data-icon="🚧"]:hover) .custom-cursor {
+  --icon: "🧪";
+  background: transparent;
+  animation: var(--animation-float);
+}
+
+@layer custom-cursor.preview {
+  :root:has([class*="previews"]:hover) .preview {
+    --intent: 1;
+  }
+
+  [class*="previews"] li {
+    transition: opacity .2s ease;
+  }
+
+  .preview {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    cursor: none;
+    background: hsl(
+      0 calc(var(--_active) * 100%) calc(100% - (var(--_active) * 50%)) / 1
+    );
+    border-radius: 50%;
+    opacity: var(--intent, 0);
+    transition: opacity .2s, clip-path .2s;
+    translate: -50% 0;
+  }
+
+  [class*="previews"] li:hover {
+    opacity: 1;
+  }
+
+  [class*="previews"] li:has(~ li:hover),
+  [class*="previews"] li:hover ~ li {
+    opacity: 0.2;
+  }
+
+  :root:has(ol li:hover) .preview {
+    --_active: 1;
+  }
+
+  :where(
+    :root:has(ol li:nth-of-type(1):hover) .preview__img img:nth-of-type(1),
+    :root:has(ol li:nth-of-type(2):hover) .preview__img img:nth-of-type(2),
+    :root:has(ol li:nth-of-type(3):hover) .preview__img img:nth-of-type(3)
+  ) {
+    --show: 1;
+  }
+
+  :root:has(ol li:hover) .preview__img {
+    clip-path: inset(0 0 0 0 round 0);
+  }
+
+  .preview__img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border: 1px solid white;
+    transition: translate .2s, clip-path .2s;
+    translate: -50% calc(var(--_active, 0) * -2rem);
+    clip-path: inset(
+      calc(100% - 12px)
+      calc(50% - 6px) 0
+      calc(50% - 6px) round 100px
+    );
+  }
+
+  .preview__img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: var(--show, 0);
+    object-fit: cover;
+    transition: opacity .2s ease;
+  }
+}

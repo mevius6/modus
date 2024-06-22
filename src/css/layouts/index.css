@@ -1,4 +1,3 @@
-@import url(sidenav.css) layer(layouts.nav);
-@import url(header.css) layer(layouts.header);
-@import url(hero.css) layer(layouts.hero);
-@import url(carousel.css) layer(layouts.carousel);
+@import "sidenav.css" layer(layouts.nav);
+@import "header.css" layer(layouts.header);
+@import "hero.css" layer(layouts.hero);

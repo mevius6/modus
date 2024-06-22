@@ -7,7 +7,7 @@
 /* Contains layout, utilities and helper tokens */
 @import url("props/defaults.css") layer(theme);
 
-/* Contains custom MQs */
+/* TODO Contains custom MQs */
 /* @import url(props/media.css) layer(theme); */
 
 @layer theme { /* config; setup theme defaults */
@@ -33,6 +33,16 @@
       -webkit-tap-highlight-color: var(--trn);
     }
 
+    ::placeholder {
+      color: currentcolor;
+      opacity: .75;
+    }
+
+    /* :where(dialog) */
+    ::backdrop {
+      backdrop-filter: blur(25px);
+    }
+
     /* https://drafts.csswg.org/mediaqueries-5/#mf-interaction */
     @media (hover: hover) {
       * {
@@ -48,6 +58,10 @@
 
   /* Sections & Grouping */
   @layer support.page { /* layout, regions */
+    html {
+      block-size: 100%;
+    }
+
     body {
       min-inline-size: 100%;
       min-inline-size: -webkit-fill-available;
@@ -61,6 +75,10 @@
       transition:
         color var(--duration) var(--easing),
         background-color var(--duration) var(--easing);
+    }
+
+    :where(html:has(dialog[open])) {
+      overflow: hidden;
     }
 
     /* Sectioning content */
@@ -114,7 +132,7 @@
   }
 
   /* work w/o shadow root */
-  theme-switch > noscript {
+  theme-switch > noscript { /* FIXME */
     & :where(
       [part=form],
       [part=fieldset]
@@ -135,6 +153,10 @@
       --lighting-color: hsl(var(--saturn-yellow));
     }
   }
+
+  [id] {
+    scroll-margin-top: var(--scroll-margin, 2rem);
+  }
 }
 
 @layer theme.support.any {
@@ -144,8 +166,13 @@
       scrollbar-width: none;
       scrollbar-color: inherit;
 
-      /* TODO Define the default colors of scrollbars */
-      /* scrollbar-color: var(--ui-scrollbar-color, inherit); */
+      /* TODO Default scrollbars styling */
+      /* scrollbar-color: var(--ui-scrollbar-color,
+        var(--thumb, var(--accent))
+        var(--track, var(--acent-shade))
+      ); */
+
+      /* https://defensivecss.dev/tip/scrollbar-gutter/ */
     }
   }
 }

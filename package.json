@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "modus",
   "version": "1.0.0",
   "description": "",
@@ -15,10 +16,11 @@
     }
   },
   "scripts": {
-    "vc:dev": "vercel dev",
+    "vc:start": "vercel dev",
+    "vc:build": "vercel --prod",
     "start": "src/index.html",
     "build": "npm run clean && build src/index.html && npm run copy",
-    "clean": "rm -rf public && rm -rf .parcel-cache && rm -rf .vercel/cache",
+    "clean": "rm -rf public && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "npx eslint \"./src/js/*.js\" --fix",
@@ -32,6 +34,9 @@
   "devDependencies": {
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
-    "stylelint-order": "^6.0.4"
+    "stylelint-order": "^6.0.4",
+    "unocss": "^0.61.0",
+    "vite": "^5.3.1",
+    "vite-plugin-pwa": "^0.20.0"
   }
 }

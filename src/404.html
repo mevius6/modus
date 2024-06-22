@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404 -->
+
+<!-- (DOESN’T CARE) Meh. :shrug: ¯\_(ツ)_/¯
+  * https://en.wikipedia.org/wiki/Meh
+  * https://beta.emojipedia.org/person-shrugging#technical
+  * https://slate.com/human-interest/2013/09/meh-etymology-tracing-the-yiddish-word-from-leo-rosten-to-auden-to-the-simpsons.html
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="Canvas" />
+
+    <title>404</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- SEO [S] -->
+    <meta name="description" content="Page not found" />
+    <!--
+      https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives
+      https://yandex.ru/support/webmaster/controlling-robot/meta-robots.html
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="yandex" content="noindex, nofollow" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    <!-- SEO [E] -->
+
+    <style>
+      @layer reset, theme, patterns, utilities;
+
+      @import url(css/layouts/skeleton.css);
+
+      @import url(css/patterns/button.css) @layer (patterns);
+      @import url(css/patterns/link.css) @layer (patterns);
+
+      @import url(css/utils.css) layer(utilities);
+      @import url(css/theme.css);
+      @import url(css/reset.css) layer(reset);
+
+      body {
+        --font-body: var(--ui-mono);
+      }
+    </style>
+  </head>
+  <body class="distorted-mesh no-scroll" inert>
+    <hgroup class="overlay-wrap pile">
+      <h1 class="sr-only">Page not found</h1>
+
+      <!-- or [role="alert"] -->
+      <code
+        role="status"
+        class="h2 center zi-10"
+        style="font-weight: 500; line-height: normal; color: canvastext"
+      >
+        404
+      </code>
+
+      <!-- esc:shrug -->
+      <samp
+        class="h4 center pile"
+        style="
+          padding-inline: 3ch;
+          font-weight: 400;
+          line-height: normal;
+          color: canvastext;
+          text-align: center;
+          text-emphasis: '*';
+          text-emphasis-color: var(--neon-cyan);
+          /* text-decoration: wavy underline var(--neon-lime);
+          text-decoration-thickness: from-font;
+          text-underline-offset: 0.16em; */
+          background: canvas;
+          filter: drop-shadow(0 0 0.5em hsl(var(--dayglo-yellow)));
+          border: hsl(var(--dayglo-pink)) ridge thick;
+        "
+        title="asciiShrug"
+        aria-hidden="true"
+      >
+        <span style="transform: scale(1)">¯\_(ツ)_/¯</span>
+        <span style="transform: scale(-1)">¯\_(ツ)_/¯</span>
+        <span
+          class="corner-start-end"
+          style="
+            writing-mode: vertical-lr;
+            text-orientation: sideways;
+            transform: scale(1) translate(100%);
+          "
+        >
+          ¯\_(ツ)_/¯
+        </span>
+        <span
+          class="corner-start-start"
+          style="
+            block-size: min-content;
+            writing-mode: vertical-rl;
+            text-orientation: sideways;
+            transform: scale(-1) translate(100%);
+          "
+        >
+          ¯\_(ツ)_/¯
+        </span>
+      </samp>
+    </hgroup>
+  </body>
+</html>

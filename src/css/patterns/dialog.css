@@ -17,6 +17,7 @@ dialog:where(#alert, #debug) {
   inset: 0; /* override UA */
   z-index: var(--big-int);
   max-inline-size: 65ch;
+  overflow: hidden;
   font-family: var(--ui-mono);
   box-shadow:
     0 -1px 2px 0 hsl(var(--shadow-color)/calc(var(--shadow-strength) + 2%)),
@@ -26,7 +27,6 @@ dialog:where(#alert, #debug) {
     0 22px 18px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%)),
     0 41px 33px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 6%)),
     0 100px 80px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 7%));
-  overflow: hidden;
 
   & > :where(ol, li, span) { font-family: inherit }
 
@@ -57,7 +57,6 @@ dialog:where(#alert) { /* TODO basic noscript alert */ }
 dialog:where(#debug) { /* CSS feature test results output */
   border: 2px solid hsl(var(--gray));
   border-radius: 5px;
-  /* background-color: var(--background); */
 }
 
 dialog > :where(ol, ul) { /* intent */

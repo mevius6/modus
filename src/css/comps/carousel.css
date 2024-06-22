@@ -2,6 +2,8 @@
  * Carousel component
  * https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
  * https://codepen.io/collection/njGkGN
+ * https://github.com/argyleink/ScrollSnapExplainers
+ * https://github.com/argyleink/gui-challenges/tree/main/carousel
  * https://gui-challenges.web.app/carousel/dist/
  * https://codepen.io/argyleink/pen/jOzEpjG/e26504e41694bd6267469ba23effae30
  * https://ryanmulligan.dev/blog/project-keyboard-navigation/
@@ -12,27 +14,26 @@
   --carousel-item-size: 80%; /* 100% */
   --carousel-gutters:
     max(var(--tap-size), calc((100% - var(--carousel-item-size)) / 2)); /* = max(2.75rem, 10%) */
+
   --carousel-gutters: var(--tap-size);
-  /* sign(var(--carousel-gutters)) */
-  --negative-gutters: calc(-1 * var(--carousel-gutters));
+  --negative-gutters: calc(-1 * var(--carousel-gutters)); /* sign(var(--carousel-gutters)) */
   --carousel-scrollbar-gutter: var(--spacer-3x);
   --carousel-pagination-size: var(--dot-size);
 
   /* container: carousel / inline-size; */
   position: relative;
-  block-size: 100%;
-  max-inline-size: 100%;
-  /* overflow: hidden; */
-
   display: grid;
+  grid-template-rows:
+    [carousel-scroller] 1fr
+    [carousel-progress] minmax(0, var(--carousel-pagination-size));
   grid-template-columns:
     [carousel-gutter] var(--carousel-gutters)
     [carousel-inview] 1fr
     [carousel-gutter] var(--carousel-gutters);
-  grid-template-rows:
-    [carousel-scroller] 1fr
-    [carousel-progress] minmax(0, var(--carousel-pagination-size));
   grid-row-gap: var(--carousel-scrollbar-gutter);
+  max-inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
 
   &[data-pagination=none] {
     grid-template-rows: [carousel-scroller] 1fr;

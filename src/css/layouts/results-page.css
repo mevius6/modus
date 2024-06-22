@@ -1,23 +1,7 @@
-@layer reset, theme, patterns, utilities;
-
-@import url("../reset.css") layer(reset);
-@import url("../theme.css");
-@import url("../utils.css") layer(utilities);
-
-@import url("./skeleton.css") layer(utilities);
-
-@import "../patterns/link.css";
-@import "../patterns/button.css";
-@import "../patterns/dialog.css";
-
-/* JS-free GUI comps */
-@import "../theme-switch.css";
-@import "sidenav.css";
-@import "header.css";
-
-
 @layer theme {
   body { --var-serif: var(--ui-mono); }
+
+  :root { --bg-hsl: var(--black-02); }
 
   :where(nav) {
     min-block-size: var(--min-touch-target);

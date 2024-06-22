@@ -69,7 +69,9 @@
     --lh-default: 1.5; /* default */
     --leading: var(--lh-default);
 
-    /* System defaults */
+    /* System defaults
+       https://drafts.csswg.org/css-fonts-4/#generic-font-families
+     */
     --ui-serif: ui-serif, serif;
     --ui-sans: system-ui, sans-serif;
     --ui-mono: ui-monospace, monospace;
@@ -149,8 +151,8 @@
     --ratio-ultrawide: 18/5;
     --ratio-golden: 1.6180/1;
     --ratio-1: 1;
-    --ratio-2: 4 / 3;  /* 1.333 (SD) */
-    --ratio-3: 16 / 9; /* 1.788 (HD) */
+    --ratio-2: 4/3;  /* 1.333 (SD) */
+    --ratio-3: 16/9; /* 1.788 (HD) */
   }
 }
 
@@ -214,7 +216,7 @@
     /* Line Thickness */
     --border-width: var(--line-hair);
 
-    /* set the props aliases, for instance: */
+    /* Set the props aliases, for instance: */
     --line-hair: 0.5px; /* ~ */ --hairline: var(--line-hair);
     --line-thin: 1px;
     --line-medium: 3px; /* ~ */ --line-md: var(--line-medium);
@@ -247,7 +249,7 @@
        https://en.wikipedia.org/wiki/Turn_(angle)#Tau_proposals
        https://web.dev/articles/css-trig-functions
     */
-    --radius-x: calc(var(--big-int) *1px);
+    --radius-x: calc(var(--big-int) * 1px);
     --radius-xx: 1000rem;
     --radius-xxx: 1e5px;
   }
@@ -317,10 +319,13 @@
 
 /* TODO Define transition vals, animation props and @keyframes */
 @layer props.animations {
-  /* Refs:
-     https://github.com/primer/css/blob/main/src/utilities/animations.scss
-     https://github.com/argyleink/transition.css
-     https://www.transition.style/ */
+  /* See
+     ⊛ https://github.com/primer/css/blob/main/src/utilities/animations.scss
+     ⊛ https://github.com/argyleink/open-props/blob/main/src/
+       ├╴props.animations.css
+       └╴props.easing.css
+     ⊛ https://github.com/argyleink/transition.css
+     ⊛ https://www.transition.style/ */
 
   :where(html) {
     /* ----------------------------------
@@ -338,6 +343,9 @@
     --duration-8: 1000ms;
     --duration-9: 1200ms;
     --duration: 0.4s; /* typically in the range of 150–500 ms */
+
+    /* 🤟🏻💀🪽 https://github.com/argyleink/open-props/blob/main/src/extra/durations.css */
+    --leap: 61s;
 
     /* ----------------------------------
      * Easing
@@ -374,11 +382,24 @@
     --ease-4: cubic-bezier(.25,0,.2,1);
     --ease-5: cubic-bezier(.25,0,.1,1);
 
+    /* TODO */
     /* --anim-N or --animation-N */
     --anim-fade-in: fade-in .5s var(--ease-3);
     --anim-fade-out: fade-out .5s var(--ease-3);
+    --anim-fade-1: var(--anim-fade-in);
+    --anim-fade-0: var(--anim-fade-out);
 
-    /* CSS Physics with Math
+    /* loops */
+    --_ease-out: cubic-bezier(0, 0, .3, 1);
+    --_ease-squish: var(--ease-elastic-in-out, cubic-bezier(.5, -.3, .1, 1.5));
+    --animation-spin: spin 2s linear infinite;
+    --animation-ping: ping 5s var(--_ease-out) infinite;
+    --animation-blink: blink 1s var(--_ease-out) infinite;
+    --animation-float: float 3s var(--_ease-out) infinite;
+    --animation-bounce: bounce 2s var(--_ease-squish) infinite;
+    --animation-pulse: pulse 2s var(--_ease-out) infinite;
+
+    /* TODO CSS Physics with Math
        → https://codepen.io/argyleink/pen/KKLaNdd */
   }
 
@@ -387,6 +408,33 @@
   }
   @keyframes fade-out {
     to { opacity:0 }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(1turn) }
+  }
+
+  @keyframes ping {
+    90%, 100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1
+    }
+
+    50% { opacity: .5 }
+  }
+
+  @keyframes float {
+    50% { transform: translateY(-25%) }
+  }
+
+  @keyframes pulse {
+    50% { transform: scale(.9,.9) }
   }
 }
 

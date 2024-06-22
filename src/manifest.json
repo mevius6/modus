@@ -8,7 +8,7 @@
     "unlimitedStorage"
   ],
   "host_permissions": [
-    "https://www.starter.com/"
+    "https://native-things.vercel.app/"
   ],
   "optional_host_permissions": [
     "*://*/*"

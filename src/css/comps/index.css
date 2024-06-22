@@ -1,0 +1,3 @@
+@layer components;
+
+@import "carousel.css" layer(components.carousel);

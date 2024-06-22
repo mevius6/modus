@@ -17,7 +17,6 @@
   :is(.overlay) {
     z-index: -1;
     pointer-events: none;
-    /* overflow: hidden; */
 
     & picture {
       inline-size: 100%;
@@ -31,10 +30,10 @@
     }
   }
 
-  :is(.bg-image) {
-    /* background-image: url(…); */
+  :is(.bg-image) { /* .bg-image { background-image: url(01.png); etc… } */
+    /* extends/overrides utility-class */
+    background-attachment: fixed;
     background-position: center;
     background-size: contain;
-    background-attachment: fixed;
   }
 }

@@ -4,5 +4,5 @@ window.addEventListener('load', () => {
   root.classList.replace('no-js', 'js');
   body.classList.replace('page--loading', 'page--loaded');
 
-  // console.clear();
+  // console.info();
 });

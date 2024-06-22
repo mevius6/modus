@@ -6,16 +6,34 @@
 :link, :visited { text-decoration: underline }
 :focus          { outline: thin dotted invert } */
 
-/* :where(a[href]) {
+/**
+ * normalyser 🫠
+ */
+
+:where(a[href]) {
   color: var(--link);
   &:visited { color: var(--link-visited); }
-} */
+}
+
+:where(a) {
+  &:where([href]) {
+    text-decoration-color: currentcolor;
+
+    &:where(:visited) {
+      text-decoration-color: currentcolor;
+    }
+  }
+
+  &:where(:not(:hover)) {
+    text-decoration: inherit;
+  }
+}
+
 /* :focus-visible { outline-color: var(--link); } */
 
 /* :where(:link, :any-link) { transition: all 150ms 0s ease; } */
 
 :where(a, [*|class=link]) {
-
   display: inline-block;
 
   text-shadow: .1em .1em .125em var(--shadow);
@@ -52,10 +70,8 @@ a:where([aria-current=page]) {
       font-size: .75rem;
       color: canvastext;
       text-align: left;
-
-      /* letter-spacing: .075em; */
       letter-spacing: .150em;
-      content: "Reload";
+      content: "Reload"; /* "↻" or "\21BB" */
       opacity: var(--_a, 0);
       transition: inherit;
       inset-inline: 0;
@@ -75,6 +91,28 @@ a:where([aria-current=page]) {
     }
   }
 }
+
+[data-icon] {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    font-family: inherit;
+
+    opacity: var(--_a, 0);
+    transition: opacity 150ms ease-out;
+    transform: translate(-100%, 0) scale(.75);
+  }
+
+  &:hover::before {
+    --_a: 1;
+  }
+
+  :where(.no-js) &::before {
+    content: attr(data-icon);
+  }
+}
+
 
 /* a:where[href^="http"]::after {
   content: " (" var(--external-link) ")"

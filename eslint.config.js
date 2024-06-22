@@ -25,7 +25,6 @@ export default [
     overrides: [{
       files: ["src/**/*"],
       rules: {
-
         semi: ["warn", "always"],
         indent: ["error", 2],
         // Handle cases where we are destructuring

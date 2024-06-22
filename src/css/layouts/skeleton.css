@@ -2,9 +2,10 @@
   :where(:root) {
     &:has(input[name="debug-mode"]:checked) {
       --bg-hsl: transparent;
-      --fg-hsl: ;
+      --fg-hsl: initial;
       --background: canvas;
       --foreground: canvastext;
+      --background: var(--blueprint-pb);
       color-scheme: dark only;
 
       &::before {
@@ -19,22 +20,24 @@
     }
   }
 
+  /* https://visbug.web.app/ */
   .debug *,
   .debug *::before,
   .debug *::after {
-    outline: color(display-p3 0 0 1) solid thin;
+    outline-width: var(--line, thin);
+    outline-style: var(--line-style, solid);
+    outline-color: var(--line-color, color(display-p3 0 0 1));
     outline-offset: 0;
   }
 
   .debug *::before,
-  .debug *::after {
-    outline-style: dashed;
-  }
+  .debug *::after { --line-style: dashed; }
 
   .debug p:where(:not(p+p))::first-letter {
     /* border: thin crimson dashed; */
   }
 
+  /* .mesh, */
   .graph-paper {
     /* https://en.wikipedia.org/wiki/Graph_paper
        https://css-pattern.com/graph-paper/ */
@@ -43,76 +46,12 @@
     --sqr-05: calc(1in / 5); /* engineering */
     --sqr-04: calc(1in / 4); /* quad */
 
-    /* https://en.wikipedia.org/wiki/Prussian_blue */
-    --blueprint-pb: hsl(205 100% 16%); /* #003153 */
-
-    color: color-mix(in lch, canvasText, transparent 15%);
-
-    :where([class*=debug]) & {
-      --sqr: var(--sqr-05);
-      background: var(--blueprint-pb);
-
-      & :where(:not(header, footer, main, article, section, aside)) > * {
-        filter: grayscale();
-      }
-
-      & :where(figure, picture, img, svg) > * {
-        outline-color: var(--neon-purple);
-      }
-
-      & form :where(, link, button, label) {
-        outline-style: dotted;
-        outline-color: var(--neon-pink);
-        outline-offset: 1px;
-      }
-
-      & :where(header, footer, main, article, section, aside) > *,
-      & :where(blockquote, legend) {
-        outline-width: 3px;
-        outline-style: double;
-        outline-offset: .35px;
-      }
-
-      &.--show-landmarks { /* TODO */
-        & :where([role])::after {
-          position: absolute;
-          display: inline-block;
-          padding-inline: .5lh;
-          font-family: var(--ui-mono);
-          font-size: .75rem;
-          line-height: 1.5;
-          text-shadow: 0 1px 1px hsl(0 0% 0% / 30%);
-          pointer-events: none;
-          content: attr(role);
-          background-color: hsl(var(--cool-gray-3) / 70%);
-          border-radius: 1e5px;
-        }
-
-        & [role]:where(ol, ul, figure)::after {
-          inset-block-start: 50%;
-          inset-inline-start: 50%;
-          transform: translate(-50%,-50%);
-        }
-
-        & [role]:where(p)::after {
-          inset-block-end: -100%;
-          inset-inline-start: 0;
-        }
-      }
-    }
+    color: color-mix(in lch, canvastext, transparent 15%);
 
     &::before {
       --_size: var(--sqr, 8px);
-      --_line: color-mix(in lch, canvasText, transparent 85%);
-
-      position: absolute;
-      inset-block-start: 0;
-      z-index: -1;
-      inline-size: 100vw;
-      block-size: 100svh;
-      pointer-events: none;
-      content: "";
-      background:
+      --_line: color-mix(in lch, canvastext, transparent 85%);
+      --_bg:
         linear-gradient(
           90deg,
           var(--_line) 1px,
@@ -122,9 +61,120 @@
           var(--_line) 1px,
           transparent 1px var(--_size)
         ) 50% 50% / var(--_size) var(--_size);
-      mask: linear-gradient(-25deg, transparent 30%, white);
+
+      position: absolute;
+      inset-block-start: 0;
+      z-index: -1;
+      display: none;
+      inline-size: 100vw;
+      block-size: 100svh;
+      pointer-events: none;
+      content: "";
+      background: var(--_bg);
+      mask:
+        linear-gradient(
+          -25deg,
+          transparent calc(100% / 3), white);
       transform-style: flat;
     }
+
+    body:where([data-id=test]) &::before {
+      display: initial;
+    }
+
+    /* ? https://codepen.io/thebabydino/pen/yLWvKyK
+    */
+    :where(
+      [class*="debug"],
+      :root:has(input[name="debug-mode"]:checked)
+    ) & {
+      --sqr: var(--sqr-05);
+
+      &::before { display: block }
+
+      /* background: var(--blueprint-pb); */
+
+      & :where(:not(header, footer, main, article, section, aside)) > * {
+        --line-color: color-mix(in lch, var(--neon-cyan), transparent 25%);
+        filter: grayscale();
+      }
+
+      & :where(figure, picture, img, svg) > * {
+        outline-color: var(--neon-purple);
+      }
+
+      & :where([class~="placeholder"]::after) {
+        filter: drop-shadow(2px 4px 8px black);
+      }
+
+      & form :where(a, button, label) {
+        outline-color: var(--neon-pink);
+        outline-offset: 1px;
+      }
+
+      & :where(header, footer, main, article, section, aside) > *,
+      & :where(blockquote, legend) {
+        outline-width: 3px;
+        outline-style: double;
+        outline-offset: .3px;
+      }
+
+      &.--show-landmarks { /* TODO */
+        & :where([role]) {
+          position: relative;
+        }
+
+        & :where([role])::after {
+          position: absolute;
+          display: inline-block;
+          padding-inline: .5lh;
+          font-family: var(--ui-mono);
+          font-size: .75rem;
+          font-weight: 600;
+          line-height: 1.5;
+          text-shadow: 0 1px 1px hsl(0 0% 0% / 30%);
+          pointer-events: none;
+          content: attr(role);
+          background-color: hsl(var(--cool-gray-3) / 70%);
+          border-radius: var(--radius-x);
+        }
+
+        & [role]:where(ol, ul, figure)::after {
+          inset-block-start: 0;
+          inset-inline-start: 0;
+          transform: translate(calc(100% / 3),100%);
+        }
+
+        & [role]:where(p)::after {
+          inset-block-end: calc(1ex / .42 * -1);
+          inset-inline-start: 0;
+          transform: translate(0,100%);
+        }
+
+        & [role]:where(article, section)::after {
+          inset-block-start: calc(1ex / .42 * -1);
+          inset-inline-start: 0;
+          transform: translate(0,-100%);
+        }
+      }
+    }
+  }
+
+  /* https://css-pattern.com/distorted-mesh/ */
+  .distorted-mesh { /* 404 */
+    --s: min(5rem, 50%, 33cqi); /* control the size */
+    --c1: hsl(var(--dayglo-pink));
+    --c2: var(--neon-purple);
+    --_g: #0000 52%,var(--c1) 54% 57%,#0000 59%;
+    background:
+     radial-gradient(farthest-side at -33.33% 50%,var(--_g)) 0 calc(var(--s)/2),
+     radial-gradient(farthest-side at 50% 133.33%,var(--_g)) calc(var(--s)/2) 0,
+     radial-gradient(farthest-side at 133.33% 50%,var(--_g)),
+     radial-gradient(farthest-side at 50% -33.33%,var(--_g)),
+     var(--c2);
+    background-size:
+      calc(var(--s)/4.667) var(--s),
+      var(--s) calc(var(--s)/4.667);
   }
 
   [class~=placeholder] {
@@ -137,12 +187,11 @@
       calc(var(--_hue) * (var(--i) * var(--_ratio)))
       calc(var(--_sat) * (var(--i) * .618033))
       var(--_lum);
-    position: relative;
 
+    position: relative;
     display: inline-flex;
     max-block-size: 100svb;
     overflow: hidden;
-
     color: hsl(var(--_hsl)); /* SVG */
 
     /* JS-free version of https://github.com/cloudfour/simple-svg-placeholder */
@@ -171,10 +220,6 @@
         hsl(var(--bg-hsl))
       );
       transform: translate(-50%,-50%);
-
-      /* block-size: 100%;
-      display: grid;
-      place-content: center; */
     }
 
     & > svg {

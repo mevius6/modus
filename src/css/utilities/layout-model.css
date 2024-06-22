@@ -1,3 +1,5 @@
+/* See → https://1linelayouts.glitch.me/ */
+
 /* https://drafts.csswg.org/css-grid-2/ */
 .d-grid { display: grid; }
 
@@ -49,7 +51,28 @@
   gap: 1ch;
 }
 
-/* See → https://web.dev/articles/centering-in-css */
+.grid-stack { grid: [stack] / [stack] }
+
+/* See → https://www.youtube.com/watch?v=6qpEOBkDr88 */
+.pile {
+  display: grid;
+
+  > * { grid-area: 1 / 1 }
+}
+
+/* —or— */
+.pile-named-areas {
+  display: grid;
+  grid: [stack] 1fr / [stack] 1fr;
+
+  > * { grid-area: stack }
+}
+
+.center             { place-self: center }
+.corner-start-start { place-self: start }
+.corner-start-end   { place-self: start end }
+.corner-end-start   { place-self: end start }
+.corner-end-end     { place-self: end end }
 
 /* The widest child (max-content) sets the width for all the rest.
    Great for macro layouts containing paragraphs and headlines, prototypes, or generally things that need legible centering.
@@ -62,6 +85,8 @@
 
 /* Note: place-content is not exclusive to display: grid.
    display: flex can also benefit from place-content and place-item shorthands.
+
+   See → https://web.dev/articles/centering-in-css
 */
 
 .grid-cols-subgrid { grid-template-columns: subgrid; }

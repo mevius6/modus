@@ -9,7 +9,7 @@
    → https://drafts.csswg.org/css2/#system-colors
 */
 
-/* TODO: design system */
+/* TODO: design system w/ typed custom props */
 /* @property --brand {
   syntax: "<color>";
   inherits: false;
@@ -27,6 +27,15 @@
     --brand: lightstink;
   }
 }
+*/
+
+/* See arts on newly introduced CSS color funcs and syntax:
+ * https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/
+ * https://developer.chrome.com/docs/css-ui/css-color-mix
+ * https://www.smashingmagazine.com/2022/06/simplify-color-palette-css-color-mix/
+ * https://css-irl.info/shades-of-grey-with-color-mix/
+ * https://developer.chrome.com/docs/css-ui/css-color-mix
+ * https://developer.chrome.com/blog/css-relative-color-syntax/
 */
 
 @layer color.swatches { /* Pre-defined color props */
@@ -186,11 +195,11 @@
 /* Distributing primary, neutral and accent roles among hues. */
 @layer color.roles {
   :where(html) {
-    /**
-     * Primary (or lead)
-     */
+    /* Primary (or lead) */
 
-    /* Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate. */
+    /* Warm shades of red, orange and yellow
+       are associated with the literal warmth
+       that the sun and fire radiate. */
     --red-1: hsl(var(--sw-abalone-shell));
 
     /* TODO: Add hue props `--red-{1–12}` */
@@ -199,9 +208,7 @@
     /* TODO: Add design tokens, e.g. `--lead-*` or `--primary-*` */
     --lead-1: var(--red-1);
 
-    /**
-     * Neutral (black, white, gray and beige)
-     */
+    /* Neutral (black, white, gray and beige) */
 
     /* Cool Whites (undertones of blue, green or violet) */
     --cool-white-1: var(--sw-extra-white);
@@ -397,39 +404,28 @@
   }
 }
 
-/* ------------------------------------ x ----------------------------------- */
+/**
+ * Usage example:
+ * 1. define new color hues
+ * 2. specify the roles of the new hues in the color palette
+ */
 
-@layer color.swatches {
-  /* 1. define new color hues */
-
+@layer color.swatches { /* [1] */
   :where(html) {
     /* No. 2 Reds & Purples 2024 */
-    --sw-ravishing-coral: 12deg 68% 70%; /* E79580 SW6612 Ravishing Coral */
-    --sw-veri-berri: 295deg 14% 52%;     /* 937496 SW9069 Veri Berri */
+    --sw-ravishing-coral: 12deg 68% 70%; /* E79580 SW 6612 */
+    --sw-veri-berri: 295deg 14% 52%;     /* 937496 SW9 069 */
   }
 }
 
-@layer color.palettes {
-  /* 2. specify the roles of the new hues in the color palette */
-
-  /**
-    Arts on newly introduced CSS color funcs and syntax:
-    → https://developer.mozilla.org/en-US/blog/color-palettes-css-color-mix/
-    → https://developer.chrome.com/docs/css-ui/css-color-mix
-    → https://www.smashingmagazine.com/2022/06/simplify-color-palette-css-color-mix/
-    → https://css-irl.info/shades-of-grey-with-color-mix/
-    → https://developer.chrome.com/docs/css-ui/css-color-mix
-    → https://developer.chrome.com/blog/css-relative-color-syntax/ */
-
+@layer color.palettes { /* [2] */
   :where(html) {
     --coral: var(--sw-ravishing-coral);
     --purple: var(--sw-veri-berri);
   }
 }
 
-/* ------------------------------------ x ----------------------------------- */
-
-@layer color.gradients { /* ∇ */
+@layer color.gradients {
   :where(html) {
     --lin-coral-purple: linear-gradient(
       to right,
@@ -452,10 +448,15 @@
        → https://www.conic.style/ */
 
     /* ROYGBIV (rainbow gradient) */
-    /* go → https://nerdy.dev/easy-hsl-rainbow */
+    /* Go → https://nerdy.dev/easy-hsl-rainbow */
     --lin-gradient-roygbiv: linear-gradient(
-      to right in hsl longer hue, red, red
+      to right
+      in hsl
+      longer hue,
+      red, red
     );
+    --rainbow: var(--lin-gradient-roygbiv);
+    --roygbiv: var(--lin-gradient-roygbiv);
 
     /* https://github.com/daltonmenezes/aura-theme */
     --lin-gradient-voygb: linear-gradient(
@@ -499,4 +500,8 @@
       var(--accent) 5px
     );
   }
+
+  :where([class*=🌈]),
+  :where(.\∇-roygbiv, .\🌈) { --gradient: var(--roygbiv) }
+  :where(.\∇-voygb) { --gradient: var(--lin-gradient-voygb); }
 }

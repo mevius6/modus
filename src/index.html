@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- https://rules.sonarsource.com/html/ -->
 <html class="no-js" dir="ltr" lang="en">
   <head>
-    <meta charset="utf-8" />
+    <!-- https://encoding.spec.whatwg.org/#utf-8 -->
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1,viewport-fit=cover"
@@ -9,12 +11,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
 
+    <!-- <script>document.documentElement.className="js";</script> -->
+    <script type="text/javascript">
+      let { log, info } = console;
+      let { now: getDate } = Date; // var now = Date.now();
+      // TODO
+      // https://perf-html.io/
+      // https://profiler.firefox.com/docs/
+      // https://w3c.github.io/performance-timeline/
+      // https://developer.mozilla.org/en-US/docs/Web/Performance
+      // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#times
+      // var _start = new Date().getTime();
+      info(getDate());
+
+      // window.addEventListener('pageshow', (event) => {
+      //   if (event.persisted) {
+      //     alert('The page was cached by the browser');
+      //   } else {
+      //     alert('The page was NOT cached by the browser');
+      //   }
+      // });
+    </script>
+
     <title>Document</title>
     <!-- meta[name=author content] -->
+    <!-- See:
+              https://css-tricks.com/emoji-as-a-favicon/
+              https://realfavicongenerator.net/
+    -->
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-    <!-- link:touch[sizes="180x180"] -->
+    <!-- link:touch[sizes="180x180"]
     <!-- TODO
       https://maskable.app/
       https://www.w3.org/TR/appmanifest/#icon-masks
@@ -37,39 +65,53 @@
     />
     <!-- SEO [S] -->
     <meta name="description" content="…" />
-    <!-- meta:kw[content='html,aria,ogp,schema,svg,css,js,json'] -->
+    <!-- meta:kw[content='aria,css,html,js,json,ogp,schema,svg'] -->
     <meta name="robots" content="follow,index,max-image-preview:standard" />
     <link rel="canonical" href="https://native-things.vercel.app/" />
-    <link rel="next" href="https://native-things.vercel.app/test" />
+    <link rel="next" href="https://native-things.vercel.app/test.html" />
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Document" />
     <meta property="og:description" content="…" />
     <meta property="og:url" content="https://native-things.vercel.app/" />
     <meta property="og:site_name" content="Website Boilerplate" />
-    <meta property="og:image" content="./src/images/ogp_common@2x.jpg" />
-    <meta
-      property="og:image:secure_url"
-      content="./src/images/ogp_common@2x.jpg"
-    />
+    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <!-- TODO
       https://vercel.com/docs/functions/og-image-generation
+      https://vercel.com/guides/displaying-article-headlines-in-social-previews
+
+      Tools for testing and debugging:
+        https://dub.co/tools/metatags;
+        https://en.rakko.tools/tools/9/;
+
+      https://vercel.com/templates/next.js/og-image-generation
+      https://vercel.com/templates/next.js/og-cool
     -->
-    <!-- [max-size] (1.9:1) -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <!-- [min-size] (2:1)
-    <meta property="og:image:width" content="800" />
-    <meta property="og:image:height" content="400" /> -->
-    <!-- TODO
-      meta:twcard
-      jsonld:site
+    <!--
+      See:
+          https://ogp.me/ns/ogp.me.rdf
+          https://ogp.me/ns/ogp.me.ttl
+          http://xmlns.com/
+          https://rdfa.info/play/
+      Informative References:
+          https://www.w3.org/groups/wg/rdf-star/publications/
+          https://www.w3.org/TR/rdf12-concepts/
+          https://www.w3.org/TR/rdf12-trig/
+          https://w3c.github.io/rdf-semantics/spec/
+          https://w3c.github.io/rdf-schema/spec/
+          https://github.com/w3c/dxwg/
+          https://w3c.github.io/dxwg/dcat/
+          https://w3c.github.io/sparql-query/spec/
+          […]
     -->
+    <!-- meta:twcard -->
+    <!-- jsonld:site -->
     <!-- SEO [E] -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <!-- https://csswizardry.com/2023/12/correctly-configure-preconnections/ -->
-    <!-- link[rel=preconnect href]+link[rel=dns-prefetch href] -->
     <!--
       https://drafts.csswg.org/css-fonts-4/#font-format-definitions
       https://www.w3.org/TR/WOFF2/#IMT
@@ -82,14 +124,17 @@
       crossorigin
     />
     <style>
-      /* https://drafts.csswg.org/css-fonts-4/#font-face-src-parsing */
+      /*
+        https://drafts.csswg.org/css-fonts-4/#font-face-src-parsing
+        https://drafts.csswg.org/css-fonts-4/#font-named-instance
+      */
       @font-face {
         font-display: swap;
         font-family: Roslindale;
         font-stretch: 100%;
         font-style: normal;
         /* font-style: oblique 0deg 1deg; */
-        /* font-synthesis: none; */
+        font-synthesis: none;
         font-weight: 200 900;
         src: url(fonts/RoslindaleCyrillicVariable.woff2) format(woff2)
             tech(variations),
@@ -109,20 +154,17 @@
           U+2020-2022, U+2026, U+2030, U+2032-2033, U+2039-203A, U+2044, U+20AC,
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
-      /* https://www.unicode.org/versions/Unicode15.1.0/ */
     </style>
     <!-- link[as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high"] -->
 
     <!-- The main stylesheet -->
-    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" />
-    <!--
-      Intent: JS-free website
-      https://html.spec.whatwg.org/multipage/scripting.html
-    -->
-    <noscript>
-      <link rel="stylesheet" href="./css/theme-switch.css" />
-    </noscript>
-    <script defer type="module" src="./js/modules.js"></script>
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+    <style>
+      @import url(css/comps/custom-cursor.css);
+    </style>
+
+    <!-- JavaScript modules -->
+    <script defer type="module" src="js/modules.js"></script>
   </head>
 
   <body
@@ -132,12 +174,20 @@
     data-id="homepage"
   >
     <noscript>
+      <!--
+        Intent: JS-free website
+        https://html.spec.whatwg.org/multipage/scripting.html
+      -->
+      <style>
+        @import url(css/comps/theme-switch.css);
+      </style>
+
       <dialog id="alert" class="flow" open>
         <h3 class="text-gradient">Scripting is disabled</h3>
         <form method="dialog">
           <button onclick="window.dialog.close();">
             <span class="sr-only">OK</span>
-            <code>Oh, no JavaScript… ¯\_(ツ)_/¯</code>
+            <code>Oh, no JavaScript‽</code>
           </button>
         </form>
       </dialog>
@@ -146,13 +196,16 @@
     <!-- Global Site Navigation (sidebar) -->
     <aside id="sidenav-open">
       <!-- https://webaim.org/techniques/skipnav/ -->
-      <!-- a[href=#main].skip-link{Skip to main content} -->
-      <nav id="Nav" class="nav" aria-label="Primary Navigation">
+      <!-- a[href=#main].skip-link{Skip to main content &DownArrowBar;} -->
+
+      <!-- https://kb.daisy.org/publishing/docs/html/dpub-aria/doc-toc.html -->
+      <nav id="Nav" class="nav" aria-label="Primary Navigation" role="doc-toc">
         <ul
           class="nav__items"
           itemscope
           itemtype="https://schema.org/SiteNavigationElement"
           aria-label="Main Menu"
+          role="directory"
         >
           <li id="1" class="nav__item">
             <a
@@ -181,8 +234,25 @@
             </a>
           </li>
           <li id="5" class="nav__item">
-            <a href="./test.html" class="nav__link" title="" itemprop="url">
-              <span class="nav__link-text" itemprop="name">Test</span>
+            <a href="test.html" class="nav__link" title="" itemprop="url">
+              <span class="nav__link-text" itemprop="name" data-icon="🚧"
+                >Test</span
+              >
+            </a>
+          </li>
+          <li id="6" class="nav__item">
+            <!-- https://en.wikipedia.org/wiki/Link_rot -->
+            <a
+              href="404.html"
+              class="nav__link"
+              title="dead inside"
+              itemprop="url"
+              aria-hidden="true"
+            >
+              <span class="nav__link-text muted" itemprop="name" data-icon="🧟"
+                >Link rot&emsp14;<sup>&NotExists;</sup>
+                <!-- Link that lead to a 404 page -->
+              </span>
             </a>
           </li>
         </ul>
@@ -195,6 +265,7 @@
         onchange="history.go(-1)"
       ></a>
       <!-- FIXME: Restoring the scroll position
+        https://html.spec.whatwg.org/multipage/document-sequences.html#navigables
         https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-history-interface
         https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-restoration-mode
       -->
@@ -302,13 +373,40 @@
 
         <!-- Hero (generic / local banner) -->
         <div id="hero" class="container relpos items-center init-reveal">
-          <hgroup class="grid__content self-center">
+          <hgroup class="grid__content self-center flow">
             <!--
               Is the title refers to the main content area
               or to region area 1?
             -->
-            <h1>Page Title</h1>
-            <p class="h5" role="doc-subtitle">Website Boilerplate</p>
+            <h1 class="sr-only">Page Title</h1>
+            <div class="h1 caps">
+              <!-- TODO
+                https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
+              -->
+              <span data-char-idx="1">s</span>
+              <span data-char-idx="2">t</span>
+              <span data-char-idx="3">a</span>
+              <span data-char-idx="4">r</span>
+              <span data-char-idx="5">t</span>
+              <span data-char-idx="6">e</span>
+              <span data-char-idx="7">r</span>
+            </div>
+            <p
+              class="h5 fvar"
+              style="--wght: 500; --opsz: 16; --flow-space: 0.16em"
+              role="doc-subtitle"
+            >
+              Website Boilerplate
+            </p>
+            <input
+              type="range"
+              min="0"
+              max="360"
+              value="0"
+              step="0.1"
+              id="hue"
+              style="width: 100%; margin: 0"
+            />
           </hgroup>
 
           <div class="grid__full overlay">
@@ -318,13 +416,16 @@
 
         <!-- About -->
         <div id="about" class="container">
-          <article class="grid__content mx-auto flow">
-            <h2>Second-level head</h2>
-            <p class="has-dropcap">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              quia quibusdam inventore? Sint suscipit molestiae repellat quam
-              ipsum distinctio adipisci accusamus, quaerat nisi vel corrupti
-              repudiandae. Magni quos explicabo iusto!
+          <article class="grid__content mx-auto flow" role="doc-epilogue">
+            <h2>Second-level head.</h2>
+            <!-- https://www.lipsum.com/ -->
+            <p id="intro" class="has-dropcap">
+              <b class="lede">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              </b>
+              Impedit quia quibusdam inventore? Sint suscipit molestiae repellat
+              quam ipsum distinctio adipisci accusamus, quaerat nisi vel
+              corrupti repudiandae. Magni quos explicabo iusto!
             </p>
             <p>
               Aperiam blanditiis molestiae aspernatur minus eos, amet facilis!
@@ -400,6 +501,53 @@
         </div>
 
         <div class="container">
+          <article
+            class="grid__content content-wrap"
+            itemscope
+            itemtype="http://schema.org/BlogPosting"
+          >
+            <h2 itemprop="headline">Post headline.</h2>
+            <hr class="gradient-border-block ∇-roygbiv" />
+            <ol
+              class="flow previews"
+              itemprop="articleBody"
+              class="text-pretty"
+            >
+              <li>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus, iure neque corrupti quas blanditiis possimus
+                eveniet, nostrum, quidem velit repellat eaque. Dignissimos
+                magnam recusandae impedit amet laborum earum perferendis in.
+              </li>
+              <!-- TODO utility-class -->
+              <li
+                style="
+                  column-count: 2;
+                  column-gap: var(--gutter);
+                  column-rule: thin solid magenta;
+                  text-align: center;
+                  padding: var(--gutter);
+                "
+                class="gradient-border-🌈"
+              >
+                Maxime quisquam vel molestias omnis, amet perspiciatis eius
+                distinctio pariatur asperiores sapiente minus! Rerum placeat id
+                et pariatur numquam quod ipsum, error, aut deleniti nobis eaque
+                repellendus hic nemo sed.
+              </li>
+              <li
+                style="column-count: 3; column-rule: medium dotted greenyellow"
+              >
+                Praesentium tempora autem illo? Dicta eaque, fugiat, quod earum,
+                quas quos aliquid voluptatum quo consectetur officia tempore.
+                Reiciendis, similique! Facere tempore quisquam tempora hic ex
+                magnam iure adipisci voluptates enim.
+              </li>
+            </ol>
+          </article>
+        </div>
+
+        <div class="container">
           <blockquote
             class="grid__center h2 text-center"
             style="--opsz: 48; --wght: 300; line-height: 1.35cap"
@@ -424,18 +572,20 @@
             <figcaption class="d-grid cols-subgrid">
               <!-- 🔗 https://arc.net/l/quote/bwpplhpf -->
               <q
-                class="vf"
+                class="fvar"
                 style="--wght: 500"
                 cite="https://lievengevaertcentre.be/research/when-art-turned-day-glo-marking-impact-daylight-fluorescent-materials-new-york-art-60s-and"
               >
                 Fluorescent colors are the extension of our visual world and the
                 next step in color theory.
               </q>
-              <em class="vf" style="--ital: 1">
+              <em class="fvar" style="--ital: 1">
                 &mdash;&hairsp;Herb Aach<wbr /> (1923&ndash;1985)
               </em>
             </figcaption>
           </figure>
+          <!-- TODO -->
+          <!-- <a href="#" class="cta" data-icon="🫵🏻">See more</a> -->
         </div>
 
         <!-- Contact -->
@@ -448,7 +598,7 @@
               style="--opsz: 24; --wght: 275"
             >
               Think different.
-              <!-- ﬀ -->
+              <!-- <s>ﬀ</s> -->
             </legend>
             <button type="submit">(Re)think again</button>
           </fieldset>
@@ -482,6 +632,7 @@
             >
               fin
             </text>
+            <!-- https://dom.spec.whatwg.org/#interface-cdatasection -->
             <style>
               <![CDATA[
                 text {
@@ -498,6 +649,40 @@
           </svg>
         </div>
       </section>
+
+      <!-- TODO Fetch latest deployments status from gh repo
+        See:
+            https://docs.github.com/ru/webhooks/types-of-webhooks
+            https://html.spec.whatwg.org/multipage/text-level-semantics.html
+      -->
+      <!--
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira%20Code:wght@300..700&display=swap');
+      </style>
+      -->
+      <pre class="grid__full console">
+        <!-- TODO Terminal-like boot state animation
+        <output>######################################################################### 100%</output> -->
+        <code style="hyphens: none">
+          <!-- [emulate this]
+            Last login: Thu Jun 20 20:12:22 on ttys002
+            Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
+          -->
+          <span class="sep">=============================</span>
+          <span>Latest deployments</span>
+          <span class="sep">=============================</span>
+          <kbd>🌿 Production:</kbd>&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
+          <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
+          <span>&gt;</span>&#x20;cd&#x20;&#x002e;&#x002e;&nbsp;&amp;&amp;&nbsp;<span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+          <!-- <span class="typewriter">curl -X GET "https://api.w3.org/healthcheck" -H "accept: application/json"</span> -->
+        </code>
+      </pre>
+      <!-- https://www.w3.org/api/; https://api.w3.org/doc -->
+      <!--
+        https://infra.spec.whatwg.org/#code-points
+        https://html.spec.whatwg.org/multipage/named-characters.html
+        https://w3c.github.io/rdf-turtle/spec/#selected-terminal-literal-strings
+      -->
     </main>
 
     <!-- Content Info -->
@@ -507,14 +692,49 @@
       itemscope
       itemtype="https://schema.org/WPFooter"
     >
-      <small>
+      <small class="fvar" style="--opsz: 11">
+        <!-- https://en.wikipedia.org/wiki/Year_2038_problem -->
+        <time id="cpr" datetime="2020" itemprop="copyrightYear">Y2K38</time>
         <!-- © ООО «Имя Бренда», 2024 -->
-        <time datetime="2024" itemprop="copyrightYear">Y2K</time>
-        &COPY;&nbsp;
-        <span itemprop="name">Brandname</span>
-        <!-- <input type="text" placeholder="Brandname" itemprop="name" /> -->
+        &copy;&nbsp;
+        <span itemprop="name" style="--wght: 300; --ital: 1">Brandname</span>
+        <wbr />
+        <span class="byline" style="--wght: 800; --ital: 1">
+          <!-- made (by @mevius6 | with 🍄 | on 🪑 | under 🌴 | etc…) -->
+          made w/ &boxbox; <wbr />
+          host by &xutri;
+        </span>
       </small>
     </footer>
+
+    <!-- TODO -->
+    <span class="custom-cursor" aria-hidden="true">
+      <span class="preview">
+        <span class="preview__img">
+          <img
+            src="images/qr-codes/qrCode(5).png"
+            width="768"
+            height="768"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="images/qr-codes/qrCode(10).png"
+            width="384"
+            height="384"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="images/qr-codes/qrCode(14).png"
+            width="192"
+            height="192"
+            loading="eager"
+            decoding="auto"
+          />
+        </span>
+      </span>
+    </span>
 
     <svg width="0" height="0" data-hidden>
       <defs>
@@ -595,6 +815,30 @@
       </defs>
     </svg>
 
+    <!-- Timestamps -->
+    <script type="text/javascript">
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+      // (?) https://tc39.es/proposal-temporal/docs/
+      let currDate = new Date(),
+        _l10n = currDate.toLocaleDateString(undefined, options),
+        _year = currDate.getUTCFullYear();
+      let copy = cpr;
+      let samp = upd;
+      copy.dateTime = _year;
+      copy.textContent = _year;
+      samp.textContent = _l10n;
+    </script>
+
     <script src="js/main.js"></script>
+
+    <!-- <script type="text/javascript">
+      var _end = new Date().getTime();
+      console.info(_end);
+    </script> -->
   </body>
 </html>

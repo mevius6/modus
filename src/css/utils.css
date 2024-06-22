@@ -3,26 +3,6 @@
 
 /* https://developer.chrome.com/blog/css-wrapped-2023#trig */
 
-/* https://www.youtube.com/watch?v=6qpEOBkDr88 */
-.grid-stack {
-  /* display: grid; */
-  grid: [stack] / [stack];
-}
-
-.pile {
-  display: grid;
-
-  > * {
-    grid-area: 1/1;
-  }
-}
-
-.center             { place-self: center }
-.corner-start-start { place-self: start }
-.corner-start-end   { place-self: start end }
-.corner-end-start   { place-self: end start }
-.corner-end-end     { place-self: end end }
-
 .staggered-anim { /* FIXME: it's more suitable for `dialog[open]` now */
   --delay: calc(var(--i, 1) * 150ms);
   opacity: 0;
@@ -46,8 +26,6 @@
 .zi-10 { z-index: var(--zi, 10) }
 .zi-20 { z-index: var(--zi, 20) }
 
-/* etc. */
-
 /* https://web.dev/content-visibility/ */
 .content-vis {
   content-visibility: auto;
@@ -68,6 +46,11 @@
   white-space: nowrap;
   border: 0;
   clip-path: inset(100%);
+} /* —or— */
+:is(.visually-hidden) {
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
 }
 
 .fixpos { position: fixed }
@@ -108,6 +91,11 @@
   transform: translate(-50%, -50%);
 }
 
+.fit-content {
+  width: fit-content;
+  inline-size: fit-content;
+}
+
 /* Inline and block size overrides */
 .inline-fit   { max-inline-size: 100% !important; }
 .inline-full  { inline-size: 100% !important; }
@@ -142,11 +130,49 @@
    or `.spaced-{x|y}` mixin?..
 */
 
+/* https://caniuse.com/#feat=flexbox-gap
+   https://github.com/w3c/csswg-drafts/issues/3559 */
 .flow > * + * {
   margin-block-start: var(--flow-space, var(--spacer-2x));
 }
 
-.rounded-pill { border-radius: calc(var(--big-int) * 1px) !important; }
+/* https://github.com/argyleink/open-props/blob/main/src/extra/utilities.css */
+[class^=border-between] > * + * {
+  --border-style: solid;
+
+  [class*=inline] & {
+    border-inline-start-style: var(--border-style);
+    border-inline-start-width: var(--line-width, var(--line-md, medium));
+  }
+
+  [class*=block] & {
+    border-block-start-style: var(--border-style);
+    border-block-start-width: var(--line-width, var(--line-thin, thin));
+  }
+}
+
+[class*=gradient-border],
+[class|=gradient-border] {
+  border-style: solid;
+  border-image-source: var(--border-image, var(--gradient));
+  border-image-slice: 1;
+
+  &[class*=inline] {
+    border-inline-width: var(--line-width, thin);
+    border-image-slice: 0 1;
+  }
+
+  &[class*=block] {
+    border-block-width: var(--line-width, thin);
+    border-image-slice: 1 0;
+  }
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .has-outline {
   outline: var(--accent) hidden 4px;
@@ -180,6 +206,8 @@
 .fake-shadow-pass {
   box-shadow: 0 0 25cqmax 15cqmin var(--background) inset;
 }
+
+.muted { filter: grayscale() }
 
 .side-fade {
   /* Horizontal scroller edge fade mask */
@@ -364,6 +392,9 @@
   /* box-decoration-break: clone; */
 }
 
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+
 .text-center { text-align: center; }
 .text-left   { text-align: left; }
 
@@ -423,9 +454,14 @@
 
 /* https://drafts.csswg.org/css-writing-modes-4/ */
 .sideways {
-  @media (min-width: 48em) {
-    /* TODO */
-  }
+  writing-mode: vertical-lr;
+  text-orientation: sideways;
+}
+
+.reverse,
+.inverse {
+  /* scale: -1; */
+  transform: scale(-1);
 }
 
 :where([class~=tag]) {

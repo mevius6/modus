@@ -1,0 +1,18 @@
+/*
+  https://compat.spec.whatwg.org/#ua-string-section
+  https://github.com/argyleink/open-props/blob/main/src/props.supports.css
+*/
+
+@custom-media --safariONLY      (-apple-pay-button-style: inherit);
+@custom-media --firefoxONLY     (-moz-appearance: inherit);
+@custom-media --firefoxMacONLY  (-moz-osx-font-smoothing: inherit);
+
+:where(html) {
+  --isLTR: 1;
+  --isRTL: -1;
+
+  &:dir(rtl) {
+    --isLTR: -1;
+    --isRTL: 1;
+  }
+}

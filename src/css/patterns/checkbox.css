@@ -1,0 +1,19 @@
+/* See
+ * → https://moderncss.dev/pure-css-custom-checkbox-style/
+ */
+
+input[type="checkbox"] {
+  --_size: 1.15em;
+
+  appearance: none;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  margin: 0;
+  font: inherit;
+  color: currentcolor;
+  background-color: canvas;
+  border: 0.15em solid currentcolor;
+  border-radius: 0.15em;
+
+  -webkit-appearance: none;
+}

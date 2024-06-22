@@ -25,6 +25,7 @@
   transform: translateX(-100vw);
   overscroll-behavior: contain;
 
+  /* https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-target */
   &:target {
     visibility: visible;
     transition: transform var(--duration) var(--easeOutExpo);

@@ -1,17 +1,16 @@
 /* REFS:
-   https://codepen.io/miriamsuzanne/pen/rNbeXPe
    1. https://www.smashingmagazine.com/2024/03/setting-persisting-color-scheme-preferences-css-javascript/
    2. https://www.smashingmagazine.com/2022/05/accessible-design-system-themes-css-color-contrast/
    3. https://www.smashingmagazine.com/2023/01/creating-high-contrast-design-system-css-custom-properties/ */
 
 /* TODO: Add support for theme switching
-          that does not rely on scripting.
-          Go → props/media.css */
+         that does not rely on scripting.
+         Go → props/media.css */
 /* –OR–
     Simplify the code with the light-dark() function.
-    → https://web.dev/articles/light-dark
-*/
-/* @supports (color-scheme: light dark) and
+    → https://web.dev/articles/light-dark */
+/*
+@supports (color-scheme: light dark) and
           (color: light-dark(#222, #fff))
 { :root {
     --foreground: light-dark(#333, #fafafa);
@@ -21,9 +20,8 @@
   }
 } */
 
-/* :root:has(input[name="color-scheme"][value="light dark"]:checked) {
-  color-scheme: light dark;
-} */
+/* An example of a new selector
+:root:has([type="radio"][name="mode"][value="dark"]):checked) {…} */
 
 :root {
   &:has(input[part="toggleCheckbox"]:checked) {
@@ -35,7 +33,14 @@
   }
 }
 
-/* noscript { display:contents } */
+:is(input,label):where([part]) {
+  /* overrides the user agent's cursor:default property */
+  :not([disabled]) & { cursor:pointer }
+
+  /* sets inheritance of "reset" stylesheet [L250] */
+  [disabled] & { cursor:unset }
+}
+
 theme-switch {
   :host {
     contain:content;
@@ -53,7 +58,7 @@ theme-switch {
     font:var(--theme-switch-legend-font,inherit)
   }
 
-  input,label { cursor:pointer }
+  /* fieldset {…} */
 
   input {
     position: absolute;

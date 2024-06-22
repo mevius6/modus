@@ -1,6 +1,7 @@
 {
   "html": {
     "snippets": {
+      "esc:shrug": "{\u00AF\u005C\u005C\u005F\u0028\u30C4\u0029\u005F\u002F\u00AF}",
       "meta:vp": "meta[name=viewport content='width=device-width,initial-scale=1,viewport-fit=cover']",
       "meta:apple": "meta[name='apple-mobile-web-app-capable' content='yes']+meta[name='apple-mobile-web-app-status-bar-style' content='black-translucent']",
       "meta:msapp": "meta[name='msapplication-TileColor' content]+meta[name='msapplication-config' width=device-width,initial-scale=1,viewport-fit=covercontent='browserconfig.xml']",
@@ -12,6 +13,7 @@
       "script:jsonld": "script[type='application/ld+json']",
       "jsonld:ctx": "script:jsonld>{\\{'@context': 'https://schema.org'\\}}",
       "jsonld:site": "script:jsonld>{\\{'@context': 'https://schema.org', '@type': 'WebSite', 'author': \\{'@type': 'Person', 'name': '${0:🫵🏻}'\\}, 'description': '${1:A summary of page content.}', 'headline': 'Home', 'name': '${2:Document}', 'url': '${3:https://www.w3.org/}'\\}}",
+      "link:hint": "link[rel=preconnect href]+link[rel=dns-prefetch href]",
       "nojs": "dlg#alert.flow[open]>h2{Scripting is disabled}+form[method=dialog]>btn[onclick='window.dialog.close();']>.sr-only{OK}+code{Oh, no JavaScript… ¯\\\\_(ツ)_/¯}",
       "nav": "nav[aria-label='${1:Main}']>ul>(li>a[aria-current='page']{${1:Current Page}})+(li*3>a{${0:Another Page}})",
       "btn:nav": "btn:b.nav-button[title='${1:Главное меню}' aria-label='Show Menu' aria-controls='Nav' aria-expanded=false aria-pressed=false]>svg:trigram",

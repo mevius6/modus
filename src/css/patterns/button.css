@@ -2,8 +2,13 @@
 
 /* https://codepen.io/collection/AaLmWp */
 
-/* https://open-props.style/
-   https://github.com/argyleink/gui-challenges/tree/main/buttons
+:where(button:is([data-icon])) {
+  /* https://moderncss.dev/icon-button-css-styling-guide/ */
+}
+
+/* See
+   → https://github.com/argyleink/open-props/blob/main/src/extra/buttons.css
+   → https://github.com/argyleink/gui-challenges/tree/main/buttons
 */
 :where(.btn,
         button,
@@ -13,6 +18,7 @@
   --_accent: initial;
   --_text: initial;
   --_size: initial;
+
   /*
   --_bg: var(--btn-bg, buttonface);
   --_text: var(--btn-text, buttontext);
@@ -21,20 +27,21 @@
   --_icon-size: 1em;
   --_icon-color: var(--_accent, var(--link));
 
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-
   display: inline-flex;
-  white-space: nowrap;
   align-items: center;
   justify-content: center;
-  gap: var(--spacer-2x);
+
+  padding-block: .75ch;
+  padding-inline: 2ex;
 
   font-family: inherit;
   font-size: var(--_size);
   font-weight: var(--font-weight-7);
 
   color: var(--_text);
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
   background: var(--_bg);
   border: var(--line-thin, thin) solid var(--_border, color-mix(
     in oklab, var(--accent), var(--trn) 60%)
@@ -45,17 +52,18 @@
     0 1px var(--_bg),
     0 0 0 var(--_highlight-size) var(--_highlight);
 
-  padding-block: .75ch;
-  padding-inline: 2ex;
-  text-align: center;
   /* text-shadow: ; */
   transition: border-color 0.5s var(--ease-3);
-  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  gap: var(--spacer-2x);
 }
 
 :where(button) {
   will-change: transform;
-  transform: translatey(var(--ty, 0)) scale(var(--scale, 1));
+  transform: translateY(var(--ty, 0)) scale(var(--scale, 1));
+
   /* transition: transform 0.25s; */
 
   &:hover  { --scale: 1.1; }
@@ -86,6 +94,7 @@
     :where([data-theme-style=light]) & {
       --_bg: var(--_bg-light);
     }
+
     :where([data-theme-style=dark]) & {
       --_bg: var(--_bg-dark);
     }
@@ -101,11 +110,13 @@
     :where([data-theme-style=light] &) {
       --lightness: 70%;
     }
+
     :where([data-theme-style=dark] &) {
       --lightness: 30%;
     }
   }
 }
+
 /* @supports (color: light-dark(black, snow)) {…} */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -126,11 +137,13 @@
 
 :where(.btn, button, input:is([type='button'], [type='submit'], [type='reset']))
   > :where(svg) {
+  inline-size: var(--_icon-size);
   block-size: var(--_icon-size);
+
   /* filter: drop-shadow(var(--*)); */
   flex-shrink: 0;
-  inline-size: var(--_icon-size);
 }
+
 :where(.btn, button, input:is([type='button'], [type='submit'], [type='reset']))
   > :where(svg > *) {
   stroke: var(--_icon-color);
