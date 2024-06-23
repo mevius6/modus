@@ -655,15 +655,35 @@
             https://docs.github.com/ru/webhooks/types-of-webhooks
             https://html.spec.whatwg.org/multipage/text-level-semantics.html
       -->
-      <!--
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira%20Code:wght@300..700&display=swap');
-      </style>
+      <!-- TODO
+        https://fonts.google.com/specimen/Flow+Block
+        https://fonts.google.com/specimen/Fira+Code
+        https://fonts.google.com/specimen/JetBrains+Mono
+        https://fonts.google.com/specimen/Handjet
       -->
-      <pre class="grid__full console">
+      <style>
+        /* https://www.jetbrains.com/lp/mono/ */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+        pre,
+        code,
+        samp {
+          font-family: 'JetBrains Mono', monospace;
+          font-optical-sizing: auto;
+          /* font-weight: 100 800; */
+          font-weight: 400;
+          font-style: normal;
+          /* font-size: 13px; */
+          line-height: 1.2;
+          font-feature-settings: 'liga' on, 'zero' on;
+          > * {
+            font: inherit;
+          }
+        }
+      </style>
+      <pre class="grid__full mono">
         <!-- TODO Terminal-like boot state animation
         <output>######################################################################### 100%</output> -->
-        <code style="hyphens: none">
+        <code style="hyphens: none; caret: red block;">
           <!-- [emulate this]
             Last login: Thu Jun 20 20:12:22 on ttys002
             Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
@@ -673,8 +693,28 @@
           <span class="sep">=============================</span>
           <kbd>🌿 Production:</kbd>&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
           <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
-          <span>&gt;</span>&#x20;cd&#x20;&#x002e;&#x002e;&nbsp;&amp;&amp;&nbsp;<span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+          <span>&gt;</span>&#x20;<span contenteditable="true">cd&#x20;&#x002e;&#x002e;&nbsp;&amp;&amp;&nbsp;</span><span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
           <!-- <span class="typewriter">curl -X GET "https://api.w3.org/healthcheck" -H "accept: application/json"</span> -->
+          <!-- <span class="dino">
+                      ████████
+                      ███▄███████
+                      ███████████
+                      ███████████
+                      ██████
+                      █████████
+            █       ███████
+            ██    ████████████
+            ███  ██████████  █
+            ███████████████
+            ███████████████
+            █████████████
+              ███████████
+                ████████
+                ███  ██
+                ██    █
+                █     █
+                ██    ██
+          </span> -->
         </code>
       </pre>
       <!-- https://www.w3.org/api/; https://api.w3.org/doc -->
