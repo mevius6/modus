@@ -17,9 +17,9 @@
   },
   "scripts": {
     "vc:start": "vercel dev",
-    "vc:build": "vercel --prod",
-    "start": "src/index.html",
-    "build": "npm run clean && build src/index.html && npm run copy",
+    "vc:build": "vercel ./src/ --prod",
+    "start": "vite --host",
+    "build": "npm run clean && vite build --base=./",
     "clean": "rm -rf public && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
@@ -35,8 +35,6 @@
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
     "stylelint-order": "^6.0.4",
-    "unocss": "^0.61.0",
-    "vite": "^5.3.1",
-    "vite-plugin-pwa": "^0.20.0"
+    "vite": "^5.3.1"
   }
 }

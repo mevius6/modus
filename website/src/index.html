@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <!-- https://rules.sonarsource.com/html/ -->
+<!-- https://microformats.io/ -->
+<!-- https://workers.js.org/#origin -->
+<!-- TODO SPA
+  See: https://picayune-midnight-eyebrow.glitch.me/
+-->
 <html class="no-js" dir="ltr" lang="en">
   <head>
     <!-- https://encoding.spec.whatwg.org/#utf-8 -->
@@ -42,7 +47,7 @@
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-    <!-- link:touch[sizes="180x180"]
+    <!-- link:touch[sizes="180x180"] -->
     <!-- TODO
       https://maskable.app/
       https://www.w3.org/TR/appmanifest/#icon-masks
@@ -90,7 +95,7 @@
       https://vercel.com/templates/next.js/og-cool
     -->
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property=" og:image:height" content="630" />
     <!--
       See:
           https://ogp.me/ns/ogp.me.rdf
@@ -161,6 +166,10 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
     <style>
       @import url(css/comps/custom-cursor.css);
+
+      body {
+        cursor: none;
+      }
     </style>
 
     <!-- JavaScript modules -->
@@ -245,11 +254,11 @@
             <a
               href="404.html"
               class="nav__link"
-              title="dead inside"
+              title="Dead inside"
               itemprop="url"
               aria-hidden="true"
             >
-              <span class="nav__link-text muted" itemprop="name" data-icon="🧟"
+              <span class="nav__link-text muted" itemprop="name" data-icon="💀"
                 >Link rot&emsp14;<sup>&NotExists;</sup>
                 <!-- Link that lead to a 404 page -->
               </span>
@@ -500,6 +509,7 @@
           </ul>
         </div>
 
+        <!-- Article -->
         <div class="container">
           <article
             class="grid__content content-wrap"
@@ -523,10 +533,10 @@
               <li
                 style="
                   column-count: 2;
+                  column-rule: thin solid turquoise;
                   column-gap: var(--gutter);
-                  column-rule: thin solid magenta;
-                  text-align: center;
                   padding: var(--gutter);
+                  text-align: center;
                 "
                 class="gradient-border-🌈"
               >
@@ -547,6 +557,7 @@
           </article>
         </div>
 
+        <!-- Blockquote -->
         <div class="container">
           <blockquote
             class="grid__center h2 text-center"
@@ -652,14 +663,22 @@
 
       <!-- TODO Fetch latest deployments status from gh repo
         See:
-            https://docs.github.com/ru/webhooks/types-of-webhooks
-            https://html.spec.whatwg.org/multipage/text-level-semantics.html
+            https://docs.github.com/
+            https://docs.github.com/en/rest/repos/webhooks#create-a-repository-webhook
+            https://docs.github.com/en/webhooks/types-of-webhooks
+            https://docs.github.com/en/webhooks/using-webhooks/best-practices-for-using-webhooks
+            https://docs.github.com/ru/rest/using-the-rest-api/best-practices-for-using-the-rest-api
+            https://github.com/octokit/octokit.js/#readme
+            https://expressjs.com/
+            https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element
       -->
-      <!-- TODO
+      <!-- TODO Load variable monospaced face for code
         https://fonts.google.com/specimen/Flow+Block
         https://fonts.google.com/specimen/Fira+Code
         https://fonts.google.com/specimen/JetBrains+Mono
         https://fonts.google.com/specimen/Handjet
+        https://fonts.google.com/specimen/Press+Start+2P
+        https://input.djr.com/
       -->
       <style>
         /* https://www.jetbrains.com/lp/mono/ */
@@ -673,7 +692,8 @@
           font-weight: 400;
           font-style: normal;
           /* font-size: 13px; */
-          line-height: 1.2;
+          /* line-height: 1.2; */
+          line-height: normal;
           font-feature-settings: 'liga' on, 'zero' on;
           > * {
             font: inherit;
@@ -693,7 +713,7 @@
           <span class="sep">=============================</span>
           <kbd>🌿 Production:</kbd>&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
           <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
-          <span>&gt;</span>&#x20;<span contenteditable="true">cd&#x20;&#x002e;&#x002e;&nbsp;&amp;&amp;&nbsp;</span><span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+          <span>&gt;</span>&#x20;<span contenteditable="true">cd&#x20;&#x002e;&#x002e;</span><span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
           <!-- <span class="typewriter">curl -X GET "https://api.w3.org/healthcheck" -H "accept: application/json"</span> -->
           <!-- <span class="dino">
                       ████████
@@ -718,7 +738,7 @@
         </code>
       </pre>
       <!-- https://www.w3.org/api/; https://api.w3.org/doc -->
-      <!--
+      <!-- [unicode chars]
         https://infra.spec.whatwg.org/#code-points
         https://html.spec.whatwg.org/multipage/named-characters.html
         https://w3c.github.io/rdf-turtle/spec/#selected-terminal-literal-strings
@@ -736,10 +756,9 @@
         <!-- https://en.wikipedia.org/wiki/Year_2038_problem -->
         <time id="cpr" datetime="2020" itemprop="copyrightYear">Y2K38</time>
         <!-- © ООО «Имя Бренда», 2024 -->
-        &copy;&nbsp;
-        <span itemprop="name" style="--wght: 300; --ital: 1">Brandname</span>
-        <wbr />
-        <span class="byline" style="--wght: 800; --ital: 1">
+        &copy;&nbsp;<span itemprop="name">Brandname</span>
+        &nbsp;
+        <span class="byline">
           <!-- made (by @mevius6 | with 🍄 | on 🪑 | under 🌴 | etc…) -->
           made w/ &boxbox; <wbr />
           host by &xutri;
@@ -747,7 +766,6 @@
       </small>
     </footer>
 
-    <!-- TODO -->
     <span class="custom-cursor" aria-hidden="true">
       <span class="preview">
         <span class="preview__img">
@@ -777,13 +795,13 @@
     </span>
 
     <svg width="0" height="0" data-hidden>
+      <!--
+        SVG Filters
+        → https://svgwg.org/svg2-draft/
+        → https://drafts.fxtf.org/filter-effects/#FilterElement
+        → https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement
+      -->
       <defs>
-        <!--
-          SVG Filters
-          → https://svgwg.org/svg2-draft/
-          → https://drafts.fxtf.org/filter-effects/#FilterElement
-        -->
-
         <!-- Chromatic aberration filter -->
         <filter id="ca" color-interpoation-filters="sRGB">
           <feColorMatrix
@@ -814,7 +832,6 @@
         </filter>
 
         <!-- SVG textures variations -->
-        <!-- https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement -->
         <g style="color: var(--lighting-color)">
           <filter id="tex1" color-interpolation-filters="sRGB">
             <feTurbulence
@@ -856,6 +873,7 @@
     </svg>
 
     <!-- Timestamps -->
+    <!-- https://tc39.es/proposal-temporal/docs/ -->
     <script type="text/javascript">
       const options = {
         weekday: 'long',
@@ -863,7 +881,6 @@
         month: 'long',
         day: 'numeric',
       };
-      // (?) https://tc39.es/proposal-temporal/docs/
       let currDate = new Date(),
         _l10n = currDate.toLocaleDateString(undefined, options),
         _year = currDate.getUTCFullYear();
@@ -874,9 +891,10 @@
       samp.textContent = _l10n;
     </script>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 
-    <!-- <script type="text/javascript">
+    <!-- TODO [perf]
+    <script type="text/javascript">
       var _end = new Date().getTime();
       console.info(_end);
     </script> -->
