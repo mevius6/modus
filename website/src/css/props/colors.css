@@ -36,7 +36,11 @@
  * https://css-irl.info/shades-of-grey-with-color-mix/
  * https://developer.chrome.com/docs/css-ui/css-color-mix
  * https://developer.chrome.com/blog/css-relative-color-syntax/
-*/
+ * https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
+ * https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems
+ * https://developer.chrome.com/docs/css-ui/migrate-hd-color
+ * https://developer.chrome.com/docs/css-ui/high-definition-css-color-guide?#resources
+ */
 
 @layer color.swatches { /* Pre-defined color props */
   /* Sub-layers order */
@@ -154,10 +158,13 @@
 
   @layer neon { /* Set of fluo(rescent) colors */
     :where(html) {
+      --neon-red: color(display-p3 1 0 0);
+      --neon-green: color(display-p3 0 1 0);
+      --neon-blue: color(display-p3 0 0 1);
+      --neon-cyan: color(display-p3 0 1 1);
       --neon-pink: color(display-p3 1 0 1);
       --neon-purple: color(display-p3 .5 0 1);
       --neon-lime: color(display-p3 0.25 1 0);
-      --neon-cyan: color(display-p3 0 1 1);
 
       /* PANTONE® Neon Colors */
       --c-blue: 195deg, 100%, 40%;   /* #009bcd 801 C */
@@ -268,14 +275,14 @@
     /* https://www.w3.org/TR/css-color-4/#system-color-pairs */
     --system-fg: canvastext;
     --system-bg: canvas;
-    --link: var(--accent, blue);
 
-    /* www.w3.org/TR/css-color-4/#valdef-color-rebeccapurple */
-    --link-visited: var(--accent-shade, rebeccapurple);
+    /* LinkText, VisitedText, ActiveText */
+    --link: var(--accent, var(--neon-blue, blue));
+    --link-visited: var(--accent-shade, var(--neon-purple, rebeccapurple));
     --text: var(--foreground); /* CanvasText */
 
-    /* States */
-    --active: var(--accent);
+    /* State ident */
+    --active: var(--accent, activetext);
 
     /* Alert system */
     --alert-ok: hsl(var(--signal-green, darkgreen));
@@ -310,8 +317,8 @@
     /**
      * Grayscale: shades of gray
      *
-     * --_lum:  98%; ~ #fafafa
-     * --_lum9: 96%; ~ #f4f4f4
+     * --_lum:  98%; ~ #fafafa || #fffafa (snow)
+     * --_lum9: 96%; ~ #f4f4f4 || #f5f5f5 (whitesmoke)
      * --_lum8: 95%; ~ #f2f2f2 (clear medium)
      * --_lum7: 93%; ~ #ededed or #eee
      * --_lum6: 80%; ~ #ccc
@@ -445,7 +452,10 @@
        → https://www.joshwcomeau.com/gradient-generator/
        → https://larsenwork.com/easing-gradients/
        → https://gradient.style
-       → https://www.conic.style/ */
+       → https://www.conic.style/
+       → https://huetone.ardov.me/
+       → https://hueplot.ardov.me/
+       → https://lab.ardov.me/ */
 
     /* ROYGBIV (rainbow gradient) */
     /* Go → https://nerdy.dev/easy-hsl-rainbow */
@@ -453,7 +463,8 @@
       to right
       in hsl
       longer hue,
-      red, red
+      red 0 0
+      /* red, red */
     );
     --rainbow: var(--lin-gradient-roygbiv);
     --roygbiv: var(--lin-gradient-roygbiv);
@@ -476,6 +487,7 @@
       hsl(186deg 96% 68%) 92%,
       hsl(194deg 100% 75%) 100%
     );
+    --voygb: var(--lin-gradient-voygb);
 
     /* The sequence of 2 hues w/ hinting */
     --lin-gradient-halfs-hint: linear-gradient(
@@ -503,5 +515,5 @@
 
   :where([class*=🌈]),
   :where(.\∇-roygbiv, .\🌈) { --gradient: var(--roygbiv) }
-  :where(.\∇-voygb) { --gradient: var(--lin-gradient-voygb); }
+  :where(.\∇-voygb) { --gradient: var(--voygb); }
 }

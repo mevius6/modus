@@ -1,3 +1,10 @@
+/*
+  https://ryanmulligan.dev/blog/we-can-has-it-all/
+  https://codepen.io/hexagoncircle/pen/KKBBXQO
+  https://codepen.io/jlengstorf/pen/YzMwNrp
+
+  https://github.com/argyleink/gui-challenges/tree/main/multi-select
+*/
 main[data-id=catalogue] {
   :root {
     --color-primary: hsl(350deg 100% 90%);
@@ -20,10 +27,10 @@ main[data-id=catalogue] {
   }
 
   body {
-    margin-block: 4rem;
     padding-inline: 2rem;
-    font-family: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin-block: 4rem;
+    font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial,
+      sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 1.125rem;
     line-height: 1.4;
     color: var(--text);
@@ -33,12 +40,12 @@ main[data-id=catalogue] {
   fieldset {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 0.75rem;
-    margin-block-start: 0.5rem;
     padding: 0.5rem;
+    margin-block-start: 0.5rem;
     background-color: var(--surface-2);
     border: 1px solid var(--surface-3);
     border-radius: 0.125rem;
+    gap: 0.25rem 0.75rem;
   }
 
   fieldset legend {
@@ -70,9 +77,9 @@ main[data-id=catalogue] {
   /* Utils */
   .u-icon-group {
     display: inline-flex;
-    gap: 0.25rem;
-    font-weight: bold;
     font-size: 0.8rem;
+    font-weight: bold;
+    gap: 0.25rem;
   }
 
   .u-icon-group svg {
@@ -88,11 +95,11 @@ main[data-id=catalogue] {
   .u-chip {
     display: inline-flex;
     padding: 0.25rem 0.5rem;
-    font-variant-numeric: tabular-nums;
     font-weight: unset;
-    border: 1px solid var(--color-primary);
     background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
     border-radius: 0.15rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .u-chip--outline {
@@ -101,15 +108,15 @@ main[data-id=catalogue] {
 
   /* Card */
   .card {
-    container-type: inline-size;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     background-color: var(--surface-2);
     border-radius: 0.5rem;
-    overflow: hidden;
     box-shadow: 0 1px 2px var(--surface-shadow), 0 2px 4px var(--surface-shadow),
       0 4px 8px var(--surface-shadow), 0 8px 16px var(--surface-shadow),
       0 16px 32px var(--surface-shadow), 0 32px 64px var(--surface-shadow);
+    container-type: inline-size;
   }
 
   .card .image {
@@ -130,10 +137,10 @@ main[data-id=catalogue] {
   }
 
   .card .title {
-    flex-basis: 100%;
-    font-weight: bold;
     font-size: clamp(1.5rem, 9cqw, 2rem);
+    font-weight: bold;
     line-height: 1.2;
+    flex-basis: 100%;
   }
 
   .card .description {
@@ -214,18 +221,18 @@ main[data-id=catalogue] {
     code {
       position: relative;
       top: -0.04em;
+      font-family: Courier, monospace;
       font-size: 1.1em;
-      font-family: "Courier", monospace;
     }
 
     .warning {
       display: block;
-      margin-block-end: 0.5rem;
       flex: 1 0 100%;
+      padding: 1rem;
+      margin-block-end: 0.5rem;
       font-size: 0.8em;
       line-height: 1.2;
       background-color: papayawhip;
-      padding: 1rem;
       border-radius: 0.25rem;
     }
   }
@@ -240,18 +247,18 @@ main[data-id=catalogue] {
   code {
     position: relative;
     top: -0.04em;
+    font-family: Courier, monospace;
     font-size: 1.1em;
-    font-family: "Courier", monospace;
   }
 
   .warning {
     display: block;
-    margin-block-end: 0.5rem;
     flex: 1 0 100%;
+    padding: 1rem;
+    margin-block-end: 0.5rem;
     font-size: 0.8em;
     line-height: 1.2;
     background-color: papayawhip;
-    padding: 1rem;
     border-radius: 0.25rem;
   }
 }

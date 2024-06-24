@@ -38,16 +38,21 @@
 }
 
 nav {
-  display: grid;
-  place-content: center;
-  min-block-size: 100svh;
   background-color: var(--background-a15);
 }
 
-.nav__items {
-  display: flex;
-  flex-flow: column;
-  gap: var(--spacer-2x);
+.nav {
+  display: grid;
+  place-content: center;
+  min-block-size: 100svh;
+
+  &[class*='__items'] {
+    display: flex;
+    flex-flow: column;
+    gap: var(--spacer-2x);
+  }
+
+  /* &[class*='__item'] {…} */
 }
 
 /* nav ul {
