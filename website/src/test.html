@@ -57,6 +57,8 @@
     <noscript>
       <link rel="stylesheet" href="css/tests.css" />
     </noscript>
+
+    <!-- Import → Cascade layers -->
     <style>
       @layer reset, theme, patterns, utilities;
 
@@ -250,6 +252,9 @@
           <style>
             @import url(css/comps/theme-switch.css);
           </style>
+          <!-- TODO
+            https://webkit.org/blog/15054/an-html-switch-control/
+            www.smashingmagazine.com/2024/05/switching-it-up-html-latest-control/ -->
           <!--
           <theme-switch inert>
             <form part="form">
@@ -310,16 +315,6 @@
           </theme-switch>
         </li>
       </ul>
-      <!--
-      <label aria-hidden="true">
-        <input
-          name="debug-mode"
-          type="checkbox"
-          onchange="document.documentElement.classList.toggle('debug');"
-        />
-        Debug
-      </label>
-      -->
       <!-- https://esmodules.dev/ -->
       <img
         src="https://img.shields.io/badge/es%20module%20ready-yes-success?labelColor=ffb703&cacheSeconds=86400&style=for-the-badge"
@@ -455,6 +450,7 @@
         https://www.oddbird.net/2023/05/01/web-platform-tests-polyfills/
         https://www.devdoc.net/web/developer.mozilla.org/en-US/docs/web-platform-tests.html
         https://firefox-source-docs.mozilla.org/web-platform/index.html
+        https://httparchive.org/
       -->
     </main>
   </body>

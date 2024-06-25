@@ -8,7 +8,7 @@
 
 /* See
    → https://github.com/argyleink/open-props/blob/main/src/extra/buttons.css
-   → https://github.com/argyleink/gui-challenges/tree/main/buttons
+   → https://goo.gle/39uY8Na
 */
 :where(.btn,
         button,
@@ -67,7 +67,9 @@
   /* transition: transform 0.25s; */
 
   &:hover  { --scale: 1.1; }
-  &:active { --scale: 0.9; --ty: .125ex; }
+
+  &:active { --scale: 0.9;
+             --ty: .125ex; }
 
   &:is(:hover, :focus) {
     --_border:

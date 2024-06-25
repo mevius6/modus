@@ -82,7 +82,9 @@
       display: initial;
     }
 
-    /* ? https://codepen.io/thebabydino/pen/yLWvKyK
+    /* TODO
+      https://codepen.io/thebabydino/pen/yLWvKyK
+      https://www.smashingmagazine.com/2024/05/combining-css-has-html-select-conditional-styling/
     */
     :where(
       [class*="debug"],

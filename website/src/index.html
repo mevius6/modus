@@ -21,27 +21,34 @@
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
-
     <!-- <script>document.documentElement.className="js";</script> -->
+
+    <!-- TODO Performance measurement
+      See:
+          https://wicg.github.io/element-timing/
+          https://w3c.github.io/hr-time/
+          https://w3c.github.io/event-timing/
+          https://w3c.github.io/performance-timeline/
+          https://w3c.github.io/paint-timing/
+          https://w3c.github.io/largest-contentful-paint/
+          https://docs.webpagetest.org/metrics/speedindex/
+          https://developer.mozilla.org/en-US/docs/Web/Performance
+          https://profiler.firefox.com/docs/
+          https://perf-html.io/
+    -->
     <script type="text/javascript">
       let { log, info } = console;
-      let { now: getDate } = Date; // var now = Date.now();
-      // TODO
-      // https://perf-html.io/
-      // https://profiler.firefox.com/docs/
-      // https://w3c.github.io/performance-timeline/
-      // https://developer.mozilla.org/en-US/docs/Web/Performance
-      // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#times
-      // var _start = new Date().getTime();
-      info(getDate());
+      /**
+       * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_epoch_timestamps_and_invalid_date
+       * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime#reduced_time_precision
+       */
+      let { now: getTime } = Date; // var now = Date.now();
+      // let end, start;
+      // start = getTime();
+      // info(start);
 
-      // window.addEventListener('pageshow', (event) => {
-      //   if (event.persisted) {
-      //     alert('The page was cached by the browser');
-      //   } else {
-      //     alert('The page was NOT cached by the browser');
-      //   }
-      // });
+      // https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
+      const t0 = performance.now();
     </script>
 
     <title>Document</title>
@@ -49,6 +56,8 @@
     <!-- See:
               https://css-tricks.com/emoji-as-a-favicon/
               https://realfavicongenerator.net/
+              https://vercel.com/templates/next.js/ai-emoji-generator
+              https://emojis.sh/
     -->
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
@@ -126,6 +135,7 @@
     <!--
       https://drafts.csswg.org/css-fonts-4/#font-format-definitions
       https://www.w3.org/TR/WOFF2/#IMT
+      https://www.keycdn.com/blog/web-font-performance
     -->
     <link
       rel="preload"
@@ -168,8 +178,17 @@
     </style>
     <!-- link[as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high"] -->
 
+    <!-- TODO
+      https://web.dev/articles/codelab-extract-and-inline-critical-css
+      https://web.dev/learn/performance/understanding-the-critical-path
+    -->
     <!-- The main stylesheet -->
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
+
+    <!-- TODO
+      https://fullystacked.net/constructable/
+      https://fullystacked.net/import-attributes/
+    -->
     <style>
       @import url(css/comps/custom-cursor.css);
 
@@ -394,17 +413,20 @@
               or to region area 1?
             -->
             <h1 class="sr-only">Page Title</h1>
-            <div class="h1 caps">
-              <!-- TODO
-                https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
+            <div class="h1 caps" style="--word-total: 1; --char-total: 7">
+              <!--
+                Ref → https://splitting.js.org/guide.html#api
+                See → https://web.dev/articles/building/split-text-animations
               -->
-              <span data-char-idx="1">s</span>
-              <span data-char-idx="2">t</span>
-              <span data-char-idx="3">a</span>
-              <span data-char-idx="4">r</span>
-              <span data-char-idx="5">t</span>
-              <span data-char-idx="6">e</span>
-              <span data-char-idx="7">r</span>
+              <span class="word" data-word="starter" style="--word-index: 0">
+                <span data-char="s" style="--char-index: 0">s</span
+                ><span data-char="t" style="--char-index: 1">t</span
+                ><span data-char="a" style="--char-index: 2">a</span
+                ><span data-char="r" style="--char-index: 3">r</span
+                ><span data-char="t" style="--char-index: 4">t</span
+                ><span data-char="e" style="--char-index: 5">e</span
+                ><span data-char="r" style="--char-index: 6">r</span>
+              </span>
             </div>
             <p
               class="h5 fvar"
@@ -413,17 +435,32 @@
             >
               Website Boilerplate
             </p>
+            <!--
+              Ref → https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
+            -->
             <input
+              id="hue"
               type="range"
               min="0"
               max="360"
               value="0"
               step="0.1"
-              id="hue"
               style="width: 100%; margin: 0"
             />
           </hgroup>
+          <script type="text/javascript">
+            const slider = hue;
+            slider.value = 360 / 7;
 
+            slider.addEventListener(
+              'input',
+              function () {
+                console.log(this.value);
+                document.documentElement.style.setProperty('--hue', this.value);
+              },
+              false
+            );
+          </script>
           <div class="grid__full overlay">
             <!-- pic[role="doc-cover"]>src:t+img[primaryImageOfPage] -->
           </div>
@@ -587,7 +624,9 @@
             <div class="bg-canvas" style="filter: url(#tex3)"></div>
 
             <figcaption class="d-grid cols-subgrid">
-              <!-- 🔗 https://arc.net/l/quote/bwpplhpf -->
+              <!-- 🔗
+                Self: https://arc.net/l/quote/bwpplhpf
+                Cite: https://www.dewitteraaf.be/artikel/frank-stella-en-dayglo/ -->
               <q
                 class="fvar"
                 style="--wght: 500"
@@ -685,6 +724,7 @@
         https://fonts.google.com/specimen/Handjet
         https://fonts.google.com/specimen/Press+Start+2P
         https://input.djr.com/
+        https://nguyengobber.com/shop/monopol
       -->
       <style>
         /* https://www.jetbrains.com/lp/mono/ */
@@ -706,10 +746,15 @@
           }
         }
       </style>
-      <pre class="grid__full mono">
+      <!--
+        See:
+            https://github.com/httpie/http-prompt
+            https://devtoys.app/doc/api/DevToys.Api.ConsoleProgressBar.html
+      -->
+      <pre class="grid__full">
         <!-- TODO Terminal-like boot state animation
         <output>######################################################################### 100%</output> -->
-        <code style="hyphens: none; caret: red block;">
+        <code style="hyphens: none">
           <!-- [emulate this]
             Last login: Thu Jun 20 20:12:22 on ttys002
             Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
@@ -717,6 +762,7 @@
           <span class="sep">=============================</span>
           <span>Latest deployments</span>
           <span class="sep">=============================</span>
+          <kbd>⏱️ Page speed:</kbd>&#x20;<samp id="perf">&block;&#xfeff;</samp>&#x0A;
           <kbd>🌿 Production:</kbd>&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
           <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
           <span>&gt;</span>&#x20;<span contenteditable="true">cd&#x20;&#x002e;&#x002e;</span><span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
@@ -772,7 +818,9 @@
       </small>
     </footer>
 
-    <!-- https://www.zdnet.com/pictures/ -->
+    <!-- [stock]
+      https://www.zdnet.com/pictures/
+    -->
     <span class="custom-cursor" aria-hidden="true">
       <span class="preview">
         <span class="preview__img">
@@ -879,8 +927,15 @@
       </defs>
     </svg>
 
-    <!-- Timestamps -->
-    <!-- https://tc39.es/proposal-temporal/docs/ -->
+    <!-- Timestamp
+         https://currentmillis.com/
+         https://www.unixtimestamp.com/ -->
+    <!-- [specs]
+      https://tc39.es/proposal-temporal/docs/
+      https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date-objects
+      https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-time-values-and-time-range
+      https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates-and-times
+    -->
     <script type="text/javascript">
       const options = {
         weekday: 'long',
@@ -900,10 +955,15 @@
 
     <script type="module" src="js/main.js"></script>
 
-    <!-- TODO [perf]
+    <!-- TODO Performance measurement -->
     <script type="text/javascript">
-      var _end = new Date().getTime();
-      console.info(_end);
-    </script> -->
+      // end = getTime();
+      // info(end);
+      // log(`Operation took ${end - start} msec`);
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+      const t1 = performance.now();
+      perf.textContent = `${t1 - t0} millis`; // took in milliseconds.
+    </script>
   </body>
 </html>

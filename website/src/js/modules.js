@@ -38,16 +38,16 @@ const doc = document, { documentElement: root } = doc;
     // const carousel = await import('./modules/carousel');
     // const map = await import('./modules/map');
 
-    const update = async ({ x, y }) => {
+    const update = ({ x, y }) => {
       root.style.setProperty('--x', x)
       root.style.setProperty('--y', y)
       // doc.body.dataset.mouseX = x
       // doc.body.dataset.mouseY = y
     }
 
-    const onPointerEvent = update;
+    const onPointerEvent = await update;
 
-    doc.body.addEventListener('pointermove', ev => onPointerEvent(ev), false);
+    doc.body.addEventListener('pointermove', async (ev) => onPointerEvent(ev), false);
   }
 
   const sidenav = await import('./modules/sidenav.js');

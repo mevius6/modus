@@ -459,12 +459,14 @@
 
     /* ROYGBIV (rainbow gradient) */
     /* Go → https://nerdy.dev/easy-hsl-rainbow */
+    /* See:
+            https://www.w3.org/TR/css-color-4/#hue-interpolation
+            https://www.w3.org/TR/css-color-4/#hue-longer
+    */
     --lin-gradient-roygbiv: linear-gradient(
       to right
-      in hsl
-      longer hue,
-      red 0 0
-      /* red, red */
+      in hsl longer hue,
+      red, red /* ~ red 0 0 */
     );
     --rainbow: var(--lin-gradient-roygbiv);
     --roygbiv: var(--lin-gradient-roygbiv);

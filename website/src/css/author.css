@@ -52,9 +52,88 @@
   -webkit-text-stroke: thin #000;
 }
 
+@keyframes weight {
+  from {
+    font-feature-settings: "wght" 200;
+  }
+
+  50% {
+    font-feature-settings: "wght" 900;
+  }
+
+  to {
+    font-feature-settings: "wght" 200;
+  }
+}
+
 body:where([data-id=homepage]) { /* fast visual tweaks */
   --sketch-bg: var(--background);
   --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
+
+  [id=hero] {
+    & [data-word] {
+      display: contents;
+      letter-spacing: normal;
+      white-space: nowrap !important;
+
+      & > [data-char] {
+        text-decoration: none;
+        animation: weight 2s infinite;
+        animation-play-state: running;
+        animation-delay: calc(var(--char-index) * 150ms);
+      }
+
+      & > [data-char] {
+        position: relative;
+        overflow: hidden;
+        font: inherit;
+        font-feature-settings: inherit;
+      }
+
+      & > [data-char]::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: inline-block;
+        color: color-mix(
+          in hsl shorter hue,
+          var(--foreground),
+          hsl(var(--hsl)) calc(100 / 4.5 *1%)
+        );
+        content: "";
+        background-color: hsl(var(--hsl) / .5);
+        filter: blur(16px) brightness(120%);
+      }
+
+      & > [data-char]:nth-of-type(1) {
+        --hsl: calc(var(--hue) + 10) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(2) {
+        --hsl: calc(var(--hue) + 20) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(3) {
+        --hsl: calc(var(--hue) + 30) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(4) {
+        --hsl: calc(var(--hue) + 40) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(5) {
+        --hsl: calc(var(--hue) + 50) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(6) {
+        --hsl: calc(var(--hue) + 60) 50% 50%;
+      }
+
+      & > [data-char]:nth-of-type(7) {
+        --hsl: calc(var(--hue) + 70) 50% 50%;
+      }
+    }
+  }
 
   nav sup {
     line-height: 1cap;
@@ -515,4 +594,5 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
 
 @layer reset {
   /* picture:has(> img) { display: contents } */
+}
 }

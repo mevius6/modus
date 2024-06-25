@@ -89,6 +89,7 @@
    See → https://web.dev/articles/centering-in-css
 */
 
+/* https://www.smashingmagazine.com/2024/05/modern-css-layouts-no-framework-needed/#optional-subgrid-utility */
 .grid-cols-subgrid { grid-template-columns: subgrid; }
 
 .cols-subgrid {

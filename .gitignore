@@ -66,3 +66,6 @@ out
 .yarn/install-state.gz
 .pnp.*
 .vercel
+
+.nx/installation
+.nx/cache

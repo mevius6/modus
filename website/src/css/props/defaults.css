@@ -506,6 +506,10 @@
         2% 35%, 39% 35%
       );
 
+    /* https://goo.gle/3f7fm6n */
+    --circle-1: circle(75%);
+    --circle-0: circle(0%);
+
     /* Spec → https://drafts.csswg.org/css-shapes-1/#basic-shape-interpolation */
 
     /* Polygonal (pointing) shapes that may be morphing between: */
