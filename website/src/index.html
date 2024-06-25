@@ -10,6 +10,13 @@
 -->
 <!-- TODO SPA
   See: https://picayune-midnight-eyebrow.glitch.me/
+       https://github.com/josephernest/Swap
+       https://github.com/hexagoncircle/scrollspy-nav
+  Arts on CWV:
+      https://web.dev/articles/vitals
+      https://web.dev/explore/learn-core-web-vitals
+      https://developers.google.com/search/docs/appearance/core-web-vitals
+      https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/
 -->
 <html class="no-js" dir="ltr" lang="en">
   <head>
@@ -31,6 +38,7 @@
           https://w3c.github.io/performance-timeline/
           https://w3c.github.io/paint-timing/
           https://w3c.github.io/largest-contentful-paint/
+          https://vercel.com/guides/optimizing-core-web-vitals-in-2024
           https://docs.webpagetest.org/metrics/speedindex/
           https://developer.mozilla.org/en-US/docs/Web/Performance
           https://profiler.firefox.com/docs/
@@ -401,10 +409,7 @@
       itemprop="mainEntity"
       itemid="https://native-things.vercel.app"
     >
-      <!-- sect[aria-labelledby="region1"] -->
       <section class="grid bg-noise graph-paper --show-landmarks">
-        <!-- h2#region1.sr-only{title for region area 1} -->
-
         <!-- Hero (generic / local banner) -->
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center flow">
@@ -470,7 +475,10 @@
         <div id="about" class="container">
           <article class="grid__content mx-auto flow" role="doc-epilogue">
             <h2>Second-level head.</h2>
-            <!-- https://www.lipsum.com/ -->
+            <!--
+              https://www.lipsum.com/
+              https://uicontent.co/
+            -->
             <p id="intro" class="has-dropcap">
               <b class="lede">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -706,95 +714,61 @@
         </div>
       </section>
 
-      <!-- TODO Fetch latest deployments status from gh repo
-        See:
-            https://docs.github.com/
-            https://docs.github.com/en/rest/repos/webhooks#create-a-repository-webhook
-            https://docs.github.com/en/webhooks/types-of-webhooks
-            https://docs.github.com/en/webhooks/using-webhooks/best-practices-for-using-webhooks
-            https://docs.github.com/ru/rest/using-the-rest-api/best-practices-for-using-the-rest-api
-            https://github.com/octokit/octokit.js/#readme
-            https://expressjs.com/
-            https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element
-      -->
-      <!-- TODO Load variable monospaced face for code
-        https://fonts.google.com/specimen/Flow+Block
-        https://fonts.google.com/specimen/Fira+Code
-        https://fonts.google.com/specimen/JetBrains+Mono
-        https://fonts.google.com/specimen/Handjet
-        https://fonts.google.com/specimen/Press+Start+2P
-        https://input.djr.com/
-        https://nguyengobber.com/shop/monopol
-      -->
-      <style>
-        /* https://www.jetbrains.com/lp/mono/ */
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-        pre,
-        code,
-        samp {
-          font-family: 'JetBrains Mono', monospace;
-          font-optical-sizing: auto;
-          /* font-weight: 100 800; */
-          font-weight: 400;
-          font-style: normal;
-          /* font-size: 13px; */
-          /* line-height: 1.2; */
-          line-height: normal;
-          font-feature-settings: 'liga' on, 'zero' on;
-          > * {
-            font: inherit;
-          }
-        }
-      </style>
-      <!--
-        See:
-            https://github.com/httpie/http-prompt
-            https://devtoys.app/doc/api/DevToys.Api.ConsoleProgressBar.html
-      -->
-      <pre class="grid__full">
-        <!-- TODO Terminal-like boot state animation
-        <output>######################################################################### 100%</output> -->
-        <code style="hyphens: none">
-          <!-- [emulate this]
-            Last login: Thu Jun 20 20:12:22 on ttys002
-            Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
-          -->
+      <!-- ---------------------------
+        Web Terminal (emu) <[ *_*]/
+      ---------------------------- -->
+      <section aria-labelledby="region1">
+        <h2 id="region1" class="sr-only">title for region area 1</h2>
+        <!--
+          See:
+              https://v0.dev/
+              https://www.terminal.shop/
+              https://github.com/httpie/http-prompt
+              https://github.com/MarketingPipeline/Termino.js
+              https://devtoys.app/doc/api/DevToys.Api.ConsoleProgressBar.html
+              https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element
+        -->
+        <!-- TODO Fetch latest deployments status from gh repo
+          See:
+              https://docs.github.com/en/
+              ├╴rest/repos/webhooks#create-a-repository-webhook
+              ├╴rest/using-the-rest-api/best-practices-for-using-the-rest-api
+              ├╴webhooks/types-of-webhooks
+              ├╴webhooks/using-webhooks/best-practices-for-using-webhooks
+              └╴https://github.com/octokit/octokit.js/#readme
+        -->
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+          @import 'css/console.css' layer(terminal);
+        </style>
+        <!-- Computer output -->
+        <!-- TODO Terminal-like boot state animation -->
+        <!-- <output>&num; 100%</output> -->
+        <!-- Computer code -->
+        <!-- TODO Terminal-like typewriter animation -->
+        <!-- [emulate this]
+          Last login: Thu Jun 20 20:12:22 on ttys002
+          Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
+        -->
+        <pre><code class="console">
           <span class="sep">=============================</span>
           <span>Latest deployments</span>
           <span class="sep">=============================</span>
-          <kbd>⏱️ Page speed:</kbd>&#x20;<samp id="perf">&block;&#xfeff;</samp>&#x0A;
-          <kbd>🌿 Production:</kbd>&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
+          <mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&block;&#xfeff;</samp>
+          <mark>&emsp14;🌿&emsp14;</mark>&#x20;Production:&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
           <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
-          <span>&gt;</span>&#x20;<span contenteditable="true">cd&#x20;&#x002e;&#x002e;</span><span class="cursor" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
-          <!-- <span class="typewriter">curl -X GET "https://api.w3.org/healthcheck" -H "accept: application/json"</span> -->
-          <!-- <span class="dino">
-                      ████████
-                      ███▄███████
-                      ███████████
-                      ███████████
-                      ██████
-                      █████████
-            █       ███████
-            ██    ████████████
-            ███  ██████████  █
-            ███████████████
-            ███████████████
-            █████████████
-              ███████████
-                ████████
-                ███  ██
-                ██    █
-                █     █
-                ██    ██
-          </span> -->
-        </code>
-      </pre>
-      <!-- https://www.w3.org/api/; https://api.w3.org/doc -->
-      <!-- [unicode chars]
-        https://infra.spec.whatwg.org/#code-points
-        https://html.spec.whatwg.org/multipage/named-characters.html
-        https://w3c.github.io/rdf-turtle/spec/#selected-terminal-literal-strings
-      -->
+          <span>&gt;</span>&#x20;<kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+        </code></pre>
+        <!--
+          TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
+          https://www.w3.org/api/; https://api.w3.org/doc
+        -->
+        <!-- [unicode-chars]
+          https://infra.spec.whatwg.org/#code-points
+          https://html.spec.whatwg.org/multipage/named-characters.html
+          https://w3c.github.io/rdf-turtle/spec/#selected-terminal-literal-strings
+        -->
+      </section>
     </main>
 
     <!-- Content Info -->
@@ -804,6 +778,7 @@
       itemscope
       itemtype="https://schema.org/WPFooter"
     >
+      <!-- Side comments -->
       <small class="fvar" style="--opsz: 11">
         <!-- https://en.wikipedia.org/wiki/Year_2038_problem -->
         <time id="cpr" datetime="2020" itemprop="copyrightYear">Y2K38</time>
@@ -818,11 +793,12 @@
       </small>
     </footer>
 
-    <!-- [stock]
-      https://www.zdnet.com/pictures/
-    -->
     <span class="custom-cursor" aria-hidden="true">
       <span class="preview">
+        <!--
+          https://generative-placeholders.glitch.me/
+          https://www.zdnet.com/pictures/
+        -->
         <span class="preview__img">
           <img
             src="images/qr-codes/qrCode(5).png"
@@ -946,8 +922,8 @@
       let currDate = new Date(),
         _l10n = currDate.toLocaleDateString(undefined, options),
         _year = currDate.getUTCFullYear();
-      let copy = cpr;
-      let samp = upd;
+      let copy = cpr; // Machine-readable equivalent
+      let samp = upd; // of date- or time-related data
       copy.dateTime = _year;
       copy.textContent = _year;
       samp.textContent = _l10n;

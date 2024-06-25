@@ -38,9 +38,8 @@
 nav { cursor: none; & a { cursor: inherit } }
 
 :root:has([href="."]:hover) .custom-cursor {
-  background: transparent;
-  animation: var(--animation-float);
-
+  /* background: transparent; */
+  scale: .5;
 }
 
 :root:has([href*="404"]:hover) .custom-cursor {

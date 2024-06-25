@@ -68,6 +68,8 @@
       @import url(css/layouts/sidenav.css);
       @import url(css/layouts/header.css);
 
+      @import url(css/comps/card.css);
+
       @import url(css/patterns/dialog.css) layer(patterns);
       @import url(css/patterns/button.css) layer(patterns);
       @import url(css/patterns/link.css) layer(patterns);
@@ -93,7 +95,7 @@
             grid-area: stack;
           }
           & main {
-            contain: layout;
+            contain: layout size;
           }
         }
         h1 {
@@ -376,75 +378,78 @@
         </dialog>
       </noscript>
 
-      <!-- References -->
-      <!-- art>ul[role]>(li#ref$>a:blank)*5 -->
-      <ul role="doc-bibliography">
-        <li id="ref1">
-          <a
-            href="https://www.w3.org/wiki/TPAC"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Technical Plenary and Advisory Committee meetings"
-          >
-            TPAC
-          </a>
-        </li>
-        <li id="ref2">
-          <!--
-            - https://w3c.github.io/test-results/
-            - https://github.com/web-platform-tests/wpt
-            - https://wpt.fyi/
-          -->
-          <a
-            href="https://web-platform-tests.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="The web-platform-tests (WPT) project"
-          >
-            WPT
-          </a>
-        </li>
-        <li id="ref3">
-          <a
-            href="https://html-now.github.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="The Web Platform: Browser technologies"
-          >
-            The Web Platform: Browser technologies
-          </a>
-        </li>
-        <li id="ref4">
-          <a
-            href="https://webstatus.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Web Platform Status"
-          >
-            Features overview
-          </a>
-        </li>
-        <li id="ref5">
-          <a
-            href="https://github.com/mdn/browser-compat-data/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="The browser-compat-data (BCD) project"
-          >
-            MDN "BCD"
-          </a>
-        </li>
-        <li id="ref6">
-          <a
-            href="https://github.com/web-platform-dx/web-features"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="web-features: exploring the set of interoperable features of the web platform"
-          >
-            web-features
-          </a>
-        </li>
-      </ul>
+      <article aria-labelledby="art1-hd" class="card">
+        <h3 id="art1-hd" class="keyline">References</h3>
+        <!-- art>ul[role]>(li#ref$>a:blank)*5 -->
+        <ul role="doc-bibliography">
+          <li id="ref1">
+            <a
+              href="https://www.w3.org/wiki/TPAC"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Technical Plenary and Advisory Committee meetings"
+              ><abbr title="Technical Plenary and Advisory Committee"
+                >TPAC</abbr
+              >
+            </a>
+          </li>
+          <li id="ref2">
+            <!--
+              - https://w3c.github.io/test-results/
+              - https://github.com/web-platform-tests/wpt
+              - https://wpt.fyi/
+            -->
+            <a
+              href="https://web-platform-tests.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="The web-platform-tests (WPT) project"
+              ><abbr title="Web Platform Tests">WPT</abbr>
+            </a>
+          </li>
+          <li id="ref3">
+            <a
+              href="https://html-now.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="The Web Platform: Browser technologies"
+            >
+              Browser technologies
+            </a>
+          </li>
+          <li id="ref4">
+            <a
+              href="https://webstatus.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Web Platform Status"
+            >
+              Features overview
+            </a>
+          </li>
+          <li id="ref5">
+            <a
+              href="https://github.com/mdn/browser-compat-data/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="The browser-compat-data (BCD) project"
+            >
+              <abbr title="Mozilla Developer Network">MDN</abbr>
+              <abbr title="Browser Compat Data">BCD</abbr>
+            </a>
+          </li>
+          <li id="ref6">
+            <a
+              href="https://github.com/web-platform-dx/web-features"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="web-features: exploring the set of interoperable features of the web platform"
+            >
+              web-features
+            </a>
+          </li>
+        </ul>
+      </article>
 
       <!--
         https://www.oddbird.net/2023/05/01/web-platform-tests-polyfills/

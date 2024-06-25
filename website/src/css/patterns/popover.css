@@ -30,7 +30,7 @@
  */
 
 /* Override UA position */
-[popover]:popover-open {
+:where([popover]:popover-open) {
   position: absolute;
   inset: unset;
   padding: 0;
@@ -75,7 +75,7 @@ to take effect, as the specificity is the same */
 
 /* Transition for the popover's backdrop */
 
-[popover]::backdrop {
+:where([popover]::backdrop) {
   background-color: rgb(0 0 0 / 0%);
   transition:
     display 0.7s allow-discrete,

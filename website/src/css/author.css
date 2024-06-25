@@ -1,25 +1,12 @@
-:where([class]:is(
-  .terminal,
-  .console,
-  .shell
-)) * {
-  /**
-   * https://drafts.csswg.org/css-fonts-4/#ui-monospace-def
-   * https://caniuse.com/font-family-system-ui
-   * https://caniuse.com/extended-system-fonts
-   * https://github.com/go-gitea/gitea/issues/22125 */
-  /*
-  font-family: Fira Code;
-  font-variation-settings: "wght" 278; */
-  font-family: ui-monospace,SF Mono,Monaco,monospace;
-  font-size: clamp(.75rem, 2vw, 1rem);
-  font-weight: 400;
-  line-height: var(--lh-eighty);
-  font-feature-settings:
-    "liga" on,
-    "clig" on,
-    "zero" on,
-    "tnum" on;
+/* TODO: Плавные переходы с помощью View Transition API */
+/* https://drafts.csswg.org/css-view-transitions-1/
+   https://github.com/WICG/view-transitions/blob/main/explainer.md
+   https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API
+   https://developer.chrome.com/docs/web-platform/view-transitions
+   https://developer.chrome.com/blog/view-transitions-update-io24
+   https://www.smashingmagazine.com/2024/01/view-transitions-api-ui-animations-part2/ */
+@supports (view-transition-name: none) {
+  /* … */
 }
 
 /* Fonts
@@ -52,17 +39,19 @@
   -webkit-text-stroke: thin #000;
 }
 
+/* https://www.smashingmagazine.com/2023/07/define-array-colors-css/ */
+
 @keyframes weight {
   from {
-    font-feature-settings: "wght" 200;
+    font-variation-settings: "wght" 200;
   }
 
   50% {
-    font-feature-settings: "wght" 900;
+    font-variation-settings: "wght" 900;
   }
 
   to {
-    font-feature-settings: "wght" 200;
+    font-variation-settings: "wght" 200;
   }
 }
 
@@ -70,24 +59,23 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
   --sketch-bg: var(--background);
   --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
 
-  [id=hero] {
+  :where(#hero) {
     & [data-word] {
       display: contents;
       letter-spacing: normal;
       white-space: nowrap !important;
 
       & > [data-char] {
+        position: relative;
+        overflow: hidden;
         text-decoration: none;
+        font-variation-settings: "wght" var(--wght, 200);
+
         animation: weight 2s infinite;
         animation-play-state: running;
         animation-delay: calc(var(--char-index) * 150ms);
-      }
 
-      & > [data-char] {
-        position: relative;
-        overflow: hidden;
-        font: inherit;
-        font-feature-settings: inherit;
+        :where(:hover) > & { animation-play-state: paused }
       }
 
       & > [data-char]::before {
@@ -230,7 +218,11 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     font-feature-settings: "c2sc" 1;
   }
 
-  /* TODO https://codepen.io/hexagoncircle/pen/YjXowe */
+  /* See: https://www.smashingmagazine.com/2024/01/css-border-image-property/
+          https://codepen.io/hexagoncircle/pen/YjXowe
+          https://css-generators.com/ribbon-shapes/
+          https://css-generators.com/
+  */
   :where([class*=keyline]) {
     letter-spacing: calc(var(--letter-spacing-2) * -1);
 
@@ -274,10 +266,6 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
 
     padding: var(--spacer-4x) var(--gutter);
     margin-block: calc(var(--spacer-2x) * -1);
-
-    :where(.debug) & ::before {
-      filter: drop-shadow(0 0 5px magenta);
-    }
 
     & img {
       /* object-fit: contain; */
@@ -530,10 +518,6 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
   }
 }
 
-/* TODO: Плавные переходы с помощью View Transition API */
-/* https://developer.chrome.com/docs/web-platform/view-transitions
-   https://developer.chrome.com/blog/view-transitions-update-io24 */
-
 @layer theme {
   body { --var-serif: Roslindale; }
 
@@ -594,5 +578,4 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
 
 @layer reset {
   /* picture:has(> img) { display: contents } */
-}
 }

@@ -96,6 +96,12 @@
 
       /* background: var(--blueprint-pb); */
 
+
+      & [class~=placeholder]::after {
+        filter: drop-shadow(0 0 5px #0005);
+        -webkit-text-stroke: 1px lime;
+      }
+
       & :where(:not(header, footer, main, article, section, aside)) > * {
         --line-color: color-mix(in lch, var(--neon-cyan), transparent 25%);
         filter: grayscale();

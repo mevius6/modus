@@ -1,0 +1,19 @@
+:where([class*=card]) {
+  padding: 2ch;
+  background-color: color-mix(in oklab, canvastext 5%, canvas 10%);
+  background-clip: content-box;
+  border: thin rebeccapurple;
+  border-radius: 1ch;
+  backdrop-filter: var(--smooth-glass);
+
+  & > ul {
+    padding-block: 2ex;
+    padding-inline: 1ch;
+    list-style: square inside;
+
+    & > li {
+      hyphens: auto;
+      text-wrap: balance;
+    }
+  }
+}

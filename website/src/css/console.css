@@ -1,0 +1,84 @@
+section:has(> pre) {
+  display: grid;
+  place-content: start;
+  margin-inline: var(--gutter);
+}
+
+:where(pre, code) {
+  font-family: ui-monospace,SF Mono,Monaco,monospace;
+  hyphens: none;
+  white-space: pre-wrap;
+  white-space-collapse: preserve;
+
+  & > mark {
+    color: var(--foreground);
+    text-shadow: 0 0 .1em var(--accent-shade);
+    background-color: color-mix(
+      in oklab, var(--accent) 25%, var(--background) 50%
+    );
+    border-radius: calc(1ex/4);
+  }
+}
+
+:where([class]:is(
+  .terminal,
+  .console,
+  .shell)) {
+    & .sep {
+      opacity: .25;
+    }
+
+    & .prompt {
+      color: var(--accent);
+      text-shadow: 0 0 .125em var(--accent-shade);
+    }
+
+    & .caret {
+      pointer-events: none;
+      cursor: none;
+      caret: none;
+    }
+
+    & :where([contenteditable=true]) {
+      caret-color: var(--accent);
+      caret-shape: bar;
+      text-indent: 5em hanging each-line;
+
+      &:focus-within ~ .caret {
+        display: none;
+      }
+    }
+}
+
+:where([class]:is(
+  .terminal,
+  .console,
+  .shell
+)) * {
+  /**
+   * https://drafts.csswg.org/css-fonts-4/#ui-monospace-def
+   * https://caniuse.com/font-family-system-ui
+   * https://caniuse.com/extended-system-fonts
+   * https://github.com/go-gitea/gitea/issues/22125 */
+  /*
+  font-family: Fira Code; */
+  font-family: JetBrains Mono, monospace; /* 13px/1.2 */
+  font-size: clamp(.75rem, 2vw, 1rem);
+  font-variation-settings: "wght" 350;
+  line-height: var(--lh-eighty);
+  font-feature-settings:
+    "liga" on,
+    "clig" on,
+    "zero" on,
+    "tnum" on;
+}
+
+/* TODO Load variable monospace face for code */
+/* See:
+   → https://fonts.google.com/specimen/Flow+Block
+   → https://fonts.google.com/specimen/Fira+Code
+   → https://fonts.google.com/specimen/JetBrains+Mono
+   → https://fonts.google.com/specimen/Handjet
+   → https://fonts.google.com/specimen/Press+Start+2P
+   → https://input.djr.com/
+   → https://nguyengobber.com/shop/monopol */
