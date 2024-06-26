@@ -14,6 +14,18 @@
   &:nth-child(5) { --i: 5; } /* ~ .75s */
 }
 
+/* https://compat.spec.whatwg.org/#text-fill-and-stroking */
+.stroked-text {
+  /* longhand */
+  /* color: #fff;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px; */
+
+  /* shorthand */
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke: thin #000;
+}
+
 /* https://drafts.csswg.org/css-cascade/#all-shorthand
    initial | inherit | unset | revert | revert-layer */
 .all-initial { all: initial; }

@@ -9,37 +9,9 @@
   /* … */
 }
 
-/* Fonts
-   Serif:
-     → https://fonts.google.com/specimen/Literata
-     → https://fonts.google.com/specimen/Source+Serif+4
-     → https://fonts.google.com/specimen/PT+Serif
-     → https://fonts.google.com/specimen/STIX+Two+Text
-     → https://fonts.google.com/specimen/Piazzolla
-     → https://fonts.google.com/specimen/Alegreya
-     → https://fonts.google.com/specimen/Alice
-     → https://fonts.google.com/specimen/Lora
-     → https://fonts.google.com/specimen/Spectral
-     → https://fonts.google.com/specimen/IBM+Plex+Serif
-   Mono:
-     → https://fonts.google.com/specimen/IBM+Plex+Mono
-     → https://developer.apple.com/fonts/
-     → https://variablefonts.dev/posts/fira-code-google-api-demo
-*/
+/* TODO https://drafts.csswg.org/scroll-animations-1/ */
 
-/* https://compat.spec.whatwg.org/#text-fill-and-stroking */
-.stroked-text {
-  /* longhand */
-  /* color: #fff;
-  -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 1px; */
-
-  /* shorthand */
-  -webkit-text-fill-color: #fff;
-  -webkit-text-stroke: thin #000;
-}
-
-/* https://www.smashingmagazine.com/2023/07/define-array-colors-css/ */
+/* See: https://www.smashingmagazine.com/2023/07/define-array-colors-css/ */
 
 @keyframes weight {
   from {

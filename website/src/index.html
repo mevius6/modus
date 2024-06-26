@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<!--
+  https://www.w3.org/TR/wcag-3.0/
+  https://html.spec.whatwg.org/
+  https://github.com/web-platform-tests/wpt/tree/master/html
+-->
 <!-- https://rules.sonarsource.com/html/ -->
-<!-- https://microformats.io/ -->
 <!--
   Worker Runtimes are the new standard
   for writing HTTP servers in JavaScript.
@@ -17,6 +21,12 @@
       https://web.dev/explore/learn-core-web-vitals
       https://developers.google.com/search/docs/appearance/core-web-vitals
       https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/
+-->
+<!-- ✊🏻 🔥 IndieWeb
+  https://indieweb.org/
+  https://indieweb.org/Category:building-blocks
+  https://indieauth.spec.indieweb.org/
+  https://microformats.io/
 -->
 <html class="no-js" dir="ltr" lang="en">
   <head>
@@ -109,6 +119,7 @@
     <!-- TODO
       https://vercel.com/docs/functions/og-image-generation
       https://vercel.com/guides/displaying-article-headlines-in-social-previews
+      https://www.zachleat.com/web/automatic-opengraph/
 
       Tools for testing and debugging:
         https://dub.co/tools/metatags;
@@ -144,6 +155,8 @@
       https://drafts.csswg.org/css-fonts-4/#font-format-definitions
       https://www.w3.org/TR/WOFF2/#IMT
       https://www.keycdn.com/blog/web-font-performance
+      https://www.zachleat.com/web/fonts/
+      https://github.com/fonttools/fonttools
     -->
     <link
       rel="preload"
@@ -409,6 +422,7 @@
       itemprop="mainEntity"
       itemid="https://native-things.vercel.app"
     >
+      <!-- https://html.spec.whatwg.org/#article-or-section -->
       <section class="grid bg-noise graph-paper --show-landmarks">
         <!-- Hero (generic / local banner) -->
         <div id="hero" class="container relpos items-center init-reveal">
@@ -722,11 +736,12 @@
         <!--
           See:
               https://v0.dev/
+              https://hyper.is/
               https://www.terminal.shop/
               https://github.com/httpie/http-prompt
               https://github.com/MarketingPipeline/Termino.js
+              https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
               https://devtoys.app/doc/api/DevToys.Api.ConsoleProgressBar.html
-              https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element
         -->
         <!-- TODO Fetch latest deployments status from gh repo
           See:
@@ -742,22 +757,30 @@
           @import 'css/console.css' layer(terminal);
         </style>
         <!-- Computer output -->
-        <!-- TODO Terminal-like boot state animation -->
-        <!-- <output>&num; 100%</output> -->
-        <!-- Computer code -->
-        <!-- TODO Terminal-like typewriter animation -->
-        <!-- [emulate this]
+        <!-- TODO ls
+          - Terminal-like boot state animation
+          - Typewriter animation
+          - Cursor color, shape, blink
+        -->
+        <!-- Computer code: Console session
+          https://man7.org/linux/man-pages/man1/intro.1.html
+          Markup:
+            https://html.spec.whatwg.org/#the-code-element
+            https://html.spec.whatwg.org/#the-samp-element
+            https://html.spec.whatwg.org/#the-output-element
+
+          [emulate this]
           Last login: Thu Jun 20 20:12:22 on ttys002
           Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
         -->
-        <pre><code class="console">
+        <pre><code data-shell="zsh" class="session">
           <span class="sep">=============================</span>
-          <span>Latest deployments</span>
+          <span>==> Latest deployments</span>
           <span class="sep">=============================</span>
           <mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&block;&#xfeff;</samp>
           <mark>&emsp14;🌿&emsp14;</mark>&#x20;Production:&#x20;<samp id="upd">&block;&#xfeff;</samp>&#x0A;
-          <span class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
-          <span>&gt;</span>&#x20;<kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+          <span data-hostname="user@MBP.local" class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
+          <span data-char-symbol="➜">&gt;&#x20;</span><kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
         </code></pre>
         <!--
           TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
@@ -793,6 +816,7 @@
       </small>
     </footer>
 
+    <!-- TODO https://indieweb.org/link-preview -->
     <span class="custom-cursor" aria-hidden="true">
       <span class="preview">
         <!--
@@ -904,6 +928,7 @@
     </svg>
 
     <!-- Timestamp
+         https://man7.org/linux/man-pages/man3/strftime.3.html
          https://currentmillis.com/
          https://www.unixtimestamp.com/ -->
     <!-- [specs]
