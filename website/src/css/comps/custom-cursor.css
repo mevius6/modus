@@ -1,10 +1,10 @@
 @layer custom-cursor {
   .custom-cursor {
-    scale: var(--_scale, 0);
-    translate: -50% -50%;
+    --tx: calc(var(--x, -100) * 1px);
+    --ty: calc(var(--y, -100) * 1px);
+
     position: fixed;
-    top: calc(var(--y, -100) * 1px);
-    left: calc(var(--x, -100) * 1px);
+    inset-block: var(--ty); inset-inline: var(--tx);
     z-index: 1010;
     display: none;
     inline-size: var(--_size, 0);
@@ -12,9 +12,17 @@
     aspect-ratio: 1;
     pointer-events: none;
     cursor: none;
+
+    scale: var(--_scale, 0);
+    translate: -50% -50%;
+
+    /* https://drafts.csswg.org/css-transforms-2/#matrix-interpolation
+       transform: matrix(0,0,0,0,0,0); */
   }
 
-  @media (hover) and (pointer: fine) and (scripting: enabled) {
+  @media (hover) and (pointer: fine) and
+         (scripting: enabled) and
+         (prefers-reduced-motion: no-preference) {
     .custom-cursor {
       --_scale: 1;
       --_size: 24px;
@@ -39,7 +47,7 @@ nav { cursor: none; & a { cursor: inherit } }
 
 :root:has([href="."]:hover) .custom-cursor {
   /* background: transparent; */
-  scale: .5;
+  --_scale: .5;
 }
 
 :root:has([href*="404"]:hover) .custom-cursor {

@@ -42,14 +42,14 @@
     /* https://en.wikipedia.org/wiki/Graph_paper
        https://css-pattern.com/graph-paper/ */
 
-    --sqr-10: calc(1cm / 10); /* millimeter */
-    --sqr-05: calc(1in / 5); /* engineering */
-    --sqr-04: calc(1in / 4); /* quad */
+    --div-mm: calc(1cm / 10); /* millimeter */
+    --div-in5: calc(1in / 5); /* engineering */
+    --div-in4: calc(1in / 4); /* quad */
 
     color: color-mix(in lch, canvastext, transparent 15%);
 
     &::before {
-      --_size: var(--sqr, 8px);
+      --_size: var(--cell, 8px);
       --_line: color-mix(in lch, canvastext, transparent 85%);
       --_bg:
         linear-gradient(
@@ -90,12 +90,11 @@
       [class*="debug"],
       :root:has(input[name="debug-mode"]:checked)
     ) & {
-      --sqr: var(--sqr-05);
+      --cell: var(--div-in5);
 
       &::before { display: block }
 
       /* background: var(--blueprint-pb); */
-
 
       & [class~=placeholder]::after {
         filter: drop-shadow(0 0 5px #0005);

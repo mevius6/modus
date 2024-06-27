@@ -480,8 +480,8 @@
   text-orientation: sideways;
 }
 
-.reverse,
-.inverse {
+.mirror,
+.reverse {
   /* scale: -1; */
   transform: scale(-1);
 }

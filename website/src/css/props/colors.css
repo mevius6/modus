@@ -316,18 +316,18 @@
 
     /**
      * Grayscale: shades of gray
-     *
-     * --_lum:  98%; ~ #fafafa || #fffafa (snow)
-     * --_lum9: 96%; ~ #f4f4f4 || #f5f5f5 (whitesmoke)
-     * --_lum8: 95%; ~ #f2f2f2 (clear medium)
-     * --_lum7: 93%; ~ #ededed or #eee
-     * --_lum6: 80%; ~ #ccc
-     * --_lum5: 77%; ~ #c4c4c4
-     * --_lum4: 20%; ~ #323232 or #333
-     * --_lum3: 13%; ~ #212121 or #222
-     * --_lum2: 12%; ~ #1e1e1e
-     * --_lum1: 7%;  ~ #121212 or #111
-     * --_lum0: 0%;  ~ #000
+     * (naming of luminance property according to X11 standard)
+     * --gray98: 98%; ~ #fafafa || #fffafa (snow)
+     * --gray96: 96%; ~ #f4f4f4 || #f5f5f5 (whitesmoke)
+     * --gray95: 95%; ~ #f2f2f2 (clear medium)
+     * --gray93: 93%; ~ #ededed or #eee
+     * --gray80: 80%; ~ #ccc
+     * --gray77: 77%; ~ #c4c4c4
+     * --gray20: 20%; ~ #323232 or #333
+     * --gray13: 13%; ~ #212121 or #222
+     * --gray12: 12%; ~ #1e1e1e
+     * --gray07: 7%;  ~ #121212 or #111
+     * --black1: 0%;  ~ #000
      */
     /* UPD: https://www.w3.org/TR/css-color-5/#relative-HSL */
     --off-white-2: hsl(from white h s calc(l - 2));
@@ -348,7 +348,6 @@
      * https://drafts.csswg.org/css-color-adjust-1/#forced
      * https://www.w3.org/TR/css-color-5/#light-dark
      */
-
     &:where([data-theme-style],
       :not( [data-theme-style] ) /* i.e. JS is disabled */
     ) {
@@ -387,6 +386,14 @@
         );
       --selection-foreground: var(--foreground);
       --selection-background: var(--accent-shade);
+    }
+
+    /* TODO upg utils w/ color functions, for instance */
+    .bloom\:50 {
+      --trn: color-mix(
+        in oklab, currentcolor, transparent 50%
+      );
+      filter: drop-shadow(0 4px 16px var(--trn));
     }
 
     /* @scope ([data-theme-style=light]) {…} */

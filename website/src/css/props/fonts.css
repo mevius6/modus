@@ -57,6 +57,7 @@ body {
     https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist
     https://wakamaifondue.com/beta/
   */
+  /* full reset and setting up */
   font-feature-settings:
     "aalt" var(--aalt, 0), /* Access All Alternates */
     "c2sc" var(--c2sc, 0), /* Small Capitals From Capitals */

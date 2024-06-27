@@ -39,8 +39,8 @@ const doc = document, { documentElement: root } = doc;
     // const map = await import('./modules/map');
 
     const update = ({ x, y }) => {
-      root.style.setProperty('--x', x)
-      root.style.setProperty('--y', y)
+      root.style.setProperty('--x', Math.floor(x))
+      root.style.setProperty('--y', Math.floor(y))
       // doc.body.dataset.mouseX = x
       // doc.body.dataset.mouseY = y
     }

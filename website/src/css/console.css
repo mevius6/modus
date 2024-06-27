@@ -41,7 +41,7 @@ section:has(> pre) {
 
     & :where([contenteditable=true]) {
       caret-color: var(--accent);
-      caret-shape: bar;
+      caret-shape: block;
       text-indent: 5em hanging each-line;
 
       &:focus-within ~ .caret {

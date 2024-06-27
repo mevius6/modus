@@ -1,3 +1,8 @@
+/* [notes]
+    https://drafts.csswg.org/scroll-animations-1/
+    https://www.smashingmagazine.com/2023/07/define-array-colors-css/
+*/
+
 /* TODO: Плавные переходы с помощью View Transition API */
 /* https://drafts.csswg.org/css-view-transitions-1/
    https://github.com/WICG/view-transitions/blob/main/explainer.md
@@ -9,100 +14,221 @@
   /* … */
 }
 
-/* TODO https://drafts.csswg.org/scroll-animations-1/ */
-
-/* See: https://www.smashingmagazine.com/2023/07/define-array-colors-css/ */
-
 @keyframes weight {
   from {
-    font-variation-settings: "wght" 200;
+    font-variation-settings: "wght" 200, "ital" 0;
   }
 
   50% {
-    font-variation-settings: "wght" 900;
+    font-variation-settings: "wght" 900, "ital" 1;
   }
 
   to {
-    font-variation-settings: "wght" 200;
+    font-variation-settings: "wght" 200, "ital" 0;
   }
 }
 
 body:where([data-id=homepage]) { /* fast visual tweaks */
   --sketch-bg: var(--background);
-  --sketch-bg: light-dark(var(--clear-medium), var(--riso-black));
+
+  @supports (color: light-dark(white, black)) and
+            (color: hsl(from white h s calc(l - 5))) {
+    & {
+      --sketch-bg: light-dark(var(--clear-medium), var(--riso-black))
+    }
+  }
+
+  .ua-samp {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 10cqi);
+    grid-auto-flow: column dense;
+    place-items: center;
+    place-self: center;
+    max-inline-size: var(--container-sm);
+    max-block-size: 25cqi;
+    gap: 1rem;
+    > * { aspect-ratio: var(--ratio-square) }
+
+    div,
+    input {
+      inline-size: 10cqi;
+      block-size: auto;
+      border-radius: 0.5rem;
+    }
+
+    [type=color i] {
+      padding: 0;
+      border-color: buttonborder;
+      border-style: inset;
+      border-width: thin;
+      clip-path: circle(25%);
+    }
+  }
+
+  a[rel=bookmark] {
+    translate: -100%;
+    inline-size: fit-content;
+
+    &:where(:is(:hover,:focus)) {
+      --wght: 900;
+    }
+  }
+
+  div:has(figure + a) { gap: var(--gutter) }
+
+  /* mv → utils */
+  .fvar { --fvar: font-variation-settings; } /* eg transition-property */
+
+  /* .\👻-btn */
+  [class~=cta]:is(a, button) {
+    display: inline-flex;
+    min-inline-size: var(--btn-min-hdim);
+    min-block-size: var(--min-touch-target-size);
+    padding: 1ch 2ex;
+    color: var(--accent);
+    text-align: center;
+    border: var(--border);
+    border-color: var(--accent-shade);
+
+    &:where(:is(:hover,:focus)) > .fvar {
+      --wght: 500;
+    }
+
+    > :where(.fvar) {
+      --opsz: 48;
+      --wght: 300;
+      --ital: 1;
+      transition: font-variation-settings 300ms var(--ease-spring); /* 2 */
+    }
+
+    > span {
+      position: relative;
+      margin: auto;
+
+      > svg {
+        position: absolute;
+        inset: 1em 0.2em;
+        z-index: -1;
+        width: calc(100% - 0.7em);
+        height: auto;
+        color: var(--accent-shade, highlight);
+      }
+    }
+  }
 
   :where(#hero) {
-    & [data-word] {
-      display: contents;
+    background: repeating-linear-gradient(45deg, highlight, transparent 100px);
+
+    & hgroup {
+      display: grid;
+      gap: 1ch;
+      inline-size: clamp(30ch, 50%, 60ch);
+      padding: 2ch;
+      background-color: var(--background-a50);
+      border-radius: 1ch;
+    }
+
+    & :where(#slicer)::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background-color: hsl(var(--hue) 100% 75% / .75);
+    }
+
+    & [data-word^=start] {
+      /* display: contents; */
       letter-spacing: normal;
-      white-space: nowrap !important;
+      white-space: nowrap;
 
       & > [data-char] {
         position: relative;
         overflow: hidden;
-        text-decoration: none;
-        font-variation-settings: "wght" var(--wght, 200);
 
-        animation: weight 2s infinite;
+        /* color: transparent; */
+        text-decoration: none;
+
+        animation: weight 2s;
         animation-play-state: running;
         animation-delay: calc(var(--char-index) * 150ms);
+        animation-iteration-count: infinite;
+        font-variation-settings:
+          "opsz" 48,
+          "wght" var(--wght, 200),
+          "ital" var(--ital, 0);
 
-        :where(:hover) > & { animation-play-state: paused }
+        /* :where(:hover) > & { animation-play-state: paused } */
       }
 
+      /* bloom pass */
       & > [data-char]::before {
         position: absolute;
         inset: 0;
         z-index: -1;
         display: inline-block;
-        color: color-mix(
-          in hsl shorter hue,
-          var(--foreground),
-          hsl(var(--hsl)) calc(100 / 4.5 *1%)
-        );
-        content: "";
-        background-color: hsl(var(--hsl) / .5);
-        filter: blur(16px) brightness(120%);
+        overflow: visible;
+        color: transparent;
+        content: attr(data-char);
+        background: hsl(var(--_hsl) / 1);
+
+        filter: blur(5px);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: var(--trn, transparent);
+        box-decoration-break: clone;
       }
 
       & > [data-char]:nth-of-type(1) {
-        --hsl: calc(var(--hue) + 10) 50% 50%;
+        --_hsl: calc(var(--hue) + 10) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(2) {
-        --hsl: calc(var(--hue) + 20) 50% 50%;
+        --_hsl: calc(var(--hue) + 20) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(3) {
-        --hsl: calc(var(--hue) + 30) 50% 50%;
+        --_hsl: calc(var(--hue) + 30) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(4) {
-        --hsl: calc(var(--hue) + 40) 50% 50%;
+        --_hsl: calc(var(--hue) + 40) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(5) {
-        --hsl: calc(var(--hue) + 50) 50% 50%;
+        --_hsl: calc(var(--hue) + 50) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(6) {
-        --hsl: calc(var(--hue) + 60) 50% 50%;
+        --_hsl: calc(var(--hue) + 60) 100% 75%;
       }
 
       & > [data-char]:nth-of-type(7) {
-        --hsl: calc(var(--hue) + 70) 50% 50%;
+        --_hsl: calc(var(--hue) + 70) 100% 75%;
       }
     }
   }
 
-  nav sup {
-    line-height: 1cap;
-  }
+  nav sup { line-height: 1cap }
 
   article > hr { /* overrides */
     inline-size: 100%;
     background: none;
     border-style: inset;
+
+    &:where(.--w3c-hr) {
+      height: auto;
+      margin: 1em auto;
+      font-size: 1.5em;
+      color: black;
+      color: var(--hr, highlight);
+      text-align: center;
+      background: transparent;
+      border: transparent solid 0;
+
+      &::before {
+        content: "\2727\2003\2003\2727\2003\2003\2727";
+      }
+    }
   }
 
   article > ol > li {
@@ -466,7 +592,7 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
   }
 
   .nav__link {
-    min-block-size: var(--min-touch-target);
+    min-block-size: var(--min-touch-target-size);
     font-size: clamp(1.5rem, 2.5vw + 1rem, 3rem);
     line-height: normal;
   }
@@ -531,6 +657,7 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
        https://www.landsnail.com/apple/local/design/intro.html
        https://apple.fandom.com/wiki/List_of_Apple_product_colors
        https://www.schemecolor.com/apple-rainbow-logo.php
+       https://84-24.org/
     */
     --apple-beige: #bfbb98; /* PANTONE 453 C */
     --apple-beige: #c4c0aa; /* PANTONE 14–0105 TPG */
