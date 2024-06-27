@@ -2,7 +2,6 @@
 <!--
   https://spec.whatwg.org/
   https://www.w3.org/TR/wcag-3.0/
-  https://html.spec.whatwg.org/#non-conforming-features
   https://github.com/web-platform-tests/wpt/tree/master/html
 -->
 <!-- https://rules.sonarsource.com/html/ -->
@@ -431,9 +430,6 @@
         <!-- Hero (generic / local banner) -->
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center">
-            <!--
-              FIXME: Is the title refers to the main content area?
-            -->
             <h1 class="sr-only">Page Title</h1>
             <div
               id="slicer"
@@ -456,17 +452,16 @@
             </div>
             <p
               class="h5 fvar"
-              style="--wght: 500; --opsz: 16"
+              style="--wght: 400; --opsz: 16"
               role="doc-subtitle"
             >
               Website Boilerplate
             </p>
+            <input id="hue" type="range" min="0" max="360" value="0" step="5" />
             <!--
               See → https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
             -->
-            <input id="hue" type="range" min="0" max="360" value="0" step="5" />
           </hgroup>
-          <!-- 360 (max-value) / 15 (step) = 24 (color swatches) -->
           <script type="text/javascript">
             const slider = hue;
             slider.value =
@@ -484,7 +479,8 @@
           </div>
         </div>
 
-        <div class="grid__full ua-samp graph-paper">
+        <!-- System color swatches (viz) -->
+        <div class="grid__full ua-samp">
           <!--
             https://infra.spec.whatwg.org/#ascii-case-insensitive
             https://www.w3.org/TR/css-color-4/#system-color-pairs
@@ -496,23 +492,30 @@
           <div style="background-color: activetext"></div>
           <div style="background-color: canvastext"></div>
           <div style="background-color: canvas"></div>
-          <div style="background-color: AccentColor"></div>
-          <!-- https://www.w3schools.com/colors/colors_picker.asp -->
-          <div style="background-color: ButtonFace" class="pile bloom:50">
-            <input type="color" name="picker" value="#ff4000" onchange="" />
-            <label for="picker" style="color: CanvasText" class="sr-only"
-              >Color picker</label
-            >
+          <div style="background-color: mark"></div>
+          <!-- <div style="background-color: accentcolor"></div> -->
+
+          <!-- HTML5 Color Picker -->
+          <!--
+            https://oklch.com
+            https://www.w3schools.com/colors/colors_picker.asp
+          -->
+          <div style="background-color: buttonface" class="pile">
+            <input
+              type="color"
+              name="picker"
+              value="#0095b6"
+              onchange="hero.style.backgroundColor=event.target.value"
+            />
+            <label for="picker" class="sr-only">Color picker</label>
           </div>
-          <script type="text/javascript">
+          <!-- <script type="text/javascript">
             colorPicker.addEventListener('change', watchColorPicker, false);
 
             function watchColorPicker(event) {
-              document.querySelectorAll('p').forEach((p) => {
-                p.style.color = event.target.value;
-              });
+              hero.style.backgroundColor = event.target.value;
             }
-          </script>
+          </script> -->
         </div>
 
         <!-- About -->
@@ -857,6 +860,7 @@
       <!-- Tag cloud
         https://html.spec.whatwg.org/#link-type-tag
         https://html.spec.whatwg.org/#tag-cloud -->
+      <!-- ul>.tag*5 -->
 
       <!-- Side comments -->
       <small class="fvar" style="--opsz: 11">

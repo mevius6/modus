@@ -389,11 +389,11 @@
     }
 
     /* TODO upg utils w/ color functions, for instance */
-    .bloom\:50 {
+    .shadow\:md {
       --trn: color-mix(
-        in oklab, currentcolor, transparent 50%
+        in oklab, hsl(0 0% 6%), transparent 50%
       );
-      filter: drop-shadow(0 4px 16px var(--trn));
+      filter: drop-shadow(0 8px 64px var(--trn));
     }
 
     /* @scope ([data-theme-style=light]) {…} */

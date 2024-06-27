@@ -54,6 +54,9 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
       inline-size: 10cqi;
       block-size: auto;
       border-radius: 0.5rem;
+      box-shadow:
+        rgba(3, 4, 7, 0.13) 0 3px 5px -2px,
+        rgba(3, 4, 7, 0.15) 0 7px 14px -5px;
     }
 
     [type=color i] {
@@ -65,21 +68,9 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     }
   }
 
-  a[rel=bookmark] {
-    translate: -100%;
-    inline-size: fit-content;
-
-    &:where(:is(:hover,:focus)) {
-      --wght: 900;
-    }
-  }
-
   div:has(figure + a) { gap: var(--gutter) }
 
-  /* mv → utils */
-  .fvar { --fvar: font-variation-settings; } /* eg transition-property */
-
-  /* .\👻-btn */
+  /* .\👻-btn, */
   [class~=cta]:is(a, button) {
     display: inline-flex;
     min-inline-size: var(--btn-min-hdim);
@@ -87,8 +78,7 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     padding: 1ch 2ex;
     color: var(--accent);
     text-align: center;
-    border: var(--border);
-    border-color: var(--accent-shade);
+    border: var(--hairline) solid var(--accent-shade);
 
     &:where(:is(:hover,:focus)) > .fvar {
       --wght: 500;
@@ -101,40 +91,52 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
       transition: font-variation-settings 300ms var(--ease-spring); /* 2 */
     }
 
+    /* text */
     > span {
       position: relative;
       margin: auto;
 
+      /* underline */
       > svg {
         position: absolute;
         inset: 1em 0.2em;
         z-index: -1;
         width: calc(100% - 0.7em);
         height: auto;
-        color: var(--accent-shade, highlight);
+        color: var(--accent-shade);
       }
     }
   }
 
   :where(#hero) {
-    background: repeating-linear-gradient(45deg, highlight, transparent 100px);
-
     & hgroup {
+      position: relative;
       display: grid;
-      gap: 1ch;
       inline-size: clamp(30ch, 50%, 60ch);
       padding: 2ch;
-      background-color: var(--background-a50);
+      gap: 1ch;
+      background-color: var(--background);
+      border: thick solid var(--apple-beige);
       border-radius: 1ch;
+      box-shadow:
+        rgba(3, 4, 7, 0.12) 0 -1px 2px 0,
+        rgba(3, 4, 7, 0.13) 0 2px 1px -2px,
+        rgba(3, 4, 7, 0.13) 0 5px 5px -2px,
+        rgba(3, 4, 7, 0.14) 0 10px 10px -2px,
+        rgba(3, 4, 7, 0.15) 0 20px 20px -2px,
+        rgba(3, 4, 7, 0.17) 0 40px 40px -2px;
     }
 
-    & :where(#slicer)::before {
+    /* & :where(#slicer)::before {
       position: absolute;
       inset: 0;
       z-index: -1;
       content: "";
       background-color: hsl(var(--hue) 100% 75% / .75);
-    }
+      filter: saturate(150%) blur(16px);
+      scale: .98;
+      translate: 0% 5%;
+    } */
 
     & [data-word^=start] {
       /* display: contents; */
@@ -143,15 +145,16 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
 
       & > [data-char] {
         position: relative;
-        overflow: hidden;
+        z-index: 2;
 
+        /* overflow: hidden; */
         /* color: transparent; */
         text-decoration: none;
 
         animation: weight 2s;
         animation-play-state: running;
         animation-delay: calc(var(--char-index) * 150ms);
-        animation-iteration-count: infinite;
+        animation-iteration-count: 4; /* infinite */
         font-variation-settings:
           "opsz" 48,
           "wght" var(--wght, 200),
@@ -160,22 +163,20 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
         /* :where(:hover) > & { animation-play-state: paused } */
       }
 
-      /* bloom pass */
+      /* clone chars + bloom pass */
       & > [data-char]::before {
         position: absolute;
         inset: 0;
         z-index: -1;
         display: inline-block;
-        overflow: visible;
+
         color: transparent;
         content: attr(data-char);
-        background: hsl(var(--_hsl) / 1);
-
-        filter: blur(5px);
+        background-color: hsl(var(--_hsl) / 1);
+        filter: blur(2.5px);
 
         -webkit-background-clip: text;
         -webkit-text-fill-color: var(--trn, transparent);
-        box-decoration-break: clone;
       }
 
       & > [data-char]:nth-of-type(1) {
@@ -208,6 +209,15 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     }
   }
 
+  a[rel=bookmark] {
+    translate: -100%;
+    inline-size: fit-content;
+
+    &:where(:is(:hover,:focus)) {
+      --wght: 900;
+    }
+  }
+
   nav sup { line-height: 1cap }
 
   article > hr { /* overrides */
@@ -215,12 +225,11 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     background: none;
     border-style: inset;
 
-    &:where(.--w3c-hr) {
+    &:where(.--w3c) { /* cp from spec */
       height: auto;
       margin: 1em auto;
       font-size: 1.5em;
-      color: black;
-      color: var(--hr, highlight);
+      color: var(--hr, gray);
       text-align: center;
       background: transparent;
       border: transparent solid 0;
@@ -659,9 +668,9 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
        https://www.schemecolor.com/apple-rainbow-logo.php
        https://84-24.org/
     */
-    --apple-beige: #bfbb98; /* PANTONE 453 C */
-    --apple-beige: #c4c0aa; /* PANTONE 14–0105 TPG */
     --apple-beige: #cacac8; /* PANTONE Cool Gray 2 U */
+    --apple-beige: #c4c0aa; /* PANTONE 14–0105 TPG */
+    --apple-beige: #bfbb98; /* PANTONE 453 C */
     --apple-blue: #0095B6;
 
     /* https://en.wikipedia.org/wiki/Prussian_blue */
