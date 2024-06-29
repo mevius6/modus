@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!--
+  https://www.w3.org/Provider/Style/
+  https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
   https://spec.whatwg.org/
   https://www.w3.org/TR/wcag-3.0/
   https://github.com/web-platform-tests/wpt/tree/master/html
@@ -56,9 +58,8 @@
           https://perf-html.io/
     -->
     <script type="text/javascript">
-      let { log, info } = console;
+      let { log, info, timeLog, timeEnd } = console;
       /**
-       * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_epoch_timestamps_and_invalid_date
        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime#reduced_time_precision
        */
       let { now: getTime } = Date; // var now = Date.now();
@@ -206,6 +207,7 @@
       https://web.dev/learn/performance/understanding-the-critical-path
     -->
     <!-- The main stylesheet -->
+    <!-- https://www.w3.org/Provider/Style/StyleSheets.html -->
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 
     <!-- TODO
@@ -784,16 +786,18 @@
         <h2 id="region1" class="sr-only">title for region area 1</h2>
         <!--
           See:
+              https://www.terminal.shop/
               https://v0.dev/
               https://tiptap.dev/
               https://hyper.is/
-              https://www.terminal.shop/
-              https://nodejs.org/en/download/package-manager
+              https://prismjs.com/; https://prism-theme-vars.netlify.app
+              https://highlightjs.org/
+              https://github.com/CodeboxIDE/sh.js
               https://github.com/spaceship-prompt/spaceship-prompt
               https://github.com/httpie/http-prompt
+              https://github.com/codex-team/editor.js
               https://github.com/MarketingPipeline/Termino.js
               https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-              https://devtoys.app/doc/api/DevToys.Api.ConsoleProgressBar.html
         -->
         <!-- TODO Fetch latest deployments status from gh repo
           See:
@@ -804,16 +808,12 @@
               ├╴webhooks/using-webhooks/best-practices-for-using-webhooks
               └╴https://github.com/octokit/octokit.js/#readme
         -->
+        <!-- TODO Terminal-like boot state and type animations -->
         <style>
           @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
           @import 'css/console.css' layer(terminal);
         </style>
         <!-- Computer output -->
-        <!-- TODO ls
-          - Terminal-like boot state animation
-          - Typewriter animation
-          - Cursor color, shape, blink
-        -->
         <!-- Computer code || Console session
           Refs:
             https://man7.org/tlpi/
@@ -829,13 +829,23 @@
           Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
         -->
         <pre><code data-shell="zsh" class="session">
-          <span class="sep">=============================</span>
-          <span>==> Latest deployments</span>
-          <span class="sep">=============================</span>
-          <mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&block;&#xfeff;</samp>
-          <mark>&emsp14;🌿&emsp14;</mark>&#x20;Production:&#x20;<samp id="time">&block;&#xfeff;</samp>&#x0A;
-          <span data-hostname="user@MBP.local" class="prompt">user@mevius6&#x003a;&#x223c;&dollar;</span>&#x20;
-          <span data-char-symbol="➜">&gt;&#x20;</span><kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>&#x0D;
+          <span class="line sep">=============================</span>
+          <span class="line">==> Latest deployments</span>
+          <span class="line sep">=============================</span>
+          <span class="line"
+            ><mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
+          </span>
+          <span class="line"
+          ><mark>&emsp14;🌿&emsp14;</mark>
+          <!-- Last modification / current time -->
+          &#x20;Last modified:&#x20;<samp id="time">&marker;</samp></span>
+          <span class="line">&#x0A;</span>
+          <span class="line prompt" data-hostname="user@local"
+            >user@mevius6&#x003a;&#x223c;&dollar;</span>
+          <span class="line"
+            ><span data-char-symbol="➜">&gt;&#x20;</span><kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
+          </span>
+          <span class="line">&#x0D;</span>
         </code></pre>
         <!--
           TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
@@ -986,18 +996,17 @@
       </defs>
     </svg>
 
-    <!-- Timestamp
+    <!-- Timestamps
          https://en.wikipedia.org/wiki/ISO_8601
          https://man7.org/linux/man-pages/man3/strftime.3.html
          https://www.iana.org/time-zones
          https://www.unixtimestamp.com/
          https://currentmillis.com/ -->
     <!-- [specs]
+      https://w3c.github.io/hr-time/
       https://tc39.es/proposal-temporal/docs/
-      https://tc39.es/ecma262/#sec-date-objects
       https://tc39.es/ecma262/#sec-date-time-string-format
       https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date-objects
-      https://html.spec.whatwg.org/#dom-document-lastmodified
       https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates-and-times
     -->
     <script type="text/javascript">
@@ -1007,9 +1016,11 @@
         month: 'long',
         day: 'numeric',
       };
-      let currDate = new Date(),
-        _l10n = currDate.toLocaleDateString(undefined, options),
-        _year = currDate.getUTCFullYear();
+      // https://html.spec.whatwg.org/#dom-document-lastmodified
+      // https://httpwg.org/specs/rfc7232.html#header.last-modified
+      const lastModified = new Date(document.lastModified),
+        _l10n = lastModified.toLocaleDateString(undefined, options),
+        _year = lastModified.getUTCFullYear();
       copy.dateTime = _year;
       copy.textContent = _year; // Machine-readable equivalent
       time.textContent = _l10n; // of date- or time-related data

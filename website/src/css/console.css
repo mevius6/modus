@@ -1,3 +1,56 @@
+/* https://drafts.csswg.org/css-ui/#insertion-caret */
+/* @supports (caret-animation: manual) {…} */
+@supports (caret-shape: block) {
+  [contenteditable] { caret-shape: block }
+}
+
+code, kbd, pre, samp {
+  font-family: var(--ui-mono);
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-size: 1em;
+}
+
+code:has(> span[class~=line]) {
+  display: grid;
+  padding: 0;
+  overflow-inline: auto;
+  counter-reset: line;
+  background-color: transparent;
+  row-gap: calc(1ex/4);
+}
+
+code > [class~="line"] {
+  position: relative;
+  display: inline-block;
+  min-width: 0;
+  padding-left: 2rem;
+  white-space: nowrap;
+
+  &:not(:empty:last-child)::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.125rem;
+    margin-right: 1rem;
+    font-family: var(--font-mono, inherit);
+    color: color-mix(in oklab, var(--foreground), var(--background) 70%);
+    text-align: right;
+    content: counter(line);
+    counter-increment: line;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &:not(:empty:last-child)::before {
+    /* https://en.wikipedia.org/wiki/Byte_order_mark */
+    --bom: "\65279";
+    --word-joiner: "\2060";
+
+    display: inline-block;
+    content: var(--word-joiner);
+  }
+}
+
 section:has(> pre) {
   display: grid;
   place-content: start;
@@ -5,12 +58,11 @@ section:has(> pre) {
 }
 
 :where(pre, code) {
-  font-family: ui-monospace,SF Mono,Monaco,monospace;
+  font-family: ui-monospace,SF Mono,SFMono-Regular,Menlo,Monaco,monospace;
   hyphens: none;
   white-space: pre-wrap;
-  white-space-collapse: preserve;
 
-  & > mark {
+  & mark {
     color: var(--foreground);
     text-shadow: 0 0 .1em var(--accent-shade);
     background-color: color-mix(
@@ -25,12 +77,15 @@ section:has(> pre) {
   .console,
   .session )) {
     & .sep {
-      opacity: .25;
+      /* opacity: .25; */
+      color: color-mix(in oklab, var(--foreground), var(--background) 70%);
     }
 
     & .prompt {
       color: var(--accent);
       text-shadow: 0 0 .125em var(--accent-shade);
+
+      &::after { text-shadow: none }
     }
 
     & :is(.cursor,.caret) {
@@ -41,7 +96,6 @@ section:has(> pre) {
 
     & :where([contenteditable=true]) {
       caret-color: var(--accent);
-      caret-shape: block;
       text-indent: 5em hanging each-line;
 
       &:focus-within ~ .caret {

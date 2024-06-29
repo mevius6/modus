@@ -1,7 +1,10 @@
 @import "utilities/layout-model.css";
 @import "utilities/scroll-control.css";
 
-/* https://developer.chrome.com/blog/css-wrapped-2023#trig */
+/* TODO
+  https://drafts.csswg.org/css-values-4/#trig-funcs
+  https://developer.chrome.com/blog/css-wrapped-2023#trig
+*/
 
 .staggered-anim { /* FIXME: it's more suitable for `dialog[open]` now */
   --delay: calc(var(--i, 1) * 150ms);
@@ -221,7 +224,8 @@
 
 .muted { filter: grayscale() }
 
-.side-fade {
+/* https://drafts.csswg.org/css-values-4/#calc-func */
+[class*=fade] {
   /* Horizontal scroller edge fade mask */
   --lin-grad-fading: linear-gradient(
     90deg,
@@ -230,16 +234,14 @@
     var(--trn));
 
   mask: var(--mask, var(--lin-grad-fading));
-}
 
-.edge-fade {
-  mask-image: linear-gradient(
+  /* mask-image: linear-gradient(
     to right,
     hsl(0 0% 0% / 0),
     hsl(0 0% 0% / 1) 20%,
     hsl(0 0% 0% / 1) 80%,
     hsl(0 0% 0% / 0)
-  );
+  ); */
 }
 
 /* CSS Scroll Masking
@@ -484,6 +486,9 @@
 .reverse {
   /* scale: -1; */
   transform: scale(-1);
+
+  /* https://drafts.csswg.org/css-values-4/#sign-funcs */
+  transform: scale(sign(1));
 }
 
 :where([class~=tag]) {
