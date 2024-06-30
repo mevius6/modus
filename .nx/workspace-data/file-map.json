@@ -9,1164 +9,1172 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "website/src/fonts/Input-Font/Scripts/_template_BoldItalic.txt",
-        "hash": "18224921373622619881"
-      },
-      {
-        "file": "website/src/css/layouts/index.css",
-        "hash": "5927166915402260759"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-LightItalic.ttf",
-        "hash": "10990885908771634865"
-      },
-      {
-        "file": "website/src/css/comps/theme-switch.css",
-        "hash": "9948407656822435791"
-      },
-      {
-        "file": "website/src/css/utilities/layout-model.css",
-        "hash": "6686697839621286960"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Medium.ttf",
-        "hash": "18378697754727576670"
-      },
-      {
-        "file": "website/src/css/patterns/radio.css",
-        "hash": "9272860103969892642"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-BlackItalic.ttf",
-        "hash": "221754380763939434"
-      },
-      {
-        "file": "website/src/css/utils.css",
-        "hash": "17443123641533925271"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "15198272904281917137"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Bold.ttf",
-        "hash": "1408630337330137353"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-MediumItalic.ttf",
-        "hash": "17123572150262767301"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ExtraLight.ttf",
-        "hash": "14170820918295981770"
-      },
-      {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_green.webp",
-        "hash": "3765729913489315047"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ThinItalic.ttf",
-        "hash": "10691739771105233767"
-      },
-      {
-        "file": "website/src/css/patterns/index.css",
-        "hash": "10886520339862773525"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Italic.ttf",
-        "hash": "5770968704514610352"
-      },
-      {
-        "file": "website/src/site.webmanifest",
-        "hash": "6990954370403525255"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(5).png",
-        "hash": "2224721771902316720"
-      },
-      {
-        "file": "website/src/css/comps/carousel.css",
-        "hash": "6388745191535581024"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Bold.ttf",
-        "hash": "8143083007892794452"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Black.ttf",
-        "hash": "6460357277454794874"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-BlackItalic.ttf",
-        "hash": "10325507031852177820"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(11).png",
-        "hash": "6538381826450529361"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-MediumItalic.ttf",
-        "hash": "16615992295967184728"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-BoldItalic.ttf",
-        "hash": "4926138805723645110"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Medium.ttf",
-        "hash": "2852538841174746120"
-      },
-      {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_ForrestGreen.webp",
-        "hash": "5740351232729846501"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-MediumItalic.ttf",
-        "hash": "17415598396604212843"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Italic.ttf",
-        "hash": "8901002598793565499"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Medium.ttf",
-        "hash": "10360550406259709820"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode.png",
-        "hash": "18003941727124969354"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Thin.ttf",
-        "hash": "9146757448082570573"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-BoldItalic.ttf",
-        "hash": "5593320020019828275"
-      },
-      {
-        "file": "website/src/js/modules/theme-switcher.js",
-        "hash": "18016759681025098237"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Light.ttf",
-        "hash": "10730213375124281181"
-      },
-      {
-        "file": "website/src/css/comps/custom-cursor.css",
-        "hash": "7820530609975884427"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Italic.ttf",
-        "hash": "4080786564372690578"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-MediumItalic.ttf",
-        "hash": "5649330418617735634"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Medium.ttf",
-        "hash": "10640318589564177305"
-      },
-      {
-        "file": "website/package-lock.json",
-        "hash": "3414489731439915381"
-      },
-      {
-        "file": "website/src/browserconfig.xml",
-        "hash": "9537299402328304790"
+        "file": "website/src/icons/mstile-310x150.png",
+        "hash": "5503344910035753075"
       },
       {
         "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-BlackItalic.ttf",
         "hash": "6522604438299695435"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Italic.ttf",
-        "hash": "11478791625288910339"
-      },
-      {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_DarkPurple.webp",
-        "hash": "15446152473959115668"
-      },
-      {
-        "file": ".nx/nxw.js",
-        "hash": "11254603345854076312"
-      },
-      {
-        "file": "website/src/manifest.json",
-        "hash": "1552809105514096778"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Black.ttf",
-        "hash": "14012007665962174095"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Italic.ttf",
-        "hash": "4552564054352937700"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ThinItalic.ttf",
-        "hash": "9298934721940632681"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-BoldItalic.ttf",
-        "hash": "7003077378703650666"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ExtraLight.ttf",
-        "hash": "16035209879993703689"
-      },
-      {
-        "file": "website/package.json",
-        "hash": "2994002815335489529"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-BlackItalic.ttf",
-        "hash": "13650732240901621285"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ExtraLightItalic.ttf",
-        "hash": "10523161871824902265"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ThinItalic.ttf",
-        "hash": "12936146596177722566"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Medium.ttf",
-        "hash": "7277092889487139802"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-BlackItalic.ttf",
-        "hash": "15646379506174416776"
-      },
-      {
-        "file": "website/src/css/patterns/checkbox.css",
-        "hash": "14317634951346367731"
-      },
-      {
-        "file": "website/src/favicon.svg",
-        "hash": "7473091477014394294"
-      },
-      {
-        "file": "website/src/js/main.js",
-        "hash": "12148233515403782450"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Black.ttf",
-        "hash": "14371130567674074511"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ExtraLightItalic.ttf",
-        "hash": "12118760641719928041"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ExtraLight.ttf",
-        "hash": "13764277316606400583"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-MediumItalic.ttf",
-        "hash": "7288650897521634544"
-      },
-      {
-        "file": "website/src/css/comps/form.css",
-        "hash": "7133338543256417697"
-      },
-      {
-        "file": "website/src/css/reset.css",
-        "hash": "1830276755885974875"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-LightItalic.ttf",
-        "hash": "5954230051462613028"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ExtraLightItalic.ttf",
-        "hash": "3433538550760345055"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ExtraLightItalic.ttf",
-        "hash": "5081937138547504677"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-MediumItalic.ttf",
-        "hash": "12853060435438060524"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Regular.ttf",
-        "hash": "14470218176012424324"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-LightItalic.ttf",
-        "hash": "13606771372236710426"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-LightItalic.ttf",
-        "hash": "5193629951211849952"
-      },
-      {
-        "file": "website/src/css/layouts/results-page.css",
-        "hash": "1663642963205096827"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ThinItalic.ttf",
-        "hash": "16417181285011119482"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Bold.ttf",
-        "hash": "17578238759365177008"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Light.ttf",
-        "hash": "2616566433424677341"
-      },
-      {
-        "file": "website/src/css/author.css",
-        "hash": "2517387404484596477"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ThinItalic.ttf",
-        "hash": "2921781352242718959"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Black.ttf",
-        "hash": "6196876010332694865"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-BoldItalic.ttf",
-        "hash": "14760683765152974743"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Italic.ttf",
-        "hash": "15441892658625599406"
-      },
-      {
-        "file": "website/src/css/layouts/hero.css",
-        "hash": "17078689493046062400"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ThinItalic.ttf",
-        "hash": "9877921745131560441"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Black.ttf",
-        "hash": "3775664935542432078"
-      },
-      {
-        "file": "website/src/css/layouts/sidenav.css",
-        "hash": "13267347180300836148"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(9).png",
-        "hash": "8089424888366534359"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ExtraLightItalic.ttf",
-        "hash": "15809263892161724443"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Thin.ttf",
-        "hash": "3286976892627247485"
-      },
-      {
-        "file": "website/src/css/theme.css",
-        "hash": "3037468872498957473"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ExtraLight.ttf",
-        "hash": "16565094966075505499"
-      },
-      {
-        "file": "website/src/icons/1024.png",
-        "hash": "1720341274090215763"
-      },
-      {
-        "file": "website/src/icons/mstile-150x150.png",
-        "hash": "9310799746014005104"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(7).png",
-        "hash": "2125537100353701685"
-      },
-      {
-        "file": "website/src/images/ogp_common@2x.jpg",
-        "hash": "2165926314768307397"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Italic.ttf",
-        "hash": "4058838241413010856"
-      },
-      {
-        "file": "README.md",
-        "hash": "16601269232221079713"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Light.ttf",
-        "hash": "13633352752523521254"
-      },
-      {
-        "file": "website/src/css/patterns/list.css",
-        "hash": "4359857200914274378"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-LightItalic.ttf",
-        "hash": "3808852093507011938"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-LightItalic.ttf",
-        "hash": "10709180238732185012"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Light.ttf",
-        "hash": "3391966190112398465"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/SETTINGS.txt",
-        "hash": "9179570352954526757"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Italic.ttf",
-        "hash": "4407132982107225497"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ThinItalic.ttf",
-        "hash": "15699693739762160708"
-      },
-      {
-        "file": "website/src/css/props/fonts.css",
-        "hash": "12410026258686589297"
-      },
-      {
-        "file": "website/src/css/has-filter.css",
-        "hash": "7071834789489955591"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(14).png",
-        "hash": "1336152101015778077"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(1).png",
-        "hash": "740049328222674207"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ExtraLightItalic.ttf",
-        "hash": "9691352887212187573"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Italic.ttf",
-        "hash": "6068227834659481183"
-      },
-      {
-        "file": "website/src/css/patterns/dialog.css",
-        "hash": "3007380621887569234"
-      },
-      {
-        "file": "website/.stylelintrc",
-        "hash": "6930015109030064179"
-      },
-      {
-        "file": "website/src/favicon.ico",
-        "hash": "9400723000721372713"
-      },
-      {
-        "file": "website/src/gallery.html",
-        "hash": "2746621175849878195"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-BoldItalic.ttf",
-        "hash": "3001435504350349014"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ExtraLight.ttf",
-        "hash": "8942378234525705796"
-      },
-      {
-        "file": "website/src/css/main.css",
-        "hash": "7324385330172414672"
-      },
-      {
-        "file": "website/uno.config.js",
-        "hash": "4729802020666583675"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Light.ttf",
-        "hash": "4447335652674715809"
-      },
-      {
-        "file": "website/src/robots.txt",
-        "hash": "2661324626124696959"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-LightItalic.ttf",
-        "hash": "4827193111633831183"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Regular.ttf",
-        "hash": "9262403197350291897"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ThinItalic.ttf",
-        "hash": "6596240910896710806"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Italic.ttf",
-        "hash": "2648203365302781933"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ExtraLight.ttf",
-        "hash": "8883072655614237637"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ExtraLightItalic.ttf",
-        "hash": "17967233898152346793"
-      },
-      {
-        "file": "website/src/css/patterns/button.css",
-        "hash": "11790016192692390249"
-      },
-      {
-        "file": "website/src/css/utilities/scroll-control.css",
-        "hash": "10955496242344603762"
-      },
-      {
-        "file": "website/src/icons/mstile-70x70.png",
-        "hash": "11057723667388404406"
-      },
-      {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_orange.webp",
-        "hash": "5657753644075560939"
-      },
-      {
-        "file": "website/src/icons/safari-pinned-tab.svg",
-        "hash": "11823467844282056962"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ExtraLight.ttf",
-        "hash": "17128551849311762667"
-      },
-      {
-        "file": "website/src/css/layouts/skeleton.css",
-        "hash": "11342412738067222807"
-      },
-      {
-        "file": "nx",
-        "hash": "17165975525224888679"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-BoldItalic.ttf",
-        "hash": "17373014037927000696"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Scripts/_template_Bold.txt",
-        "hash": "10307550747828157829"
-      },
-      {
         "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Regular.ttf",
         "hash": "17248957892528355015"
-      },
-      {
-        "file": "website/src/css/layouts/header.css",
-        "hash": "8191425163230332304"
-      },
-      {
-        "file": "website/src/index.html",
-        "hash": "9944119065853704837"
-      },
-      {
-        "file": "website/src/js/modules.js",
-        "hash": "13090919894206920228"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-BoldItalic.ttf",
-        "hash": "6475830164994183575"
-      },
-      {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_pink.webp",
-        "hash": "13555158391331178314"
-      },
-      {
-        "file": "website/src/css/layouts/grid.css",
-        "hash": "12089119170772214169"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(6).png",
-        "hash": "17782775599460591567"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Medium.ttf",
-        "hash": "8002524215329267506"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-BlackItalic.ttf",
-        "hash": "12227660957499152496"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-BoldItalic.ttf",
-        "hash": "7892548691066387460"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-BoldItalic.ttf",
-        "hash": "1800250939022739055"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-LightItalic.ttf",
-        "hash": "1130284748502234821"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-BoldItalic.ttf",
-        "hash": "6749058203951869592"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Scripts/_template_Italic.txt",
-        "hash": "15941136396304938195"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Light.ttf",
-        "hash": "11351196797946881635"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Italic.ttf",
-        "hash": "6172865290459445547"
-      },
-      {
-        "file": "website/src/css/patterns/slider.css",
-        "hash": "8406337703395183455"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-MediumItalic.ttf",
-        "hash": "12739300455950029375"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-LightItalic.ttf",
-        "hash": "16625976413666706142"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Regular.ttf",
-        "hash": "4546645296641357441"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Regular.ttf",
-        "hash": "9096508469560103902"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-BlackItalic.ttf",
-        "hash": "1290439233064276309"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Regular.ttf",
-        "hash": "13483656887426741359"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-MediumItalic.ttf",
-        "hash": "16517584281062795383"
-      },
-      {
-        "file": "website/src/js/modules/theme-switcher-template.tpl",
-        "hash": "17299371916774245453"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Regular.ttf",
-        "hash": "12287040678827600754"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Bold.ttf",
-        "hash": "14855052168438504621"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ThinItalic.ttf",
-        "hash": "18080796018579513963"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ExtraLightItalic.ttf",
-        "hash": "8141175488303036512"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Medium.ttf",
-        "hash": "11090601051972394438"
-      },
-      {
-        "file": "website/src/images/paper/PaperLibrary_White_MunkenRough300gsm_b2c0cf55-c8ec-4ac6-a07c-cfbfe12b2a7b.webp",
-        "hash": "17673394512123887991"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Black.ttf",
-        "hash": "17418756324959536796"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Thin.ttf",
-        "hash": "4698139243399068150"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(12).png",
-        "hash": "12648524477421426246"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Regular.ttf",
-        "hash": "16928029878270178168"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(2).png",
-        "hash": "16276714629662619206"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/INSTALL.txt",
-        "hash": "10883821045948782189"
-      },
-      {
-        "file": "website/src/icons/16.png",
-        "hash": "3875992060098255580"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Black.ttf",
-        "hash": "12448090409838359903"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ThinItalic.ttf",
-        "hash": "16923828486508956486"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Regular.ttf",
-        "hash": "1744678598927269196"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ThinItalic.ttf",
-        "hash": "3585687169862485920"
-      },
-      {
-        "file": "website/src/css/layouts/home-page.css",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Black.ttf",
-        "hash": "11272131195401000622"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-LightItalic.ttf",
-        "hash": "12775781039598318969"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-BlackItalic.ttf",
-        "hash": "344889558501620178"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/README.txt",
-        "hash": "6521802972042007932"
-      },
-      {
-        "file": "website/src/apple-touch-icon.png",
-        "hash": "17539487413463387670"
-      },
-      {
-        "file": "website/src/fonts/RoslindaleCyrillicVariable.woff2",
-        "hash": "15400679232697718572"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Light.ttf",
-        "hash": "13122153387551896105"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Thin.ttf",
-        "hash": "3381744787451642103"
-      },
-      {
-        "file": "emmet/snippets.json",
-        "hash": "10276776719452242887"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Regular.ttf",
-        "hash": "3089746919511583764"
-      },
-      {
-        "file": "website/eslint.config.js",
-        "hash": "10313007581448464504"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(13).png",
-        "hash": "18251029332539800035"
-      },
-      {
-        "file": "website/src/css/props/browser.css",
-        "hash": "8663198659777657564"
-      },
-      {
-        "file": "website/src/test.html",
-        "hash": "13541802828879015531"
-      },
-      {
-        "file": "website/src/icons/512.png",
-        "hash": "2467924675053504013"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-BoldItalic.ttf",
-        "hash": "1822275670605375895"
-      },
-      {
-        "file": "website/src/404.html",
-        "hash": "1761590759826441511"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Regular.ttf",
-        "hash": "1473420568517953152"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Bold.ttf",
-        "hash": "730709905488058467"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Light.ttf",
-        "hash": "9058108078633797778"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-BlackItalic.ttf",
-        "hash": "8086199456857172248"
-      },
-      {
-        "file": "website/src/icons/mstile-310x150.png",
-        "hash": "5503344910035753075"
-      },
-      {
-        "file": "website/src/fonts/RoslindaleCyrillicVariable.woff",
-        "hash": "10789985573028365118"
-      },
-      {
-        "file": "website/src/css/patterns/link.css",
-        "hash": "13066552690313320422"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-BlackItalic.ttf",
-        "hash": "4399580084244415251"
-      },
-      {
-        "file": "website/src/css/props/colors.css",
-        "hash": "14169887108125081992"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-MediumItalic.ttf",
-        "hash": "16359223253301617838"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-LightItalic.ttf",
-        "hash": "15962275104959107871"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/LICENSE.txt",
-        "hash": "5566122667151129094"
-      },
-      {
-        "file": "nx.json",
-        "hash": "7111735501627103681"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ThinItalic.ttf",
-        "hash": "12680554492624856826"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Bold.ttf",
-        "hash": "9769309437033728060"
-      },
-      {
-        "file": "website/src/css/console.css",
-        "hash": "15835267195161714925"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ExtraLight.ttf",
-        "hash": "4602339925082517995"
-      },
-      {
-        "file": "nx.bat",
-        "hash": "16119536321561623970"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Thin.ttf",
-        "hash": "9721374890160504944"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Bold.ttf",
-        "hash": "10290955900176343395"
-      },
-      {
-        "file": "website/src/images/paper/PaperLibrary_OFF_White_CLASSIC_80gsm.jpg",
-        "hash": "9573962590976356"
-      },
-      {
-        "file": "website/src/css/props/media.css",
-        "hash": "14026448487490474784"
-      },
-      {
-        "file": "website/src/icons/mstile-144x144.png",
-        "hash": "13602041646879880302"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Light.ttf",
-        "hash": "6040527688390204012"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Bold.ttf",
-        "hash": "17000754629580850199"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Bold.ttf",
-        "hash": "938402448480484731"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Black.ttf",
-        "hash": "10847479921408259030"
-      },
-      {
-        "file": "website/src/css/patterns/popover.css",
-        "hash": "2533339641680065311"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Scripts/inputCustomize.py",
-        "hash": "17434818940665406533"
-      },
-      {
-        "file": "website/src/css/props/defaults.css",
-        "hash": "3989632385742988225"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Thin.ttf",
-        "hash": "15738616203919524708"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Italic.ttf",
-        "hash": "10443497271628446128"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Thin.ttf",
-        "hash": "4750220301818695898"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-BlackItalic.ttf",
-        "hash": "1468587519511509944"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Medium.ttf",
-        "hash": "96863182357655281"
-      },
-      {
-        "file": "website/src/css/comps/marquee.css",
-        "hash": "3393273030975049922"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-BlackItalic.ttf",
-        "hash": "8870330208581945886"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Medium.ttf",
-        "hash": "12182605229182666058"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-MediumItalic.ttf",
-        "hash": "2118061754430370739"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ExtraLight.ttf",
-        "hash": "17973413866905331227"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Thin.ttf",
-        "hash": "5590884570832837728"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/ChangeLog.txt",
-        "hash": "16293135450862447351"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Thin.ttf",
-        "hash": "3024843979870233039"
-      },
-      {
-        "file": "website/vercel.json",
-        "hash": "10472646221919730832"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ExtraLightItalic.ttf",
-        "hash": "18358255651705841786"
-      },
-      {
-        "file": "website/src/images/ogp_common.jpg",
-        "hash": "13114650259508436139"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Thin.ttf",
-        "hash": "6090208847882247573"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Black.ttf",
-        "hash": "14059159466404466306"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-MediumItalic.ttf",
-        "hash": "2836695636635451826"
-      },
-      {
-        "file": "website/src/css/comps/card.css",
-        "hash": "3828666658568349413"
-      },
-      {
-        "file": "website/src/css/tests.css",
-        "hash": "946885350785558705"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(10).png",
-        "hash": "389258468423231781"
-      },
-      {
-        "file": "website/src/images/noise.png",
-        "hash": "13687807872342758157"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ExtraLightItalic.ttf",
-        "hash": "12360952944330263041"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ExtraLight.ttf",
-        "hash": "6264893111440682035"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Light.ttf",
-        "hash": "18004261446838276908"
-      },
-      {
-        "file": "website/src/sitemap.xml",
-        "hash": "5060811293066599801"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ExtraLight.ttf",
-        "hash": "4116537936090391459"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Bold.ttf",
-        "hash": "5364083947231165226"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Light.ttf",
-        "hash": "17172401504796502192"
-      },
-      {
-        "file": "website/src/icons/32.png",
-        "hash": "15756076694932841093"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Bold.ttf",
-        "hash": "13485868566991259795"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Medium.ttf",
-        "hash": "15947763354483793873"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ExtraLightItalic.ttf",
-        "hash": "492012839492386219"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-BoldItalic.ttf",
-        "hash": "13892136765885547042"
-      },
-      {
-        "file": "website/src/icons/mstile-310x310.png",
-        "hash": "8679724370796351696"
-      },
-      {
-        "file": "website/src/.gitignore",
-        "hash": "15691224498621987298"
       },
       {
         "file": "website/src/fonts/Input-Font/Scripts/_template_Regular.txt",
         "hash": "10669624802333577931"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Medium.ttf",
-        "hash": "6717874527239260524"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-MediumItalic.ttf",
+        "hash": "16615992295967184728"
       },
       {
-        "file": "website/.gitignore",
-        "hash": "1862265637977512098"
+        "file": "website/src/css/patterns/list.css",
+        "hash": "4359857200914274378"
       },
       {
-        "file": "website/src/js/sw.js",
-        "hash": "6667792097279497874"
-      },
-      {
-        "file": "website/vite.config.js",
-        "hash": "9630867557585035226"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ExtraLight.ttf",
-        "hash": "12406959717725374205"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Black.ttf",
-        "hash": "10824456673180248864"
-      },
-      {
-        "file": "website/src/images/qr-codes/qrCode(4).png",
-        "hash": "2353341262736702118"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ExtraLightItalic.ttf",
-        "hash": "15953585046862777069"
-      },
-      {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-LightItalic.ttf",
-        "hash": "3600580045874417403"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Italic.ttf",
+        "hash": "4407132982107225497"
       },
       {
         "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Thin.ttf",
         "hash": "7025963714180020710"
       },
       {
-        "file": "website/src/images/qr-codes/qrCode(8).png",
-        "hash": "15395088874142607853"
+        "file": "website/src/images/paper/PaperLibrary_White_MunkenRough300gsm_b2c0cf55-c8ec-4ac6-a07c-cfbfe12b2a7b.webp",
+        "hash": "17673394512123887991"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Bold.ttf",
+        "hash": "1408630337330137353"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Black.ttf",
+        "hash": "12448090409838359903"
+      },
+      {
+        "file": "website/src/js/modules/theme-switcher-template.tpl",
+        "hash": "17299371916774245453"
+      },
+      {
+        "file": "website/src/css/patterns/link.css",
+        "hash": "13066552690313320422"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-BoldItalic.ttf",
+        "hash": "14760683765152974743"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Thin.ttf",
+        "hash": "9721374890160504944"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Medium.ttf",
+        "hash": "10640318589564177305"
+      },
+      {
+        "file": "website/src/404.html",
+        "hash": "1761590759826441511"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ExtraLightItalic.ttf",
+        "hash": "12118760641719928041"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Scripts/_template_Italic.txt",
+        "hash": "15941136396304938195"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-LightItalic.ttf",
+        "hash": "10709180238732185012"
       },
       {
         "file": "website/src/images/qr-codes/qrCode(3).png",
         "hash": "2826274318219505613"
       },
       {
-        "file": "website/src/js/modules/sidenav.js",
-        "hash": "10794565256414603923"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Black.ttf",
+        "hash": "14059159466404466306"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Bold.ttf",
-        "hash": "3541422234389280989"
+        "file": "website/src/apple-touch-icon.png",
+        "hash": "17539487413463387670"
       },
       {
-        "file": "website/src/css/comps/index.css",
-        "hash": "2824453438590595510"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-BoldItalic.ttf",
+        "hash": "6749058203951869592"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Medium.ttf",
-        "hash": "7062092473349663879"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-BoldItalic.ttf",
+        "hash": "6475830164994183575"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-MediumItalic.ttf",
-        "hash": "12645563325684125412"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-BoldItalic.ttf",
+        "hash": "7892548691066387460"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Light.ttf",
-        "hash": "12702405326180834188"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Regular.ttf",
+        "hash": "12287040678827600754"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ThinItalic.ttf",
+        "hash": "12680554492624856826"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Scripts/_template_Bold.txt",
+        "hash": "10307550747828157829"
+      },
+      {
+        "file": "website/src/css/props/colors.css",
+        "hash": "14169887108125081992"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-BoldItalic.ttf",
+        "hash": "3001435504350349014"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ExtraLightItalic.ttf",
+        "hash": "9691352887212187573"
+      },
+      {
+        "file": "website/src/css/props/browser.css",
+        "hash": "8663198659777657564"
+      },
+      {
+        "file": "website/src/css/tests.css",
+        "hash": "946885350785558705"
+      },
+      {
+        "file": "website/package.json",
+        "hash": "9826740205767991724"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Black.ttf",
+        "hash": "3775664935542432078"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ThinItalic.ttf",
+        "hash": "2921781352242718959"
       },
       {
         "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Regular.ttf",
         "hash": "3721965001528192702"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Black.ttf",
-        "hash": "1783483422819244606"
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Regular.ttf",
+        "hash": "9262403197350291897"
       },
       {
-        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_BloodRed.webp",
-        "hash": "670046229378131034"
+        "file": "website/src/images/qr-codes/qrCode(14).png",
+        "hash": "1336152101015778077"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Black.ttf",
+        "hash": "14012007665962174095"
+      },
+      {
+        "file": "website/src/.gitignore",
+        "hash": "15691224498621987298"
+      },
+      {
+        "file": "website/src/css/patterns/dialog.css",
+        "hash": "3007380621887569234"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-MediumItalic.ttf",
+        "hash": "2836695636635451826"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-LightItalic.ttf",
+        "hash": "16625976413666706142"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Light.ttf",
+        "hash": "2616566433424677341"
+      },
+      {
+        "file": "website/src/css/patterns/popover.css",
+        "hash": "2533339641680065311"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_orange.webp",
+        "hash": "5657753644075560939"
+      },
+      {
+        "file": "website/src/site.webmanifest",
+        "hash": "6990954370403525255"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/SETTINGS.txt",
+        "hash": "9179570352954526757"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Medium.ttf",
+        "hash": "7277092889487139802"
+      },
+      {
+        "file": "website/src/browserconfig.xml",
+        "hash": "9537299402328304790"
+      },
+      {
+        "file": "website/src/icons/mstile-144x144.png",
+        "hash": "13602041646879880302"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Italic.ttf",
+        "hash": "15441892658625599406"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Light.ttf",
+        "hash": "18004261446838276908"
+      },
+      {
+        "file": "website/src/images/noise.png",
+        "hash": "13687807872342758157"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-BoldItalic.ttf",
+        "hash": "17373014037927000696"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Light.ttf",
+        "hash": "9058108078633797778"
+      },
+      {
+        "file": "website/src/icons/16.png",
+        "hash": "3875992060098255580"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Black.ttf",
+        "hash": "6460357277454794874"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(13).png",
+        "hash": "18251029332539800035"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(2).png",
+        "hash": "16276714629662619206"
+      },
+      {
+        "file": "website/src/icons/1024.png",
+        "hash": "1720341274090215763"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ExtraLight.ttf",
+        "hash": "17128551849311762667"
+      },
+      {
+        "file": "website/.stylelintrc",
+        "hash": "6930015109030064179"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Medium.ttf",
+        "hash": "6717874527239260524"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-ThinItalic.ttf",
+        "hash": "15699693739762160708"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-LightItalic.ttf",
+        "hash": "3600580045874417403"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Thin.ttf",
+        "hash": "6090208847882247573"
+      },
+      {
+        "file": "website/src/js/modules/web-terminal-template.tpl",
+        "hash": "15718414238662512917"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Light.ttf",
+        "hash": "17172401504796502192"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ExtraLightItalic.ttf",
+        "hash": "3433538550760345055"
+      },
+      {
+        "file": "website/src/css/props/defaults.css",
+        "hash": "2299864251012447481"
+      },
+      {
+        "file": "website/src/css/layouts/grid.css",
+        "hash": "12089119170772214169"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Light.ttf",
+        "hash": "10730213375124281181"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ExtraLightItalic.ttf",
+        "hash": "492012839492386219"
+      },
+      {
+        "file": "website/src/js/main.js",
+        "hash": "12148233515403782450"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-LightItalic.ttf",
+        "hash": "3808852093507011938"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-BlackItalic.ttf",
+        "hash": "10325507031852177820"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Light.ttf",
+        "hash": "13122153387551896105"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(6).png",
+        "hash": "17782775599460591567"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Regular.ttf",
+        "hash": "1473420568517953152"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Regular.ttf",
+        "hash": "16928029878270178168"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Bold.ttf",
+        "hash": "730709905488058467"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(1).png",
+        "hash": "740049328222674207"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(10).png",
+        "hash": "389258468423231781"
+      },
+      {
+        "file": "website/src/index.html",
+        "hash": "10933735985045892747"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ThinItalic.ttf",
+        "hash": "16923828486508956486"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-BlackItalic.ttf",
+        "hash": "221754380763939434"
+      },
+      {
+        "file": "website/src/css/layouts/results-page.css",
+        "hash": "1663642963205096827"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ExtraLightItalic.ttf",
+        "hash": "15809263892161724443"
+      },
+      {
+        "file": "website/src/sitemap.xml",
+        "hash": "5060811293066599801"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Black.ttf",
+        "hash": "11272131195401000622"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-MediumItalic.ttf",
+        "hash": "7288650897521634544"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Regular.ttf",
+        "hash": "4546645296641357441"
+      },
+      {
+        "file": "website/src/css/patterns/index.css",
+        "hash": "10886520339862773525"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(11).png",
+        "hash": "6538381826450529361"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Bold.ttf",
+        "hash": "3541422234389280989"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(4).png",
+        "hash": "2353341262736702118"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Italic.ttf",
+        "hash": "11478791625288910339"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-MediumItalic.ttf",
+        "hash": "12853060435438060524"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ExtraLight.ttf",
+        "hash": "6264893111440682035"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(7).png",
+        "hash": "2125537100353701685"
+      },
+      {
+        "file": "website/src/css/patterns/slider.css",
+        "hash": "8406337703395183455"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Italic.ttf",
+        "hash": "4058838241413010856"
+      },
+      {
+        "file": "emmet/snippets.json",
+        "hash": "10276776719452242887"
+      },
+      {
+        "file": "website/src/icons/32.png",
+        "hash": "15756076694932841093"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-LightItalic.ttf",
+        "hash": "1130284748502234821"
+      },
+      {
+        "file": "website/src/test.html",
+        "hash": "17911504398488766955"
+      },
+      {
+        "file": "website/src/css/reset.css",
+        "hash": "1830276755885974875"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-BlackItalic.ttf",
+        "hash": "344889558501620178"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ExtraLight.ttf",
+        "hash": "12406959717725374205"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Thin.ttf",
+        "hash": "9146757448082570573"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ExtraLight.ttf",
+        "hash": "4116537936090391459"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Italic.ttf",
+        "hash": "5770968704514610352"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Bold.ttf",
+        "hash": "5364083947231165226"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_ForrestGreen.webp",
+        "hash": "5740351232729846501"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Italic.ttf",
+        "hash": "8901002598793565499"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-MediumItalic.ttf",
+        "hash": "17415598396604212843"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Medium.ttf",
+        "hash": "11090601051972394438"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Thin.ttf",
+        "hash": "9508383242312112601"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-MediumItalic.ttf",
+        "hash": "12739300455950029375"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Italic.ttf",
+        "hash": "4080786564372690578"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-BoldItalic.ttf",
+        "hash": "13892136765885547042"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ExtraLightItalic.ttf",
+        "hash": "18358255651705841786"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-ExtraLight.ttf",
+        "hash": "13764277316606400583"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Regular.ttf",
+        "hash": "9096508469560103902"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Medium.ttf",
+        "hash": "8002524215329267506"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ThinItalic.ttf",
+        "hash": "9298934721940632681"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Regular.ttf",
+        "hash": "3089746919511583764"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-MediumItalic.ttf",
+        "hash": "12645563325684125412"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-BlackItalic.ttf",
+        "hash": "13650732240901621285"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "15198272904281917137"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-MediumItalic.ttf",
+        "hash": "2118061754430370739"
+      },
+      {
+        "file": "website/src/robots.txt",
+        "hash": "2661324626124696959"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/ChangeLog.txt",
+        "hash": "16293135450862447351"
+      },
+      {
+        "file": "website/vite.config.js",
+        "hash": "7630635730257732987"
+      },
+      {
+        "file": "website/src/js/modules/web-terminal.js",
+        "hash": "14620575822096830915"
+      },
+      {
+        "file": "website/src/images/paper/PaperLibrary_OFF_White_CLASSIC_80gsm.jpg",
+        "hash": "9573962590976356"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-BlackItalic.ttf",
+        "hash": "8086199456857172248"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Thin.ttf",
+        "hash": "4750220301818695898"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-BlackItalic.ttf",
+        "hash": "15646379506174416776"
+      },
+      {
+        "file": "website/src/icons/512.png",
+        "hash": "2467924675053504013"
+      },
+      {
+        "file": "nx",
+        "hash": "17165975525224888679"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Thin.ttf",
+        "hash": "5590884570832837728"
+      },
+      {
+        "file": "website/src/js/modules/theme-switcher.js",
+        "hash": "18016759681025098237"
+      },
+      {
+        "file": "website/src/css/patterns/button.css",
+        "hash": "11790016192692390249"
+      },
+      {
+        "file": "website/src/terminal.html",
+        "hash": "14127781363843822314"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-Bold.ttf",
+        "hash": "8143083007892794452"
+      },
+      {
+        "file": "website/src/css/has-filter.css",
+        "hash": "7071834789489955591"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Italic.ttf",
+        "hash": "2648203365302781933"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-MediumItalic.ttf",
+        "hash": "16517584281062795383"
+      },
+      {
+        "file": "website/src/css/layouts/header.css",
+        "hash": "8191425163230332304"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Italic.ttf",
+        "hash": "4552564054352937700"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Bold.ttf",
+        "hash": "17578238759365177008"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-Bold.ttf",
+        "hash": "9769309437033728060"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Light.ttf",
+        "hash": "3391966190112398465"
+      },
+      {
+        "file": "website/eslint.config.js",
+        "hash": "10313007581448464504"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Scripts/_template_BoldItalic.txt",
+        "hash": "18224921373622619881"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Black.ttf",
+        "hash": "10847479921408259030"
+      },
+      {
+        "file": "README.md",
+        "hash": "16601269232221079713"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Thin.ttf",
+        "hash": "4698139243399068150"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_pink.webp",
+        "hash": "13555158391331178314"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Black.ttf",
+        "hash": "17418756324959536796"
+      },
+      {
+        "file": "website/src/css/comps/card.css",
+        "hash": "3828666658568349413"
+      },
+      {
+        "file": "website/src/css/patterns/radio.css",
+        "hash": "9272860103969892642"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-ExtraLightItalic.ttf",
+        "hash": "17967233898152346793"
+      },
+      {
+        "file": "website/src/css/comps/marquee.css",
+        "hash": "3393273030975049922"
       },
       {
         "file": "website/src/icons/192.png",
         "hash": "14369797870795747717"
       },
       {
-        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Thin.ttf",
-        "hash": "9508383242312112601"
+        "file": "website/src/css/comps/custom-cursor.css",
+        "hash": "4313361979024032983"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-LightItalic.ttf",
+        "hash": "15962275104959107871"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Bold.ttf",
+        "hash": "938402448480484731"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ExtraLightItalic.ttf",
+        "hash": "8141175488303036512"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Italic.ttf",
+        "hash": "6172865290459445547"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Bold.ttf",
+        "hash": "13485868566991259795"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/README.txt",
+        "hash": "6521802972042007932"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Regular.ttf",
+        "hash": "13483656887426741359"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-LightItalic.ttf",
+        "hash": "13606771372236710426"
+      },
+      {
+        "file": "website/src/js/modules.js",
+        "hash": "6825908300555046448"
+      },
+      {
+        "file": "website/src/css/layouts/skeleton.css",
+        "hash": "11342412738067222807"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/INSTALL.txt",
+        "hash": "10883821045948782189"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Medium.ttf",
+        "hash": "7062092473349663879"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Bold.ttf",
+        "hash": "10290955900176343395"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Medium.ttf",
+        "hash": "12182605229182666058"
+      },
+      {
+        "file": "website/src/fonts/RoslindaleCyrillicVariable.woff2",
+        "hash": "15400679232697718572"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Thin.ttf",
+        "hash": "3381744787451642103"
+      },
+      {
+        "file": "website/src/css/comps/form.css",
+        "hash": "7133338543256417697"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Regular.ttf",
+        "hash": "14470218176012424324"
+      },
+      {
+        "file": "website/src/favicon.ico",
+        "hash": "9400723000721372713"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Black.ttf",
+        "hash": "1783483422819244606"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Black.ttf",
+        "hash": "14371130567674074511"
+      },
+      {
+        "file": "website/src/gallery.html",
+        "hash": "13486911591669364625"
+      },
+      {
+        "file": "website/src/icons/safari-pinned-tab.svg",
+        "hash": "11823467844282056962"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ExtraLight.ttf",
+        "hash": "16565094966075505499"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-MediumItalic.ttf",
+        "hash": "5649330418617735634"
+      },
+      {
+        "file": "website/src/favicon.svg",
+        "hash": "7473091477014394294"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_DarkPurple.webp",
+        "hash": "15446152473959115668"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-LightItalic.ttf",
+        "hash": "5193629951211849952"
+      },
+      {
+        "file": "website/src/css/utilities/layout-model.css",
+        "hash": "6686697839621286960"
+      },
+      {
+        "file": "website/src/images/ogp_common.jpg",
+        "hash": "13114650259508436139"
+      },
+      {
+        "file": "website/src/icons/mstile-70x70.png",
+        "hash": "11057723667388404406"
+      },
+      {
+        "file": "website/src/css/comps/index.css",
+        "hash": "2824453438590595510"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-BoldItalic.ttf",
+        "hash": "1822275670605375895"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Italic.ttf",
+        "hash": "10443497271628446128"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Thin.ttf",
+        "hash": "15738616203919524708"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-BlackItalic.ttf",
+        "hash": "8870330208581945886"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-MediumItalic.ttf",
+        "hash": "17123572150262767301"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode.png",
+        "hash": "18003941727124969354"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Italic.ttf",
+        "hash": "6068227834659481183"
+      },
+      {
+        "file": "website/src/css/author.css",
+        "hash": "17271644357639983733"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Medium.ttf",
+        "hash": "15947763354483793873"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Thin.ttf",
+        "hash": "3024843979870233039"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ExtraLight.ttf",
+        "hash": "17973413866905331227"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_80_Fluroescent_green.webp",
+        "hash": "3765729913489315047"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-BlackItalic.ttf",
+        "hash": "4399580084244415251"
+      },
+      {
+        "file": "website/vercel.json",
+        "hash": "10472646221919730832"
+      },
+      {
+        "file": "website/src/css/utils.css",
+        "hash": "17544226584963521355"
+      },
+      {
+        "file": "website/src/css/console.css",
+        "hash": "6712710553287365370"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-BoldItalic.ttf",
+        "hash": "4926138805723645110"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-ExtraLightItalic.ttf",
+        "hash": "5081937138547504677"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ExtraLight.ttf",
+        "hash": "4602339925082517995"
+      },
+      {
+        "file": "website/src/css/layouts/hero.css",
+        "hash": "17078689493046062400"
+      },
+      {
+        "file": "website/package-lock.json",
+        "hash": "4185405942517320878"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-Bold.ttf",
+        "hash": "14855052168438504621"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-BlackItalic.ttf",
+        "hash": "12227660957499152496"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-BoldItalic.ttf",
+        "hash": "1800250939022739055"
+      },
+      {
+        "file": "readme.md",
+        "hash": "16601269232221079713"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-LightItalic.ttf",
+        "hash": "5954230051462613028"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(8).png",
+        "hash": "15395088874142607853"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ExtraLight.ttf",
+        "hash": "8883072655614237637"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-Regular.ttf",
+        "hash": "1744678598927269196"
+      },
+      {
+        "file": "website/src/images/ogp_common@2x.jpg",
+        "hash": "2165926314768307397"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-BoldItalic.ttf",
+        "hash": "5593320020019828275"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Light.ttf",
+        "hash": "4447335652674715809"
+      },
+      {
+        "file": "website/src/icons/mstile-310x310.png",
+        "hash": "8679724370796351696"
+      },
+      {
+        "file": "website/src/css/layouts/sidenav.css",
+        "hash": "13267347180300836148"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ExtraLightItalic.ttf",
+        "hash": "15953585046862777069"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-Bold.ttf",
+        "hash": "17000754629580850199"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ExtraLightItalic.ttf",
+        "hash": "12360952944330263041"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-ThinItalic.ttf",
+        "hash": "6596240910896710806"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ThinItalic.ttf",
+        "hash": "18080796018579513963"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-ExtraLight.ttf",
+        "hash": "8942378234525705796"
+      },
+      {
+        "file": "website/src/css/layouts/home-page.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "website/src/css/comps/carousel.css",
+        "hash": "6388745191535581024"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Light.ttf",
+        "hash": "12702405326180834188"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCompressed/InputSerifCompressed-BoldItalic.ttf",
+        "hash": "7003077378703650666"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ExtraLightItalic.ttf",
+        "hash": "10523161871824902265"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-MediumItalic.ttf",
+        "hash": "16359223253301617838"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerif/InputSerif-LightItalic.ttf",
+        "hash": "10990885908771634865"
+      },
+      {
+        "file": "website/src/images/paper/RISOTTO_PaperLibrary_Colour_120_BloodRed.webp",
+        "hash": "670046229378131034"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Medium.ttf",
+        "hash": "2852538841174746120"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-ThinItalic.ttf",
+        "hash": "10691739771105233767"
+      },
+      {
+        "file": "website/src/css/comps/theme-switch.css",
+        "hash": "9948407656822435791"
+      },
+      {
+        "file": "website/src/css/props/media.css",
+        "hash": "14026448487490474784"
+      },
+      {
+        "file": ".nx/nxw.js",
+        "hash": "11254603345854076312"
+      },
+      {
+        "file": "website/src/css/props/fonts.css",
+        "hash": "11840201229382822923"
+      },
+      {
+        "file": "website/src/manifest.json",
+        "hash": "1552809105514096778"
+      },
+      {
+        "file": "website/src/css/utilities/scroll-control.css",
+        "hash": "10955496242344603762"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(12).png",
+        "hash": "12648524477421426246"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-Black.ttf",
+        "hash": "10824456673180248864"
+      },
+      {
+        "file": "website/src/fonts/RoslindaleCyrillicVariable.woff",
+        "hash": "10789985573028365118"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-ThinItalic.ttf",
+        "hash": "12936146596177722566"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/LICENSE.txt",
+        "hash": "5566122667151129094"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCondensed/InputSansCondensed-BlackItalic.ttf",
+        "hash": "1290439233064276309"
+      },
+      {
+        "file": "website/src/css/theme.css",
+        "hash": "17227723199834309530"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Light.ttf",
+        "hash": "6040527688390204012"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ExtraLight.ttf",
+        "hash": "16035209879993703689"
+      },
+      {
+        "file": "website/src/css/layouts/index.css",
+        "hash": "5927166915402260759"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Scripts/inputCustomize.py",
+        "hash": "17434818940665406533"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-ThinItalic.ttf",
+        "hash": "16417181285011119482"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansCompressed/InputSansCompressed-ExtraLight.ttf",
+        "hash": "14170820918295981770"
+      },
+      {
+        "file": "nx.bat",
+        "hash": "16119536321561623970"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-LightItalic.ttf",
+        "hash": "4827193111633831183"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(9).png",
+        "hash": "8089424888366534359"
+      },
+      {
+        "file": "website/src/icons/mstile-150x150.png",
+        "hash": "9310799746014005104"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Medium.ttf",
+        "hash": "10360550406259709820"
+      },
+      {
+        "file": "website/src/css/patterns/checkbox.css",
+        "hash": "14317634951346367731"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifCondensed/InputSerifCondensed-Thin.ttf",
+        "hash": "3286976892627247485"
+      },
+      {
+        "file": "website/src/images/qr-codes/qrCode(5).png",
+        "hash": "2224721771902316720"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-BlackItalic.ttf",
+        "hash": "1468587519511509944"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-Light.ttf",
+        "hash": "13633352752523521254"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCompressed/InputMonoCompressed-ThinItalic.ttf",
+        "hash": "3585687169862485920"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSerif/InputSerifNarrow/InputSerifNarrow-Medium.ttf",
+        "hash": "96863182357655281"
+      },
+      {
+        "file": "website/src/js/sw.js",
+        "hash": "6667792097279497874"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMono/InputMono-LightItalic.ttf",
+        "hash": "12775781039598318969"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-Light.ttf",
+        "hash": "11351196797946881635"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSans/InputSans-Black.ttf",
+        "hash": "6196876010332694865"
+      },
+      {
+        "file": "website/src/css/main.css",
+        "hash": "7324385330172414672"
+      },
+      {
+        "file": "website/src/js/modules/sidenav.js",
+        "hash": "10794565256414603923"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7111735501627103681"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputSans/InputSansNarrow/InputSansNarrow-ThinItalic.ttf",
+        "hash": "9877921745131560441"
+      },
+      {
+        "file": "website/src/fonts/Input-Font/Input_Fonts/InputMono/InputMonoNarrow/InputMonoNarrow-Medium.ttf",
+        "hash": "18378697754727576670"
       }
     ],
     "projectFileMap": {}

@@ -17,6 +17,8 @@
     }
   },
   "scripts": {
+    "nx:dev": "npx nx serve app",
+    "nx:prod": "npx nx build app --prod",
     "start": "vite",
     "build": "npm run clean && vite build --base=./",
     "clean": "rm -rf public && rm -rf .vercel/cache",
