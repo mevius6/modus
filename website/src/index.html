@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!--
+<!-- ⛬
   https://www.w3.org/Provider/Style/
   https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
-  https://www.w3.org/TR/wcag-3.0/
-  https://github.com/web-platform-tests/wpt/tree/master/html
+  https://www.w3.org/Provider/Style/StyleSheets.html
 -->
 <!--
   Worker Runtimes are the new standard
@@ -11,6 +10,7 @@
   https://workers.js.org/
   https://workers.cloudflare.com/
   https://miniflare.dev/
+  https://vitejs.dev/guide/features.html#web-workers
 -->
 <!-- TODO SPA
   See: https://picayune-midnight-eyebrow.glitch.me/
@@ -37,7 +37,17 @@
     https://html.spec.whatwg.org/multipage/links.html#link-type-terms-of-service
   Code:
     <link rel="privacy-policy" href="/privacy-policy.html" />
-
+  ---
+  See:
+    https://web.dev/learn/performance/resource-hints
+    https://web.dev/articles/preconnect-and-dns-prefetch
+    https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect
+  Code:
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://api.github.com" />
+  ---
   See: https://web.dev/articles/lcp#what-elements-are-considered
   Code:
     <link as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high" />
@@ -72,11 +82,14 @@
       let { log, info, timeLog, timeEnd } = console;
       /**
        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime#reduced_time_precision
+       * ```
+       * var now = Date.now();
+       * let end, start;
+       * start = getTime();
+       * info(start);
+       * ```
        */
-      let { now: getTime } = Date; // var now = Date.now();
-      // let end, start;
-      // start = getTime();
-      // info(start);
+      let { now: getTime } = Date;
 
       // https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
       const t0 = performance.now();
@@ -84,16 +97,18 @@
 
     <title>Document</title>
     <!-- meta[name=author content] -->
-    <!-- See:
-              https://css-tricks.com/emoji-as-a-favicon/
-              https://realfavicongenerator.net/
-              https://vercel.com/templates/next.js/ai-emoji-generator
-              https://emojis.sh/
+    <!--
+      See:
+          https://css-tricks.com/emoji-as-a-favicon/
+          https://realfavicongenerator.net/
+          https://vercel.com/templates/next.js/ai-emoji-generator
+          https://emojis.sh/
     -->
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <!-- link:touch[sizes="180x180"] -->
+
     <!-- TODO
       https://maskable.app/
       https://www.w3.org/TR/appmanifest/#icon-masks
@@ -130,6 +145,7 @@
     <meta property="og:image" content="/images/ogp_common@2x.jpg" />
     <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
+
     <!-- TODO
       https://vercel.com/docs/functions/og-image-generation
       https://vercel.com/guides/displaying-article-headlines-in-social-previews
@@ -165,12 +181,18 @@
     <!-- jsonld:site -->
     <!-- SEO [E] -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <!--
-      https://drafts.csswg.org/css-fonts-4/#font-format-definitions
-      https://www.w3.org/TR/WOFF2/#IMT
-      https://www.keycdn.com/blog/web-font-performance
-      https://www.zachleat.com/web/fonts/
-      https://github.com/fonttools/fonttools
+
+    <!-- FIXME FOUC
+      See:
+          https://en.wikipedia.org/wiki/Flash_of_unstyled_content
+    -->
+    <!-- TODO Font perf
+      See:
+          https://drafts.csswg.org/css-fonts-4/#font-format-definitions
+          https://www.w3.org/TR/WOFF2/#IMT
+          https://www.keycdn.com/blog/web-font-performance
+          https://www.zachleat.com/web/fonts/
+          https://github.com/fonttools/fonttools
     -->
     <link
       rel="preload"
@@ -211,17 +233,22 @@
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
     </style>
-    <!-- TODO
-      https://web.dev/articles/codelab-extract-and-inline-critical-css
-      https://web.dev/learn/performance/understanding-the-critical-path
+
+    <!-- TODO Extract critical CSS
+      See:
+          https://web.dev/articles/codelab-extract-and-inline-critical-css
+          https://web.dev/learn/performance/understanding-the-critical-path
     -->
     <!-- The main stylesheet -->
-    <!-- https://www.w3.org/Provider/Style/StyleSheets.html -->
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 
-    <!-- TODO
-      https://fullystacked.net/constructable/
-      https://fullystacked.net/import-attributes/
+    <!-- TODO Constructable stylesheets and CSS module scripts
+      See:
+          https://github.com/WICG/construct-stylesheets
+          https://www.w3.org/TR/cssom-1/#dom-cssstylesheet-cssstylesheet
+          https://web.dev/articles/constructable-stylesheets
+          https://fullystacked.net/constructable/
+          https://fullystacked.net/import-attributes/
     -->
     <style>
       @import url(css/comps/custom-cursor.css);
@@ -235,6 +262,7 @@
     <script defer type="module" src="js/modules.js"></script>
   </head>
 
+  <!-- TODO https://www.w3.org/TR/wcag-3.0/ -->
   <body
     class="page page--loading"
     itemscope
@@ -440,9 +468,10 @@
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center">
             <h1 class="sr-only">Page Title</h1>
-            <!-- <mark class="abspos inset-end tag">
+
+            <mark class="abspos inset-end tag">
               <abbr title="Work in progress">WIP</abbr>
-            </mark> -->
+            </mark>
             <div
               id="slicer"
               class="h1 caps"
@@ -452,8 +481,8 @@
                 Ref → https://splitting.js.org/guide.html#api
                 See → https://web.dev/articles/building/split-text-animations
               -->
-              <span class="word" data-word="starter" style="--word-index: 0">
-                <span data-char="s" style="--char-index: 0">s</span
+              <span class="word" data-word="starter" style="--word-index: 0"
+                ><span data-char="s" style="--char-index: 0">s</span
                 ><span data-char="t" style="--char-index: 1">t</span
                 ><span data-char="a" style="--char-index: 2">a</span
                 ><span data-char="r" style="--char-index: 3">r</span
@@ -463,25 +492,27 @@
               </span>
             </div>
             <p
-              class="h5 fvar text-center"
+              class="h5 fvar text-left"
               style="--wght: 400; --opsz: 16"
               role="doc-subtitle"
             >
               Website Boilerplate<wbr />
               <i
-                class="fvar"
+                class="fvar abspos inset-start keyline"
                 style="
-                  --opsz: 12;
+                  --opsz: 16;
                   --wght: 200;
                   --ital: 0;
-                  font-size: 0.75rem;
+                  --c1: var(--apple-beige);
+                  --c2: var(--apple-beige);
+                  --line-md: 2px;
+                  font-size: max(0.75rem, calc(1lh / 2));
                   color: var(--foreground-a50);
-                  font-feature-settings: 'smcp' on, 'c2sc' on;
-                  font-synthesis-style: none;
+                  font-feature-settings: 'c2sc' on, 'smcp' on;
                 "
               >
-                &vert;&thinsp;with lots of comments
-              </i>
+                with lots of comments</i
+              >
               <!--
               ╔═══════════════════╗
               ║ heavily annotated ║
@@ -494,18 +525,18 @@
               See → https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
             -->
           </hgroup>
+
           <script type="text/javascript">
             const slider = hue;
             slider.value =
               360 / getComputedStyle(slicer).getPropertyValue('--char-total');
-            slider.addEventListener(
-              'input',
-              function async() {
-                slicer.style.setProperty('--hue', this.value);
-              },
-              false
-            );
+            slider.addEventListener('input', (e) => onInputEv(e), false);
+
+            function onInputEv(event) {
+              slicer.style.setProperty('--hue', event.target.value);
+            }
           </script>
+
           <div class="grid__full overlay">
             <!-- pic[role="doc-cover"]>src:t+img[primaryImageOfPage] -->
           </div>
@@ -756,7 +787,7 @@
           * https://offers.hubspot.com/hubfs/How%20to%20Use%20an%20API.pdf
         -->
         <form class="grid__content relpos" aria-labelledby="contact">
-          <mark class="abspos inset-end tag uppercase">todo</mark>
+          <mark class="abspos inset-start tag uppercase">todo</mark>
           <fieldset class="flex-centered flow">
             <legend
               id="contact"
@@ -848,7 +879,7 @@
           <span class="line sep">=============================</span>
           <!-- Github repo data -->
           <span class="line"><mark>&emsp14;💫&emsp14;</mark>
-          &#x20;<samp id="repo_env">Production</samp>&colon;&#x20;<samp id="repo_upd">&marker;</samp></span>
+          &#x20;<samp id="repo_env"></samp>&colon;&#x20;<samp id="repo_upd">&marker;</samp></span>
           <span class="line"><mark>&emsp14;⏱️&emsp14;</mark>
           &#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
           </span>
@@ -931,9 +962,9 @@
     <svg width="0" height="0" data-hidden>
       <!--
         SVG Filters
-        → https://svgwg.org/svg2-draft/
-        → https://drafts.fxtf.org/filter-effects/#FilterElement
-        → https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement
+            → https://svgwg.org/svg2-draft/
+            → https://drafts.fxtf.org/filter-effects/#FilterElement
+            → https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement
       -->
       <defs>
         <!-- Chromatic aberration filter -->
@@ -1006,18 +1037,19 @@
       </defs>
     </svg>
 
-    <!-- Timestamps; date- or time-related data
-         https://en.wikipedia.org/wiki/ISO_8601
-         https://man7.org/linux/man-pages/man3/strftime.3.html
-         https://www.iana.org/time-zones
-         https://www.unixtimestamp.com/
-         https://currentmillis.com/ -->
-    <!-- [specs]
-      https://w3c.github.io/hr-time/
-      https://tc39.es/proposal-temporal/docs/
-      https://tc39.es/ecma262/#sec-date-time-string-format
-      https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date-objects
-      https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates-and-times
+    <!--
+      Timestamps
+          https://en.wikipedia.org/wiki/ISO_8601
+          https://man7.org/linux/man-pages/man3/strftime.3.html
+          https://www.iana.org/time-zones
+          https://www.unixtimestamp.com/
+          https://currentmillis.com/
+      See:
+          https://w3c.github.io/hr-time/
+          https://tc39.es/proposal-temporal/docs/
+          https://tc39.es/ecma262/#sec-date-time-string-format
+          https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date-objects
+          https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#dates-and-times
     -->
     <script type="text/javascript">
       const options = {
@@ -1044,36 +1076,81 @@
           // TODO Add "preconnect" and "dns-prefetch" resource hints
           endpoint = 'api.github.com',
           username = 'mevius6',
-          reponame = 'modus',
+          repo = 'modus',
         } = gh;
 
-      const getAllRepos = fetch(
-        `https://${endpoint}/users/${username}/repos?sort=pushed`
-      ).then((response) => response.json());
-      // .then((data) => data.filter((e) => e.name === 'modus'));
+      // https://www.smashingmagazine.com/2022/09/javascript-api-guide/
+      const getRepo = async () => {
+        if (document.visibilityState === 'visible') {
+          try {
+            const request = await fetch(
+              'https://api.github.com/users/mevius6/repos?sort=pushed'
+            )
+              .then((response) => response.json())
+              .then((data) => data.filter((e) => e.name === repo)[0]);
 
-      const getRepo = getAllRepos.then(async (v) =>
-        v.map((repo, i) => {
-          const { deployments_url, created_at, updated_at, pushed_at } = repo;
-          if (repo.name === reponame) return repo;
-        })
-      );
+            const {
+              name,
+              full_name,
+              owner: { login, avatar_url },
+              deployments_url,
+              created_at,
+              updated_at,
+              pushed_at,
+            } = await request;
 
-      getRepo.then((repo) => {
-        let upd = new Date(repo[0].updated_at),
-          _l10n = upd.toLocaleDateString(undefined, options);
-        let env = fetch(repo[0].deployments_url)
-          .then((res) => res.json())
-          .then((arr) =>
-            arr.map((v, i) => {
-              if (i == 0) return v.original_environment;
-            })
-          );
-        repo_upd.textContent = _l10n;
-        repo_env.textContent = Promise(env);
-      });
+            /* optional bool */
+            if (name === repo) {
+              let upd = new Date(updated_at),
+                _l10n = upd.toLocaleDateString(undefined, options);
+              repo_upd.textContent = _l10n;
+            }
+
+            const reqDeployments = await fetch(deployments_url)
+              .then((response) => response.json())
+              .then((data) => data[0]);
+
+            const {
+              url,
+              task,
+              original_environment,
+              environment,
+              created_at: deploy_created,
+              updated_at: deploy_updated,
+              statuses_url,
+              creator: { login: deploy_login, type },
+            } = await reqDeployments;
+
+            const dateOptions = {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            };
+            const timeOptions = {
+              hour12: false,
+              hour: 'numeric',
+              minute: '2-digit',
+              second: '2-digit',
+            };
+
+            repo_env.textContent = `${original_environment} ${task}`;
+            repo_upd.textContent = `
+            ${new Date(deploy_updated).toLocaleString('en-US', {
+              ...timeOptions,
+              ...dateOptions,
+            })} by ${deploy_login}`;
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      };
+
+      // const { onload } = window;
+      onload = async (ev) => await getRepo();
     </script>
 
+    <!-- The main JS entry -->
     <!-- https://html.spec.whatwg.org/#link-type-modulepreload -->
     <script type="module" src="js/main.js"></script>
 

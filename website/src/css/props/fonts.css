@@ -256,11 +256,15 @@ h2 {
 
 strong          { font-weight: 700 }
 
+:is(b, strong, i, cite, em, var, address) {
+  font-synthesis-style: none;
+}
+
 q,
 blockquote      { /* … */ }
 
 i, cite, em,
-var, address    { font-style: italic; } /* --ital: 1; */
+var, address    { --ital: 1 } /* font-style: italic; */
 
 /*
 big             { font-size: 1.17em }

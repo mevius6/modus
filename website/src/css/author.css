@@ -28,7 +28,7 @@
   }
 }
 
-body:where([data-id=homepage]) { /* fast visual tweaks */
+body:where([data-id=homepage]) { /* Quick visual tweaks */
   --sketch-bg: var(--background);
 
   @supports (color: light-dark(white, black)) and
@@ -314,8 +314,8 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
 
   :where([class*=tag]) {
     /* overrides */
-    inset-inline-end: unset;
-    inset-block-end: unset;
+    /* inset-inline-end: unset;
+    inset-block-end: unset; */
     font-size: .75rem;
     letter-spacing: -0.008em; /* 45×18 ~ 5:2 ~ 100×40 */
     transform: translate(
@@ -337,7 +337,7 @@ body:where([data-id=homepage]) { /* fast visual tweaks */
     &::after {
       --to-left: linear-gradient(-90deg, var(--c1), 33.333%, var(--c2));
       --to-right: linear-gradient(90deg, var(--c1), 33.333%, var(--c2));
-      --c1: color-mix(in oklab, var(--accent), var(--_bg) 80%);
+      --c1: color-mix(in oklab, var(--accent), var(--_bg, var(--background)) 80%);
       --c2: var(--accent);
       border-style: solid;
       border-width: var(--line-md) 0 0;

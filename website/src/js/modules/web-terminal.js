@@ -1,7 +1,7 @@
 const doc = document;
 const store = localStorage;
 
-const options = {
+const dateOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
@@ -60,13 +60,12 @@ template.innerHTML = `
 const gh = {},
 {
   // TODO Add "preconnect" and "dns-prefetch" resource hints
-  endpoint = 'api.github.com',
-  username = 'mevius6',
-  reponame = 'modus',
+  endpoint: GH_API = 'api.github.com',
+  username: MEVIUS6 = 'mevius6',
+  repo: MODUS = 'modus',
 } = gh;
 
-/*
-fetch(`https://${endpoint}/users/${username}/repos?sort=pushed`)
+/* console.log(fetch(`https://${endpoint}/users/${username}/repos?sort=pushed`)
   .then((response) => response.json())
   // .then((data) => console.log(data))
   .then((data) => {
@@ -80,9 +79,7 @@ fetch(`https://${endpoint}/users/${username}/repos?sort=pushed`)
           task,
           environment,
           statuses_url,
-          creator: {
-            login: 'vercel[bot]'
-          },
+          creator: { login },
         },
         created_at,
         updated_at,
@@ -100,6 +97,7 @@ fetch(`https://${endpoint}/users/${username}/repos?sort=pushed`)
       else return;
     });
   });
+)
 */
 
 // TODO Use W3C API; eg to find latest specs
@@ -122,32 +120,11 @@ export class WebTerminal extends HTMLElement {
     shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  // FIXME
-  _getRepoData() {
-    const getAllRepos = fetch(
-      `https://${endpoint}/users/${username}/repos?sort=pushed`
-    ).then((response) => response.json());
-    // .then((data) => data.filter((e) => e.name === 'modus'));
-
-    const getRepo = getAllRepos.then(async (v) =>
-      v.map((repo, i) => {
-        const {
-          url,
-          deployments_url: { task, environment, statuses_url, creator },
-          created_at,
-          updated_at,
-          pushed_at,
-        } = repo;
-        if (repo.name === 'modus') return repo;
-      })
-    );
-
-    getRepo.then((repo) => {
-      let upd = new Date(repo[0].updated_at),
-        _l10n = upd.toLocaleDateString(undefined, options),
-        _year = upd.getUTCFullYear();
-      time.textContent = _l10n;
-    });
+  // TODO
+  async _getRepo() {
+    const req = fetch(`https://${GH_API}/users/${MEVIUS6}/repos?sort=pushed`)
+      .then((res) => res.json())
+      .then((data) => data.filter((e) => e.name === MODUS));
   }
 
   _dispatchEvent(type, value) {

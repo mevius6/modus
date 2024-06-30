@@ -1,6 +1,7 @@
 {
   "type": "module",
   "name": "modus",
+  "main": "./src/js/main.js",
   "version": "1.0.0",
   "description": "",
   "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",
@@ -16,9 +17,7 @@
     }
   },
   "scripts": {
-    "vc:start": "vercel dev",
-    "vc:build": "vercel ./src/ --prod",
-    "start": "vite --host",
+    "start": "vite",
     "build": "npm run clean && vite build --base=./",
     "clean": "rm -rf public && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
@@ -28,13 +27,10 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@vercel/blob": "^0.23.3"
-  },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
     "stylelint-order": "^6.0.4",
-    "vite": "^5.3.1"
+    "vite": "^5.3.2"
   }
 }
