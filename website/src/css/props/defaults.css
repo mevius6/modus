@@ -253,6 +253,9 @@
     --radius-x: calc(var(--big-int) * 1px);
     --radius-xx: 1000rem;
     --radius-xxx: 1e5px;
+
+    /* https://drafts.csswg.org/css-values/#numbers
+       https://www.ibm.com/docs/en/zvm/7.3?topic=arithmetic-exponential-notation */
   }
 }
 
