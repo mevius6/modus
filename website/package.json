@@ -1,7 +1,6 @@
 {
   "type": "module",
   "name": "modus",
-  "main": "./src/js/main.js",
   "version": "1.0.0",
   "description": "",
   "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",

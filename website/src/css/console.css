@@ -1,3 +1,8 @@
+/* Style guides:
+   https://www.jetbrains.com/lp/mono/
+   https://prism-theme-vars.netlify.app/
+*/
+
 /* https://drafts.csswg.org/css-ui/#insertion-caret */
 /* @supports (caret-animation: manual) {…} */
 @supports (caret-shape: block) {
@@ -79,7 +84,6 @@ section:has(> pre) {
   .console,
   .session )) {
     & .sep {
-      /* opacity: .25; */
       color: color-mix(in oklab, var(--foreground), var(--background) 70%);
     }
 
@@ -97,8 +101,10 @@ section:has(> pre) {
     }
 
     & :where([contenteditable=true]) {
-      caret-color: var(--accent);
-      text-indent: 5em hanging each-line;
+      /* text-indent: 5em hanging each-line; */
+      word-break: break-word;
+      outline: none;
+      caret-color: var(--accent); /* transparent */
 
       &:focus-within ~ .caret {
         display: none;
@@ -116,12 +122,13 @@ section:has(> pre) {
    * https://caniuse.com/font-family-system-ui
    * https://caniuse.com/extended-system-fonts
    * https://github.com/go-gitea/gitea/issues/22125 */
-  /*
-  font-family: Fira Code; */
+
   font-family: JetBrains Mono, monospace; /* 13px/1.2 */
-  font-size: clamp(.75rem, 2vw, 1rem);
+  font-size: clamp(0.75rem, 2vw + 1rem, 0.813rem);
+  font-style: normal;
+  line-height: 150%;
+  letter-spacing: .02em;
   font-variation-settings: "wght" 350;
-  line-height: var(--lh-eighty);
   font-feature-settings:
     "liga" on,
     "clig" on,
