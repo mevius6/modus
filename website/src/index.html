@@ -1161,8 +1161,8 @@
             };
 
             repo_env.textContent = `${original_environment} ${task}: `;
-            repo_upd.textContent = `
-            ${new Date(deploy_updated).toLocaleString('en-US', {
+            repo_upd.textContent = `Created
+            on ${new Date(deploy_updated).toLocaleString('en-US', {
               ...timeOptions,
               ...dateOptions,
             })} by ${deploy_login}`;
