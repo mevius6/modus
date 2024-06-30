@@ -1,3 +1,5 @@
+html, body * { cursor: none }
+
 @layer custom-cursor {
   .custom-cursor {
     --tx: calc(var(--x, -100) * 1px);

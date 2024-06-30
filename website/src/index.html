@@ -2,7 +2,6 @@
 <!--
   https://www.w3.org/Provider/Style/
   https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
-  https://spec.whatwg.org/
   https://www.w3.org/TR/wcag-3.0/
   https://github.com/web-platform-tests/wpt/tree/master/html
 -->
@@ -30,6 +29,18 @@
   https://indieauth.spec.indieweb.org/
   https://microformats.io/
   https://html.spec.whatwg.org/#microdata
+-->
+<!-- TODO Update HEAD
+  See:
+    https://www.w3.org/P3P/
+    https://html.spec.whatwg.org/multipage/links.html#link-type-privacy-policy
+    https://html.spec.whatwg.org/multipage/links.html#link-type-terms-of-service
+  Code:
+    <link rel="privacy-policy" href="/privacy-policy.html" />
+
+  See: https://web.dev/articles/lcp#what-elements-are-considered
+  Code:
+    <link as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high" />
 -->
 <html class="no-js" dir="ltr" lang="en">
   <head>
@@ -104,7 +115,7 @@
       content="#333"
     />
     <!-- SEO [S] -->
-    <meta name="description" content="…" />
+    <meta name="description" content="↬ Summary of the page content." />
     <!-- meta:kw[content='aria,css,html,js,json,ogp,schema,svg'] -->
     <meta name="robots" content="follow,index,max-image-preview:standard" />
     <link rel="canonical" href="https://native-things.vercel.app/" />
@@ -113,7 +124,7 @@
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Document" />
-    <meta property="og:description" content="…" />
+    <meta property="og:description" content="↬ Summary of the page content." />
     <meta property="og:url" content="https://native-things.vercel.app/" />
     <meta property="og:site_name" content="Website Boilerplate" />
     <meta property="og:image" content="/images/ogp_common@2x.jpg" />
@@ -200,8 +211,6 @@
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
     </style>
-    <!-- link[as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high"] -->
-
     <!-- TODO
       https://web.dev/articles/codelab-extract-and-inline-critical-css
       https://web.dev/learn/performance/understanding-the-critical-path
@@ -216,14 +225,13 @@
     -->
     <style>
       @import url(css/comps/custom-cursor.css);
-
-      body {
-        cursor: none;
-      }
     </style>
 
     <!-- JavaScript modules -->
-    <!-- https://html.spec.whatwg.org/#link-type-modulepreload -->
+    <!--
+      https://html.spec.whatwg.org/#link-type-modulepreload
+      https://html.spec.whatwg.org/multipage/webappapis.html#module-map
+    -->
     <script defer type="module" src="js/modules.js"></script>
   </head>
 
@@ -432,6 +440,9 @@
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center">
             <h1 class="sr-only">Page Title</h1>
+            <!-- <mark class="abspos inset-end tag">
+              <abbr title="Work in progress">WIP</abbr>
+            </mark> -->
             <div
               id="slicer"
               class="h1 caps"
@@ -452,12 +463,32 @@
               </span>
             </div>
             <p
-              class="h5 fvar"
+              class="h5 fvar text-center"
               style="--wght: 400; --opsz: 16"
               role="doc-subtitle"
             >
-              Website Boilerplate
+              Website Boilerplate<wbr />
+              <i
+                class="fvar"
+                style="
+                  --opsz: 12;
+                  --wght: 200;
+                  --ital: 0;
+                  font-size: 0.75rem;
+                  color: var(--foreground-a50);
+                  font-feature-settings: 'smcp' on, 'c2sc' on;
+                  font-synthesis-style: none;
+                "
+              >
+                &vert;&thinsp;with lots of comments
+              </i>
+              <!--
+              ╔═══════════════════╗
+              ║ heavily annotated ║
+              ╚═══════════════════╝
+              -->
             </p>
+
             <input id="hue" type="range" min="0" max="360" value="0" step="5" />
             <!--
               See → https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables
@@ -520,6 +551,7 @@
         </div>
 
         <!-- About -->
+        <!-- https://www.rfc-editor.org/rfc/rfc6903#section-2 -->
         <div id="about" class="container">
           <article class="grid__content mx-auto flow" role="doc-epilogue">
             <h2>Second-level head.</h2>
@@ -718,6 +750,11 @@
         </div>
 
         <!-- Contact -->
+        <!-- TODO Create an API endpoint w/ URL query (?)
+          * https://blog.postman.com/what-is-an-api-endpoint/
+          * https://www.contentful.com/blog/api-endpoint/
+          * https://offers.hubspot.com/hubfs/How%20to%20Use%20an%20API.pdf
+        -->
         <form class="grid__content relpos" aria-labelledby="contact">
           <mark class="abspos inset-end tag uppercase">todo</mark>
           <fieldset class="flex-centered flow">
@@ -784,77 +821,50 @@
       ---------------------------- -->
       <section aria-labelledby="region1">
         <h2 id="region1" class="sr-only">title for region area 1</h2>
-        <!--
-          See:
-              https://www.terminal.shop/
-              https://v0.dev/
-              https://tiptap.dev/
-              https://hyper.is/
-              https://prismjs.com/; https://prism-theme-vars.netlify.app
-              https://highlightjs.org/
-              https://github.com/CodeboxIDE/sh.js
-              https://github.com/spaceship-prompt/spaceship-prompt
-              https://github.com/httpie/http-prompt
-              https://github.com/codex-team/editor.js
-              https://github.com/MarketingPipeline/Termino.js
-              https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-        -->
-        <!-- TODO Fetch latest deployments status from gh repo
-          See:
-              https://docs.github.com/en/
-              ├╴rest/repos/webhooks#create-a-repository-webhook
-              ├╴rest/using-the-rest-api/best-practices-for-using-the-rest-api
-              ├╴webhooks/types-of-webhooks
-              ├╴webhooks/using-webhooks/best-practices-for-using-webhooks
-              └╴https://github.com/octokit/octokit.js/#readme
-        -->
-        <!-- TODO Terminal-like boot state and type animations -->
+        <!-- TODO ls
+          - Fetch latest deployments status from gh repo
+          - Terminal-like boot state and type animations -->
         <style>
           @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
           @import 'css/console.css' layer(terminal);
         </style>
-        <!-- Computer output -->
-        <!-- Computer code || Console session
-          Refs:
+        <!-- Console session:
             https://man7.org/tlpi/
             https://man7.org/linux/man-pages/man1/intro.1.html
             https://www.opennet.ru/base/dev/zsh_intro.txt.html
+
           Markup:
             https://html.spec.whatwg.org/#the-code-element
             https://html.spec.whatwg.org/#the-samp-element
             https://html.spec.whatwg.org/#the-output-element
 
           [emulate this]
-          Last login: Thu Jun 20 20:12:22 on ttys002
-          Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
+            Last login: Thu Jun 20 20:12:22 on ttys002
+            Downloads/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
         -->
         <pre><code data-shell="zsh" class="session">
           <span class="line sep">=============================</span>
           <span class="line">==> Latest deployments</span>
           <span class="line sep">=============================</span>
-          <span class="line"
-            ><mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
+          <!-- Github repo data -->
+          <span class="line"><mark>&emsp14;💫&emsp14;</mark>
+          &#x20;<samp id="repo_env">Production</samp>&colon;&#x20;<samp id="repo_upd">&marker;</samp></span>
+          <span class="line"><mark>&emsp14;⏱️&emsp14;</mark>
+          &#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
           </span>
-          <span class="line"
-          ><mark>&emsp14;🌿&emsp14;</mark>
           <!-- Last modification / current time -->
+          <span class="line"><mark>&emsp14;🌿&emsp14;</mark>
           &#x20;Last modified:&#x20;<samp id="time">&marker;</samp></span>
           <span class="line">&#x0A;</span>
-          <span class="line prompt" data-hostname="user@local"
-            >user@mevius6&#x003a;&#x223c;&dollar;</span>
-          <span class="line"
-            ><span data-char-symbol="➜">&gt;&#x20;</span><kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
+          <span class="line prompt" data-hostname="user@local">user@mevius6&#x003a;&#x223c;&dollar;</span>
+          <span class="line"><span data-char-symbol="➜">&gt;&#x20;</span>
+          <kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
           </span>
           <span class="line">&#x0D;</span>
         </code></pre>
         <!--
           TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
           https://www.w3.org/api/; https://api.w3.org/doc
-        -->
-        <!-- [unicode-chars]
-          https://infra.spec.whatwg.org/#code-points
-          https://html.spec.whatwg.org/multipage/named-characters.html
-          https://w3c.github.io/rdf-turtle/spec/#selected-terminal-literal-strings
         -->
       </section>
     </main>
@@ -996,7 +1006,7 @@
       </defs>
     </svg>
 
-    <!-- Timestamps
+    <!-- Timestamps; date- or time-related data
          https://en.wikipedia.org/wiki/ISO_8601
          https://man7.org/linux/man-pages/man3/strftime.3.html
          https://www.iana.org/time-zones
@@ -1016,14 +1026,52 @@
         month: 'long',
         day: 'numeric',
       };
+
       // https://html.spec.whatwg.org/#dom-document-lastmodified
       // https://httpwg.org/specs/rfc7232.html#header.last-modified
       const lastModified = new Date(document.lastModified),
         _l10n = lastModified.toLocaleDateString(undefined, options),
         _year = lastModified.getUTCFullYear();
       copy.dateTime = _year;
-      copy.textContent = _year; // Machine-readable equivalent
-      time.textContent = _l10n; // of date- or time-related data
+      copy.textContent = _year;
+      time.textContent = _l10n;
+    </script>
+
+    <!-- Github REST API -->
+    <script type="text/javascript">
+      const gh = {},
+        {
+          // TODO Add "preconnect" and "dns-prefetch" resource hints
+          endpoint = 'api.github.com',
+          username = 'mevius6',
+          reponame = 'modus',
+        } = gh;
+
+      const getAllRepos = fetch(
+        `https://${endpoint}/users/${username}/repos?sort=pushed`
+      ).then((response) => response.json());
+      // .then((data) => data.filter((e) => e.name === 'modus'));
+
+      const getRepo = getAllRepos.then(async (v) =>
+        v.map((repo, i) => {
+          const { deployments_url, created_at, updated_at, pushed_at } = repo;
+          if (repo.name === reponame) return repo;
+        })
+      );
+
+      getRepo.then((repo) => {
+        let upd = new Date(repo[0].updated_at),
+          _l10n = upd.toLocaleDateString(undefined, options);
+        let env = fetch(repo[0].deployments_url)
+          .then((res) => res.json())
+          .then((arr) =>
+            arr.map((v, i) => {
+              if (i == 0) return v.original_environment;
+            })
+          );
+        repo_upd.textContent = _l10n;
+        repo_env.textContent = Promise(env);
+      });
     </script>
 
     <!-- https://html.spec.whatwg.org/#link-type-modulepreload -->
@@ -1036,6 +1084,7 @@
       // log(`Operation took ${end - start} msec`);
 
       // https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+      // https://www.smashingmagazine.com/2024/02/reporting-core-web-vitals-performance-api/
       const t1 = performance.now();
       perf.textContent = `${t1 - t0} millis`; // took in milliseconds.
     </script>

@@ -44,8 +44,7 @@ const doc = document, { documentElement: root } = doc;
       // doc.body.dataset.mouseX = x
       // doc.body.dataset.mouseY = y
     }
-
-    const onPointerEvent = await update;
+    const onPointerEvent = update;
 
     doc.body.addEventListener('pointermove', async (ev) => onPointerEvent(ev), false);
   }

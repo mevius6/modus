@@ -4,12 +4,12 @@
   [contenteditable] { caret-shape: block }
 }
 
-code, kbd, pre, samp {
+/* code, kbd, pre, samp {
   font-family: var(--ui-mono);
   font-feature-settings: normal;
   font-variation-settings: normal;
   font-size: 1em;
-}
+} */
 
 code:has(> span[class~=line]) {
   display: grid;
@@ -25,7 +25,9 @@ code > [class~="line"] {
   display: inline-block;
   min-width: 0;
   padding-left: 2rem;
+  text-align: left;
   white-space: nowrap;
+  white-space-collapse: collapse;
 
   &:not(:empty:last-child)::after {
     position: absolute;
