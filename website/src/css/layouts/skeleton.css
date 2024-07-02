@@ -46,7 +46,7 @@
     --div-in5: calc(1in / 5); /* engineering */
     --div-in4: calc(1in / 4); /* quad */
 
-    color: color-mix(in lch, canvastext, transparent 15%);
+    /* color: color-mix(in lch, canvastext, transparent 15%); */
 
     &::before {
       --_size: var(--cell, 8px);

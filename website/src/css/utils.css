@@ -143,6 +143,7 @@
 
 /* TODO: padding utility classes -> (p | px-* | py-* | pt-[10] | etc. )
    or `.spaced-{x|y}` mixin?..
+   https://drafts.csswg.org/css2/#box-dimensions
 */
 
 /* https://caniuse.com/#feat=flexbox-gap

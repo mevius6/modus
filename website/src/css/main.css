@@ -1,3 +1,6 @@
+/* https://www.w3.org/TR/css-syntax-3/#determine-the-fallback-encoding */
+@charset "utf-8";
+
 /* Arts on cascade layering:
  * https://www.miriamsuzanne.com/2022/09/06/layers/
  * https://daverupert.com/2022/08/modern-alternatives-to-bem/
@@ -31,4 +34,8 @@
 /* Case-, context- or page-specific ruleset */
 @import url("author.css"); /* or "custom.css" is a more apt name? */
 
-/* https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing */
+/*
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing
+  https://github.com/frontaid/natural-selection
+  https://html.spec.whatwg.org/dev/dom.html#kinds-of-content
+*/

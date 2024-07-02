@@ -1,5 +1,6 @@
 /* Sidenav component
    → https://web.dev/articles/building/a-sidenav-component
+   → https://drafts.csswg.org/css-ui/#keyboard
    → https://drafts.csswg.org/css-ui/#nav-dir */
 
 :where(#sidenav-open) {
