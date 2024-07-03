@@ -499,6 +499,21 @@
   border-radius: calc(1cqi / 4);
 }
 
+ul:has(.tag) {
+  max-inline-size: 100%;
+  overflow: auto hidden;
+  margin-block-start: .125cqb;
+}
+
+b:is(.tag, .keyword, .kw) {
+  font-size: .75rem;
+  white-space: nowrap;
+  font-variation-settings: "opsz" 16, "wght" 700, "ital" 0;
+  background-image: var(--lin-gradient-convex);
+  background-color: transparent;
+  backdrop-filter: blur(3px);
+}
+
 :where([class*=keyline]) {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

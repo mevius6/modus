@@ -10,6 +10,7 @@
  *   → https://www.unixtimestamp.com/
  *   → https://currentmillis.com/
  * Specs:
+ *   → https://w3c.github.io/hr-time/#sec-time-origin
  *   → https://tc39.es/proposal-temporal/docs/
  *   → https://tc39.es/ecma262/#sec-date-time-string-format
  *   → https://html.spec.whatwg.org/dev/dom.html#resource-metadata-management

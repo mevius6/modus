@@ -482,19 +482,6 @@
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center">
             <h1 class="sr-only">Page Title</h1>
-
-            <!-- Tag cloud
-              https://html.spec.whatwg.org/#link-type-tag
-              https://html.spec.whatwg.org/#tag-cloud
-            -->
-            <ul class="tag-cloud abspos inset-end d-flex" style="gap: 1ch">
-              <li><mark class="tag caps">css</mark></li>
-              <li><mark class="tag caps">html</mark></li>
-            </ul>
-            <!-- <mark class="abspos inset-end tag">
-              <abbr title="Work in progress">WIP</abbr>
-            </mark> -->
-
             <div
               id="slicer"
               class="h1 caps"
@@ -514,7 +501,6 @@
                 ><span data-char="r" style="--char-index: 6">r</span>
               </span>
             </div>
-
             <p
               class="h5 fvar text-left"
               style="--wght: 400; --opsz: 16"
@@ -579,13 +565,27 @@
               const slider = hue;
               slider.value =
                 360 / getComputedStyle(slicer).getPropertyValue('--char-total');
-              slider.addEventListener('input', (e) => onInputEv(e), false);
+              slider.addEventListener('input', (ev) => onInputEv(ev), false);
 
               function onInputEv(event) {
                 slicer.style.setProperty('--hue', event.target.value);
               }
             </script>
+
+            <!-- Tag cloud
+              https://html.spec.whatwg.org/#link-type-tag
+              https://html.spec.whatwg.org/#tag-cloud
+            -->
+            <ul class="tag-cloud d-flex fade" style="gap: 1ch">
+              <li><b class="tag caps">css</b></li>
+              <li><b class="tag caps">html</b></li>
+            </ul>
           </hgroup>
+
+          <!--
+          <mark class="abspos inset-end tag">
+            <abbr title="Work in progress">WIP</abbr>
+          </mark> -->
 
           <div class="grid__full overlay">
             <!-- pic[role="doc-cover"]>src:t+img[primaryImageOfPage] -->
@@ -913,8 +913,10 @@
               https://github.com/structure-codes/cli
               https://console.spec.whatwg.org/
         -->
-        <style>
+        <style type="text/css">
+          /* FIXME: https://support.mozilla.org/bm/questions/1426612 */
           @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
           @import 'css/console.css' layer(terminal);
         </style>
         <!--
@@ -1019,9 +1021,9 @@
     <svg width="0" height="0" data-hidden>
       <!--
         SVG Filters
-            → https://svgwg.org/svg2-draft/
-            → https://drafts.fxtf.org/filter-effects/#FilterElement
-            → https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement
+          → https://svgwg.org/svg2-draft/
+          → https://drafts.fxtf.org/filter-effects/#FilterElement
+          → https://drafts.fxtf.org/filter-effects/#FilterPrimitiveTree
       -->
       <defs>
         <!-- Chromatic aberration filter -->
@@ -1098,7 +1100,7 @@
     <script type="module" src="js/utils/dts.js"></script>
 
     <!-- Github REST API -->
-    <script type="text/javascript">
+    <script async type="text/javascript">
       const gh = {},
         {
           // TODO Add "preconnect" and "dns-prefetch" resource hints
@@ -1107,16 +1109,27 @@
           repo = 'modus',
         } = gh;
 
+      const asyncFetchJSON = async (url, options = {}, query = {}) => {
+        const response = await fetch(url, options, query);
+        const json = await response.json();
+
+        if (!response.ok || json.errors) {
+          // console.error(json.errors);
+          const message = `Произошла ошибка: ${response.status}`;
+          throw new Error(message);
+        }
+
+        return json;
+      };
+
       // https://www.smashingmagazine.com/2022/09/javascript-api-guide/
       // https://datatracker.ietf.org/doc/html/rfc6570
       const getRepo = async () => {
         if (document.visibilityState === 'visible') {
           try {
-            const request = await fetch(
-              'https://api.github.com/users/mevius6/repos?sort=pushed'
-            )
-              .then((response) => response.json())
-              .then((data) => data.filter((e) => e.name === repo)[0]);
+            const request = await asyncFetchJSON(
+              `https://${endpoint}/users/${username}/repos?sort=pushed`
+            ).then((data) => data.filter((e) => e.name === repo)[0]);
 
             const {
               name,
@@ -1136,7 +1149,7 @@
               default_branch = 'main',
             } = await request;
 
-            /* optional bool */
+            /* sugar bool */
             if (name === repo) {
               // let upd = new Date(updated_at),
               //   _l10n = upd.toLocaleDateString(undefined, {…});
@@ -1147,48 +1160,42 @@
               langTags.forEach((el) => el.normalize());
 
               // https://www.w3.org/TR/selectors-4/#data-model
-              const getLangs = await fetch(languages_url)
-                .then((response) => response.json())
+              const getLangs = await asyncFetchJSON(languages_url)
+                // .then((data) => console.table(data))
                 .then((data) => {
-                  Object.keys(data).map((key, i) =>
-                    langTags.length >= i + 1
-                      ? (langTags.item(i).textContent = key)
-                      : i < 3
-                      ? (tagCloud.appendChild(
-                          langTags.item(1).parentNode.cloneNode(true)
-                        ).firstChild.textContent = key)
-                      : undefined
-                  );
-                  // console.table(data);
+                  let nodes = langTags,
+                    { length: total } = nodes;
+                  // https://dom.spec.whatwg.org/#concept-element-is-value
+                  let chain; // when null/undefined, passes through (itself)
+
+                  Object.keys(data).map((key, i) => {
+                    chain = nodes?.item(i); // ("optional chaining") element
+                    total >= i + 1 // if element’s is value is non-null, then:
+                      ? (nodes.item(i).textContent = key)
+                      : chain ?? // else if is val null ("nullish coalescing")
+                        (tagCloud.appendChild(
+                          nodes.item(0).parentNode.cloneNode(true)
+                        ).firstChild.textContent = key);
+                  });
                 });
             }
 
-            const reqDeployments = await fetch(deployments_url)
-              .then((response) => response.json())
-              .then((data) => data[0]);
-
             const {
-              url,
+              url: deployment_url,
               task,
-              original_environment,
-              // environment,
-              created_at: deploy_created,
-              updated_at: deploy_updated,
+              original_environment: deployment_env,
+              created_at: deployment_created,
+              updated_at: deployment_updated,
               statuses_url,
-              creator: { login: deploy_login, type },
-            } = await reqDeployments;
-
-            const reqStatuses = await fetch(statuses_url)
-              .then((response) => response.json())
-              .then((data) => data[0]);
+              creator: { login: deployment_creator, type },
+            } = await asyncFetchJSON(deployments_url).then((data) => data[0]);
 
             const {
-              // url,
               state,
-              description,
-              environment,
+              description: status_desc,
+              environment: status_env,
               target_url,
-            } = await reqStatuses;
+            } = await asyncFetchJSON(statuses_url).then((data) => data[0]);
 
             const dateOptions = {
               weekday: 'long',
@@ -1204,11 +1211,11 @@
               second: '2-digit',
             };
 
-            repo_upd.textContent = `${original_environment}: ${description}
-            on ${new Date(deploy_updated).toLocaleString('en-US', {
+            repo_upd.textContent = `${deployment_env}: ${status_desc}
+            on ${new Date(deployment_updated).toLocaleString('en-US', {
               ...timeOptions,
               ...dateOptions,
-            })} by ${deploy_login}`;
+            })} by ${deployment_creator}`;
           } catch (error) {
             console.error(error);
           }
@@ -1219,10 +1226,9 @@
       onload = async (ev) => await getRepo();
     </script>
 
-    <!-- The main JS entry -->
-    <!--
+    <!-- Scripting
+      https://html.spec.whatwg.org/dev/scripting.html
       https://html.spec.whatwg.org/#link-type-modulepreload
-      https://html.spec.whatwg.org/dev/scripting.html#restrictions-for-contents-of-script-elements
     -->
     <script type="module" src="js/main.js"></script>
     <script nomodule src="js/main.js"></script>

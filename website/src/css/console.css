@@ -3,19 +3,6 @@
    https://prism-theme-vars.netlify.app/
 */
 
-/* https://drafts.csswg.org/css-ui/#insertion-caret */
-/* @supports (caret-animation: manual) {…} */
-@supports (caret-shape: block) {
-  [contenteditable] { caret-shape: block }
-}
-
-/* code, kbd, pre, samp {
-  font-family: var(--ui-mono);
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-  font-size: 1em;
-} */
-
 code:has(> span[class~=line]) {
   display: grid;
   padding: 0;
@@ -94,7 +81,7 @@ section:has(> pre) {
       &::after { text-shadow: none }
     }
 
-    & :is(.cursor,.caret) {
+    & :is(.cursor, .caret) {
       pointer-events: none;
       cursor: none;
       caret: none;
@@ -106,9 +93,7 @@ section:has(> pre) {
       outline: none;
       caret-color: var(--accent); /* transparent */
 
-      &:focus-within ~ .caret {
-        display: none;
-      }
+      &:focus-within ~ .caret { display: none }
     }
 }
 
@@ -129,11 +114,11 @@ section:has(> pre) {
   line-height: 150%;
   letter-spacing: .02em;
   font-variation-settings: "wght" 350;
-  font-feature-settings:
+  /* font-feature-settings:
     "liga" on,
     "clig" on,
     "zero" on,
-    "tnum" on;
+    "tnum" on; */
 }
 
 /* TODO Load variable monospace face for code */

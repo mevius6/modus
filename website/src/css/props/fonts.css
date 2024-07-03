@@ -1,9 +1,13 @@
 /* https://drafts.csswg.org/css2/#font-size-props */
 /* https://modern-fluid-typography.vercel.app/ */
 
-/* https://mikemai.net/blog/2024/03/25/the-case-for-defining-base-font-size.html
-   https://adrianroselli.com/2024/03/the-ultimate-ideal-bestest-base-font-size-that-everyone-is-keeping-a-secret-especially-chet.html */
+/**
+  Arts on set the base font size:
+  - https://bit.ly/adrianroselli-post
+  - https://bit.ly/mikemai-post
 
+  tldr; html { font-size: 100% }
+*/
 :root {
   min-height: 0; /* Safari fix */
   font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.8772)), 1.5rem);
@@ -57,7 +61,7 @@ body {
     https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist
     https://wakamaifondue.com/beta/
   */
-  /* full reset and setting up */
+  /* TODO: full (re)set */
   font-feature-settings:
     "aalt" var(--aalt, 0), /* Access All Alternates */
     "c2sc" var(--c2sc, 0), /* Small Capitals From Capitals */
@@ -247,24 +251,28 @@ h2 {
   }
 }
 
-/* https://hell.meiert.org/core/css/css-2.2.css */
-/* body         { margin: 8px } */
-/* p */
-
-/* b != strong, e.g. marking key words or (lead) phrases
-   https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element */
-
-strong          { font-weight: 700 }
-
 :is(b, strong, i, cite, em, var, address) {
-  font-synthesis-style: none;
+  font-synthesis-style: none !important;
+  font-synthesis-weight: none !important;
 }
+
+/**
+ * References:
+ * - https://hell.meiert.org/core/css/css-2.2.css
+ * - https://html.spec.whatwg.org/multipage/text-level-semantics.html
+ *   - https://html.spec.whatwg.org/#the-b-element
+ *   - https://html.spec.whatwg.org/#the-u-element
+ */
+
+/* b != strong, e.g. marking key words or (lead) phrases */
+b,
+strong          { font-weight: 700 } /* ua stylesheet */
 
 q,
 blockquote      { /* … */ }
 
 i, cite, em,
-var, address    { --ital: 1 } /* font-style: italic; */
+var, address    { --ital: 1 } /* font-style: italic */
 
 /*
 big             { font-size: 1.17em }
@@ -273,7 +281,6 @@ sub             { vertical-align: sub }
 sup             { vertical-align: super }
 s, strike, del  { text-decoration: line-through }
 
-/* https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element */
 u { text-decoration: var(--underline-color, var(--accent)) wavy underline; }
 
 mark {

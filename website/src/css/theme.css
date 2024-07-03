@@ -142,16 +142,42 @@
     }
   }
 
+  svg:not([class]) { fill: currentcolor }
+
   svg:is([width=0],[data-hidden]) {
+    &:has(> defs) {
+      & g { color: currentcolor }
+
+      /* Defines the color of the light source for filter primitives
+       * https://drafts.fxtf.org/filter-effects/#LightingColorProperty
+       * https://drafts.fxtf.org/filter-effects/#feDiffuseLightingElement
+       * https://drafts.fxtf.org/filter-effects/#feSpecularLightingElement
+       */
+      & filter > :is(feDiffuseLighting, feSpecularLighting) {
+        lighting-color: var(--lighting-color, white);
+      }
+    }
+
     [data-theme-style=light] & {
-      /* --lighting-color: hsl(var(--blaze-orange)); */
       --lighting-color: hsl(var(--aurora-pink));
     }
 
     [data-theme-style=dark] & {
-      /* --lighting-color: hsl(var(--signal-green)); */
       --lighting-color: hsl(var(--saturn-yellow));
     }
+  }
+
+  /* code, kbd, pre, samp {
+    font-family: var(--ui-mono);
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-size: 1em;
+  } */
+
+  /* https://drafts.csswg.org/css-ui/#insertion-caret */
+  /* @supports (caret-animation: manual) {…} */
+  @supports (caret-shape: block) {
+    [contenteditable] { caret-shape: block }
   }
 
   [id] {
@@ -161,7 +187,10 @@
 
 @layer theme.support.any {
   @supports (scrollbar-width: thin) {
-    /* https://drafts.csswg.org/css-scrollbars/ */
+    /*
+      https://drafts.csswg.org/css-scrollbars/
+      https://drafts.csswg.org/css-overflow/#scrollbar-layout
+    */
     * {
       scrollbar-width: none;
       scrollbar-color: inherit;

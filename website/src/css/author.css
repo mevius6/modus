@@ -312,7 +312,7 @@ body:where([data-id=homepage]) { /* Quick visual tweaks */
     }
   }
 
-  :where([class*=tag]) {
+  mark:where([class*=tag]) {
     font-size: .75rem;
     letter-spacing: -0.008em; /* 45×18 ~ 5:2 ~ 100×40 */
     transform: translate(

@@ -19,6 +19,7 @@ const doc = document, { documentElement: root } = doc;
 
 /* eslint-disable no-unused-vars */
 
+// https://github.com/tc39/proposal-top-level-await
 (async () => {
   const toggle = await import('./modules/theme-switcher.js').then(() => {
     const themeSwitch = doc.querySelector('theme-switch');

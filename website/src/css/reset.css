@@ -1,3 +1,5 @@
+@namespace "http://www.w3.org/1999/xhtml";
+
 /* :where(*, *::before, *::after) { all: initial } */
 /* :where(*, *::before, *::after) { all: initial !important } */
 
@@ -262,6 +264,7 @@ textarea {
   }
 }
 
+/* https://drafts.csswg.org/cssom-view/#scrolling */
 @media screen and (prefers-reduced-motion: no-preference) {
   html,
   body { scroll-behavior: smooth; }
