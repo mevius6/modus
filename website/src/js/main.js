@@ -11,7 +11,25 @@ const doc = document,
     // defaultView,
     // adoptedStyleSheets,
     // https://drafts.csswg.org/cssom/#css-style-sheet-collections
-  } = doc, { dataset } = root;
+  } = doc, { dataset } = root,
+  {
+    // https://drafts.csswg.org/cssom-view/#visualViewport
+    // https://drafts.csswg.org/cssom-view/#dom-window-visualviewport
+    visualViewport: viewport,
+  } = window,
+  // https://wicg.github.io/netinfo/
+  // https://html.spec.whatwg.org/multipage/system-state.html
+  // https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-online-dev
+  {
+    userAgent: UA,
+    onLine,
+    // connection: { type: netinfo = undefined },
+    geolocation: geo,
+    // https://developer.mozilla.org/en-US/docs/Web/API/GPU
+    // https://gpuweb.github.io/gpuweb/#gpu-interface
+    // https://www.w3.org/TR/webgpu/
+    gpu
+  } = navigator;
 
 const onloadEv = async (ev) => {
   root.classList.replace('no-js', 'js');
@@ -30,5 +48,9 @@ const onloadEv = async (ev) => {
   // console.info(dataset)
   // console.dir(location)
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API
+// https://w3c.github.io/battery/#dom-navigator-getbattery
+// navigator.getBattery().then((battery) => {});
 
 window.addEventListener('load', (ev) => onloadEv(ev), true);

@@ -470,6 +470,8 @@
       </label>
     </header>
 
+    <mini-map></mini-map>
+
     <!-- Main Content -->
     <main
       id="main"
@@ -1104,7 +1106,7 @@
       const gh = {},
         {
           // TODO Add "preconnect" and "dns-prefetch" resource hints
-          endpoint = 'api.github.com',
+          hostname = 'api.github.com',
           username = 'mevius6',
           repo = 'modus',
         } = gh;
@@ -1128,7 +1130,7 @@
         if (document.visibilityState === 'visible') {
           try {
             const request = await asyncFetchJSON(
-              `https://${endpoint}/users/${username}/repos?sort=pushed`
+              `https://${hostname}/users/${username}/repos?sort=pushed`
             ).then((data) => data.filter((e) => e.name === repo)[0]);
 
             const {

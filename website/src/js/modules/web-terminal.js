@@ -1,5 +1,21 @@
 const doc = document;
 const store = localStorage;
+/**
+ * @namespace console
+ *
+ * [Console Standard]: https://console.spec.whatwg.org/
+ * [MDN article]: https://developer.mozilla.org/en-US/docs/Web/API/Console_API
+ * [Google Chrome]: https://developer.chrome.com/docs/devtools/console/api (Google Chrome DevTools implementation)
+ * [Safari]: https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Console/Console.html (Safari DevTools implementation)
+ * [Firefox]: https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html (Firefox DevTools Docs)
+ *
+ * @see {@link [Console Standard]}
+ * @see {@link [MDN article]}
+ *
+ * @see
+ * [Google Chrome], [Safari] and [Firefox] DevTools implementations
+ */
+const {log, dir} = console;
 
 const dateOptions = {
   weekday: 'long',
@@ -7,6 +23,7 @@ const dateOptions = {
   month: 'long',
   day: 'numeric',
 };
+
 
 const NAME = 'web-terminal';
 
@@ -60,7 +77,7 @@ template.innerHTML = `
 const gh = {},
 {
   // TODO Add "preconnect" and "dns-prefetch" resource hints
-  endpoint: GH_API = 'api.github.com',
+  hostname: GH_API = 'api.github.com',
   username: MEVIUS6 = 'mevius6',
   repo: MODUS = 'modus',
 } = gh;
