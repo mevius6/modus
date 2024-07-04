@@ -261,6 +261,7 @@
   }
 }
 
+/* https://drafts.csswg.org/css-backgrounds/#box-shadow */
 @layer props.shadows {
   /* ----------------------------------
    * Shadows

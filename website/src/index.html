@@ -123,15 +123,15 @@
     <!-- link:touch[sizes="180x180"] -->
 
     <!-- TODO
-      https://maskable.app/
-      https://www.w3.org/TR/appmanifest/#icon-masks
       https://w3c.github.io/manifest/
+      https://www.w3.org/TR/appmanifest/
+      https://www.w3.org/TR/appmanifest/#icon-masks
+      https://maskable.app/
     -->
     <link rel="manifest" href="./site.webmanifest" />
     <!-- link:mf -->
     <!-- meta:msapp -->
     <!-- meta:apple -->
-    <meta name="color-scheme" content="dark light" />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
@@ -142,6 +142,7 @@
       media="(prefers-color-scheme: dark)"
       content="#333"
     />
+    <meta name="color-scheme" content="dark light" />
     <!-- SEO [S] -->
     <meta name="description" content="↬ Summary of the page content." />
     <!-- meta:kw[content='aria,css,html,js,json,ogp,schema,svg'] -->
@@ -196,8 +197,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <!-- FIXME FOUC
-      See:
-          https://en.wikipedia.org/wiki/Flash_of_unstyled_content
+      See: https://en.wikipedia.org/wiki/Flash_of_unstyled_content
     -->
     <!-- TODO Font perf
       See:
@@ -1105,11 +1105,19 @@
     <script async type="text/javascript">
       const gh = {},
         {
-          // TODO Add "preconnect" and "dns-prefetch" resource hints
-          hostname = 'api.github.com',
-          username = 'mevius6',
-          repo = 'modus',
+          hostname: GH_API_HOST = 'api.github.com',
+          username: GH_USER = 'mevius6',
+          repo: GH_REPO = 'modus',
         } = gh;
+
+      // Adds "preconnect" and "dns-prefetch" resource hints
+      ['preconnect', 'dns-prefetch'].forEach((hint, i) => {
+        let link = document.createElement('link');
+        link.rel = hint;
+        link.href = GH_API_HOST;
+        if (i == 0) link.crossOrigin = '';
+        document.head.appendChild(link);
+      });
 
       const asyncFetchJSON = async (url, options = {}, query = {}) => {
         const response = await fetch(url, options, query);
@@ -1130,8 +1138,8 @@
         if (document.visibilityState === 'visible') {
           try {
             const request = await asyncFetchJSON(
-              `https://${hostname}/users/${username}/repos?sort=pushed`
-            ).then((data) => data.filter((e) => e.name === repo)[0]);
+              `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`
+            ).then((data) => data.filter((e) => e.name === GH_REPO)[0]);
 
             const {
               name,
@@ -1152,7 +1160,7 @@
             } = await request;
 
             /* sugar bool */
-            if (name === repo) {
+            if (name === GH_REPO) {
               // let upd = new Date(updated_at),
               //   _l10n = upd.toLocaleDateString(undefined, {…});
               // repo_upd.textContent = _l10n;

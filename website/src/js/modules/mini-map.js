@@ -1,55 +1,43 @@
+const doc = document;
+const vv = window.visualViewport;
+
+// Spec: https://drafts.csswg.org/css-scoping/#default-element-styles
+const sheet = new CSSStyleSheet();
+// https://drafts.csswg.org/css-values-3/#strings
+// sheet.replaceSync("\
+sheet.replaceSync("mini-map {\
+  display: block;z-index: 2;position: sticky;inset-block-start: 0;inset-inline-end: 0;inline-size: fit-content;max-block-size: 100%;padding: var(--spacer-2x);margin-block-start: calc(var(--min-touch-target-size) + 2ch);}\
+");
+sheet.insertRule("#live-preview {\
+  border-radius: 0.5em;\
+  box-shadow: none;\
+  position: sticky;\
+  inset-block: 1em;\
+  padding: 16px;}\
+");
+sheet.insertRule("#slider {\
+  border-radius: .375em;\
+  position: absolute;\
+  top: 8px;\
+  inset-inline: -.25em;\
+  transform: translateY(0);\
+  border: 2px solid var(--apple-blue);\
+  filter: drop-shadow(0 0 0.125rem #aaa);\
+}");
+
 const NAME = 'mini-map';
 
-// Specs:
-// https://drafts.csswg.org/css-scoping/#default-element-styles
-// https://drafts.csswg.org/css-scoping/#shadow-dom
-// https://drafts.csswg.org/css-scoping/#shadow-cascading
-
-const template = document.createElement('template');
+const template = doc.createElement('template');
 template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-      z-index: 1;
-      position: sticky;
-      inset-block-start: 0;
-      inset-inline-end: 0;
-      inline-size: fit-content;
-      max-block-size: 100%;
-      padding: var(--spacer-2x);
-      margin-block-start: calc(var(--min-touch-target-size) + 2ch);
-    }
-
-    [part=container] {
-      border-radius: 0.5em;
-      box-shadow: none;
-      position: sticky;
-      inset-block: 1em;
-      padding: 16px;
-    }
-
-    [part=pointer] {
-      padding: 0.25em;
-      border-radius: .375em;
-      position: absolute;
-      top: 8px;
-      inset-inline: -.25em;
-      transform: translateY(0);
-      border: 2px solid var(--apple-blue);
-      filter: drop-shadow(0 0 0.125rem #aaa);
-    }
-
-    [part=preview] {
-      background: canvas -moz-element(#main) no-repeat scroll center / contain;
-    }
-  </style>
-  <div part="container">
-    <div part="pointer"></div>
-    <div part="preview"></div>
+  <div id="live-preview">
+    <div id="slider"></div>
+    <div id="output"></div>
   </div>
 `;
 
 /**
+ * [vsc]: https://code.visualstudio.com/docs/getstarted/userinterface#_minimap
+ *
  * @see https://www.stefanjudis.com/a-firefox-only-minimap/
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/element
  * @see https://drafts.csswg.org/css-images-4/#element-notation
@@ -64,29 +52,21 @@ class MiniMap extends HTMLElement {
   _initializeDOM() {
     this.isSupported = CSS.supports('background', 'white -moz-element(#main)');
     if (this.isSupported) {
-      // FIXME: test1
-      // const style = document.createElement('style');
-      // style.textContent = `
-      //   ${NAME}::part(preview),
-      //   ${NAME} [part=preview] {
-      //     background: canvas -moz-element(#main) no-repeat scroll center center / contain;
-      //   }
-      // `;
-      // document.head.appendChild(style);
+      sheet.insertRule("[id=output] { background: canvas -moz-element(#main) no-repeat scroll center / contain; }");
+      doc.adoptedStyleSheets = [sheet];
 
       // FIXME: https://drafts.csswg.org/css-images-4/#ex-invalid%20image
-      const shadowRoot = this.attachShadow({mode: 'open'});
-      shadowRoot.appendChild(template.content.cloneNode(true));
+      // const shadowRoot = this.attachShadow({ mode: 'open' });
+      // shadowRoot.appendChild(template.content.cloneNode(true));
+      // shadowRoot.adoptedStyleSheets = [sheet];
+      this.appendChild(template.content.cloneNode(true));
 
-      this._container = shadowRoot.querySelector('[part=container]');
-      this._pointer = shadowRoot.querySelector('[part=pointer]');
-      this._preview = shadowRoot.querySelector('[part=preview]');
+      this._preview = this.querySelector('#live-preview');
+      this._pointer = this.querySelector('#slider');
+      this._canvas = this.querySelector('#output');
 
-      // FIXME: test2
-      // https://developer.mozilla.org/en-US/docs/Web/API/Document/mozSetImageElement
-      // document.mozSetImageElement(this.referencedElement.id, this._preview);
-
-      this.referencedElement = main; // document.querySelector('#main');
+      // minimap section
+      this.referencedElement = main; // doc.querySelector('#main');
 
       const { width: refW, height: refH, top: refTop } = this.referencedElement
         .getBoundingClientRect();
@@ -101,9 +81,9 @@ class MiniMap extends HTMLElement {
         height: Math.floor(90 * (refH / refW)),
         topScrollBorder: refTop + window.scrollY,
         viewport: {
-          w: window.visualViewport.width,
-          h: window.visualViewport.height,
-          ratio: window.visualViewport.height / window.visualViewport.width
+          w: vv.width,
+          h: vv.height,
+          ratio: vv.height / vv.width
         },
       }
       this.pointerHeight = (this.config.width + 2) *
@@ -127,8 +107,8 @@ class MiniMap extends HTMLElement {
       if (!mq.matches) this.parentNode.removeChild(this);
     }, { once: true });
 
-    this._preview.style.width = `${ this.config.width }px`;
-    this._preview.style.height = `${ this.config.height }px`;
+    this._canvas.style.width = `${ this.config.width }px`;
+    this._canvas.style.height = `${ this.config.height }px`;
     this._pointer.style.height = `${ this.pointerHeight }px`;
 
     this._setPointerPosition(window.scrollY);
