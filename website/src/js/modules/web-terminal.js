@@ -1,3 +1,6 @@
+import { getRepo } from "./gh-api.js";
+import { DS_L10N } from "../utils/dts.js";
+
 const doc = document;
 const store = localStorage;
 /**
@@ -15,17 +18,10 @@ const store = localStorage;
  * @see
  * [Google Chrome], [Safari] and [Firefox] DevTools implementations
  */
-const {log, dir} = console;
-
-const dateOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-};
-
+// const {log, dir} = console;
 
 const NAME = 'web-terminal';
+const MODUS = 'modus';
 
 //--> web-terminal-template.tpl
 const template = doc.createElement('template');
@@ -35,87 +31,27 @@ template.innerHTML = `
     @import 'css/console.css' layer(terminal);
   </style>
   <!-- Console session -->
-  <pre><code data-shell="zsh" class="session">
+  <pre><code data-lang="shell" data-shell="zsh" class="session">
     <span class="line sep">=============================</span>
     <span class="line">==> Latest deployments</span>
     <span class="line sep">=============================</span>
-    <span class="line"
-      ><mark>&emsp14;⏱️&emsp14;</mark>&#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
+    <!-- Github repo data -->
+    <span class="line"><mark>&emsp14;💫&emsp14;</mark>
+    &#x20;<samp><span id="repo_upd"></span></samp></span>
+    <!-- <span class="line"><mark>&emsp14;⏱️&emsp14;</mark>
+    &#x20;Page speed:&#x20;<samp id="perf">&marker;</samp> -->
     </span>
-    <span class="line"
-      ><mark>&emsp14;🌿&emsp14;</mark>
-      <!-- Last modification / current time -->
-      &#x20;Last modified:&#x20;<samp id="time">&marker;</samp></span>
+    <!-- Last modification / current time -->
+    <span class="line"><mark>&emsp14;🌿&emsp14;</mark>
+    &#x20;Last modified:&#x20;<samp id="time">${DS_L10N}</samp></span>
     <span class="line">&#x0A;</span>
-    <span class="line prompt" data-hostname="user@local"
-      >user@mevius6&#x003a;&#x223c;&dollar;</span>
-    <span class="line"
-      ><span data-char-symbol="➜">&gt;&#x20;</span>
-      <kbd contenteditable="true">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
+    <span class="line prompt" data-hostname="user@host">user@mevius6&#x003a;&#x223c;&dollar;</span>
+    <span class="line"><span data-char-symbol="➜">&gt;&#x20;</span>
+    <kbd contenteditable="true" spellcheck="false">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
     </span>
     <span class="line">&#x0D;</span>
   </code></pre>
 `;
-
-/**
- * TODO Use GitHub REST API; eg to fetch latest deployments status
- *
- * See:
- * - https://docs.github.com/rest
- * - https://docs.github.com/rest/repos
- * - https://docs.github.com/rest/meta
- * - https://docs.github.com/ru/rest/search/ 😈
- * - https://github.com/octokit/octokit.js/#readme
- * - https://css-tricks.com/using-fetch/
- * - https://curl.se/download.html
- *
- * ```
- * $ curl https://api.github.com/zen
- * $ curl https://api.github.com/emojis
- * ```
- */
-const gh = {},
-{
-  // TODO Add "preconnect" and "dns-prefetch" resource hints
-  hostname: GH_API = 'api.github.com',
-  username: MEVIUS6 = 'mevius6',
-  repo: MODUS = 'modus',
-} = gh;
-
-/* console.log(fetch(`https://${endpoint}/users/${username}/repos?sort=pushed`)
-  .then((response) => response.json())
-  // .then((data) => console.log(data))
-  .then((data) => {
-    data.map(async (repo, i) => {
-      const {
-        id = 0,
-        name = 'modus',
-        owner: { avatar_url, html_url },
-        url,
-        deployments_url: {
-          task,
-          environment,
-          statuses_url,
-          creator: { login },
-        },
-        created_at,
-        updated_at,
-        pushed_at,
-        // https://docs.github.com/rest/commits/commits
-        // https://docs.github.com/rest/commits/statuses
-        // statuses_url,
-        // https://docs.github.com/rest/branches/branches
-        // https://docs.github.com/rest/git/trees#get-a-tree
-        // trees_url,
-        homepage,
-        default_branch = 'main',
-      } = repo;
-      if (name == reponame) console.dir(repo);
-      else return;
-    });
-  });
-)
-*/
 
 // TODO Use W3C API; eg to find latest specs
 // https://www.w3.org/api/; https://api.w3.org/doc
@@ -133,15 +69,20 @@ export class WebTerminal extends HTMLElement {
   }
 
   _initializeDOM() {
-    const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(template.content.cloneNode(true));
+    // const shadowRoot = this.attachShadow({ mode: 'open' });
+    // shadowRoot.appendChild(template.content.cloneNode(true));
+    this.appendChild(template.content.cloneNode(true));
+
+    this._getRepo();
   }
 
-  // TODO
   async _getRepo() {
-    const req = fetch(`https://${GH_API}/users/${MEVIUS6}/repos?sort=pushed`)
-      .then((res) => res.json())
-      .then((data) => data.filter((e) => e.name === MODUS));
+    // const req = fetch(`https://${GH_API}/users/${MEVIUS6}/repos?sort=pushed`)
+    //   .then((res) => res.json())
+    //   .then((data) => data.filter((e) => e.name === MODUS));
+
+    // FIXME
+    await getRepo();
   }
 
   _dispatchEvent(type, value) {
@@ -152,7 +93,16 @@ export class WebTerminal extends HTMLElement {
     }));
   }
 
-  // connectedCallback() {}
+  connectedCallback() {
+    // Adds "preconnect" and "dns-prefetch" resource hints
+    ['preconnect', 'dns-prefetch'].forEach((hint, i) => {
+      let link = document.createElement('link');
+      link.rel = hint;
+      link.href = 'api.github.com';
+      if (i == 0) link.crossOrigin = '';
+      document.head.appendChild(link);
+    });
+  }
   // disconnectedCallback() {}
 }
 

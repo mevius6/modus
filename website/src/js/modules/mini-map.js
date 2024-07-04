@@ -65,7 +65,7 @@ class MiniMap extends HTMLElement {
       this._pointer = this.querySelector('#slider');
       this._canvas = this.querySelector('#output');
 
-      // minimap section
+      // doc main section (region area) as image source
       this.referencedElement = main; // doc.querySelector('#main');
 
       const { width: refW, height: refH, top: refTop } = this.referencedElement

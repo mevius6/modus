@@ -39,6 +39,7 @@ const doc = document, { documentElement: root } = doc;
     // const carousel = await import('./modules/carousel');
     // const map = await import('./modules/map');
     const minimap = await import('./modules/mini-map.js');
+    const webterm = await import('./modules/web-terminal.js');
 
     const update = ({ x, y }) => {
       root.style.setProperty('--x', Math.floor(x))
@@ -68,7 +69,7 @@ async function loadMap() {
     .then(async () => await import('./modules/map'));
 }
 
-async function loadTrigger(elementId) {
+async function loadTrigger(elementId) { // FIXME
   let el = doc.getElementById(elementId);
   let io = await createObserver(el);
   return io;

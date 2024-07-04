@@ -51,9 +51,7 @@ const options = {
  * [HTTP WG Spec RFC7232][http]
  */
 const docLastModified = new Date(document.lastModified);
-const ds_l10n = docLastModified.toLocaleDateString(undefined, options);
-const ds_year = docLastModified.getUTCFullYear();
+const DS_L10N = docLastModified.toLocaleDateString(undefined, options);
+const DS_YEAR = docLastModified.getUTCFullYear();
 
-copy.dateTime = ds_year; // ISO 8601
-copy.textContent = ds_year;
-time.textContent = ds_l10n;
+export {DS_L10N, DS_YEAR}

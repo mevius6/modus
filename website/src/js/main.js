@@ -15,13 +15,13 @@ const doc = document,
   {
     // https://drafts.csswg.org/cssom-view/#visualViewport
     // https://drafts.csswg.org/cssom-view/#dom-window-visualviewport
-    visualViewport: viewport,
+    visualViewport: vv,
   } = window,
   // https://wicg.github.io/netinfo/
   // https://html.spec.whatwg.org/multipage/system-state.html
   // https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-online-dev
   {
-    userAgent: UA,
+    userAgent: ua,
     onLine,
     // connection: { type: netinfo = undefined },
     geolocation: geo,

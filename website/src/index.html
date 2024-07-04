@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!--
+╭───────────────────────────────────────────╮
+│                                           │
+│   URL: https://native-things.vercel.app   │
+│                                           │
+╰───────────────────────────────────────────╯
+-->
 <!-- ⛬
   https://www.w3.org/Provider/Style/
   https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
@@ -53,12 +60,12 @@
   Code:
     <link as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high" />
 -->
+<!--
+  ╔═══════════════════════════════╗
+  ║ source code heavily annotated ║
+  ╚═══════════════════════════════╝
+-->
 <html class="no-js" dir="ltr" lang="en">
-  <!--
-    ╔═══════════════════╗
-    ║ heavily annotated ║
-    ╚═══════════════════╝
-  -->
   <head>
     <!-- https://encoding.spec.whatwg.org/#utf-8 -->
     <meta charset="utf-8" />
@@ -898,72 +905,8 @@
           </svg>
         </div>
       </section>
-      <!--
-        + --------------------------- +
-        | Web Terminal (emu) <[ *_*]/ |
-        + --------------------------- +
-      -->
-      <section aria-labelledby="region1">
-        <h2 id="region1" class="sr-only">title for region area 1</h2>
-        <!-- TODO:
-          - Fetch latest deployments status from gh repo
-          - Terminal-like boot state and type animations
-          - Print source code structure, in tree order
-              https://dom.spec.whatwg.org/#concept-tree-order
-              https://dom.spec.whatwg.org/#concept-tree-root
-              https://www.npmjs.com/package/tree-console
-              https://github.com/structure-codes/cli
-              https://console.spec.whatwg.org/
-        -->
-        <style type="text/css">
-          /* FIXME: https://support.mozilla.org/bm/questions/1426612 */
-          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-          @import 'css/console.css' layer(terminal);
-        </style>
-        <!--
-          Console session:
-            https://man7.org/tlpi/
-            https://man7.org/linux/man-pages/man1/intro.1.html
-            https://www.opennet.ru/base/dev/zsh_intro.txt.html -->
-        <!--
-          Semantic markup:
-            https://html.spec.whatwg.org/#the-code-element
-            https://html.spec.whatwg.org/#the-samp-element
-            https://html.spec.whatwg.org/#the-output-element -->
-        <!--
-          Simulate render:
-            https://drafts.csswg.org/css-ui/#caret
-
-          [session start]
-            Last login: Thu Jun 20 20:12:22 on ttys002
-            Documents/Code/→ Projects on 🐳 v26.1.4 (desktop-linux)
-        -->
-        <pre><code data-lang="shell" data-shell="zsh" class="session">
-          <span class="line sep">=============================</span>
-          <span class="line">==> Latest deployments</span>
-          <span class="line sep">=============================</span>
-          <!-- Github repo data -->
-          <span class="line"><mark>&emsp14;💫&emsp14;</mark>
-          &#x20;<samp><span id="repo_upd"></span></samp></span>
-          <span class="line"><mark>&emsp14;⏱️&emsp14;</mark>
-          &#x20;Page speed:&#x20;<samp id="perf">&marker;</samp>
-          </span>
-          <!-- Last modification / current time -->
-          <span class="line"><mark>&emsp14;🌿&emsp14;</mark>
-          &#x20;Last modified:&#x20;<samp id="time">&marker;</samp></span>
-          <span class="line">&#x0A;</span>
-          <span class="line prompt" data-hostname="user@host">user@mevius6&#x003a;&#x223c;&dollar;</span>
-          <span class="line"><span data-char-symbol="➜">&gt;&#x20;</span>
-          <kbd contenteditable="true" spellcheck="false">cd&#x20;&#x002e;&#x002e;</kbd><span class="caret" style="animation: var(--animation-blink);">&#x7c;</span>
-          </span>
-          <span class="line">&#x0D;</span>
-        </code></pre>
-        <!--
-          TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
-          https://www.w3.org/api/; https://api.w3.org/doc
-        -->
-      </section>
+      <web-terminal></web-terminal>
     </main>
 
     <!-- Content Info -->
@@ -1099,141 +1042,12 @@
     </svg>
 
     <!-- Timestamping -->
-    <script type="module" src="js/utils/dts.js"></script>
-
-    <!-- Github REST API -->
-    <script async type="text/javascript">
-      const gh = {},
-        {
-          hostname: GH_API_HOST = 'api.github.com',
-          username: GH_USER = 'mevius6',
-          repo: GH_REPO = 'modus',
-        } = gh;
-
-      // Adds "preconnect" and "dns-prefetch" resource hints
-      ['preconnect', 'dns-prefetch'].forEach((hint, i) => {
-        let link = document.createElement('link');
-        link.rel = hint;
-        link.href = GH_API_HOST;
-        if (i == 0) link.crossOrigin = '';
-        document.head.appendChild(link);
-      });
-
-      const asyncFetchJSON = async (url, options = {}, query = {}) => {
-        const response = await fetch(url, options, query);
-        const json = await response.json();
-
-        if (!response.ok || json.errors) {
-          // console.error(json.errors);
-          const message = `Произошла ошибка: ${response.status}`;
-          throw new Error(message);
-        }
-
-        return json;
-      };
-
-      // https://www.smashingmagazine.com/2022/09/javascript-api-guide/
-      // https://datatracker.ietf.org/doc/html/rfc6570
-      const getRepo = async () => {
-        if (document.visibilityState === 'visible') {
-          try {
-            const request = await asyncFetchJSON(
-              `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`
-            ).then((data) => data.filter((e) => e.name === GH_REPO)[0]);
-
-            const {
-              name,
-              full_name,
-              owner: { login, avatar_url },
-              languages_url,
-              contents_url,
-              labels_url,
-              deployments_url,
-              created_at,
-              updated_at,
-              pushed_at,
-              svn_url,
-              homepage, //= canonical
-              size = 0,
-              visibility,
-              default_branch = 'main',
-            } = await request;
-
-            /* sugar bool */
-            if (name === GH_REPO) {
-              // let upd = new Date(updated_at),
-              //   _l10n = upd.toLocaleDateString(undefined, {…});
-              // repo_upd.textContent = _l10n;
-              let tagCloud = document.querySelector('ul.tag-cloud');
-              let langTags = tagCloud.querySelectorAll('li > .tag');
-              tagCloud.normalize();
-              langTags.forEach((el) => el.normalize());
-
-              // https://www.w3.org/TR/selectors-4/#data-model
-              const getLangs = await asyncFetchJSON(languages_url)
-                // .then((data) => console.table(data))
-                .then((data) => {
-                  let nodes = langTags,
-                    { length: total } = nodes;
-                  // https://dom.spec.whatwg.org/#concept-element-is-value
-                  let chain; // when null/undefined, passes through (itself)
-
-                  Object.keys(data).map((key, i) => {
-                    chain = nodes?.item(i); // ("optional chaining") element
-                    total >= i + 1 // if element’s is value is non-null, then:
-                      ? (nodes.item(i).textContent = key)
-                      : chain ?? // else if is val null ("nullish coalescing")
-                        (tagCloud.appendChild(
-                          nodes.item(0).parentNode.cloneNode(true)
-                        ).firstChild.textContent = key);
-                  });
-                });
-            }
-
-            const {
-              url: deployment_url,
-              task,
-              original_environment: deployment_env,
-              created_at: deployment_created,
-              updated_at: deployment_updated,
-              statuses_url,
-              creator: { login: deployment_creator, type },
-            } = await asyncFetchJSON(deployments_url).then((data) => data[0]);
-
-            const {
-              state,
-              description: status_desc,
-              environment: status_env,
-              target_url,
-            } = await asyncFetchJSON(statuses_url).then((data) => data[0]);
-
-            const dateOptions = {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            };
-
-            const timeOptions = {
-              hour12: false,
-              hour: 'numeric',
-              minute: '2-digit',
-              second: '2-digit',
-            };
-
-            repo_upd.textContent = `${deployment_env}: ${status_desc}
-            on ${new Date(deployment_updated).toLocaleString('en-US', {
-              ...timeOptions,
-              ...dateOptions,
-            })} by ${deployment_creator}`;
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      };
-
-      // const { onload } = window;
-      onload = async (ev) => await getRepo();
+    <script type="text/ecmascript">
+      (async () => {
+        const { DS_L10N, DS_YEAR } = await import("./js/utils/dts.js");
+        copy.dateTime = DS_YEAR; // ISO 8601
+        copy.textContent = DS_YEAR;
+      })();
     </script>
 
     <!-- Scripting
@@ -1244,7 +1058,7 @@
     <script nomodule src="js/main.js"></script>
 
     <!-- TODO Performance measurement -->
-    <script type="text/javascript">
+    <script type="module">
       // end = getTime();
       // info(end);
       // log(`Operation took ${end - start} msec`);
@@ -1252,7 +1066,7 @@
       // https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
       // https://www.smashingmagazine.com/2024/02/reporting-core-web-vitals-performance-api/
       const t1 = performance.now();
-      perf.textContent = `${t1 - t0} millis`; // took in milliseconds.
+      // perf.textContent = `${t1 - t0} millis`; // took in milliseconds.
     </script>
   </body>
 </html>
