@@ -25,7 +25,8 @@ const doc = document,
     onLine,
     // connection: { type: netinfo = undefined },
     geolocation: geo,
-    // https://developer.mozilla.org/en-US/docs/Web/API/GPU
+    // https://www.w3.org/TR/device-memory/
+    deviceMemory: ram,
     // https://gpuweb.github.io/gpuweb/#gpu-interface
     // https://www.w3.org/TR/webgpu/
     gpu
@@ -34,6 +35,8 @@ const doc = document,
 const onloadEv = async (ev) => {
   root.classList.replace('no-js', 'js');
   body.classList.replace('page--loading', 'page--loaded');
+
+  // console.log(gpu.getPreferredCanvasFormat())
 
   const UPD_DTS = new Date(lastModified).toLocaleString(undefined, {
     day:'numeric',
@@ -47,10 +50,10 @@ const onloadEv = async (ev) => {
 
   // console.info(dataset)
   // console.dir(location)
-}
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API
-// https://w3c.github.io/battery/#dom-navigator-getbattery
-// navigator.getBattery().then((battery) => {});
+  // TODO: Battery API
+  // https://w3c.github.io/battery/
+  // https://www.w3.org/TR/battery-status/#examples
+}
 
 window.addEventListener('load', (ev) => onloadEv(ev), true);

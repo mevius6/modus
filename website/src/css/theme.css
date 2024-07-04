@@ -7,6 +7,8 @@
 /* Contains layout, utilities and helper tokens */
 @import url("props/defaults.css") layer(theme);
 
+/* TODO: https://drafts.csswg.org/css-regions/ */
+
 /* TODO Contains custom MQs */
 /* @import url(props/media.css) layer(theme); */
 

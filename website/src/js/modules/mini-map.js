@@ -1,28 +1,49 @@
 const doc = document;
 const vv = window.visualViewport;
 
+// https://drafts.csswg.org/cssom-view/#extensions-to-the-htmlelement-interface
+const header = banner, { offsetHeight: offsetY } = header;
+const { blockSize, paddingBlock } = getComputedStyle(header);
+const insetBlockStart = parseInt(blockSize) + parseInt(paddingBlock) * 2;
+// console.log(insetBlockStart); // w/o borders
+
 // Spec: https://drafts.csswg.org/css-scoping/#default-element-styles
 const sheet = new CSSStyleSheet();
 // https://drafts.csswg.org/css-values-3/#strings
-// sheet.replaceSync("\
-sheet.replaceSync("mini-map {\
-  display: block;z-index: 2;position: sticky;inset-block-start: 0;inset-inline-end: 0;inline-size: fit-content;max-block-size: 100%;padding: var(--spacer-2x);margin-block-start: calc(var(--min-touch-target-size) + 2ch);}\
-");
-sheet.insertRule("#live-preview {\
-  border-radius: 0.5em;\
-  box-shadow: none;\
-  position: sticky;\
-  inset-block: 1em;\
-  padding: 16px;}\
-");
+sheet.replaceSync(`mini-map {\
+  display: block;\
+  z-index: 2;\
+  position: fixed;\
+  inset-block-start: 0;\
+  inset-inline-end: 0;\
+  inline-size: fit-content;\
+  max-block-size: 100%;\
+  padding-inline: var(--spacer-2x, 16px);\
+  margin-block-start: ${ offsetY + 32 }px;
+}`);
+sheet.insertRule(`#live-preview {\
+  position: sticky;
+  inset-block-start: ${ offsetY + 16 }px;
+  box-shadow:
+    rgba(3, 4, 7, 0.12) 0 -1px 2px 0,
+    rgba(3, 4, 7, 0.13) 0 2px 1px -2px,
+    rgba(3, 4, 7, 0.13) 0 5px 5px -2px,
+    rgba(3, 4, 7, 0.14) 0 10px 10px -2px,
+    rgba(3, 4, 7, 0.15) 0 20px 20px -2px,
+    rgba(3, 4, 7, 0.17) 0 40px 40px -2px;
+}`);
 sheet.insertRule("#slider {\
-  border-radius: .375em;\
   position: absolute;\
-  top: 8px;\
-  inset-inline: -.25em;\
+  inset-inline: -.25rem;\
   transform: translateY(0);\
   border: 2px solid var(--apple-blue);\
-  filter: drop-shadow(0 0 0.125rem #aaa);\
+  border-radius: .375em;\
+  filter: drop-shadow(0 0 .125rem #aaa);\
+}");
+sheet.insertRule(":where(#output) {\
+  background-color: var(--background);\
+  border: thin solid var(--apple-beige);\
+  overflow: hidden;\
 }");
 
 const NAME = 'mini-map';
@@ -65,30 +86,31 @@ class MiniMap extends HTMLElement {
       this._pointer = this.querySelector('#slider');
       this._canvas = this.querySelector('#output');
 
+      // TODO MiniMap.side = (LH || RH)
+
       // doc main section (region area) as image source
       this.referencedElement = main; // doc.querySelector('#main');
 
-      const { width: refW, height: refH, top: refTop } = this.referencedElement
-        .getBoundingClientRect();
+      const {
+        width: refWidth, height: refHeight
+      } = this.referencedElement.getBoundingClientRect();
 
-      this.DOMRect = {
-        W: refW,
-        H: refH
+      // obj
+      this.source = {
+        w: refWidth,
+        h: refHeight,
+        // https://drafts.csswg.org/css-values-4/#ratios
+        ratio: refHeight / refWidth,
       }
 
-      this.config = {
-        width: 90,
-        height: Math.floor(90 * (refH / refW)),
-        topScrollBorder: refTop + window.scrollY,
-        viewport: {
-          w: vv.width,
-          h: vv.height,
-          ratio: vv.height / vv.width
-        },
+      this.el = {
+        w: 90,
+        h: Math.floor(90 * this.source.ratio),
       }
-      this.pointerHeight = (this.config.width + 2) *
-        this.config.viewport.ratio *
-        (this.config.viewport.w / this.DOMRect.W);
+
+      this.pointerHeight = (this.el.w + 2) *
+        (vv.height / vv.width) *
+        (vv.width / this.source.w);
     }
   }
 
@@ -100,15 +122,15 @@ class MiniMap extends HTMLElement {
     if (!this.isSupported) return this.removeMap();
 
     const mq = window.matchMedia('(min-width: 74em)');
-    const isNotEnoughSpace = this.config.height + 100 > window.innerHeight || !mq.matches;
+    const isNotEnoughSpace = this.el.h + 100 > window.innerHeight || !mq.matches;
 
     if (isNotEnoughSpace) return this.removeMap();
     mq.addEventListener('change', () => {
       if (!mq.matches) this.parentNode.removeChild(this);
     }, { once: true });
 
-    this._canvas.style.width = `${ this.config.width }px`;
-    this._canvas.style.height = `${ this.config.height }px`;
+    this._canvas.style.width = `${ this.el.w }px`;
+    this._canvas.style.height = `${ this.el.h }px`;
     this._pointer.style.height = `${ this.pointerHeight }px`;
 
     this._setPointerPosition(window.scrollY);
@@ -119,11 +141,11 @@ class MiniMap extends HTMLElement {
   }
 
   _setPointerPosition(scrollY) {
-    const pixelsScrolledIntoMain = window.scrollY - this.config.topScrollBorder;
-    const scrolledIntoRatio = pixelsScrolledIntoMain / this.DOMRect.H;
-    const transform = Math.floor(scrolledIntoRatio * this.config.height);
-    if (scrolledIntoRatio > 0 && transform < this.config.height - this.pointerHeight + 16) {
+    const scrolledIntoRatio = window.scrollY / this.source.h;
+    const transform = Math.floor(scrolledIntoRatio * this.el.h);
+    if (scrolledIntoRatio > 0 && transform < this.el.h - this.pointerHeight) {
       this._pointer.style.transform = `translateY(${ transform }px)`;
+      this._pointer.style.willChange = 'transform';
     }
   }
 }
