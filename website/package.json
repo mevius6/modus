@@ -18,7 +18,7 @@
   "scripts": {
     "serve": "vite serve src --port 8080",
     "start": "vite --host",
-    "build": "npm run clean && vite build --base=./",
+    "build": "npm run clean && vite build src --base=./",
     "clean": "rm -rf public && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
