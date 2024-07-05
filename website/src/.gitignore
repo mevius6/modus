@@ -6,10 +6,8 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
-.pnpm-debug.log*
 
 # Diagnostic reports
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -23,7 +21,6 @@ pids
 
 # Dependency directories
 node_modules/
-jspm_packages/
 
 # Optional cache directories
 .npm
@@ -33,33 +30,11 @@ jspm_packages/
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
-.yarn-integrity
-
 # dotenv environment variable files
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+*.local
 
-# parcel-bundler cache
-.cache
-.parcel-cache
-
-# parcel distributable directory
-public/
-
-# Next.js build output
-.next
-out
-
-# Serverless directories
-.serverless/
-
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.DS_Store

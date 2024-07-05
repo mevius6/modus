@@ -45,27 +45,13 @@ jspm_packages/
 .env.production.local
 .env.local
 
-# parcel-bundler cache
-.cache
-.parcel-cache
-
-# parcel distributable directory
-public/
-
-# Next.js build output
-.next
-out
-
 # Serverless directories
 .serverless/
 
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-.vercel
-
+# Nx
 .nx/installation
 .nx/cache
+
+build/
+out/
+dist/

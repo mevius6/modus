@@ -47,57 +47,36 @@ const doc = document, { documentElement: root } = doc;
   // const nav = await loadNav('.nav-button');
 })();
 
-async function loadNav(control) {
-  const { default: DisclosureForNav } = await import('./modules/nav');
-  // eslint-disable-next-line no-unused-vars
-  const disclosure = new DisclosureForNav(doc.querySelector(control));
-}
+// async function loadNav(control) {
+//   const { default: DisclosureForNav } = await import('./modules/nav');
+//   // eslint-disable-next-line no-unused-vars
+//   const disclosure = new DisclosureForNav(doc.querySelector(control));
+// }
 
-async function loadMap() {
-  // eslint-disable-next-line no-undef
-  const node = map;
-  const loadTrigger = createObserver(node)
-    .then(async () => await import('./modules/map'));
-}
+// async function loadMap() {
+//   // eslint-disable-next-line no-undef
+//   const node = map;
+//   const loadTrigger = createObserver(node)
+//     .then(async () => await import('./modules/map'));
+// }
 
-async function loadTrigger(elementId) { // FIXME
-  let el = doc.getElementById(elementId);
-  let io = await createObserver(el);
-  return io;
-}
+// async function loadTrigger(elementId) { // FIXME
+//   let el = doc.getElementById(elementId);
+//   let io = await createObserver(el);
+//   return io;
+// }
 
-async function createObserver(el, ops={}) {
-  let isIntersecting;
+// async function loadCardFeed() {
+//   const { default: CardFeed } = await import('./modules/card-feed');
 
-  if (Object.entries(ops).length === 0) {
-    ops.root = el.parentNode;
-    ops.rootMargin = '0px';
-    ops.threshold = 0;
-  }
+//   // eslint-disable-next-line no-undef
+//   const firstPost = post1;
+//   const loadTrigger = createObserver(firstPost);
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    for (const entry of entries) {
-      console.log(entries);
-      ({ isIntersecting } = entry);
-      if (isIntersecting) observer.unobserve(entry.target);
-    }
-  });
-  observer.observe(el, ops);
-
-  return isIntersecting;
-}
-
-async function loadCardFeed() {
-  const { default: CardFeed } = await import('./modules/card-feed');
-
-  // eslint-disable-next-line no-undef
-  const firstPost = post1;
-  const loadTrigger = createObserver(firstPost);
-
-  loadTrigger.then(() => {
-    // eslint-disable-next-line no-unused-vars
-    const feed = new CardFeed(firstPost.parentNode);
-  });
-}
+//   loadTrigger.then(() => {
+//     // eslint-disable-next-line no-unused-vars
+//     const feed = new CardFeed(firstPost.parentNode);
+//   });
+// }
 
 /* eslint-enable no-unused-vars */

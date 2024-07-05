@@ -28,3 +28,24 @@ export const asyncFetchJSON = async (url, options = {}, query = {}) => {
 
   return json;
 };
+
+export async function createObserver(el, ops={}) {
+  let isIntersecting;
+
+  if (Object.entries(ops).length === 0) {
+    ops.root = el.parentNode;
+    ops.rootMargin = '0px';
+    ops.threshold = 0;
+  }
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      console.log(entries);
+      ({ isIntersecting } = entry);
+      if (isIntersecting) observer.unobserve(entry.target);
+    }
+  });
+  observer.observe(el, ops);
+
+  return isIntersecting;
+}

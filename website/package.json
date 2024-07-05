@@ -16,9 +16,8 @@
     }
   },
   "scripts": {
-    "nx:dev": "npx nx serve app",
-    "nx:prod": "npx nx build app --prod",
-    "start": "vite",
+    "serve": "vite serve src --port 8080",
+    "start": "vite --host",
     "build": "npm run clean && vite build --base=./",
     "clean": "rm -rf public && rm -rf .vercel/cache",
     "copy": "cp -r src/static/* ./public",
