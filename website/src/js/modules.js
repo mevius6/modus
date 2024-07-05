@@ -36,20 +36,11 @@ const doc = document, { documentElement: root } = doc;
     parsedUrl.pathname === '/' ||
     parsedUrl.pathname === '/index.html'
   ) {
+    const cursor = await import('./modules/cursor.js');
     // const carousel = await import('./modules/carousel');
     // const map = await import('./modules/map');
     const minimap = await import('./modules/mini-map.js');
     const webterm = await import('./modules/web-terminal.js');
-
-    const update = ({ x, y }) => {
-      root.style.setProperty('--x', Math.floor(x))
-      root.style.setProperty('--y', Math.floor(y))
-      // doc.body.dataset.mouseX = x
-      // doc.body.dataset.mouseY = y
-    }
-    const onPointerEvent = update;
-
-    doc.body.addEventListener('pointermove', async (ev) => onPointerEvent(ev), false);
   }
 
   const sidenav = await import('./modules/sidenav.js');

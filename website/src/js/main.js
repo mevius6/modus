@@ -16,6 +16,17 @@ const doc = document,
     // https://drafts.csswg.org/cssom-view/#visualViewport
     // https://drafts.csswg.org/cssom-view/#dom-window-visualviewport
     visualViewport: vv,
+    innerHeight: vh,
+    innerWidth: vw,
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+    // https://html.spec.whatwg.org/dev/webstorage.html#the-storage-interface
+    // https://gist.github.com/paulirish/5558557
+    localStorage: store,
+    // https://html.spec.whatwg.org/multipage/nav-history-apis.html#window
+    // https://webidl.spec.whatwg.org/#LegacyWindowAlias
+    // https://html.spec.whatwg.org/multipage/nav-history-apis.html#windowproxy
+    // https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface
+    ...w
   } = window,
   // https://wicg.github.io/netinfo/
   // https://html.spec.whatwg.org/multipage/system-state.html
@@ -36,6 +47,7 @@ const onloadEv = async (ev) => {
   root.classList.replace('no-js', 'js');
   body.classList.replace('page--loading', 'page--loaded');
 
+  // console.log(w.devicePixelRatio)
   // console.log(gpu.getPreferredCanvasFormat())
 
   const UPD_DTS = new Date(lastModified).toLocaleString(undefined, {

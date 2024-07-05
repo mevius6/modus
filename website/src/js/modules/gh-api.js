@@ -1,5 +1,19 @@
 import { asyncFetchJSON } from "../utils.js";
 
+const dateOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}
+
+const timeOptions = {
+  hour12: false,
+  hour: 'numeric',
+  minute: '2-digit',
+  second: '2-digit',
+}
+
 /**
  * GitHub REST API
  *
@@ -26,8 +40,13 @@ const gh = {},
 
 // https://www.smashingmagazine.com/2022/09/javascript-api-guide/
 // https://datatracker.ietf.org/doc/html/rfc6570
+
 export const getRepo = async () => {
-  // if (document.visibilityState === 'visible') {
+  // TODO: Avoid new reqs while the dev's in god mode…
+  // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
+  // https://javascript.info/fetch-abort
+
+  // if (!sessionStorage.getItem('deployment')) {
     try {
       const request = await asyncFetchJSON(
         `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`
@@ -99,27 +118,16 @@ export const getRepo = async () => {
         target_url,
       } = await asyncFetchJSON(statuses_url).then((data) => data[0]);
 
-      const dateOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      };
-
-      const timeOptions = {
-        hour12: false,
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-      };
-
       repo_upd.textContent = `${deployment_env}: ${status_desc}
       on ${new Date(deployment_updated).toLocaleString('en-US', {
         ...timeOptions,
         ...dateOptions,
       })} by ${deployment_creator}`;
+
+      sessionStorage.setItem('deployment', deployment_updated)
     } catch (error) {
-      console.error(error);
+      // console.error(error);
+      console.error(error.message);
     }
   // }
 };

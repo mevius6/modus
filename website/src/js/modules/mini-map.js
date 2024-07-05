@@ -1,5 +1,14 @@
 const doc = document;
 const vv = window.visualViewport;
+const {
+  innerWidth: vw,
+  innerHeight: vh,
+  scrollX: pageX,
+  scrollY: pageY
+} = window;
+
+const MIN_WIDTH = '(min-width: 74em)';
+const mq = window.matchMedia(MIN_WIDTH);
 
 // https://drafts.csswg.org/cssom-view/#extensions-to-the-htmlelement-interface
 const header = banner, { offsetHeight: offsetY } = header;
@@ -38,7 +47,8 @@ sheet.insertRule("#slider {\
   transform: translateY(0);\
   border: 2px solid var(--apple-blue);\
   border-radius: .375em;\
-  filter: drop-shadow(0 0 .125rem #aaa);\
+  background-color: var(--background-a15);\
+  filter: drop-shadow(0 0 .125rem #aaa) contrast(1.2);\
 }");
 sheet.insertRule(":where(#output) {\
   background-color: var(--background);\
@@ -59,7 +69,7 @@ template.innerHTML = `
 /**
  * [vsc]: https://code.visualstudio.com/docs/getstarted/userinterface#_minimap
  *
- * @see https://www.stefanjudis.com/a-firefox-only-minimap/
+ * @see https://wwwindow.stefanjudis.com/a-firefox-only-minimap/
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/element
  * @see https://drafts.csswg.org/css-images-4/#element-notation
  */
@@ -86,31 +96,33 @@ class MiniMap extends HTMLElement {
       this._pointer = this.querySelector('#slider');
       this._canvas = this.querySelector('#output');
 
-      // TODO MiniMap.side = (LH || RH)
+      // TODO
+      // MiniMap.sliderDraggable = true
+      // MiniMap.side = (LH || RH)
 
       // doc main section (region area) as image source
       this.referencedElement = main; // doc.querySelector('#main');
 
       const {
-        width: refWidth, height: refHeight
+        width: refW, height: refH
       } = this.referencedElement.getBoundingClientRect();
 
       // obj
       this.source = {
-        w: refWidth,
-        h: refHeight,
+        W: refW,
+        H: refH,
         // https://drafts.csswg.org/css-values-4/#ratios
-        ratio: refHeight / refWidth,
+        ratio: refH / refW,
       }
 
       this.el = {
-        w: 90,
-        h: Math.floor(90 * this.source.ratio),
+        W: 90,
+        H: Math.floor(90 * this.source.ratio),
       }
 
-      this.pointerHeight = (this.el.w + 2) *
+      this.pointerHeight = (this.el.W + 2) *
         (vv.height / vv.width) *
-        (vv.width / this.source.w);
+        (vv.width / this.source.W);
     }
   }
 
@@ -121,31 +133,44 @@ class MiniMap extends HTMLElement {
   connectedCallback() {
     if (!this.isSupported) return this.removeMap();
 
-    const mq = window.matchMedia('(min-width: 74em)');
-    const isNotEnoughSpace = this.el.h + 100 > window.innerHeight || !mq.matches;
+    const isNotEnoughSpace = this.el.H + 100 > vh || !mq.matches;
 
     if (isNotEnoughSpace) return this.removeMap();
     mq.addEventListener('change', () => {
       if (!mq.matches) this.parentNode.removeChild(this);
     }, { once: true });
 
-    this._canvas.style.width = `${ this.el.w }px`;
-    this._canvas.style.height = `${ this.el.h }px`;
+    this._canvas.style.width = `${ this.el.W }px`;
+    this._canvas.style.height = `${ this.el.H }px`;
     this._pointer.style.height = `${ this.pointerHeight }px`;
 
-    this._setPointerPosition(window.scrollY);
+    this._setPointerPosition();
 
     window.addEventListener('scroll', () => {
-      this._setPointerPosition(window.scrollY);
+      this._setPointerPosition();
     }, { passive: true });
   }
 
-  _setPointerPosition(scrollY) {
-    const scrolledIntoRatio = window.scrollY / this.source.h;
-    const transform = Math.floor(scrolledIntoRatio * this.el.h);
-    if (scrolledIntoRatio > 0 && transform < this.el.h - this.pointerHeight) {
-      this._pointer.style.transform = `translateY(${ transform }px)`;
-      this._pointer.style.willChange = 'transform';
+  async _setPointerPosition() {
+    // dynamically updated
+    const scrolledIntoRatio = window.scrollY / this.source.H;
+    const transform = Math.floor(scrolledIntoRatio * this.el.H);
+    if (scrolledIntoRatio > 0 && transform < (this.el.H - this.pointerHeight)) {
+      // FIXME: https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html
+      // this._pointer.style.transform = `translateY(${ transform }px)`;
+      // this._pointer.style.willChange = 'transform';
+
+      // TODO MiniMap.sliderSmoothAnim = true
+      // https://drafts.csswg.org/web-animations-1/#example-c881d871
+      const animation = this._pointer.animate(
+        { transform: `translateY(${ transform }px)` },
+        { duration: 300, fill: 'forwards' }
+      );
+      await animation.finished;
+      // commitStyles will record the style up to and including `animation` and
+      // update elem’s specified style with the result.
+      animation.commitStyles();
+      animation.cancel();
     }
   }
 }

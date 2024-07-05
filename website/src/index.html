@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--
+<!-- https://www.iana.org/help/example-domains
 ╭───────────────────────────────────────────╮
 │                                           │
 │   URL: https://native-things.vercel.app   │
@@ -37,6 +37,9 @@
   https://indieauth.spec.indieweb.org/
   https://microformats.io/
   https://html.spec.whatwg.org/#microdata
+  https://en.wikipedia.org/wiki/Webring
+  https://neocities.org/browse
+  […]
 -->
 <!-- TODO Update HEAD
   See:
@@ -262,16 +265,9 @@
     <!-- The main stylesheet -->
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 
-    <!-- TODO Constructable stylesheets and CSS module scripts
-      See:
-          https://github.com/WICG/construct-stylesheets
-          https://www.w3.org/TR/cssom-1/#dom-cssstylesheet-cssstylesheet
-          https://web.dev/articles/constructable-stylesheets
-          https://fullystacked.net/constructable/
-          https://fullystacked.net/import-attributes/
-    -->
-    <style>
-      @import url(css/comps/custom-cursor.css);
+    <style title="custom cursor">
+      /* Go → 'js/modules/cssModule.js' */
+      @import 'css/comps/cursor.css';
     </style>
 
     <!-- JavaScript modules -->
@@ -313,8 +309,9 @@
     <!-- Global Site Navigation (sidebar) -->
     <aside id="sidenav-open">
       <!-- https://webaim.org/techniques/skipnav/ -->
-      <!-- a[href=#main].skip-link{Skip to main content &DownArrowBar;} -->
-
+      <a href="#main" class="skip-link sr-only">
+        Skip to main content &DownArrowBar;
+      </a>
       <!-- https://kb.daisy.org/publishing/docs/html/dpub-aria/doc-toc.html -->
       <nav id="Nav" class="nav" aria-label="Primary Navigation" role="doc-toc">
         <ul
@@ -856,6 +853,7 @@
               Think different.
               <!-- <s>ﬀ</s> -->
             </legend>
+            <!-- https://web.archive.org/web/20010520140719/http://www.apple.com/hardware/ -->
             <button type="submit">(Re)think again</button>
           </fieldset>
         </form>
@@ -930,8 +928,8 @@
       </small>
     </footer>
 
-    <!-- TODO https://indieweb.org/link-preview -->
-    <span class="custom-cursor" aria-hidden="true">
+    <!-- TODO proto: https://indieweb.org/link-preview -->
+    <span id="cursor" class="custom-cursor" aria-hidden="true">
       <span class="preview">
         <!--
           https://generative-placeholders.glitch.me/
@@ -1062,6 +1060,15 @@
       // end = getTime();
       // info(end);
       // log(`Operation took ${end - start} msec`);
+
+      // https://dom.spec.whatwg.org/#ref-for-dom-event-timestamp
+      // onload = (ev) => log(ev.timeStamp);
+
+      // https://drafts.csswg.org/web-animations-1/#dom-animation-currenttime
+      // log(document.timeline.currentTime);
+
+      // https://w3c.github.io/hr-time/#dom-domhighrestimestamp
+      // log(self.performance.now());
 
       // https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
       // https://www.smashingmagazine.com/2024/02/reporting-core-web-vitals-performance-api/

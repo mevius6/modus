@@ -3,6 +3,7 @@ import { DS_L10N } from "../utils/dts.js";
 
 const doc = document;
 const store = localStorage;
+
 /**
  * @namespace console
  *
@@ -18,7 +19,7 @@ const store = localStorage;
  * @see
  * [Google Chrome], [Safari] and [Firefox] DevTools implementations
  */
-// const {log, dir} = console;
+const {log, dir} = console;
 
 const NAME = 'web-terminal';
 const MODUS = 'modus';
@@ -65,6 +66,10 @@ export class WebTerminal extends HTMLElement {
   constructor() {
     super();
 
+    // doc.addEventListener('DOMContentLoaded', (event) => {
+    //   this.ts = event.timeStamp.toLocaleString('en-US', {});
+    // });
+
     this._initializeDOM();
   }
 
@@ -73,15 +78,14 @@ export class WebTerminal extends HTMLElement {
     // shadowRoot.appendChild(template.content.cloneNode(true));
     this.appendChild(template.content.cloneNode(true));
 
-    this._getRepo();
+    this._getData();
   }
 
-  async _getRepo() {
+  async _getData() {
     // const req = fetch(`https://${GH_API}/users/${MEVIUS6}/repos?sort=pushed`)
     //   .then((res) => res.json())
     //   .then((data) => data.filter((e) => e.name === MODUS));
 
-    // FIXME
     await getRepo();
   }
 

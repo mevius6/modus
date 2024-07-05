@@ -183,7 +183,8 @@
   }
 
   [id] {
-    scroll-margin-top: var(--scroll-margin, 2rem);
+    /* TODO
+    scroll-margin-top: var(--scroll-margin, 2rem); */
   }
 }
 
