@@ -3,6 +3,15 @@
    https://prism-theme-vars.netlify.app/
 */
 
+/* https://drafts.csswg.org/css-ui/#example-781effce */
+/* https://drafts.csswg.org/css-ui/#example-92372fb4 */
+.old-screen {
+  color: green;
+  background: repeating-linear-gradient(
+    #030 0px, #030 1px, #020 1px, #020 3px
+  );
+}
+
 code:has(> span[class~=line]) {
   display: grid;
   padding: 0;

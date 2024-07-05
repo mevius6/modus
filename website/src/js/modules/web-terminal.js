@@ -23,6 +23,10 @@ const {log, dir} = console;
 
 const NAME = 'web-terminal';
 const MODUS = 'modus';
+// https://geist-ui.dev/en-us/components/icons
+const SVG_ICON = `
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" shape-rendering="geometricPrecision" viewBox="0 0 24 24" height="24" width="24" style="color: currentcolor;"><path d="M4 17l6-6-6-6M12 19h8"></path></svg>
+`;
 
 //--> web-terminal-template.tpl
 const template = doc.createElement('template');

@@ -105,7 +105,7 @@
       let { log, info, timeLog, timeEnd } = console;
       /**
        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime#reduced_time_precision
-       * ```
+       * ```js
        * var now = Date.now();
        * let end, start;
        * start = getTime();
@@ -278,7 +278,7 @@
     <script nomodule src="js/modules.js"></script>
   </head>
 
-  <!-- TODO https://www.w3.org/TR/wcag-3.0/ -->
+  <!-- TODO a11y: https://www.w3.org/TR/wcag-3.0/ -->
   <body
     class="page page--loading"
     itemscope
@@ -903,7 +903,9 @@
         </div>
       </section>
 
-      <web-terminal></web-terminal>
+      <div class="content-wrap">
+        <web-terminal></web-terminal>
+      </div>
     </main>
 
     <!-- Content Info -->
@@ -929,6 +931,7 @@
 
     <!-- TODO Proto: https://indieweb.org/link-preview -->
     <span id="cursor" class="custom-cursor" aria-hidden="true">
+      <!-- https://geist-ui.dev/en-us/components/icons -->
       <span class="preview">
         <!--
           https://generative-placeholders.glitch.me/
@@ -936,14 +939,14 @@
         -->
         <span class="preview__img">
           <img
-            src="images/qr-codes/03.png"
+            src="images/qr-codes/02.png"
             width="768"
             height="768"
             loading="lazy"
             decoding="async"
           />
           <img
-            src="images/qr-codes/05.png"
+            src="images/qr-codes/04.png"
             width="384"
             height="384"
             loading="lazy"

@@ -1,5 +1,7 @@
 /* https://drafts.csswg.org/css-ui/#cursor */
-body:has(> .custom-cursor) * { cursor: none !important }
+@media (hover) and (pointer: fine) {
+  body:has(> .custom-cursor) * { cursor: url(../../images/pointer.svg) 2 2, none !important }
+}
 
 @layer custom-cursor {
   .custom-cursor {
@@ -30,7 +32,7 @@ body:has(> .custom-cursor) * { cursor: none !important }
       --_scale: 1;
       --_size: 24px;
       display: block;
-      background: white;
+      background-color: var(--accent-a50);
       border-radius: 50%;
 
       &::after {
@@ -116,19 +118,20 @@ body:has(> .custom-cursor) * { cursor: none !important }
   }
 
   .preview__img {
+    --_size: calc(100cqi / 8);
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 100px;
-    height: 100px;
-    background: white;
-    border: 1px solid white;
+    width: var(--_size);
+    height: var(--_size);
+    /* background: white; */
+    /* border: 1px solid white; */
     transition: translate .2s, clip-path .2s;
     translate: -50% calc(var(--_active, 0) * -2rem);
     clip-path: inset(
       calc(100% - 12px)
       calc(50% - 6px) 0
-      calc(50% - 6px) round 100px
+      calc(50% - 6px) round var(--_size)
     );
   }
 
