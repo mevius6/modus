@@ -11,5 +11,6 @@
  * - https://fullystacked.net/import-attributes/
  * - https://github.com/css-modules/css-modules/tree/master/docs
  * - https://drafts.csswg.org/css-cascade-5/#at-import
+ * - https://vitejs.dev/guide/features.html#css-modules
  */
 let _fixme;

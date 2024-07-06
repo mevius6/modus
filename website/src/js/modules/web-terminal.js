@@ -35,6 +35,7 @@ template.innerHTML = `
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
     @import 'css/console.css' layer(terminal);
   </style>
+  <header class="h3"><span>${SVG_ICON}</span>${NAME}</header>
   <!-- Console session -->
   <pre><code data-lang="shell" data-shell="zsh" class="session">
     <span class="line sep">=============================</span>

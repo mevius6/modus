@@ -8,7 +8,7 @@
 .old-screen {
   color: green;
   background: repeating-linear-gradient(
-    #030 0px, #030 1px, #020 1px, #020 3px
+    #030 0, #030 1px, #020 1px, #020 3px
   );
 }
 
@@ -54,9 +54,10 @@ code > [class~="line"] {
   }
 }
 
-section:has(> pre) {
+div:has(pre) {
   display: grid;
   place-content: start;
+  max-inline-size: 80ch;
   margin-inline: var(--gutter);
 }
 
@@ -65,6 +66,7 @@ section:has(> pre) {
   hyphens: none;
   white-space: pre-wrap;
 
+  /* TODO https://drafts.csswg.org/css-highlight-api/#custom-highlight */
   & mark {
     color: var(--foreground);
     text-shadow: 0 0 .1em var(--accent-shade);
@@ -85,7 +87,7 @@ section:has(> pre) {
 
     & .prompt {
       color: var(--accent);
-      text-shadow: 0 0 .125em var(--accent-shade);
+      text-shadow: 0 0 min(8px, .25em) var(--accent-shade);
 
       &::after { text-shadow: none }
     }
@@ -123,6 +125,7 @@ section:has(> pre) {
   line-height: 150%;
   letter-spacing: .02em;
   font-variation-settings: "wght" 350;
+
   /* font-feature-settings:
     "liga" on,
     "clig" on,

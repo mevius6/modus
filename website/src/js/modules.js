@@ -41,6 +41,8 @@ const doc = document, { documentElement: root } = doc;
     // const map = await import('./modules/map');
     const minimap = await import('./modules/mini-map.js');
     const webterm = await import('./modules/web-terminal.js');
+
+    // ? https://github.blog/tag/homepage-design/
   }
 
   const sidenav = await import('./modules/sidenav.js');
@@ -49,34 +51,7 @@ const doc = document, { documentElement: root } = doc;
 
 // async function loadNav(control) {
 //   const { default: DisclosureForNav } = await import('./modules/nav');
-//   // eslint-disable-next-line no-unused-vars
 //   const disclosure = new DisclosureForNav(doc.querySelector(control));
-// }
-
-// async function loadMap() {
-//   // eslint-disable-next-line no-undef
-//   const node = map;
-//   const loadTrigger = createObserver(node)
-//     .then(async () => await import('./modules/map'));
-// }
-
-// async function loadTrigger(elementId) { // FIXME
-//   let el = doc.getElementById(elementId);
-//   let io = await createObserver(el);
-//   return io;
-// }
-
-// async function loadCardFeed() {
-//   const { default: CardFeed } = await import('./modules/card-feed');
-
-//   // eslint-disable-next-line no-undef
-//   const firstPost = post1;
-//   const loadTrigger = createObserver(firstPost);
-
-//   loadTrigger.then(() => {
-//     // eslint-disable-next-line no-unused-vars
-//     const feed = new CardFeed(firstPost.parentNode);
-//   });
 // }
 
 /* eslint-enable no-unused-vars */

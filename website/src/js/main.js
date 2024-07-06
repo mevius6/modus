@@ -4,6 +4,7 @@ const doc = document,
     // https://datatracker.ietf.org/doc/html/rfc6265
     documentElement: root, body, cookie,
     // https://url.spec.whatwg.org/#api
+    // datatracker.ietf.org/doc/html/rfc6570
     documentURI: DOC_URL, URL, location,
     timeline: tl,
     lastModified,
@@ -13,6 +14,7 @@ const doc = document,
     // https://drafts.csswg.org/cssom/#css-style-sheet-collections
   } = doc, { dataset } = root,
   {
+    onload,
     // https://drafts.csswg.org/cssom-view/#visualViewport
     // https://drafts.csswg.org/cssom-view/#dom-window-visualviewport
     visualViewport: vv,
@@ -28,11 +30,11 @@ const doc = document,
     // https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface
     ...w
   } = window,
-  // https://wicg.github.io/netinfo/
-  // https://html.spec.whatwg.org/multipage/system-state.html
-  // https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-online-dev
   {
     userAgent: ua,
+    // https://wicg.github.io/netinfo/
+    // https://html.spec.whatwg.org/multipage/system-state.html
+    // https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-online-dev
     onLine,
     // connection: { type: netinfo = undefined },
     geolocation: geo,
@@ -43,22 +45,24 @@ const doc = document,
     gpu
   } = navigator;
 
-const onloadEv = async (ev) => {
-  root.classList.replace('no-js', 'js');
-  body.classList.replace('page--loading', 'page--loaded');
-
-  // console.log(w.devicePixelRatio)
-  // console.log(gpu.getPreferredCanvasFormat())
-
-  const UPD_DTS = new Date(lastModified).toLocaleString(undefined, {
+// hard-coded timestamps
+const PAGE_TS_NAME = 'data-page-modified';
+const PAGE_TS_L10N = new Date(lastModified)
+  .toLocaleString(undefined, {
     day:'numeric',
     month: 'long',
     weekday: 'short',
     year: 'numeric',
   });
 
-  // Последнее обновление:
-  root.setAttribute('data-page-modified', UPD_DTS);
+const onloadEv = async (ev) => {
+  root.classList.replace('no-js', 'js');
+  body.classList.replace('page--loading', 'page--loaded');
+
+  root.setAttribute(PAGE_TS_NAME, PAGE_TS_L10N);
+
+  // console.log(w.devicePixelRatio)
+  // console.log(gpu.getPreferredCanvasFormat())
 
   // console.info(dataset)
   // console.dir(location)
@@ -68,4 +72,4 @@ const onloadEv = async (ev) => {
   // https://www.w3.org/TR/battery-status/#examples
 }
 
-window.addEventListener('load', (ev) => onloadEv(ev), true);
+window.addEventListener('load', (ev) => onloadEv(ev), {once: true});

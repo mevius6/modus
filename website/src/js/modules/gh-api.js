@@ -23,6 +23,8 @@ const timeOptions = {
  * - https://docs.github.com/rest/meta
  * - https://docs.github.com/ru/rest/search/ 😈
  * - https://github.com/octokit/octokit.js/#readme
+ * - https://cli.github.com/manual/gh_api
+ *
  * - https://css-tricks.com/using-fetch/
  * - https://curl.se/download.html
  *
@@ -38,15 +40,18 @@ const gh = {},
     repo: GH_REPO = 'modus',
   } = gh;
 
-// https://www.smashingmagazine.com/2022/09/javascript-api-guide/
-// https://datatracker.ietf.org/doc/html/rfc6570
-
+/**
+ * @todo Avoid new reqs while the dev's in god mode, eg.
+ * 1. Separate function for each endpoint
+ * 2. Asynchronous data fetch and storage (KV)
+ * 3. Check remembered values after page reloading
+ * 4. If the values have not changed, abort fetching.
+ * @see
+ * - https://developer.mozilla.org/en-US/docs/Web/API/AbortController
+ * - https://javascript.info/fetch-abort
+ */
 export const getRepo = async () => {
-  // TODO: Avoid new reqs while the dev's in god mode…
-  // https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-  // https://javascript.info/fetch-abort
-
-  // if (!sessionStorage.getItem('deployment')) {
+  // if (!sessionStorage.getItem('deployment')) { // TODO
     try {
       const request = await asyncFetchJSON(
         `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`
@@ -131,6 +136,3 @@ export const getRepo = async () => {
     }
   // }
 };
-
-// const { onload } = window;
-// onload = async (ev) => await getRepo();
