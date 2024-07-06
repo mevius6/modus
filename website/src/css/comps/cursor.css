@@ -1,6 +1,6 @@
 /* https://drafts.csswg.org/css-ui/#cursor */
 @media (hover) and (pointer: fine) {
-  body:has(> .custom-cursor) * { cursor: url(../../images/pointer.svg) 2 2, none !important }
+  body:has(> .custom-cursor) * { cursor: url("../../pointer.svg") 2 2, none !important }
 }
 
 @layer custom-cursor {
@@ -124,8 +124,8 @@
     left: 50%;
     width: var(--_size);
     height: var(--_size);
-    /* background: white; */
-    /* border: 1px solid white; */
+    background: transparent;
+    border: 1px solid transparent;
     transition: translate .2s, clip-path .2s;
     translate: -50% calc(var(--_active, 0) * -2rem);
     clip-path: inset(

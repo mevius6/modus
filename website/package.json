@@ -16,10 +16,10 @@
     }
   },
   "scripts": {
-    "serve": "vite serve src --port 8080",
     "start": "vite src --host",
-    "build": "npm run clean && vite build src --base=./",
-    "clean": "rm -rf src/dist && rm -rf src/.vercel/cache",
+    "build": "vite build",
+    "preview": "vite preview --port 8080",
+    "clean": "rm -rf dist && rm -rf src/dist",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "npx eslint \"./src/js/*.js\" --fix",

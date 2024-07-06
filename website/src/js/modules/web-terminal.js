@@ -42,9 +42,9 @@ template.innerHTML = `
     <span class="line sep">=============================</span>
     <!-- Github repo data -->
     <span class="line"><mark>&emsp14;💫&emsp14;</mark>
-    &#x20;<samp><span id="repo_upd"></span></samp></span>
+    &#x20;<slot id="repo_upd"></slot></span>
     <!-- <span class="line"><mark>&emsp14;⏱️&emsp14;</mark>
-    &#x20;Page speed:&#x20;<samp id="perf">&marker;</samp> -->
+    &#x20;Page speed:&#x20;<slot id="perf">&marker;</slot> -->
     </span>
     <!-- Last modification / current time -->
     <span class="line"><mark>&emsp14;🌿&emsp14;</mark>

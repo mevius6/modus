@@ -1,7 +1,11 @@
 /* Style guides:
-   https://www.jetbrains.com/lp/mono/
-   https://prism-theme-vars.netlify.app/
-*/
+ * https://www.jetbrains.com/lp/mono/
+ * https://input.djr.com/preview/
+ * https://prism-theme-vars.netlify.app/
+ */
+[class*=code] {
+  font-family: JetBrains Mono, var(--ui-mono);
+}
 
 /* https://drafts.csswg.org/css-ui/#example-781effce */
 /* https://drafts.csswg.org/css-ui/#example-92372fb4 */
@@ -10,6 +14,50 @@
   background: repeating-linear-gradient(
     #030 0, #030 1px, #020 1px, #020 3px
   );
+}
+
+[class*='line comment'] {
+  font-family: JetBrains Mono, var(--ui-mono);
+  font-size: 0.75rem;
+  color: var(--foreground-a50);
+  font-synthesis-style: none;
+  text-align: center;
+  gap: 1ch;
+
+  &::before,
+  &::after {
+    font-style: normal;
+    border-width: 2px;
+  }
+
+  &:is([data-lang='html']) {
+    --comment-open: '<!--';
+    --comment-close: '-->';
+
+    &::before {
+      text-align: right;
+
+      /* https://www.w3.org/International/questions/qa-escapes.en */
+      content: '\3C\21\2D\2D'; /* is an CSS escape sequence */
+    }
+
+    &::after {
+      text-align: left;
+      content: '\2D\2D\3E';
+    }
+  }
+
+  &:is([data-lang='css']) {
+    &::before {
+      text-align: right;
+      content: '\2F\2A';
+    }
+
+    &::after {
+      text-align: left;
+      content: '\2D\2D\3E';
+    }
+  }
 }
 
 code:has(> span[class~=line]) {
@@ -54,7 +102,7 @@ code > [class~="line"] {
   }
 }
 
-div:has(pre) {
+:is(div, section):has(> web-termminal) {
   display: grid;
   place-content: start;
   max-inline-size: 80ch;
@@ -65,6 +113,7 @@ div:has(pre) {
   font-family: ui-monospace,SF Mono,SFMono-Regular,Menlo,Monaco,monospace;
   hyphens: none;
   white-space: pre-wrap;
+  -moz-control-character-visibility: visible;
 
   /* TODO https://drafts.csswg.org/css-highlight-api/#custom-highlight */
   & mark {

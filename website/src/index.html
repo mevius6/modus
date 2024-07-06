@@ -466,9 +466,10 @@
       id="main"
       itemprop="mainEntity"
       itemid="https://native-things.vercel.app"
+      class="bg-noise"
     >
       <!-- https://html.spec.whatwg.org/#article-or-section -->
-      <section class="grid bg-noise graph-paper --show-landmarks">
+      <section id="region1" class="grid graph-paper --show-landmarks">
         <!-- Hero (generic / local banner) -->
         <div id="hero" class="container relpos items-center init-reveal">
           <hgroup class="grid__content self-center">
@@ -499,48 +500,6 @@
             >
               Website Boilerplate<wbr />
 
-              <style type="text/css">
-                [class*='line comment'] {
-                  font-family: JetBrains Mono, var(--ui-mono);
-                  font-size: 0.75rem;
-                  color: var(--foreground-a50);
-                  font-synthesis-style: none;
-                  text-align: center;
-                  gap: 1ch;
-
-                  &::before,
-                  &::after {
-                    border: none;
-                    font-style: normal;
-                  }
-
-                  &:is([data-lang='html']) {
-                    --comment-open: '<!--';
-                    --comment-close: '-->';
-
-                    &::before {
-                      /* https://www.w3.org/International/questions/qa-escapes.en */
-                      content: '\3C\21\2D\2D'; /* is an CSS escape sequence */
-                      text-align: right;
-                    }
-                    &::after {
-                      content: '\2D\2D\3E';
-                      text-align: left;
-                    }
-                  }
-
-                  &:is([data-lang='css']) {
-                    &::before {
-                      content: '\2F\2A';
-                      text-align: right;
-                    }
-                    &::after {
-                      content: '\2D\2D\3E';
-                      text-align: left;
-                    }
-                  }
-                }
-              </style>
               <i class="abspos inset-start keyline comment" data-lang="html">
                 <!-- <span>&lt;&excl;&dash;&dash;&nbsp;</span> -->
                 with lots of comments
@@ -877,9 +836,10 @@
         </div>
       </section>
 
-      <div>
+      <section id="region2" aria-hidden="true">
+        <h2 class="sr-only">Terminal</h2>
         <web-terminal></web-terminal>
-      </div>
+      </section>
     </main>
 
     <!-- Content Info -->

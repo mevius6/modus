@@ -1,17 +1,25 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
-// https://vitejs.dev/config/server-options.html
-// import dns from 'node:dns'
-// dns.setDefaultResultOrder('verbatim')
-
 // https://github.com/cosmiconfig/cosmiconfig
 // https://vitejs.dev/config/
 export default defineConfig({
-  // https://github.com/posthtml/posthtml
-  // https://github.com/posthtml/htmlnano
-  // https://github.com/svg/svgo
-  // indexHtmlTransforms: [{ omit }],
+  root: process.cwd(),
+  base: '/',
+  html: { // omit
+    // https://github.com/posthtml/posthtml
+    // https://github.com/posthtml/htmlnano
+    // https://github.com/svg/svgo
+  },
+  css: {
+    transformer: 'postcss',
+    postcss: {
+      from: './src/css/*.css',
+      to: './dist/css/*.css'
+    },
+    // lightningcss: {…}
+  },
+  // https://vitejs.dev/config/server-options.html
   server: {
     port: 3030,
   },
@@ -19,15 +27,26 @@ export default defineConfig({
     port: 8080,
   },
   build: {
-    minify: 'esbuild',
-    // cssCodeSplit: false,
+    base: './',
+    target: 'esnext',
+    outDir: 'dist',
+    cssCodeSplit: true,
     // https://lightningcss.dev/minification.html
-    cssMinify: 'lightningcss',
-    // https://rollupjs.org/
+    // cssMinify: 'lightningcss',
+    // https://esbuild.github.io/api/
+    minify: 'esbuild',
     rollupOptions: {
-      // input: {
-      //   main: resolve(__dirname, 'index.html'),
-      // },
+      input: {
+        // entryAlias
+        main: resolve(__dirname, 'src/index.html'),
+      },
+      output: {
+        paths: {
+          'dist/*': './src/*'
+        },
+        dir: 'dist'
+      }
     },
-  }
+    // emptyOutDir: false,
+  },
 })

@@ -1,6 +1,6 @@
 /**
  * @file Web Worker 🚧
- * @desc Worker Runtimes are the new standard
+ * @abstract Worker Runtimes are the new standard
  * for writing HTTP servers in JavaScript.
 *
 * [Web workers spec]: https://html.spec.whatwg.org/multipage/workers.html
