@@ -19,9 +19,9 @@ export default defineConfig({
     port: 8080,
   },
   build: {
-    cssCodeSplit: false,
+    // cssCodeSplit: false,
     // https://lightningcss.dev/minification.html
-    cssMinify: 'lightningcss',
+    // cssMinify: 'lightningcss',
     // https://rollupjs.org/
     rollupOptions: {
       input: {
