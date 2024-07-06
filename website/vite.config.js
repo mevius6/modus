@@ -13,10 +13,10 @@ export default defineConfig({
   },
   css: {
     transformer: 'postcss',
-    postcss: {
-      from: './src/css/*.css',
-      to: './dist/css/*.css'
-    },
+    // postcss: {
+    //   from: './src/css/*.css',
+    //   to: './dist/css/*.css'
+    // },
     // lightningcss: {…}
   },
   // https://vitejs.dev/config/server-options.html
@@ -38,12 +38,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         // entryAlias
-        main: resolve(__dirname, 'src/index.html'),
+        main: resolve(__dirname, 'index.html'),
       },
       output: {
-        paths: {
-          'dist/*': './src/*'
-        },
         dir: 'dist'
       }
     },
