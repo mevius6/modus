@@ -63,9 +63,9 @@
     <meta name="mobile-web-app-capable" content="yes" />
 
     <!-- https://www.rfc-editor.org/rfc/rfc9239#section-6.2 -->
-    <script type="text/ecmascript">
+    <!-- <script type="text/ecmascript">
       // document.documentElement.className="js";
-    </script>
+    </script> -->
 
     <!-- TODO Performance measurement
       See:
@@ -112,9 +112,9 @@
           https://vercel.com/templates/next.js/ai-emoji-generator
           https://emojis.sh/
     -->
-    <link rel="icon" href="./favicon.ico" sizes="any" />
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="icon" href="/src/favicon.ico" sizes="any" />
+    <link rel="icon" href="/src/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/src/apple-touch-icon.png" />
     <!-- link:touch[sizes="180x180"] -->
 
     <!-- TODO
@@ -123,7 +123,7 @@
       https://www.w3.org/TR/appmanifest/#icon-masks
       https://maskable.app/
     -->
-    <link rel="manifest" href="./src/site.webmanifest" />
+    <link rel="manifest" href="/src/site.webmanifest" />
     <!-- link:mf -->
     <!-- meta:msapp -->
     <!-- meta:apple -->
@@ -151,8 +151,11 @@
     <meta property="og:description" content="↬ Summary of the page content." />
     <meta property="og:url" content="https://native-things.vercel.app/" />
     <meta property="og:site_name" content="Website Boilerplate" />
-    <meta property="og:image" content="/images/ogp_common@2x.jpg" />
-    <meta property="og:image:secure_url" content="/images/ogp_common@2x.jpg" />
+    <meta property="og:image" content="/src/images/ogp_common@2x.jpg" />
+    <meta
+      property="og:image:secure_url"
+      content="/src/images/ogp_common@2x.jpg"
+    />
     <meta property="og:image:type" content="image/jpeg" />
 
     <!-- TODO
@@ -204,7 +207,7 @@
     -->
     <link
       rel="preload"
-      href="./src/fonts/RoslindaleCyrillicVariable.woff2"
+      href="/src/fonts/RoslindaleCyrillicVariable.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -222,9 +225,9 @@
         /* font-style: oblique 0deg 1deg; */
         font-synthesis: none;
         font-weight: 200 900;
-        src: url(./src/fonts/RoslindaleCyrillicVariable.woff2) format(woff2)
+        src: url(/src/fonts/RoslindaleCyrillicVariable.woff2) format(woff2)
             tech(variations),
-          url(./src/fonts/RoslindaleCyrillicVariable.woff) format(woff)
+          url(/src/fonts/RoslindaleCyrillicVariable.woff) format(woff)
             tech(variations);
         unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00A9, U+00AB,
           U+00AD-00B0, U+00B4, U+00B6-00B8, U+00BB, U+00BF-0137, U+0139-0148,
@@ -250,13 +253,13 @@
     <!-- The main stylesheet -->
     <link
       rel="stylesheet"
-      href="./src/css/main.css"
+      href="/src/css/main.css"
       type="text/css"
       media="all"
     />
 
     <style type="text/css">
-      @import './src/css/comps/cursor.css';
+      @import '/src/css/comps/cursor.css';
     </style>
 
     <!-- JavaScript modules -->
@@ -264,8 +267,7 @@
       https://html.spec.whatwg.org/#link-type-modulepreload
       https://html.spec.whatwg.org/multipage/webappapis.html#module-map
     -->
-    <script defer type="module" src="./src/js/modules.js"></script>
-    <!-- <script nomodule src="…"></script> -->
+    <script defer type="module" src="/src/js/modules.js"></script>
   </head>
 
   <!-- TODO a11y: https://www.w3.org/TR/wcag-3.0/
@@ -282,7 +284,7 @@
         https://html.spec.whatwg.org/multipage/scripting.html
       -->
       <style>
-        @import url(./src/css/comps/theme-switch.css);
+        @import url(/src/css/comps/theme-switch.css);
       </style>
 
       <dialog id="alert" class="flow" open>
@@ -985,7 +987,7 @@
     <!-- Timestamping -->
     <script type="text/ecmascript">
       (async () => {
-        const { DS_L10N, DS_YEAR } = await import("./src/js/utils/dts.js");
+        const { DS_L10N, DS_YEAR } = await import("/src/js/utils/dts.js");
         copy.dateTime = DS_YEAR; // ISO 8601
         copy.textContent = DS_YEAR;
       })();
@@ -995,7 +997,8 @@
       https://html.spec.whatwg.org/dev/scripting.html
       https://html.spec.whatwg.org/#link-type-modulepreload
     -->
-    <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
+    <!-- <script nomodule src="/src/js/main.js"></script> -->
 
     <!-- TODO Performance measurement -->
     <script type="module">

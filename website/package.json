@@ -18,7 +18,7 @@
   "scripts": {
     "start": "vite src --host",
     "build": "vite build",
-    "preview": "vite preview --port 8080",
+    "serve": "vite preview --port 8080",
     "clean": "rm -rf dist && rm -rf src/dist",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
+    "postcss-preset-env": "^9.5.16",
     "stylelint-order": "^6.0.4",
     "vite": "^5.3.2"
   }

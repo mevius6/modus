@@ -1,5 +1,19 @@
-import { resolve } from 'node:path'
+// import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
+
+/**
+ * @todo Study…
+ *
+ * @see
+ * - [Awesome Vite](https://github.com/vitejs/awesome-vite)
+ * - [Vite MPA](https://vitejs.dev/guide/build.html#multi-page-app)
+ * - [Vite PWA](https://vite-pwa-org.netlify.app/)
+ * - [Vite SSR](https://vitejs.dev/guide/ssr.html)
+ * - [SSR Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue)
+ * - [SWC](https://swc.rs/)
+ * - [esbuild try](https://esbuild.github.io/try/)
+ */
+let _overview;
 
 // https://github.com/cosmiconfig/cosmiconfig
 // https://vitejs.dev/config/
@@ -12,14 +26,14 @@ export default defineConfig({
     // https://github.com/svg/svgo
   },
   css: {
-    transformer: 'postcss',
-    // postcss: {
-    //   from: './src/css/*.css',
-    //   to: './dist/css/*.css'
-    // },
+    modules: 'false',
+    // https://vitejs.dev/guide/features.html#css
+    // transformer: 'postcss'
+    postcss: './postcss.config.js',
+    // preprocessorOptions: {…},
+    // https://vitejs.dev/guide/features.html#lightning-css
     // lightningcss: {…}
   },
-  // https://vitejs.dev/config/server-options.html
   server: {
     port: 3030,
   },
@@ -30,20 +44,34 @@ export default defineConfig({
     base: './',
     target: 'esnext',
     outDir: 'dist',
-    cssCodeSplit: true,
+    assetsDir: 'assets',
+    assetsInlineLimit: 0,
+    cssCodeSplit: false,
+    cssTarget: false,
+    // cssMinify: true,
     // https://lightningcss.dev/minification.html
     // cssMinify: 'lightningcss',
     // https://esbuild.github.io/api/
-    minify: 'esbuild',
-    rollupOptions: {
-      input: {
-        // entryAlias
-        main: resolve(__dirname, 'index.html'),
-      },
-      output: {
-        dir: 'dist'
-      }
-    },
-    // emptyOutDir: false,
+    // minify: 'esbuild',
+    // manifest: true,
+    // rollupOptions: {
+    //   input: '/src/index.html',
+    //   output: {
+    //     // https://evanw.github.io/source-map-visualization/
+    //     // sourcemap: 'hidden',
+    //     dir: 'dist',
+    //   },
+    // },
+    // emptyOutDir: true,
+    // copyPublicDir: true,
   },
+  publicDir: 'public',
+  // esbuild: { loader: 'css' }
+  experimental: {
+    // https://vitejs.dev/guide/build.html#advanced-base-options
+    // renderBuiltUrl(filename, { hostId, hostType, type }) {…},
+  },
+  plugins: [
+    // https://vitejs.dev/guide/api-plugin.html#transformindexhtml
+  ]
 })
