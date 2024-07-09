@@ -1,8 +1,6 @@
-// import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
-
 /**
- * @todo Study…
+ * @todo Study SSR
+ * @file Vite {@link https://vitejs.dev/config/ config}
  *
  * @see
  * - [Awesome Vite](https://github.com/vitejs/awesome-vite)
@@ -12,66 +10,34 @@ import { defineConfig } from 'vite'
  * - [SSR Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue)
  * - [SWC](https://swc.rs/)
  * - [esbuild try](https://esbuild.github.io/try/)
+ *
+ * @see
+ * - https://github.com/cosmiconfig/cosmiconfig
+ * - https://github.com/posthtml/posthtml
+ * - https://github.com/posthtml/htmlnano
+ * - https://github.com/cssnano/cssnano
+ * - https://github.com/postcss/postcss#usage
+ * - https://github.com/svg/svgo
+ * - https://vitejs.dev/guide/features.html#css
+ * - https://vitejs.dev/guide/features.html#lightning-css
  */
 let _overview;
 
-// https://github.com/cosmiconfig/cosmiconfig
-// https://vitejs.dev/config/
-export default defineConfig({
-  root: process.cwd(),
-  base: '/',
-  html: { // omit
-    // https://github.com/posthtml/posthtml
-    // https://github.com/posthtml/htmlnano
-    // https://github.com/svg/svgo
-  },
-  css: {
-    modules: 'false',
-    // https://vitejs.dev/guide/features.html#css
-    // transformer: 'postcss'
-    postcss: './postcss.config.js',
-    // preprocessorOptions: {…},
-    // https://vitejs.dev/guide/features.html#lightning-css
-    // lightningcss: {…}
-  },
-  server: {
-    port: 3030,
-  },
-  preview: {
-    port: 8080,
-  },
+/** @type {import('vite').UserConfig} */
+export default {
+  // css: { omit },
   build: {
-    base: './',
     target: 'esnext',
+    modulePreload: {polyfill: false},
     outDir: 'dist',
     assetsDir: 'assets',
     assetsInlineLimit: 0,
     cssCodeSplit: false,
     cssTarget: false,
-    // cssMinify: true,
-    // https://lightningcss.dev/minification.html
-    // cssMinify: 'lightningcss',
-    // https://esbuild.github.io/api/
-    // minify: 'esbuild',
-    // manifest: true,
-    // rollupOptions: {
-    //   input: '/src/index.html',
-    //   output: {
-    //     // https://evanw.github.io/source-map-visualization/
-    //     // sourcemap: 'hidden',
-    //     dir: 'dist',
-    //   },
-    // },
-    // emptyOutDir: true,
-    // copyPublicDir: true,
+    cssMinify: false,
+    minify: 'esbuild',
+    // https://github.com/vitejs/vite/discussions/13421#discussioncomment-6081692
+    // rollupOptions: { input: {}, output: {} },
+    manifest: true,
   },
-  publicDir: 'public',
-  // esbuild: { loader: 'css' }
-  experimental: {
-    // https://vitejs.dev/guide/build.html#advanced-base-options
-    // renderBuiltUrl(filename, { hostId, hostType, type }) {…},
-  },
-  plugins: [
-    // https://vitejs.dev/guide/api-plugin.html#transformindexhtml
-  ]
-})
+}

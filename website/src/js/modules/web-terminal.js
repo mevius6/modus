@@ -33,7 +33,7 @@ const template = doc.createElement('template');
 template.innerHTML = `
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-    @import 'css/console.css' layer(terminal);
+    @import '/src/css/console.css' layer(terminal);
   </style>
   <!-- Console session -->
   <pre><code data-lang="shell" data-shell="zsh" class="session">

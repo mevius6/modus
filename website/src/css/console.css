@@ -16,6 +16,7 @@
   );
 }
 
+/* https://drafts.csswg.org/selectors/#attribute-substrings */
 [class*='line comment'] {
   font-family: JetBrains Mono, var(--ui-mono);
   font-size: 0.75rem;

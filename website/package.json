@@ -16,20 +16,23 @@
     }
   },
   "scripts": {
-    "start": "vite src --host",
-    "build": "vite build",
+    "start": "vite --host",
+    "build": "vite build --base=./ --debug transform",
     "serve": "vite preview --port 8080",
+    "serve:src": "vite src preview --port 8080",
+    "build:css": "postcss src/css/main.css -o main.min.css",
+    "lib:props": "postcss src/css/props/index.css -o props.min.css",
     "clean": "rm -rf dist && rm -rf src/dist",
-    "copy": "cp -r src/static/* ./public",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "npx eslint \"./src/js/*.js\" --fix",
-    "lint:css": "npx stylelint \"./src/scss/**/*.{css,scss}\" --fix"
+    "copy": "cp -r src/static/* ./public"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
+    "cssnano": "^7.0.4",
     "eslint": "^9.5.0",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
     "postcss-preset-env": "^9.5.16",
     "stylelint-order": "^6.0.4",
     "vite": "^5.3.2"

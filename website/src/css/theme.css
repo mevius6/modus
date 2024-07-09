@@ -12,7 +12,7 @@
 /* TODO Contains custom MQs */
 /* @import url(props/media.css) layer(theme); */
 
-@layer theme { /* cog; setup theme defaults */
+@layer theme { /* config; setup theme defaults */
   @layer color, props, support;
 
   /* https://drafts.csswg.org/selectors-3/#x */
@@ -183,8 +183,7 @@
   }
 
   [id] {
-    /* TODO
-    scroll-margin-top: var(--scroll-margin, 2rem); */
+    scroll-margin-top: var(--scroll-margin, 0);
   }
 }
 

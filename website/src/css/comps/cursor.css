@@ -1,5 +1,6 @@
 /* https://drafts.csswg.org/css-ui/#cursor */
 @media (hover) and (pointer: fine) {
+  /* TODO https://adactio.com/journal/15075 */
   body:has(> .custom-cursor) * { cursor: url("../../pointer.svg") 2 2, none !important }
 }
 

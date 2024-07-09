@@ -1,3 +1,6 @@
+// FIXME
+// import styles from "/src/css/main.css";
+
 // https://dom.spec.whatwg.org/#interface-document
 const doc = document,
   {
