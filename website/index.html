@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- #region -->
 <!-- ⛬
   https://www.w3.org/Provider/Style/
   https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
@@ -36,6 +37,7 @@
   Code:
     <link as="image" rel="preload" href="doc-cover.jpg" fetchpriority="high" />
 -->
+<!-- #endregion -->
 <!-- ╔═══════════════════════════════╗
      ║ SOURCE CODE HEAVILY ANNOTATED ║
      ╚═══════════════════════════════╝ -->
@@ -51,13 +53,9 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- https://www.rfc-editor.org/rfc/rfc9239#section-6.2 -->
-    <!-- <script type="text/ecmascript">
-      // document.documentElement.className="js";
-    </script> -->
-
     <!-- TODO Performance measurement
       See:
+          https://www.speedscope.app/
           https://wicg.github.io/element-timing/
           https://w3c.github.io/hr-time/
           https://w3c.github.io/event-timing/
@@ -94,7 +92,8 @@
     <title>Document</title>
     <!-- ================================================== -->
     <meta name="author" content="" />
-    <!--
+
+    <!-- TODO Custom emoji favicon
       See:
           https://css-tricks.com/emoji-as-a-favicon/
           https://realfavicongenerator.net/
@@ -105,7 +104,9 @@
     <link rel="icon" href="/src/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/src/apple-touch-icon.png" />
     <!-- link:touch[sizes="180x180"] -->
-
+    <!--
+    MARK: PWA assets
+    -->
     <!-- TODO
       https://w3c.github.io/manifest/
       https://www.w3.org/TR/appmanifest/
@@ -127,7 +128,10 @@
       content="#333"
     />
     <meta name="color-scheme" content="dark light" />
-    <!-- SEO [S] -->
+    <!-- #region SEO -->
+    <!--
+    MARK: head > SEO
+    -->
     <meta name="description" content="↬ Summary of the page content." />
     <!-- meta:kw[content='aria,css,html,js,json,ogp,schema,svg'] -->
     <meta name="robots" content="follow,index,max-image-preview:standard" />
@@ -140,14 +144,12 @@
     <meta property="og:description" content="↬ Summary of the page content." />
     <meta property="og:url" content="https://native-things.vercel.app/" />
     <meta property="og:site_name" content="Website Boilerplate" />
-    <meta property="og:image" content="/src/images/ogp_common@2x.jpg" />
-    <meta
-      property="og:image:secure_url"
-      content="/src/images/ogp_common@2x.jpg"
-    />
+    <meta property="og:image" content="/public/ogp_common@2x.jpg" />
+    <meta property="og:image:secure_url" content="/public/ogp_common@2x.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
 
     <!-- TODO
+      https://www.leighhalliday.com/serverless-og-image
       https://vercel.com/docs/functions/og-image-generation
       https://vercel.com/guides/displaying-article-headlines-in-social-previews
       https://www.zachleat.com/web/automatic-opengraph/
@@ -180,9 +182,11 @@
     -->
     <!-- meta:twcard -->
     <!-- jsonld:site -->
-    <!-- SEO [E] -->
+    <!-- #endregion -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-
+    <!--
+    MARK: head > CSS
+    -->
     <!-- FIXME FOUC
       See: https://en.wikipedia.org/wiki/Flash_of_unstyled_content
     -->
@@ -233,26 +237,31 @@
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
     </style>
-
     <!-- TODO Extract critical CSS
       See:
           https://web.dev/articles/codelab-extract-and-inline-critical-css
           https://web.dev/learn/performance/understanding-the-critical-path
     -->
     <!-- The main stylesheet -->
+    <!-- #region -->
+    <!-- 1. when dev server -->
     <!-- <link
       rel="stylesheet"
       href="/src/css/main.css"
       type="text/css"
       media="all"
     /> -->
+    <!-- 2. when prod build -->
     <script defer type="module">
+      // CSS-module import w/ Vite
+      // https://vitejs.dev/blog/announcing-vite5-1.html#improved-support-for-css-url
       import styleSheet from '/src/css/main.css';
     </script>
-
+    <!-- 3. inject inline -->
     <style type="text/css">
       @import '/src/css/comps/cursor.css';
     </style>
+    <!-- #endregion -->
 
     <!-- JavaScript modules -->
     <!--
@@ -262,7 +271,8 @@
     <script defer type="module" src="/src/js/modules.js"></script>
   </head>
 
-  <!-- TODO a11y: https://www.w3.org/TR/wcag-3.0/
+  <!-- TODO See new a11y guides (WCAG 3)
+       https://www.w3.org/TR/wcag-3.0/
        https://dequeuniversity.com/rules/axe/4.9/landmark-one-main -->
   <body
     class="page page--loading"
@@ -291,6 +301,7 @@
     </noscript>
 
     <!-- SVG Icon Sprite -->
+    <!-- #region sprites -->
     <svg
       xmlns="https://www.w3.org/2000/svg"
       xmlns:xlink="https://www.w3.org/1999/xlink"
@@ -734,6 +745,7 @@
         ></path>
       </symbol>
     </svg>
+    <!-- #endregion -->
 
     <!-- Global Site Navigation (sidebar) -->
     <aside id="sidenav-open">
@@ -777,7 +789,7 @@
             </a>
           </li>
           <li id="5" class="nav__item">
-            <a href="./src/test.html" class="nav__link" title="" itemprop="url">
+            <a href="src/test.html" class="nav__link" title="" itemprop="url">
               <span class="nav__link-text" itemprop="name" data-icon="🚧"
                 >Test</span
               >
@@ -786,7 +798,7 @@
           <li id="6" class="nav__item">
             <!-- https://en.wikipedia.org/wiki/Link_rot -->
             <a
-              href="./src/404.html"
+              href="src/404.html"
               class="nav__link"
               title="Dead inside"
               itemprop="url"
@@ -801,19 +813,20 @@
         </ul>
       </nav>
       <a
-        href="#"
+        href="JavaScript:void(0);"
         id="sidenav-close"
         title="Close Menu"
         aria-label="Close Menu"
         onchange="history.go(-1)"
       ></a>
-      <!-- FIXME: Restoring the scroll position
+      <!-- FIXME Restoring the scroll position
         https://html.spec.whatwg.org/#the-history-interface
         https://html.spec.whatwg.org/#scroll-restoration-mode
       -->
     </aside>
 
     <!-- Global Site Header (site-wide banner) -->
+    <!-- #region header -->
     <header
       id="banner"
       class="page__header fixpos inset-start mx-auto d-flex items-center justify-between border-gradient --voygb bg-canvas"
@@ -845,12 +858,12 @@
       </a>
 
       <!-- https://html.spec.whatwg.org/multipage/popover.html -->
-      <button popovertarget="m">
+      <button popovertarget="config">
         <!-- https://en.wikipedia.org/wiki/Gear
              https://en.wikipedia.org/wiki/System_Settings -->
         <svg class="icon"><use xlink:href="#gear-icon"></use></svg>
       </button>
-      <div role="menu" id="m" popover>
+      <div role="menu" id="config" popover>
         <theme-switch role="menuitem" tabindex="-1" autofocus>
           <noscript>
             <form part="form">
@@ -914,11 +927,15 @@
         </label>
       </div>
     </header>
+    <!-- #endregion -->
 
+    <!-- TODO Rendered view of the outline
+         https://html.spec.whatwg.org/multipage/sections.html#outline -->
     <mini-map></mini-map>
 
-    <!-- TODO https://html.spec.whatwg.org/multipage/sections.html#outline -->
-
+    <!--
+    MARK: main
+    -->
     <!-- Main Content -->
     <main
       id="main"
@@ -1337,7 +1354,7 @@
       </small>
     </footer>
 
-    <!-- TODO Proto: https://indieweb.org/link-preview -->
+    <!-- TODO https://indieweb.org/link-preview -->
     <span id="cursor" class="custom-cursor" aria-hidden="true">
       <!-- https://geist-ui.dev/en-us/components/icons -->
       <span class="preview">
@@ -1455,9 +1472,9 @@
     <!-- Timestamping -->
     <script type="text/ecmascript">
       (async () => {
-        const { DS_L10N, DS_YEAR } = await import("/src/js/utils/dts.js");
-        copy.dateTime = DS_YEAR; // ISO 8601
-        copy.textContent = DS_YEAR;
+        const { YEAR } = await import("/src/js/utils/formatter.js");
+        copy.dateTime = YEAR; // ISO 8601
+        copy.textContent = copy.dateTime;
       })();
     </script>
 

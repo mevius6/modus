@@ -1,6 +1,3 @@
-// FIXME
-// import styles from "/src/css/main.css";
-
 // https://dom.spec.whatwg.org/#interface-document
 const doc = document,
   {
@@ -70,7 +67,7 @@ const onloadEv = async (ev) => {
   // console.info(dataset)
   // console.dir(location)
 
-  // TODO: Battery API
+  // TODO Battery API test
   // https://w3c.github.io/battery/
   // https://www.w3.org/TR/battery-status/#examples
 }

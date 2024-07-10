@@ -1,4 +1,6 @@
-/* See → https://1linelayouts.glitch.me/ */
+/* See
+   → https://1linelayouts.glitch.me/
+   → https://every-layout.dev/layouts/ */
 
 /* https://drafts.csswg.org/css-grid-2/ */
 .d-grid { display: grid; }
@@ -51,6 +53,7 @@
   gap: 1ch;
 }
 
+/* https://every-layout.dev/layouts/stack/ */
 .grid-stack { grid: [stack] / [stack] }
 
 /* See → https://www.youtube.com/watch?v=6qpEOBkDr88 */

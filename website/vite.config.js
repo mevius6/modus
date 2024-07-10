@@ -1,5 +1,8 @@
+// import { cwd, env } from 'node:process'
+// import { resolve } from 'node:path'
+
 /**
- * @todo Study SSR
+ * @todo Study SSR and Express
  * @file Vite {@link https://vitejs.dev/config/ config}
  *
  * @see
@@ -25,6 +28,13 @@ let _overview;
 
 /** @type {import('vite').UserConfig} */
 export default {
+  // https://vitejs.dev/guide/#index-html-and-project-root
+  // https://github.com/vitejs/vite/discussions/9400
+  // root: cwd(),
+  server: {
+    port: 3030,
+    // https: { cert: env.CERT, key: env.KEY, }
+  },
   // css: { omit },
   build: {
     target: 'esnext',
@@ -37,7 +47,9 @@ export default {
     cssMinify: false,
     minify: 'esbuild',
     // https://github.com/vitejs/vite/discussions/13421#discussioncomment-6081692
-    // rollupOptions: { input: {}, output: {} },
+    // rollupOptions: { input: {}, output: {}, },
     manifest: true,
   },
+  // https://stackoverflow.com/questions/69701743/how-can-i-configure-vites-dev-server-to-give-404-errors
+  // appType: 'mpa',
 }

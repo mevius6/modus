@@ -6,8 +6,8 @@
   "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",
   "config": {
     "repo": "https://github.com/mevius6/${npm_package_name}",
-    "cert": {
-      "add": "$(grep '^CERT_PATH' .env | cut -d '=' -f2)",
+    "https": {
+      "cert": "$(grep '^CERT_PATH' .env | cut -d '=' -f2)",
       "key": "$(grep '^KEY_PATH' .env | cut -d '=' -f2)"
     },
     "port": {
@@ -17,11 +17,8 @@
   },
   "scripts": {
     "start": "vite --host",
-    "build": "vite build --base=./ --debug transform",
-    "serve": "vite preview --port 8080",
-    "serve:src": "vite src preview --port 8080",
-    "build:css": "postcss src/css/main.css -o main.min.css",
-    "lib:props": "postcss src/css/props/index.css -o props.min.css",
+    "build": "vite build --base=./",
+    "serve": "vite preview",
     "clean": "rm -rf dist && rm -rf src/dist",
     "copy": "cp -r src/static/* ./public"
   },

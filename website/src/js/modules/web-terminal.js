@@ -1,8 +1,10 @@
 import { getRepo } from "./gh-api.js";
-import { DS_L10N } from "../utils/dts.js";
+import { dateFormatter } from "../utils/formatter.js";
 
 const doc = document;
 const store = localStorage;
+
+const date = dateFormatter(new Date(doc.lastModified));
 
 /**
  * @namespace console
@@ -48,7 +50,7 @@ template.innerHTML = `
     </span>
     <!-- Last modification / current time -->
     <span class="line"><mark>&emsp14;🌿&emsp14;</mark>
-    &#x20;Last modified:&#x20;<samp id="time">${DS_L10N}</samp></span>
+    &#x20;Last modified:&#x20;<samp id="time">${date}</samp></span>
     <span class="line">&#x0A;</span>
     <span class="line prompt" data-hostname="user@host">user@mevius6&#x003a;&#x223c;&dollar;</span>
     <span class="line"><span data-char-symbol="➜">&gt;&#x20;</span>

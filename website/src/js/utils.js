@@ -5,6 +5,8 @@
  */
 export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// https://swr.vercel.app/docs/api
+const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 export const asyncFetchJSON = async (url, options = {}, query = {}) => {
   const response = await fetch(url, options, query);
@@ -48,4 +50,21 @@ export async function createObserver(el, ops={}) {
   observer.observe(el, ops);
 
   return isIntersecting;
+}
+
+// https://dev.to/anmolbaranwal/15-amazing-things-you-can-do-with-simple-javascript-g88
+function detectMobile() {
+  if (
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }

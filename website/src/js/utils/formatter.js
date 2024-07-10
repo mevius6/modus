@@ -32,11 +32,6 @@ const timeOptions = {
   second: '2-digit',
 };
 
-const options = {
-  ...timeOptions,
-  ...dateOptions,
-}
-
 /**
  * @summary Doc load state management.
  *
@@ -51,7 +46,12 @@ const options = {
  * [HTTP WG Spec RFC7232][http]
  */
 const docLastModified = new Date(document.lastModified);
-const DS_L10N = docLastModified.toLocaleDateString(undefined, options);
-const DS_YEAR = docLastModified.getUTCFullYear();
 
-export {DS_L10N, DS_YEAR}
+// const lang = document.documentElement.lang || undefined;
+
+export const dateFormatter = (date = docLastModified, l10n = undefined) => date.toLocaleDateString(l10n, {
+  ...timeOptions,
+  ...dateOptions,
+});
+
+export const YEAR = docLastModified.getUTCFullYear();

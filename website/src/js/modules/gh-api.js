@@ -33,12 +33,16 @@ const timeOptions = {
  * $ curl https://api.github.com/emojis
  * ```
  */
-const gh = {},
+const gh = {}, endpoints = {},
   {
     hostname: GH_API_HOST = 'api.github.com',
     username: GH_USER = 'mevius6',
     repo: GH_REPO = 'modus',
-  } = gh;
+  } = gh,
+  {
+    repos = `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`,
+    repo = `https://${GH_API_HOST}/repos/${GH_USER}/${GH_REPO}`,
+  } = endpoints
 
 /**
  * @todo Avoid new reqs while the dev's in god mode, eg.
@@ -53,9 +57,11 @@ const gh = {},
 export const getRepo = async () => {
   // if (!sessionStorage.getItem('deployment')) { // TODO
     try {
-      const request = await asyncFetchJSON(
-        `https://${GH_API_HOST}/users/${GH_USER}/repos?sort=pushed`
-      ).then((data) => data.filter((e) => e.name === GH_REPO)[0]);
+      // const request = await asyncFetchJSON(repos).then(
+      //   (data) => data.filter((e) => e.name === GH_REPO)[0]
+      // );
+
+      const request = await asyncFetchJSON(repo).then((data) => data);
 
       const {
         name,
