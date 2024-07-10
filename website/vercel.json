@@ -1,5 +1,6 @@
 {
   "cleanUrls": false,
+  "rewrites": [{ "source": "/(.*)", "destination": "/404.js" }],
   "headers": [
     {
       "source": "/src/(.*)",
