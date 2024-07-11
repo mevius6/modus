@@ -35,10 +35,6 @@ const SVG_ICON = `
 
 //--> web-terminal-template.tpl
 const template = doc.createElement('template');
-{/* <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-  @import '/src/css/console.css' layer(terminal);
-</style> */}
 template.innerHTML = `
   <!-- Console session -->
   <pre><code data-lang="shell" data-shell="zsh" class="session">
