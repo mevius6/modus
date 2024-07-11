@@ -2,6 +2,10 @@
 export function GET(request) {
   return new Response().status(404).json({ message: 'Not Found' });
 };
+
 export const config = {
   runtime: 'nodejs',
 };
+
+// @file vercel.json
+// { "rewrites": [{ "source": "/(.*)", "destination": "/api/route.js" }] }

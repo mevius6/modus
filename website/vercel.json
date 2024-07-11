@@ -1,6 +1,9 @@
 {
   "cleanUrls": false,
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/route.js" }],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
+  ],
   "headers": [
     {
       "source": "/src/(.*)",
