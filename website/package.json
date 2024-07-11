@@ -18,8 +18,7 @@
   "scripts": {
     "start": "vite --host",
     "build": "vite build --base=./",
-    "serve": "vite preview",
-    "clean": "rm -rf dist && rm -rf src/dist",
+    "clean": "rm -rf dist",
     "copy": "cp -r src/static/* ./public"
   },
   "author": "",

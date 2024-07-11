@@ -53,6 +53,7 @@ const gh = {}, endpoints = {},
  * @see
  * - https://developer.mozilla.org/en-US/docs/Web/API/AbortController
  * - https://javascript.info/fetch-abort
+ * - https://vercel.com/docs/functions/runtimes#limited-date-api
  */
 export const getRepo = async () => {
   // if (!sessionStorage.getItem('deployment')) { // TODO

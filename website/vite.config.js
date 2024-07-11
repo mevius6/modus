@@ -42,7 +42,7 @@ export default {
     outDir: 'dist',
     assetsDir: 'assets',
     assetsInlineLimit: 0,
-    cssCodeSplit: false,
+    // cssCodeSplit: false,
     cssTarget: false,
     cssMinify: false,
     minify: 'esbuild',

@@ -16,7 +16,7 @@ export const asyncFetchJSON = async (url, options = {}, query = {}) => {
   // https://infra.spec.whatwg.org/#tuples
   // https://fetch.spec.whatwg.org/#statuses
   // https://fetch.spec.whatwg.org/#ref-for-dom-response-status
-  const statusInstance = { // eg
+  const statusInstance = { // example
     code: 403,
     message: 'API rate limit exceeded'
   }

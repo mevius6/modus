@@ -501,16 +501,16 @@
 
 ul:has(.tag) {
   max-inline-size: 100%;
-  overflow: auto hidden;
   margin-block-start: .125cqb;
+  overflow: auto hidden;
 }
 
 b:is(.tag, .keyword, .kw) {
   font-size: .75rem;
   white-space: nowrap;
   font-variation-settings: "opsz" 16, "wght" 700, "ital" 0;
-  background-image: var(--lin-gradient-convex);
   background-color: transparent;
+  background-image: var(--lin-gradient-convex);
   backdrop-filter: blur(3px);
 }
 

@@ -86,7 +86,7 @@ class MiniMap extends HTMLElement {
       sheet.insertRule("[id=output] { background: canvas -moz-element(#main) no-repeat scroll center / contain; }");
       doc.adoptedStyleSheets = [sheet];
 
-      // FIXME: https://drafts.csswg.org/css-images-4/#ex-invalid%20image
+      // FIXME https://drafts.csswg.org/css-images-4/#ex-invalid%20image
       // const shadowRoot = this.attachShadow({ mode: 'open' });
       // shadowRoot.appendChild(template.content.cloneNode(true));
       // shadowRoot.adoptedStyleSheets = [sheet];
@@ -156,7 +156,7 @@ class MiniMap extends HTMLElement {
     const scrolledIntoRatio = window.scrollY / this.source.H;
     const transform = Math.floor(scrolledIntoRatio * this.el.H);
     if (scrolledIntoRatio > 0 && transform < (this.el.H - this.pointerHeight)) {
-      // FIXME: https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html
+      // FIXME https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html
       // this._pointer.style.transform = `translateY(${ transform }px)`;
       // this._pointer.style.willChange = 'transform';
 

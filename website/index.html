@@ -1327,6 +1327,10 @@
         </div>
       </section>
 
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+        @import '/src/css/console.css' layer(terminal);
+      </style>
       <section id="region2" aria-hidden="true">
         <h2 class="sr-only">Terminal</h2>
         <web-terminal></web-terminal>
@@ -1472,8 +1476,8 @@
     <!-- Timestamping -->
     <script type="text/ecmascript">
       (async () => {
-        const { YEAR } = await import("/src/js/utils/formatter.js");
-        copy.dateTime = YEAR; // ISO 8601
+        const { UTC_Y } = await import("/src/js/utils/formatter.js");
+        copy.dateTime = UTC_Y; // ISO 8601
         copy.textContent = copy.dateTime;
       })();
     </script>

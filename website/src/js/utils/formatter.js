@@ -49,9 +49,9 @@ const docLastModified = new Date(document.lastModified);
 
 // const lang = document.documentElement.lang || undefined;
 
-export const dateFormatter = (date = docLastModified, l10n = undefined) => date.toLocaleDateString(l10n, {
+export const formatter = (date = docLastModified, l10n = undefined) => date.toLocaleDateString(l10n, {
   ...timeOptions,
   ...dateOptions,
 });
 
-export const YEAR = docLastModified.getUTCFullYear();
+export const UTC_Y = docLastModified.getUTCFullYear();

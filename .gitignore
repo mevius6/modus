@@ -2,6 +2,8 @@
 .vercel/
 .vscode/
 
+libs/
+
 *.code-workspace
 
 # Logs

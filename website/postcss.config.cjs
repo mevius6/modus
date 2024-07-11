@@ -12,7 +12,7 @@ module.exports = {
       // https://preset-env.netlify.app/features/#stage-0
       stage: 0,
       enableClientSidePolyfills: false,
-      autoprefixer: false,
+      // autoprefixer: false,
       features: {
         'cascade-layers': false,
         'clamp': false,

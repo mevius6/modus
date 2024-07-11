@@ -1,10 +1,12 @@
 import { getRepo } from "./gh-api.js";
-import { dateFormatter } from "../utils/formatter.js";
+import { formatter } from "../utils/formatter.js";
+
+// import * as styles from '/src/css/console.css';
 
 const doc = document;
 const store = localStorage;
 
-const date = dateFormatter(new Date(doc.lastModified));
+const date = formatter(new Date(doc.lastModified));
 
 /**
  * @namespace console
@@ -25,6 +27,7 @@ const {log, dir} = console;
 
 const NAME = 'web-terminal';
 const MODUS = 'modus';
+
 // https://geist-ui.dev/en-us/components/icons
 const SVG_ICON = `
 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" shape-rendering="geometricPrecision" viewBox="0 0 24 24" height="24" width="24" style="color: currentcolor;"><path d="M4 17l6-6-6-6M12 19h8"></path></svg>
@@ -32,11 +35,11 @@ const SVG_ICON = `
 
 //--> web-terminal-template.tpl
 const template = doc.createElement('template');
+{/* <style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+  @import '/src/css/console.css' layer(terminal);
+</style> */}
 template.innerHTML = `
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-    @import '/src/css/console.css' layer(terminal);
-  </style>
   <!-- Console session -->
   <pre><code data-lang="shell" data-shell="zsh" class="session">
     <span class="line sep">=============================</span>
@@ -71,6 +74,10 @@ template.innerHTML = `
 export class WebTerminal extends HTMLElement {
   constructor() {
     super();
+
+    // const styleEl = document.createElement("style");
+    // styleEl.innerHTML = `${styles}`;
+    // document.head.appendChild(styleEl);
 
     this._initializeDOM();
   }
