@@ -1,6 +1,6 @@
 {
   "name": "@modus/source",
-  "workspaces": ["website/*", "apps/*"],
+  "workspaces": ["website/*", "apps/*", "libs/*"],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

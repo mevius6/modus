@@ -1,9 +1,6 @@
 {
   "cleanUrls": false,
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/custom-404.html" }
-  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/route.js" }],
   "headers": [
     {
       "source": "/src/(.*)",
