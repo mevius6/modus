@@ -1,6 +1,6 @@
 {
   "cleanUrls": false,
-  "rewrites": [{ "source": "/(.*)", "destination": "/404.js" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/404.html" }],
   "headers": [
     {
       "source": "/src/(.*)",

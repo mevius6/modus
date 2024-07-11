@@ -22,6 +22,22 @@
           https://developers.google.com/search/docs/appearance/core-web-vitals
           https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/
     -->
+    <style>
+      @layer reset, theme, patterns, utilities;
+
+      @import url(css/layouts/skeleton.css);
+
+      @import url(css/patterns/button.css) @layer (patterns);
+      @import url(css/patterns/link.css) @layer (patterns);
+
+      @import url(css/utils.css) layer(utilities);
+      @import url(css/theme.css);
+      @import url(css/reset.css) layer(reset);
+
+      body {
+        --font-body: var(--ui-mono);
+      }
+    </style>
   </head>
   <body>
     <main><!-- [w/o bundler] --></main>
