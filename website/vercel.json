@@ -1,6 +1,6 @@
 {
   "cleanUrls": false,
-  "rewrites": [{ "source": "/(.*)", "destination": "/route.js" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/route.js" }],
   "headers": [
     {
       "source": "/src/(.*)",
