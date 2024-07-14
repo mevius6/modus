@@ -1,5 +1,5 @@
 <style type="text/css">
-  /* FIXME: https://support.mozilla.org/bm/questions/1426612 */
+  /* FIXME https://support.mozilla.org/bm/questions/1426612 */
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
   @import 'css/console.css' layer(terminal);
@@ -63,4 +63,6 @@
     TODO curl -X GET "https://api.w3.org/" -H "accept: application/json"
     https://www.w3.org/api/; https://api.w3.org/doc
   -->
+  <!-- OR -->
+  <!-- table>tbody>(tr>td.line-number[value=$]+td.line-content>{…})*N -->
 </section>

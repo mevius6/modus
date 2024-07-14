@@ -18,7 +18,8 @@
   "scripts": {
     "start": "vite --host",
     "build": "vite build --base=./",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist && rm -rf output",
+    "test": "vitest",
     "copy": "cp -r src/static/* ./public"
   },
   "author": "",

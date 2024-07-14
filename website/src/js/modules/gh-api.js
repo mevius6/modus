@@ -55,8 +55,8 @@ const gh = {}, endpoints = {},
  * - https://javascript.info/fetch-abort
  * - https://vercel.com/docs/functions/runtimes#limited-date-api
  */
-export const getRepo = async () => {
-  // if (!sessionStorage.getItem('deployment')) { // TODO
+export const getRepo = async (url=('' || repo), ops={}) => {
+  // if (!sessionStorage.getItem('deployment')) { // HACK
     try {
       // const request = await asyncFetchJSON(repos).then(
       //   (data) => data.filter((e) => e.name === GH_REPO)[0]
@@ -93,7 +93,7 @@ export const getRepo = async () => {
         langTags.forEach((el) => el.normalize());
 
         // https://www.w3.org/TR/selectors-4/#data-model
-        const getLangs = await asyncFetchJSON(languages_url)
+        const getRepoLangs = await asyncFetchJSON(languages_url)
           // .then((data) => console.table(data))
           .then((data) => {
             let nodes = langTags,
@@ -136,7 +136,7 @@ export const getRepo = async () => {
         ...dateOptions,
       })} by ${deployment_creator}`;
 
-      sessionStorage.setItem('deployment', deployment_updated)
+      // sessionStorage.setItem('deployment', deployment_updated)
     } catch (error) {
       // console.error(error);
       console.error(error.message);

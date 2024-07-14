@@ -97,6 +97,7 @@
   /* https://api.iconify.design/line-md:sun-rising-filled-loop.svg
      https://api.iconify.design/line-md:moon-rising-alt-loop.svg */
   theme-switch {
+    /* feathericons.com/?query=sun */
     --theme-switch-border-color: var(--trn);
     --theme-switch-icon-size: 1.75em;
     --theme-switch-icon-filter: drop-shadow(0 3px 6px var(--accent-a50));
@@ -196,14 +197,12 @@
       https://drafts.csswg.org/css-overflow/#scrollbar-layout
     */
     * {
-      scrollbar-width: none;
-      scrollbar-color: inherit;
-
       /* TODO Default scrollbars styling */
-      /* scrollbar-color: var(--ui-scrollbar-color,
-        var(--thumb, var(--accent))
-        var(--track, var(--acent-shade))
-      ); */
+      /* scrollbar-color:
+        var(--scrollbar-thumb, var(--accent))
+        var(--scrollbar-track, var(--accent-shade)); */
+      scrollbar-color: inherit;
+      scrollbar-width: var(--scrollbar-width, none);
 
       /* https://defensivecss.dev/tip/scrollbar-gutter/ */
     }

@@ -1,6 +1,12 @@
 import { getRepo } from "./gh-api.js";
 import { formatter } from "../utils/formatter.js";
 
+/* ------------------------------------------------------------------------ */
+/*                   Integrated Terminal and Debug Console                  */
+/* ------------------------------------------------------------------------ */
+/*              Встроенный эмулятор терминала и консоль отладки             */
+/* ------------------------------------------------------------------------ */
+
 // import * as styles from '/src/css/console.css';
 
 const doc = document;
@@ -36,6 +42,28 @@ const SVG_ICON = `
 //--> web-terminal-template.tpl
 const template = doc.createElement('template');
 template.innerHTML = `
+  <style type="text/css" title="UA stylesheet">
+    .line-wrap-control {
+      width: 100%;
+      font-size: initial;
+      font-family: monospace;
+      user-select: none;
+      background-color: light-dark(rgb(240, 240, 240), rgb(60, 60, 60));
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: 1px solid rgb(187, 187, 187);
+      padding-inline: 1ex;
+    }
+    .line-wrap {
+      width: 100%;
+      word-break: normal;
+      overflow-wrap: anywhere;
+      /* white-space: pre-wrap !important; */
+      text-wrap-mode: wrap;
+    }
+  </style>
+  <label class="line-wrap-control">Wrap lines<input type="checkbox" aria-label="Переносить строки"></label>
   <!-- Console session -->
   <pre><code data-lang="shell" data-shell="zsh" class="session">
     <span class="line sep">=============================</span>
@@ -82,6 +110,15 @@ export class WebTerminal extends HTMLElement {
     // const shadowRoot = this.attachShadow({ mode: 'open' });
     // shadowRoot.appendChild(template.content.cloneNode(true));
     this.appendChild(template.content.cloneNode(true));
+
+    this.codeBlock = this.querySelector('[class=session]');
+    this.lineWrapControl = this.querySelector('[class|=line-wrap]');
+    this.lineWrapControl.addEventListener('change', (ev) => {
+      // this.codeBlock.classList.toggle('line-wrap', ev.target.checked)
+      for (const line of this.codeBlock.children) {
+        line.classList.toggle('line-wrap', ev.target.checked)
+      };
+    })
 
     this._getData();
   }

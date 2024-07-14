@@ -1,11 +1,11 @@
-const postcssPresetEnv  = require('postcss-preset-env')
-const postcssImport     = require('postcss-import')
-const cssnano           = require('cssnano')
+import postcssPresetEnv from 'postcss-preset-env'
+import postcssImport    from 'postcss-import'
+import cssnano          from 'cssnano'
 
-// FIXME https://vitejs.dev/guide/features.html#css
-// https://github.com/argyleink/vite-postcss-preset-env
-// https://github.com/argyleink/open-props/blob/main/postcss.config.cjs
-module.exports = {
+// REFS https://vitejs.dev/guide/features.html#css
+
+/** @type {import('postcss-load-config').Config} */
+const config = {
   plugins: [
     postcssImport(),
     postcssPresetEnv({
@@ -36,3 +36,5 @@ module.exports = {
     }),
   ]
 }
+
+export default config;
