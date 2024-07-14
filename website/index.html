@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<!-- #region -->
+<!-- #region sheet -->
 <!-- ⛬
   https://www.w3.org/Provider/Style/
   https://www.w3.org/Protocols/PEP/PEPmodel/src/classes/doc/SampleSession.html
   https://www.w3.org/Provider/Style/StyleSheets.html
+  https://www.w3.org/StyleSheets/Core/
+  https://cssparser.sourceforge.net/
   https://www.w3.org/Style/CSS20/
+  https://www.w3.org/html/logo/
 -->
 <!-- ✊🏻 🔥 IndieWeb
   https://indieweb.org/
@@ -15,7 +18,7 @@
   https://en.wikipedia.org/wiki/Webring
   https://neocities.org/browse
 -->
-<!-- TODO Update HEAD
+<!-- REFS
   See:
     https://www.w3.org/P3P/
     https://html.spec.whatwg.org/multipage/links.html#link-type-privacy-policy
@@ -43,6 +46,7 @@
      ╚═══════════════════════════════╝ -->
 <html class="no-js" dir="ltr" lang="en">
   <head>
+    <!-- #region base meta -->
     <meta charset="utf-8" />
     <!-- https://encoding.spec.whatwg.org/#utf-8 -->
     <meta
@@ -52,23 +56,27 @@
     <!-- https://html.spec.whatwg.org/dev/semantics.html#pragma-directives -->
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <!-- #endregion -->
 
+    <!-- #region perf-start -->
     <!-- TODO Performance measurement
-      See:
-          https://www.speedscope.app/
-          https://wicg.github.io/element-timing/
-          https://w3c.github.io/hr-time/
-          https://w3c.github.io/event-timing/
-          https://w3c.github.io/performance-timeline/
-          https://w3c.github.io/paint-timing/
-          https://w3c.github.io/largest-contentful-paint/
-          https://vercel.com/guides/optimizing-core-web-vitals-in-2024
-          https://docs.webpagetest.org/metrics/speedindex/
-          https://developer.mozilla.org/en-US/docs/Web/Performance
-          https://profiler.firefox.com/docs/
-          https://perf-html.io/
-          https://browserbench.org/announcements/speedometer3/
-          https://spidermonkey.dev/blog/2023/11/27/newsletter-firefox-118-121.html
+      Specs:
+        - https://wicg.github.io/element-timing/
+        - https://w3c.github.io/hr-time/
+        - https://w3c.github.io/event-timing/
+        - https://w3c.github.io/performance-timeline/
+        - https://w3c.github.io/paint-timing/
+        - https://w3c.github.io/largest-contentful-paint/
+        - https://vercel.com/guides/optimizing-core-web-vitals-in-2024
+        - https://developer.mozilla.org/en-US/docs/Web/Performance
+      Tools:
+        - https://github.com/GoogleChrome/web-vitals
+        - https://www.speedscope.app/
+        - https://docs.webpagetest.org/metrics/speedindex/
+        - https://profiler.firefox.com/docs/
+        - https://perf-html.io/
+        - https://browserbench.org/announcements/speedometer3/
+        - https://spidermonkey.dev/blog/2023/11/27/newsletter-firefox-118-121.html
     -->
     <script type="text/javascript">
       let { log, info, timeLog, timeEnd } = console;
@@ -86,32 +94,34 @@
       // https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
       const t0 = performance.now();
     </script>
+    <!-- #endregion -->
 
-    <!-- TODO Update title;
-              55–60 characters in length -->
     <title>Document</title>
-    <!-- ================================================== -->
+    <!-- TODO Update title; 55–60 characters in length
+    ================================================== -->
     <meta name="author" content="" />
 
-    <!-- TODO Custom emoji favicon
+    <!-- REFS Custom emoji favicon
       See:
-          https://css-tricks.com/emoji-as-a-favicon/
-          https://realfavicongenerator.net/
-          https://vercel.com/templates/next.js/ai-emoji-generator
-          https://emojis.sh/
+        - https://css-tricks.com/emoji-as-a-favicon/
+        - https://realfavicongenerator.net/
+        - https://vercel.com/templates/next.js/ai-emoji-generator
+        - https://emojis.sh/
+        - https://emoji.supply/kitchen/
+        - https://googlefonts.github.io/noto-emoji-animation/
     -->
     <link rel="icon" href="/src/favicon.ico" sizes="any" />
     <link rel="icon" href="/src/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/src/apple-touch-icon.png" />
     <!-- link:touch[sizes="180x180"] -->
     <!--
-    MARK: PWA assets
+      MARK: PWA assets
     -->
-    <!-- TODO
-      https://w3c.github.io/manifest/
-      https://www.w3.org/TR/appmanifest/
-      https://www.w3.org/TR/appmanifest/#icon-masks
-      https://maskable.app/
+    <!-- TODO Manifest-related data
+        - https://w3c.github.io/manifest/
+        - https://www.w3.org/TR/appmanifest/
+        - https://www.w3.org/TR/appmanifest/#icon-masks
+        - https://maskable.app/
     -->
     <link rel="manifest" href="/src/site.webmanifest" />
     <!-- link:mf -->
@@ -128,10 +138,10 @@
       content="#333"
     />
     <meta name="color-scheme" content="dark light" />
-    <!-- #region SEO -->
     <!--
-    MARK: head > SEO
+      MARK: <head> SEO
     -->
+    <!-- #region meta -->
     <meta name="description" content="↬ Summary of the page content." />
     <!-- meta:kw[content='aria,css,html,js,json,ogp,schema,svg'] -->
     <meta name="robots" content="follow,index,max-image-preview:standard" />
@@ -185,9 +195,10 @@
     <!-- #endregion -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <!--
-    MARK: head > CSS
+      MARK: <head> CSS
     -->
-    <!-- FIXME FOUC
+    <!-- #region of the self-hosted typeface(s) -->
+    <!-- REFS FOUC
       See: https://en.wikipedia.org/wiki/Flash_of_unstyled_content
     -->
     <!-- TODO Font perf
@@ -237,27 +248,30 @@
           U+2122, U+2212, U+2215, U+2219, U+F8FF, U+FB01;
       }
     </style>
+
     <!-- TODO Extract critical CSS
       See:
           https://web.dev/articles/codelab-extract-and-inline-critical-css
           https://web.dev/learn/performance/understanding-the-critical-path
     -->
-    <!-- The main stylesheet -->
-    <!-- #region -->
-    <!-- 1. when dev server -->
+    <!-- #endregion -->
+    <!-- #region of the main stylesheet import -->
+    <!-- FIXME In the following variants,
+         u need to (un)comment the code manually,
+         depending on the mode… -->
+    <!-- [x] when dev server; import stylesheet via <link> tag -->
     <!-- <link
       rel="stylesheet"
       href="/src/css/main.css"
       type="text/css"
       media="all"
     /> -->
-    <!-- 2. when prod build -->
+    <!-- [ ] when prod build; import CSS-module(s) via bundler -->
     <script defer type="module">
-      // CSS-module import w/ Vite
-      // https://vitejs.dev/blog/announcing-vite5-1.html#improved-support-for-css-url
-      import styleSheet from '/src/css/main.css';
+      import styleSheet from '/src/css/main.css' assert { type: 'text/css', rel: 'stylesheet' };
     </script>
-    <!-- 3. inject inline -->
+    <!-- [x] else; inserting CSS inline
+         (processed via bundler/plugins, when enabled) -->
     <style type="text/css">
       @import '/src/css/comps/cursor.css';
     </style>
@@ -271,8 +285,12 @@
     <script defer type="module" src="/src/js/modules.js"></script>
   </head>
 
+  <!-- Primary Page Layout
+	================================================== -->
+
   <!-- TODO See new a11y guides (WCAG 3)
        https://www.w3.org/TR/wcag-3.0/
+       https://www.w3.org/TR/WCAG20-TECHS/css.html
        https://dequeuniversity.com/rules/axe/4.9/landmark-one-main -->
   <body
     class="page page--loading"
@@ -300,8 +318,9 @@
       </dialog>
     </noscript>
 
-    <!-- SVG Icon Sprite -->
+    <!-- SVG Icons -->
     <!-- #region sprites -->
+    <!-- www.24a11y.com/2018/accessible-svg-icons-with-inline-sprites/ -->
     <svg
       xmlns="https://www.w3.org/2000/svg"
       xmlns:xlink="https://www.w3.org/1999/xlink"
@@ -748,6 +767,8 @@
     <!-- #endregion -->
 
     <!-- Global Site Navigation (sidebar) -->
+    <!-- #region glob nav -->
+    <!-- https://ui.shadcn.com/docs/components/sheet -->
     <aside id="sidenav-open">
       <!-- https://webaim.org/techniques/skipnav/ -->
       <a href="#main" class="skip-link sr-only">
@@ -812,8 +833,9 @@
           </li>
         </ul>
       </nav>
+      <!-- a[href="JavaScript:void(0);"] -->
       <a
-        href="JavaScript:void(0);"
+        href="#"
         id="sidenav-close"
         title="Close Menu"
         aria-label="Close Menu"
@@ -824,9 +846,10 @@
         https://html.spec.whatwg.org/#scroll-restoration-mode
       -->
     </aside>
+    <!-- #endregion -->
 
     <!-- Global Site Header (site-wide banner) -->
-    <!-- #region header -->
+    <!-- #region glob header -->
     <header
       id="banner"
       class="page__header fixpos inset-start mx-auto d-flex items-center justify-between border-gradient --voygb bg-canvas"
@@ -929,12 +952,12 @@
     </header>
     <!-- #endregion -->
 
-    <!-- TODO Rendered view of the outline
+    <!-- TODO Implement a separate layer for rendering section heads?..
          https://html.spec.whatwg.org/multipage/sections.html#outline -->
     <mini-map></mini-map>
 
     <!--
-    MARK: main
+    MARK: <main>
     -->
     <!-- Main Content -->
     <main
@@ -943,7 +966,8 @@
       itemid="https://native-things.vercel.app"
       class="bg-noise"
     >
-      <!--
+      <!-- #region -->
+      <!-- REFS &art; vs &sect; as an HTML5 <tag>
         https://html.spec.whatwg.org/#article-or-section
         https://html.spec.whatwg.org/#sectioning-content
         https://html.spec.whatwg.org/#the-article-element
@@ -952,6 +976,7 @@
         https://www.smashingmagazine.com/2020/01/html5-article-section/
         https://noti.st/ericwbailey/Yfyaxa
       -->
+      <!-- #endregion -->
       <section id="region1" class="grid graph-paper --show-landmarks">
         <!-- Hero (generic / local banner) -->
         <!-- FIXME Wrap into <header> / <div>
@@ -1253,12 +1278,7 @@
           </a> -->
         </div>
 
-        <!-- Contact -->
-        <!-- TODO Create an API endpoint (?)
-          * https://blog.postman.com/what-is-an-api-endpoint/
-          * https://www.contentful.com/blog/api-endpoint/
-          * https://offers.hubspot.com/hubfs/How%20to%20Use%20an%20API.pdf
-        -->
+        <!-- Form (action) -->
         <form class="grid__content relpos" aria-labelledby="contact">
           <mark class="abspos inset-start tag uppercase">todo</mark>
           <fieldset class="flex-centered flow">
@@ -1270,8 +1290,16 @@
               Think different.
               <!-- <s>ﬀ</s> -->
             </legend>
-            <!-- https://web.archive.org/web/20010520140719/http://www.apple.com/hardware/ -->
-            <button type="submit">(Re)think again</button>
+            <!-- XXX -->
+            <button
+              type="submit"
+              id="act"
+              formaction="https://api.github.com/zen"
+              formmethod="get"
+              formtarget="_blank"
+            >
+              (Re)think again
+            </button>
           </fieldset>
         </form>
 
@@ -1327,9 +1355,14 @@
         </div>
       </section>
 
+      <!--
+        MARK: Terminal
+      -->
       <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
         @import '/src/css/console.css' layer(terminal);
+        /* -OR-
+        https://github.githubassets.com/assets/gist-embed-e5c1af5810d4.css.map */
       </style>
       <section id="region2" aria-hidden="true">
         <h2 class="sr-only">Terminal</h2>
@@ -1358,7 +1391,7 @@
       </small>
     </footer>
 
-    <!-- TODO https://indieweb.org/link-preview -->
+    <!-- XXX https://indieweb.org/link-preview -->
     <span id="cursor" class="custom-cursor" aria-hidden="true">
       <!-- https://geist-ui.dev/en-us/components/icons -->
       <span class="preview">
@@ -1489,7 +1522,7 @@
     <script type="module" src="/src/js/main.js"></script>
     <!-- <script nomodule src="/src/js/main.js"></script> -->
 
-    <!-- TODO Performance measurement -->
+    <!-- #region perf-end -->
     <script type="module">
       // end = getTime();
       // info(end);
@@ -1509,5 +1542,6 @@
       const t1 = performance.now();
       // perf.textContent = `${t1 - t0} millis`; // took in milliseconds.
     </script>
+    <!-- #endregion -->
   </body>
 </html>
