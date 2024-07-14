@@ -152,10 +152,21 @@ article {
 }
 
 /* TODO: Fluid Typography with CSS pow()
-   https://www.modularscale.com/
-   https://drafts.csswg.org/css-values/#exponent-funcs
-   https://codepen.io/jh3y/pen/KKLNLxW
-   https://codepen.io/2kool2/pen/dyPgebN?editors=0100 */
+   - https://www.modularscale.com/
+   - https://drafts.csswg.org/css-values/#exponent-funcs
+   - https://codepen.io/jh3y/pen/KKLNLxW
+   - https://codepen.io/2kool2/pen/dyPgebN?editors=0100
+   - https://codepen.io/argyleink/pen/jOovoav
+ *//*
+h1, h2, h3, h4, h5 {
+  font-size: clamp(1rem, 1vw * pow(1.75, var(--n)), 9rem);
+}
+
+h1 { --n: 5 }
+h2 { --n: 4 }
+h3 { --n: 3 }
+h4 { --n: 2 }
+h5 { --n: 1 } */
 
 /* Type Scale: 16, 18, 20, 22, 24, 26, 32, 40, 48, 56, 64, 72, 96
  */

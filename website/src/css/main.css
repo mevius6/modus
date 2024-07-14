@@ -18,9 +18,10 @@
 @import url("utils.css") layer(utilities);
 
 /**
- * GUI Components
+ * GUI Components / Patterns
  * https://www.w3.org/WAI/ARIA/apg/patterns/
  * https://codepen.io/collection/bNWdoB
+ * https://carbondesignsystem.com/
  */
 @import url("patterns/index.css") layer(patterns);
 

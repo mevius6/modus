@@ -1,15 +1,14 @@
-/* [notes]
-    https://drafts.csswg.org/scroll-animations-1/
-    https://www.smashingmagazine.com/2023/07/define-array-colors-css/
+/* REFS Анимация при прокрутке страницы:
+   - https://drafts.csswg.org/scroll-animations-1/
 */
 
-/* TODO: Плавные переходы с помощью View Transition API */
-/* https://drafts.csswg.org/css-view-transitions-1/
-   https://github.com/WICG/view-transitions/blob/main/explainer.md
-   https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API
-   https://developer.chrome.com/docs/web-platform/view-transitions
-   https://developer.chrome.com/blog/view-transitions-update-io24
-   https://www.smashingmagazine.com/2024/01/view-transitions-api-ui-animations-part2/ */
+/* REFS Плавные переходы с помощью View Transition API:
+   - https://drafts.csswg.org/css-view-transitions-1/
+   - https://github.com/WICG/view-transitions/blob/main/explainer.md
+   - https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API
+   - https://developer.chrome.com/docs/web-platform/view-transitions
+   - https://developer.chrome.com/blog/view-transitions-update-io24
+   - https://www.smashingmagazine.com/2024/01/view-transitions-api-ui-animations-part2/ */
 @supports (view-transition-name: none) {
   /* … */
 }
@@ -622,6 +621,9 @@ body:where([data-id=homepage]) { /* Quick visual tweaks */
   }
 }
 
+/**
+ * MARK: Theme layer
+ */
 @layer theme {
   body { --var-serif: Roslindale; }
 
@@ -657,6 +659,9 @@ body:where([data-id=homepage]) { /* Quick visual tweaks */
   }
 }
 
+/**
+ * MARK: Add colors 🎨
+ */
 @layer theme.color.swatches {
   :where(html) {
     /* https://en.wikipedia.org/wiki/Snow_White_design_language
@@ -681,6 +686,9 @@ body:where([data-id=homepage]) { /* Quick visual tweaks */
   /* @layer riso {} */
 }
 
+/**
+ * MARK: Start here 🎬
+ */
 @layer reset {
   /* picture:has(> img) { display: contents } */
 }

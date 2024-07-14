@@ -40,6 +40,7 @@
  * https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems
  * https://developer.chrome.com/docs/css-ui/migrate-hd-color
  * https://developer.chrome.com/docs/css-ui/high-definition-css-color-guide?#resources
+ * https://www.smashingmagazine.com/2023/07/define-array-colors-css/
  */
 
 @layer color.swatches { /* Pre-defined color props */
